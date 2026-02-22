@@ -1,0 +1,10 @@
+.ddev/
+.git/
+node_modules/
+vendor/
+web/sites/default/files/
+web/sites/default/settings.ddev.php
+web/sites/default/settings.local.php
+.DS_Store
+*.swp
+.idea/

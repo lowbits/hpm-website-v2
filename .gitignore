@@ -27,3 +27,6 @@ node_modules/
 /web/sites/default/files/php/
 /web/sites/default/files/css/
 /web/sites/default/files/js/
+
+# Theme node_modules (built fresh in Docker)
+/web/themes/custom/hpm/node_modules/

@@ -856,6 +856,23 @@ $settings['migrate_node_migrate_type_classic'] = FALSE;
 # $settings['migrate_file_public_path'] = '';
 # $settings['migrate_file_private_path'] = '';
 
+// Production settings from environment variables (Coolify).
+if (getenv('DRUPAL_DB_HOST')) {
+  $databases['default']['default'] = [
+    'database' => getenv('DRUPAL_DB_NAME') ?: 'drupal',
+    'username' => getenv('DRUPAL_DB_USER') ?: 'drupal',
+    'password' => getenv('DRUPAL_DB_PASS') ?: '',
+    'host' => getenv('DRUPAL_DB_HOST'),
+    'port' => getenv('DRUPAL_DB_PORT') ?: '3306',
+    'driver' => 'mysql',
+    'prefix' => '',
+  ];
+  $settings['hash_salt'] = getenv('DRUPAL_HASH_SALT') ?: 'change-me';
+  $settings['trusted_host_patterns'] = array_filter(
+    explode(',', getenv('DRUPAL_TRUSTED_HOSTS') ?: ''),
+  );
+}
+
 // Automatically generated include for settings managed by ddev.
 if (getenv('IS_DDEV_PROJECT') == 'true' && file_exists(__DIR__ . '/settings.ddev.php')) {
   include __DIR__ . '/settings.ddev.php';
