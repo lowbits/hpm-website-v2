@@ -13,8 +13,9 @@ if ./vendor/bin/drush sql:query "SELECT 1" 2>&1; then
     ./vendor/bin/drush state:set system.maintenance_mode 0 --input-format=integer
     echo "Deploy tasks complete."
   else
-    echo "Fresh install — installing Drupal from existing config..."
-    ./vendor/bin/drush site:install --existing-config -y
+    echo "Fresh install..."
+    ./vendor/bin/drush site:install minimal -y
+    ./vendor/bin/drush config:import -y
     echo "Install complete."
   fi
 else
