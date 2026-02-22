@@ -3,13 +3,6 @@ set -e
 
 cd /app
 
-echo "=== Debug: Environment ==="
-echo "DB Host: $DRUPAL_DB_HOST"
-echo "DB Name: $DRUPAL_DB_NAME"
-echo "DB User: $DRUPAL_DB_USER"
-echo "DB Port: $DRUPAL_DB_PORT"
-
-echo "=== Testing DB connection ==="
 if ./vendor/bin/drush sql:query "SELECT 1" 2>&1; then
   if ./vendor/bin/drush status --field=bootstrap 2>/dev/null | grep -q "Successful"; then
     echo "Running Drupal deploy tasks..."
@@ -25,8 +18,7 @@ if ./vendor/bin/drush sql:query "SELECT 1" 2>&1; then
     echo "Install complete."
   fi
 else
-  echo "DB connection failed. Error output above."
-  echo "Skipping deploy tasks."
+  echo "Database not reachable — skipping deploy tasks."
 fi
 
 exec /opt/docker/bin/entrypoint.sh supervisord

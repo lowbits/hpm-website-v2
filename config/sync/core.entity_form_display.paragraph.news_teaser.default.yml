@@ -19,12 +19,27 @@ targetEntityType: paragraph
 bundle: news_teaser
 mode: default
 content:
+  field_link:
+    type: link_default
+    weight: 3
+    region: content
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
   field_meta_label:
     type: string_textfield
     weight: 0
     region: content
     settings:
       size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_news_count:
+    type: number
+    weight: 5
+    region: content
+    settings:
       placeholder: ''
     third_party_settings: {  }
   field_section_title:
@@ -43,26 +58,11 @@ content:
       rows: 3
       placeholder: ''
     third_party_settings: {  }
-  field_link:
-    type: link_default
-    weight: 3
-    region: content
-    settings:
-      placeholder_url: ''
-      placeholder_title: ''
-    third_party_settings: {  }
   field_theme:
     type: options_select
     weight: 4
     region: content
     settings: {  }
-    third_party_settings: {  }
-  field_news_count:
-    type: number
-    weight: 5
-    region: content
-    settings:
-      placeholder: ''
     third_party_settings: {  }
 hidden:
   created: true
