@@ -1,0 +1,21 @@
+uuid: 66b9eb7d-7e58-4d6f-8207-812d1e9f8656
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_box_theme
+    - paragraphs.paragraphs_type.narrative
+  module:
+    - options
+id: paragraph.narrative.field_box_theme
+field_name: field_box_theme
+entity_type: paragraph
+bundle: narrative
+label: Box-Thema
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

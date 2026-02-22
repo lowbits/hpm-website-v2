@@ -1,0 +1,27 @@
+uuid: 4a7aedd8-e81e-40ba-9e12-8fbbb4c4088a
+langcode: de
+status: true
+dependencies:
+  module:
+    - options
+    - paragraphs
+id: paragraph.field_box_position
+field_name: field_box_position
+entity_type: paragraph
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: left
+      label: Links
+    -
+      value: right
+      label: Rechts
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

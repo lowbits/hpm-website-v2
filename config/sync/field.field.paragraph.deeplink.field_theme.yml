@@ -1,0 +1,21 @@
+uuid: ed5e4ff4-a6d9-442b-8b70-8a1c3d318aad
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_theme
+    - paragraphs.paragraphs_type.deeplink
+  module:
+    - options
+id: paragraph.deeplink.field_theme
+field_name: field_theme
+entity_type: paragraph
+bundle: deeplink
+label: Farbschema
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

@@ -1,0 +1,94 @@
+uuid: 9e69a063-44f1-4e18-9ad0-eca334f7e1ee
+langcode: de
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - node.type.project
+  module:
+    - node
+id: projects_by_field
+label: 'Projekte nach Geschäftsfeld'
+module: views
+description: ''
+tag: ''
+base_table: node_field_data
+base_field: nid
+display:
+  default:
+    id: default
+    display_title: Default
+    display_plugin: default
+    position: 0
+    display_options:
+      title: 'Projekte nach Geschäftsfeld'
+      fields: {  }
+      pager:
+        type: some
+        options:
+          items_per_page: 6
+      access:
+        type: none
+      cache:
+        type: tag
+      sorts:
+        created:
+          id: created
+          table: node_field_data
+          field: created
+          entity_type: node
+          plugin_id: date
+          order: DESC
+      arguments:
+        field_business_field_target_id:
+          id: field_business_field_target_id
+          table: node__field_business_field
+          field: field_business_field_target_id
+          plugin_id: numeric
+          default_action: ignore
+      filters:
+        type:
+          id: type
+          table: node_field_data
+          field: type
+          entity_type: node
+          plugin_id: bundle
+          value:
+            project: project
+        status:
+          id: status
+          table: node_field_data
+          field: status
+          entity_type: node
+          plugin_id: boolean
+          value: '1'
+      style:
+        type: default
+      row:
+        type: 'entity:node'
+        options:
+          view_mode: teaser
+      query:
+        type: views_query
+      display_extenders: {  }
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_interface'
+        - url
+        - 'user.node_grants:view'
+      tags: {  }
+  block_1:
+    id: block_1
+    display_title: Block
+    display_plugin: block
+    position: 1
+    display_options:
+      display_extenders: {  }
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_interface'
+        - url
+        - 'user.node_grants:view'
+      tags: {  }

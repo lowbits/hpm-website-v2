@@ -1,0 +1,25 @@
+uuid: 6f2be547-59da-496f-a2b4-3299613a6d42
+langcode: de
+status: true
+dependencies:
+  config:
+    - system.menu.footer
+  module:
+    - system
+  theme:
+    - hpm
+id: hpm_footer_menu
+theme: hpm
+region: footer_first
+weight: 0
+provider: null
+plugin: 'system_menu_block:footer'
+settings:
+  id: 'system_menu_block:footer'
+  label: 'Footer menu'
+  label_display: '0'
+  provider: system
+  level: 1
+  depth: 1
+  expand_all_items: false
+visibility: {  }

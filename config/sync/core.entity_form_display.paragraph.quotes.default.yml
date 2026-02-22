@@ -1,0 +1,42 @@
+uuid: 5224a51f-4006-49d2-8d0b-2de9a97dc364
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.quotes.field_items
+    - field.field.paragraph.quotes.field_theme
+    - paragraphs.paragraphs_type.quotes
+  module:
+    - paragraphs
+id: paragraph.quotes.default
+targetEntityType: paragraph
+bundle: quotes
+mode: default
+content:
+  field_items:
+    type: paragraphs
+    weight: 0
+    region: content
+    settings:
+      title: Seitenabschnitt
+      title_plural: Seitenabschnitte
+      edit_mode: open
+      closed_mode: summary
+      autocollapse: none
+      closed_mode_threshold: 0
+      add_mode: dropdown
+      form_display_mode: default
+      default_paragraph_type: ''
+      features:
+        collapse_edit_all: collapse_edit_all
+        duplicate: duplicate
+    third_party_settings: {  }
+  field_theme:
+    type: options_select
+    weight: 1
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true

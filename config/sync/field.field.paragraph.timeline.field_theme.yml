@@ -1,0 +1,21 @@
+uuid: b4769f52-b472-475a-ad41-2d9e10b606d4
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_theme
+    - paragraphs.paragraphs_type.timeline
+  module:
+    - options
+id: paragraph.timeline.field_theme
+field_name: field_theme
+entity_type: paragraph
+bundle: timeline
+label: Theme
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

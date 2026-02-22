@@ -1,0 +1,20 @@
+uuid: 7ac92ed0-06c3-4c54-bb69-1dd3b7e295de
+langcode: de
+status: true
+dependencies:
+  module:
+    - paragraphs
+id: paragraph.field_news_count
+field_name: field_news_count
+entity_type: paragraph
+type: integer
+settings:
+  unsigned: false
+  size: normal
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

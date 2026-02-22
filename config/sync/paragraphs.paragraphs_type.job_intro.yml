@@ -1,0 +1,10 @@
+uuid: 6ca3c6f4-c4ef-4ef1-81ac-00ad54c3f188
+langcode: de
+status: true
+dependencies: {  }
+id: job_intro
+label: Stelleninformationen
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

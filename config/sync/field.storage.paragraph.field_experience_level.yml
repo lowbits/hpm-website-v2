@@ -1,0 +1,20 @@
+uuid: 250c840c-b45e-42c6-9270-2af6a7e33cf0
+langcode: de
+status: true
+dependencies:
+  module:
+    - paragraphs
+    - taxonomy
+id: paragraph.field_experience_level
+field_name: field_experience_level
+entity_type: paragraph
+type: entity_reference
+settings:
+  target_type: taxonomy_term
+module: core
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

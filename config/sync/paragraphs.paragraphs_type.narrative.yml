@@ -1,0 +1,10 @@
+uuid: 6a20b5a4-5e88-4629-b098-566940a204ad
+langcode: de
+status: true
+dependencies: {  }
+id: narrative
+label: 'Narrativ-Element mit Bild'
+icon_uuid: null
+icon_default: null
+description: null
+behavior_plugins: {  }

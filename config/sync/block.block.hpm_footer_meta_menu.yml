@@ -1,0 +1,25 @@
+uuid: 1c7581c3-265d-4b5e-af32-c8bd68fcd38c
+langcode: de
+status: true
+dependencies:
+  config:
+    - system.menu.footer-meta
+  module:
+    - system
+  theme:
+    - hpm
+id: hpm_footer_meta_menu
+theme: hpm
+region: footer_second
+weight: 0
+provider: null
+plugin: 'system_menu_block:footer-meta'
+settings:
+  id: 'system_menu_block:footer-meta'
+  label: 'Footer Meta'
+  label_display: '0'
+  provider: system
+  level: 1
+  depth: 1
+  expand_all_items: false
+visibility: {  }

@@ -1,0 +1,22 @@
+uuid: 021fa4d9-5e50-4e74-9fb6-2b0e9f024f8f
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_quote
+    - paragraphs.paragraphs_type.quote_item
+  module:
+    - text
+id: paragraph.quote_item.field_quote
+field_name: field_quote
+entity_type: paragraph
+bundle: quote_item
+label: Zitat
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats: {  }
+field_type: text_long

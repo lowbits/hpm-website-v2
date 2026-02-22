@@ -1,0 +1,21 @@
+uuid: 7b5aade1-47aa-42f6-a65d-fc748b69a3fd
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_theme
+    - paragraphs.paragraphs_type.alternate
+  module:
+    - options
+id: paragraph.alternate.field_theme
+field_name: field_theme
+entity_type: paragraph
+bundle: alternate
+label: Farbschema
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

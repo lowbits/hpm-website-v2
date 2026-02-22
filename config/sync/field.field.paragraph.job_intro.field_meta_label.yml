@@ -1,0 +1,19 @@
+uuid: 875a546f-e69f-4fda-a560-85619fc1af91
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_meta_label
+    - paragraphs.paragraphs_type.job_intro
+id: paragraph.job_intro.field_meta_label
+field_name: field_meta_label
+entity_type: paragraph
+bundle: job_intro
+label: 'Meta Label'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

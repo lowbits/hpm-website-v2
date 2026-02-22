@@ -1,0 +1,19 @@
+uuid: edf76307-e48d-4600-8798-621308028365
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_meta_label
+    - paragraphs.paragraphs_type.alternate
+id: paragraph.alternate.field_meta_label
+field_name: field_meta_label
+entity_type: paragraph
+bundle: alternate
+label: Meta-Label
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

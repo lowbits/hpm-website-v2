@@ -1,0 +1,22 @@
+uuid: 9ca2e962-2419-4361-9c41-4cd132cd99ee
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_text
+    - paragraphs.paragraphs_type.benefit_item
+  module:
+    - text
+id: paragraph.benefit_item.field_text
+field_name: field_text
+entity_type: paragraph
+bundle: benefit_item
+label: Text
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats: {  }
+field_type: text_long

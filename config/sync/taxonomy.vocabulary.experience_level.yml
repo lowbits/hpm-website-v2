@@ -1,0 +1,9 @@
+uuid: f06d08f4-8295-4cd2-9d5d-ff0286ad71b9
+langcode: de
+status: true
+dependencies: {  }
+name: Erfahrungsstufe
+vid: experience_level
+description: null
+weight: 0
+new_revision: false

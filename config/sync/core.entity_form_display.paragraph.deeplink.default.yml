@@ -1,0 +1,51 @@
+uuid: 2209e759-58c0-4537-ad4d-4a63c9726a44
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.deeplink.field_headline
+    - field.field.paragraph.deeplink.field_link
+    - field.field.paragraph.deeplink.field_text
+    - field.field.paragraph.deeplink.field_theme
+    - paragraphs.paragraphs_type.deeplink
+  module:
+    - link
+    - text
+id: paragraph.deeplink.default
+targetEntityType: paragraph
+bundle: deeplink
+mode: default
+content:
+  field_headline:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_link:
+    type: link_default
+    weight: 1
+    region: content
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+  field_text:
+    type: text_textarea
+    weight: 2
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_theme:
+    type: options_select
+    weight: 3
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true

@@ -1,0 +1,21 @@
+uuid: 4cd4fa52-b0e5-4160-aa54-dda4b650f466
+langcode: de
+status: true
+dependencies:
+  module:
+    - node
+id: business_field_page
+label: 'Business Field Page'
+type: 'canonical_entities:node'
+pattern: 'geschaeftsfelder/[node:title]'
+selection_criteria:
+  55cb3b97-b799-46f6-94dc-490ff415061f:
+    id: 'entity_bundle:node'
+    negate: false
+    context_mapping:
+      node: node
+    bundles:
+      business_field_page: business_field_page
+selection_logic: plugin
+weight: 0
+relationships: {  }

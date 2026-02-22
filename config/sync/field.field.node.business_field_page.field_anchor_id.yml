@@ -1,0 +1,19 @@
+uuid: f3f9131d-c34b-40bd-9318-a317e31caf11
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_anchor_id
+    - node.type.business_field_page
+id: node.business_field_page.field_anchor_id
+field_name: field_anchor_id
+entity_type: node
+bundle: business_field_page
+label: Anker-ID
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

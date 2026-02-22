@@ -1,0 +1,53 @@
+[data-theme]:not(.footer):not(.navigation) {
+  @apply py-spacing-xs sm:py-spacing-sm lg:py-spacing-lg xl:py-spacing-xl;
+}
+
+[data-theme]:has(+[data-theme]),
+[data-theme]:has(+.segment),
+[data-theme]:last-child {
+  @apply mb-0;
+}
+[data-theme] + [data-theme] {
+  @apply mt-0;
+}
+[data-theme="darkred"] + [data-theme="darkred"],
+[data-theme="red"] + [data-theme="red"],
+[data-theme="beige"] + [data-theme="beige"] {
+  @apply -mt-spacing-xs sm:-mt-spacing-sm lg:-mt-spacing-lg xl:-mt-spacing-xl;
+}
+
+[data-theme="darkred"] .button,
+[data-theme="red"] .button {
+  @apply border-white text-white;
+  @apply hover:bg-white hover:text-hpm-darkred;
+}
+
+[data-theme="darkred"] p a,
+[data-theme="red"] p a {
+  @apply !text-white underline underline-offset-3 transition-colors duration-300;
+  @apply hover:text-midgrey;
+}
+
+[data-theme="darkred"] .button-icon svg path,
+[data-theme="red"] .button-icon svg path {
+  @apply fill-hpm-darkred;
+}
+
+[data-theme="darkred"] { @apply bg-hpm-darkred text-hpm-beige; }
+[data-theme="darkred"] .button-icon svg path { @apply fill-hpm-red; }
+[data-theme="darkred"] .svg-map .country path { @apply fill-hpm-red; }
+[data-theme="darkred"] .svg-map .locations circle { @apply fill-white; }
+[data-theme="darkred"] .text-link { @apply !text-white; }
+[data-theme="darkred"] .text-link:before { @apply bg-white; }
+[data-theme="darkred"] .text-link:after { @apply bg-hpm-red; }
+
+[data-theme="red"] { @apply bg-hpm-red; }
+[data-theme="red"] .button-icon svg path { @apply fill-hpm-darkred; }
+
+[data-theme="beige"] {
+  @apply bg-hpm-beige;
+}
+
+[data-theme="blue"] {
+  @apply bg-hpm-lightblue-60;
+}

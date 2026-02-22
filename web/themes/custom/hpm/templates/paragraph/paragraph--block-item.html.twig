@@ -1,0 +1,21 @@
+{#
+/**
+ * @file
+ * Single block item within the blocks section.
+ */
+#}
+<div{{ attributes.addClass('blocks-item', 'flex', 'flex-col', 'items-start', 'gap-2', 'sm:gap-3', 'lg:gap-4', 'lg:pr-8', 'xl:pr-20') }}>
+  {% if paragraph.field_meta_label.value %}
+    <p class="info text-hpm-red meta-line--small meta-line--red">
+      {{ paragraph.field_meta_label.value }}
+    </p>
+  {% endif %}
+  <div>
+    {% if paragraph.field_headline.value %}
+      <h3 class="h3-serif">{{ paragraph.field_headline.value }}</h3>
+    {% endif %}
+    {% if paragraph.field_text.value %}
+      <div class="copy">{{ paragraph.field_text.value|raw }}</div>
+    {% endif %}
+  </div>
+</div>

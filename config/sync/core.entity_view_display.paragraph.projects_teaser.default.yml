@@ -1,0 +1,40 @@
+uuid: 2233de0b-3ec8-4e24-a17f-6499772447fd
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.projects_teaser.field_business_field
+    - field.field.paragraph.projects_teaser.field_section_title
+    - field.field.paragraph.projects_teaser.field_theme
+    - paragraphs.paragraphs_type.projects_teaser
+  module:
+    - options
+id: paragraph.projects_teaser.default
+targetEntityType: paragraph
+bundle: projects_teaser
+mode: default
+content:
+  field_business_field:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_section_title:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_theme:
+    type: list_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 2
+    region: content
+hidden: {  }

@@ -1,0 +1,14 @@
+{% set theme = content.field_theme|render|striptags|trim %}
+<div{{ attributes.addClass('content-section', 'application') }}
+  {% if theme %}data-theme="{{ theme }}"{% endif %}>
+  <div class="section-container">
+    <div class="grid grid-cols-12 gap-x-7">
+      <div class="col-span-12 lg:col-span-8 lg:col-start-3">
+        {% if content.field_headline|render|trim %}
+          <h2 class="h2 mb-8 lg:mb-12">{{ content.field_headline }}</h2>
+        {% endif %}
+        {{ content.field_webform }}
+      </div>
+    </div>
+  </div>
+</div>

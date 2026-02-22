@@ -1,0 +1,75 @@
+global:
+  css:
+    theme:
+      css/dist/style.css: { minified: true }
+  js:
+    js/dist/main.js: { minified: true }
+  dependencies:
+    - core/drupal
+    - core/drupalSettings
+
+gsap:
+  js:
+    js/dist/gsap.min.js: { minified: true, preprocess: false }
+  dependencies:
+    - core/drupal
+
+splide:
+  css:
+    component:
+      js/dist/splide-core.min.css: { minified: true }
+  js:
+    js/dist/splide.min.js: { minified: true, preprocess: false }
+  dependencies:
+    - core/drupal
+
+slider-stage:
+  css:
+    component:
+      js/dist/splide-core.min.css: { minified: true }
+  js:
+    js/dist/stage-slider.js: { minified: true }
+  dependencies:
+    - core/drupal
+
+slider-teaser:
+  js:
+    js/dist/teaser-slider.js: { minified: true }
+  dependencies:
+    - hpm/splide
+
+slider-quotes:
+  js:
+    js/dist/quotes-slider.js: { minified: true }
+  dependencies:
+    - hpm/splide
+
+slider-timeline:
+  js:
+    js/dist/timeline-slider.js: { minified: true }
+  dependencies:
+    - hpm/splide
+
+slider-benefits:
+  js:
+    js/dist/benefits-slider.js: { minified: true }
+  dependencies:
+    - hpm/splide
+
+slider-gallery:
+  js:
+    js/dist/gallery-slider.js: { minified: true }
+  dependencies:
+    - hpm/splide
+
+fade-ins:
+  js:
+    js/dist/fade-ins.js: { minified: true }
+  dependencies:
+    - hpm/gsap
+
+accordion:
+  js:
+    js/dist/accordion.js: { minified: true }
+  dependencies:
+    - hpm/gsap

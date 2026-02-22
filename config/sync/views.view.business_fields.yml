@@ -1,0 +1,85 @@
+uuid: df5eab9d-7876-4c78-b7e1-fee5a7d0abf9
+langcode: de
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - node.type.business_field_page
+  module:
+    - node
+id: business_fields
+label: Geschäftsfelder
+module: views
+description: ''
+tag: ''
+base_table: node_field_data
+base_field: nid
+display:
+  default:
+    id: default
+    display_title: Default
+    display_plugin: default
+    position: 0
+    display_options:
+      title: Geschäftsfelder
+      fields: {  }
+      pager:
+        type: none
+        options:
+          offset: 0
+      access:
+        type: none
+      cache:
+        type: tag
+      sorts:
+        title:
+          id: title
+          table: node_field_data
+          field: title
+          entity_type: node
+          plugin_id: standard
+          order: ASC
+      filters:
+        type:
+          id: type
+          table: node_field_data
+          field: type
+          entity_type: node
+          plugin_id: bundle
+          value:
+            business_field_page: business_field_page
+        status:
+          id: status
+          table: node_field_data
+          field: status
+          entity_type: node
+          plugin_id: boolean
+          value: '1'
+      style:
+        type: default
+      row:
+        type: 'entity:node'
+        options:
+          view_mode: teaser
+      query:
+        type: views_query
+      display_extenders: {  }
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_interface'
+        - 'user.node_grants:view'
+      tags: {  }
+  block_1:
+    id: block_1
+    display_title: Block
+    display_plugin: block
+    position: 1
+    display_options:
+      display_extenders: {  }
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_interface'
+        - 'user.node_grants:view'
+      tags: {  }

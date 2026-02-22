@@ -1,0 +1,24 @@
+uuid: 115751ba-3952-4298-8e01-4491f6d34105
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_services
+    - node.type.business_field_page
+    - taxonomy.vocabulary.service_type
+id: node.business_field_page.field_services
+field_name: field_services
+entity_type: node
+bundle: business_field_page
+label: Leistungen
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      service_type: service_type
+field_type: entity_reference

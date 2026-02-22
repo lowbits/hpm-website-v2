@@ -1,0 +1,24 @@
+uuid: 60c64785-e4e1-4226-bdd0-492e0dbb0f64
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_business_field
+    - paragraphs.paragraphs_type.projects_teaser
+    - taxonomy.vocabulary.business_field
+id: paragraph.projects_teaser.field_business_field
+field_name: field_business_field
+entity_type: paragraph
+bundle: projects_teaser
+label: Geschäftsfeld
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      business_field: business_field
+field_type: entity_reference

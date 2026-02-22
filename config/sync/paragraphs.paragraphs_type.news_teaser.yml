@@ -1,0 +1,10 @@
+uuid: 60c576c9-f070-4a79-99ce-5b3d62823857
+langcode: de
+status: true
+dependencies: {  }
+id: news_teaser
+label: Newsslider
+icon_uuid: null
+icon_default: null
+description: null
+behavior_plugins: {  }

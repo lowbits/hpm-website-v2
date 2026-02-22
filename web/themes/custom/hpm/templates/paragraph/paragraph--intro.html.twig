@@ -1,0 +1,35 @@
+{#
+/**
+ * @file
+ * Intro section – meta label, quote text + optional button.
+ */
+#}
+<section{{ attributes.addClass('content-section') }}
+  {% if theme_css %}data-theme="{{ theme_css }}"{% endif %}>
+  <div class="section-container grid grid-cols-1 gap-7
+              sm:grid-cols-12">
+    <div class="flex flex-col gap-2.5 js-element-group
+                sm:col-span-10 sm:col-start-2
+                lg:col-span-8 lg:col-start-3 lg:gap-4.5">
+      {% if paragraph.field_meta_label.value %}
+        <h2 class="info text-hpm-red">
+          {{ paragraph.field_meta_label.value }}
+        </h2>
+      {% endif %}
+      {% if paragraph.field_text.value %}
+        <blockquote class="quote-small">
+          {{ paragraph.field_text.value|raw }}
+        </blockquote>
+      {% endif %}
+      {% if button_url %}
+        <div class="button-container">
+          {% include '@hpm/templates/components/button-link.html.twig' with {
+            url: button_url,
+            text: button_text,
+            variant: 'secondary'
+          } only %}
+        </div>
+      {% endif %}
+    </div>
+  </div>
+</section>

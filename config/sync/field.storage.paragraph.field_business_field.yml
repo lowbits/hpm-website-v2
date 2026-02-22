@@ -1,0 +1,20 @@
+uuid: b191d2ee-0deb-4b51-879d-b645a7addff2
+langcode: de
+status: true
+dependencies:
+  module:
+    - paragraphs
+    - taxonomy
+id: paragraph.field_business_field
+field_name: field_business_field
+entity_type: paragraph
+type: entity_reference
+settings:
+  target_type: taxonomy_term
+module: core
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

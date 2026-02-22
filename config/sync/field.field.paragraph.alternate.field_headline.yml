@@ -1,0 +1,19 @@
+uuid: 86db7b05-62a2-403a-9e6b-67bbc6fa52cf
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_headline
+    - paragraphs.paragraphs_type.alternate
+id: paragraph.alternate.field_headline
+field_name: field_headline
+entity_type: paragraph
+bundle: alternate
+label: Überschrift
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

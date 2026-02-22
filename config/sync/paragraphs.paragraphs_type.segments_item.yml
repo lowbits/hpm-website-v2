@@ -1,0 +1,10 @@
+uuid: fba91576-31ac-4378-ad93-770b967681f4
+langcode: de
+status: true
+dependencies: {  }
+id: segments_item
+label: Geschäftsfeld
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

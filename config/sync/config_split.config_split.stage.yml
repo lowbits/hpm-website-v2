@@ -1,0 +1,16 @@
+uuid: db2d30ea-429c-4f46-866d-bd54535bf1f0
+langcode: de
+status: false
+dependencies: {  }
+id: stage
+label: Staging
+description: ''
+weight: 0
+stackable: false
+no_patching: false
+storage: null
+folder: ../config/split/stage
+module: {  }
+theme: {  }
+complete_list: {  }
+partial_list: {  }

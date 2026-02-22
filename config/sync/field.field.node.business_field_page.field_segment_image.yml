@@ -1,0 +1,24 @@
+uuid: ac0f7d7a-2502-4c21-9684-4c7fd8bc376e
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_segment_image
+    - media.type.image
+    - node.type.business_field_page
+id: node.business_field_page.field_segment_image
+field_name: field_segment_image
+entity_type: node
+bundle: business_field_page
+label: Segmentbild
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:media'
+  handler_settings:
+    target_bundles:
+      image: image
+field_type: entity_reference

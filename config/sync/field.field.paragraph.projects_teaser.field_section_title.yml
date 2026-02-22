@@ -1,0 +1,19 @@
+uuid: 13fdedb6-5380-461a-b062-1e961e8f1d9d
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_section_title
+    - paragraphs.paragraphs_type.projects_teaser
+id: paragraph.projects_teaser.field_section_title
+field_name: field_section_title
+entity_type: paragraph
+bundle: projects_teaser
+label: Abschnittstitel
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

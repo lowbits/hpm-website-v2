@@ -1,0 +1,19 @@
+uuid: 20040559-5fdf-4991-9d87-d51a87a82d5d
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_headline
+    - paragraphs.paragraphs_type.box_teaser
+id: paragraph.box_teaser.field_headline
+field_name: field_headline
+entity_type: paragraph
+bundle: box_teaser
+label: Überschrift
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

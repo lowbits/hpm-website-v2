@@ -1,0 +1,27 @@
+uuid: 36f50453-7c45-4477-8e1c-0d8cee669f67
+langcode: de
+status: true
+dependencies:
+  module:
+    - options
+    - paragraphs
+id: paragraph.field_media_position
+field_name: field_media_position
+entity_type: paragraph
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: left
+      label: Links
+    -
+      value: right
+      label: Rechts
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

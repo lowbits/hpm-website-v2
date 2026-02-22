@@ -1,0 +1,23 @@
+uuid: 66767135-d446-4893-ac97-dd220fe1824c
+langcode: de
+status: true
+dependencies:
+  content:
+    - 'block_content:basic:3137ed52-59bd-434e-b799-1d86773773e9'
+  module:
+    - block_content
+  theme:
+    - hpm
+id: hpm_newsletter_cta
+theme: hpm
+region: footer_third
+weight: 0
+provider: null
+plugin: 'block_content:3137ed52-59bd-434e-b799-1d86773773e9'
+settings:
+  id: 'block_content:3137ed52-59bd-434e-b799-1d86773773e9'
+  label: Newsletter
+  label_display: '0'
+  provider: block_content
+  view_mode: full
+visibility: {  }

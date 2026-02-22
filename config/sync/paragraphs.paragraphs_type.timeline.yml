@@ -1,0 +1,10 @@
+uuid: 5e8e350b-2742-44b7-8a35-22d7871934ee
+langcode: de
+status: true
+dependencies: {  }
+id: timeline
+label: Chronik
+icon_uuid: null
+icon_default: null
+description: null
+behavior_plugins: {  }

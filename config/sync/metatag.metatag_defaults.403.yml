@@ -1,0 +1,12 @@
+uuid: d6e4f0a2-b505-4b24-ac08-bce2e5f4cedc
+langcode: de
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: RDCkFL0NDt75Gwioooxo1iuA1S50xTVsBOgX__c6wTw
+id: '403'
+label: '403 Zugriff verweigert'
+tags:
+  robots: noindex
+  canonical_url: '[site:url]'
+  shortlink: '[site:url]'

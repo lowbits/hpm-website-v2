@@ -1,0 +1,10 @@
+uuid: ff35aef9-0fba-45f2-82b6-0c0f7f54a7eb
+langcode: de
+status: true
+dependencies: {  }
+id: intro
+label: Intro
+icon_uuid: null
+icon_default: null
+description: null
+behavior_plugins: {  }

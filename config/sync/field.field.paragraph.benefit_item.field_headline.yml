@@ -1,0 +1,19 @@
+uuid: 63d76a88-9243-47b5-929d-a69fbed4aa40
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_headline
+    - paragraphs.paragraphs_type.benefit_item
+id: paragraph.benefit_item.field_headline
+field_name: field_headline
+entity_type: paragraph
+bundle: benefit_item
+label: Überschrift
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

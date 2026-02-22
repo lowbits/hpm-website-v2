@@ -1,0 +1,17 @@
+{{ attach_library('hpm/slider-teaser') }}
+{% set theme = content.field_theme|render|striptags|trim %}
+<div{{ attributes.addClass('content-section') }}
+  {% if theme %}data-theme="{{ theme }}"{% endif %}>
+  <div class="section-container">
+    <div class="flex items-end justify-between mb-8 lg:mb-12 js-element-group">
+      {% if content.field_section_title|render|trim %}
+        <h2 class="h2">{{ content.field_section_title }}</h2>
+      {% endif %}
+    </div>
+  </div>
+  <div class="section-container">
+    <div class="teaser-slider js-teaser-slider" data-type="projects">
+      {# View block renders project items here #}
+    </div>
+  </div>
+</div>

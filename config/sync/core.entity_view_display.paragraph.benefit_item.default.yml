@@ -1,0 +1,44 @@
+uuid: 434b9be6-8d45-4857-aa69-0a6f89b385ee
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.benefit_item.field_headline
+    - field.field.paragraph.benefit_item.field_icon
+    - field.field.paragraph.benefit_item.field_text
+    - paragraphs.paragraphs_type.benefit_item
+  module:
+    - media
+    - text
+id: paragraph.benefit_item.default
+targetEntityType: paragraph
+bundle: benefit_item
+mode: default
+content:
+  field_headline:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_icon:
+    type: media_thumbnail
+    label: hidden
+    settings:
+      image_link: ''
+      image_style: ''
+      image_loading:
+        attribute: lazy
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_text:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 2
+    region: content
+hidden: {  }

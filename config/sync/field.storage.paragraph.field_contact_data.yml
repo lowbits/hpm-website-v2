@@ -1,0 +1,19 @@
+uuid: 2652d3a9-3e1b-46d9-9121-eed450b6948b
+langcode: de
+status: true
+dependencies:
+  module:
+    - paragraphs
+    - text
+id: paragraph.field_contact_data
+field_name: field_contact_data
+entity_type: paragraph
+type: text_long
+settings: {  }
+module: text
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

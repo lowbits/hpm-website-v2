@@ -1,0 +1,15 @@
+_core:
+  default_config_hash: ijfbzDTN4CbE7Sr-6ubWzy_t1vH4OtU1doNCLssVz-4
+langcode: de
+uuid: 58c72f7e-c45e-4bcf-9a4f-128e04aa63d3
+name: 'HÖCKER Project Managers'
+mail: admin@example.com
+slogan: 'Ingenieurgesellschaft für Projektsteuerung und Projektmanagement'
+page:
+  403: ''
+  404: ''
+  front: /node/1
+admin_compact_mode: false
+weight_select_max: 100
+default_langcode: de
+mail_notification: null

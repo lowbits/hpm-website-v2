@@ -1,0 +1,21 @@
+{#
+/**
+ * @file
+ * Footer menu template.
+ *
+ * Renders footer navigation links as a simple vertical list.
+ */
+#}
+{% if items %}
+  <ul class="footer-menu flex flex-col gap-2">
+    {% for item in items %}
+      <li>
+        <a href="{{ item.url }}"
+           class="font-erato text-[1.0625rem] text-white leading-[1.25] relative inline-block overflow-hidden pb-[2px] hover:after:translate-x-0 after:content-[''] after:absolute after:bottom-0 after:left-0 after:right-0 after:h-px after:bg-white after:-translate-x-full after:transition-transform after:duration-300"
+           {{ item.in_active_trail ? 'aria-current="page"' }}>
+          {{ item.title }}
+        </a>
+      </li>
+    {% endfor %}
+  </ul>
+{% endif %}

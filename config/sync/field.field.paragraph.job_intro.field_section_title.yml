@@ -1,0 +1,19 @@
+uuid: 98cafe93-8d79-4ad3-b834-fa772b457d37
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_section_title
+    - paragraphs.paragraphs_type.job_intro
+id: paragraph.job_intro.field_section_title
+field_name: field_section_title
+entity_type: paragraph
+bundle: job_intro
+label: 'Section Title'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

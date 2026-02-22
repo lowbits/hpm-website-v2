@@ -1,0 +1,15 @@
+uuid: c43cc9c8-c21c-4c94-b517-4e281bbd528e
+langcode: de
+status: true
+dependencies: {  }
+name: stage_wide
+label: 'Stage Wide'
+effects:
+  88aea814-5e79-4a40-99ae-19c25974a971:
+    uuid: 88aea814-5e79-4a40-99ae-19c25974a971
+    id: image_scale_and_crop
+    weight: null
+    data:
+      width: 1920
+      height: 800
+      anchor: center-center

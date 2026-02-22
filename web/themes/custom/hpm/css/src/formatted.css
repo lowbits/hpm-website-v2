@@ -1,0 +1,83 @@
+@layer components {
+
+  .formatted h2,
+  .formatted h3,
+  .formatted h4 {
+    @apply font-case font-light;
+  }
+
+  .formatted h2 {
+    @apply text-[1.625rem] leading-[1.16];
+    @apply sm:text-[2rem];
+    @apply lg:text-[2.5rem];
+  }
+
+  .formatted h2 + p,
+  .formatted h2 + ul {
+   @apply mt-4 sm:mt-5 lg:mt-6;
+  }
+
+  .formatted h2 + h3,
+  .formatted h2 + h4 {
+    @apply mt-5 sm:mt-6 lg:mt-7;
+  }
+
+  .formatted h3,
+  .formatted h4 {
+    @apply text-hpm-red;
+  }
+
+  .formatted h3 {
+    @apply text-[1.375rem] leading-[1.2];
+    @apply sm:text-[1.625rem];
+    @apply lg:text-[2rem];
+  }
+  .formatted h3 + h4 {
+    @apply mt-4 sm:mt-5 lg:mt-6;
+  }
+  .formatted h3 + p,
+  .formatted h3 + ul {
+    @apply mt-4 sm:mt-5 lg:mt-6;
+  }
+
+  .formatted h4 {
+    @apply text-[1.0625rem] leading-[1.4];
+    @apply sm:text-[1.1875rem];
+    @apply lg:text-[1.375rem];
+  }
+  .formatted h4 + p,
+  .formatted h4 + ul {
+    @apply mt-3 sm:mt-4;
+  }
+
+  .formatted p + p,
+  .formatted p + ul,
+  .formatted ul + ul,
+  .formatted ul + p {
+    @apply !mt-3;
+  }
+
+  .formatted p + h2,
+  .formatted ul + h2 {
+    @apply mt-10 sm:mt-12 lg:mt-14;
+  }
+
+  .formatted p + h3,
+  .formatted ul + h3 {
+    @apply mt-7 sm:mt-8 lg:mt-9;
+  }
+
+  .formatted p + h4,
+  .formatted ul + h4 {
+    @apply mt-6 sm:mt-7 lg:mt-8;
+  }
+
+  .formatted ul {
+    @apply list-none mt-4;
+    @apply [&>li]:before:content-['–'] [&>li]:before:mr-2 [&>li]:before:text-hpm-red;
+  }
+  .formatted ul li {
+    @apply flex gap-1;
+  }
+
+}

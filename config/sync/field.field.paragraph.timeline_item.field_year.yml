@@ -1,0 +1,19 @@
+uuid: a92f419a-507b-498f-b7fc-9cbe056aca73
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_year
+    - paragraphs.paragraphs_type.timeline_item
+id: paragraph.timeline_item.field_year
+field_name: field_year
+entity_type: paragraph
+bundle: timeline_item
+label: Jahr
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

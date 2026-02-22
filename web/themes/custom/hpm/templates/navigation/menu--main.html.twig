@@ -1,0 +1,76 @@
+{#
+/**
+ * @file
+ * Main navigation menu with multi-level panel system.
+ *
+ * Renders a panel-based navigation: level-1 items in a "main" panel,
+ * items with children get a submenu trigger + their own sub-panel.
+ */
+#}
+{% import _self as menus %}
+
+<nav class="navigation-menu relative flex flex-auto min-h-0" aria-label="{{ 'Hauptnavigation'|t }}">
+  <div class="navigation-viewport relative flex-auto min-h-0 w-full">
+    {# PANEL: MAIN (level 1) #}
+    <div class="menu-panel is-active" data-panel="main" data-level="1">
+      <div class="menu-list flex flex-col items-start gap-1">
+        {% for item in items %}
+          {% if item.below %}
+            {# Item with submenu — render as trigger #}
+            <div class="nav-item has-submenu flex w-full justify-between items-center gap-3">
+              <a class="nav-link nav-link--trigger text-white relative inline-block overflow-hidden pb-[2px] hover:after:translate-x-0"
+                 href="{{ item.url }}"
+                 data-open-panel="{{ item.title|clean_class }}"
+                 aria-haspopup="true"
+                 aria-controls="panel-{{ item.title|clean_class }}">
+                <span class="nav-link__text">{{ item.title }}</span>
+              </a>
+              <span class="submenu-icon w-4">
+                {% include '@hpm/images/vectors/button-arrow.svg.twig' %}
+              </span>
+            </div>
+          {% else %}
+            {# Regular menu item #}
+            <div class="nav-item">
+              <div class="nav-link-item">
+                <a class="nav-link text-white relative inline-block overflow-hidden pb-[2px] hover:after:translate-x-0"
+                   href="{{ item.url }}">
+                  <span class="nav-link__text inline-block">{{ item.title }}</span>
+                </a>
+              </div>
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+
+    {# SUB-PANELS (level 2) — one per item that has children #}
+    {% for item in items %}
+      {% if item.below %}
+        <div class="menu-panel" data-panel="{{ item.title|clean_class }}" data-level="2" id="panel-{{ item.title|clean_class }}">
+          <button class="submenu-back text-white mb-4 opacity-85 hover:opacity-100" type="button" data-back-panel="main" aria-label="{{ 'Zurück'|t }}">
+            &larr; {{ 'Zurück'|t }}
+          </button>
+          <div class="menu-list flex flex-col items-start gap-1">
+            {# First: link to parent page itself as "Übersicht" #}
+            <div class="nav-link-item">
+              <a class="nav-link text-white relative inline-block overflow-hidden pb-[2px] hover:after:translate-x-0"
+                 href="{{ item.url }}">
+                <span class="nav-link__text inline-block">{{ item.title }}</span>
+              </a>
+            </div>
+            {# Then: child items #}
+            {% for child in item.below %}
+              <div class="nav-link-item">
+                <a class="nav-link text-white relative inline-block overflow-hidden pb-[2px] hover:after:translate-x-0"
+                   href="{{ child.url }}">
+                  <span class="nav-link__text inline-block">{{ child.title }}</span>
+                </a>
+              </div>
+            {% endfor %}
+          </div>
+        </div>
+      {% endif %}
+    {% endfor %}
+  </div>
+</nav>

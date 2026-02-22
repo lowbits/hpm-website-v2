@@ -1,0 +1,24 @@
+uuid: 97b334b6-f172-4e36-b769-8d291062eb39
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_experience_level
+    - paragraphs.paragraphs_type.job_intro
+    - taxonomy.vocabulary.experience_level
+id: paragraph.job_intro.field_experience_level
+field_name: field_experience_level
+entity_type: paragraph
+bundle: job_intro
+label: 'Experience Level'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      experience_level: experience_level
+field_type: entity_reference

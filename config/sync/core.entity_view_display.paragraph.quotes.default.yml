@@ -1,0 +1,33 @@
+uuid: 86176499-71ad-44bc-9f87-e4b3f9a49c78
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.quotes.field_items
+    - field.field.paragraph.quotes.field_theme
+    - paragraphs.paragraphs_type.quotes
+  module:
+    - entity_reference_revisions
+    - options
+id: paragraph.quotes.default
+targetEntityType: paragraph
+bundle: quotes
+mode: default
+content:
+  field_items:
+    type: entity_reference_revisions_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_theme:
+    type: list_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+hidden: {  }

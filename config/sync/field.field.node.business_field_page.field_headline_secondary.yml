@@ -1,0 +1,19 @@
+uuid: 8aadf46d-1a31-4a03-bb91-196cfef9ab8b
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_headline_secondary
+    - node.type.business_field_page
+id: node.business_field_page.field_headline_secondary
+field_name: field_headline_secondary
+entity_type: node
+bundle: business_field_page
+label: 'Überschrift sekundär'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

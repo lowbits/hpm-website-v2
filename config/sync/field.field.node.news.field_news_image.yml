@@ -1,0 +1,24 @@
+uuid: 3da8ce78-77e4-40fb-8500-43ad8ea35041
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_news_image
+    - media.type.image
+    - node.type.news
+id: node.news.field_news_image
+field_name: field_news_image
+entity_type: node
+bundle: news
+label: News-Bild
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:media'
+  handler_settings:
+    target_bundles:
+      image: image
+field_type: entity_reference

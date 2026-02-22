@@ -1,0 +1,9 @@
+uuid: ad2546ea-2056-4022-89ff-4673918c9e4d
+langcode: de
+status: true
+dependencies: {  }
+name: Nachrichtenkategorie
+vid: news_category
+description: null
+weight: 0
+new_revision: false

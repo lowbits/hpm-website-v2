@@ -1,0 +1,102 @@
+uuid: cc1aeff3-d289-4603-b43a-ddc76bdaf09b
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.segments_item.field_anchor_id
+    - field.field.paragraph.segments_item.field_business_field
+    - field.field.paragraph.segments_item.field_credits
+    - field.field.paragraph.segments_item.field_headline
+    - field.field.paragraph.segments_item.field_headline_secondary
+    - field.field.paragraph.segments_item.field_image
+    - field.field.paragraph.segments_item.field_section_title
+    - field.field.paragraph.segments_item.field_services_list
+    - field.field.paragraph.segments_item.field_text
+    - field.field.paragraph.segments_item.field_text_secondary
+    - paragraphs.paragraphs_type.segments_item
+  module:
+    - text
+id: paragraph.segments_item.default
+targetEntityType: paragraph
+bundle: segments_item
+mode: default
+content:
+  field_anchor_id:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_business_field:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 9
+    region: content
+  field_credits:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  field_headline:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 4
+    region: content
+  field_headline_secondary:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 7
+    region: content
+  field_image:
+    type: entity_reference_entity_view
+    label: above
+    settings:
+      view_mode: default
+      link: false
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_section_title:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_services_list:
+    type: text_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 6
+    region: content
+  field_text:
+    type: text_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 5
+    region: content
+  field_text_secondary:
+    type: text_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 8
+    region: content
+hidden: {  }

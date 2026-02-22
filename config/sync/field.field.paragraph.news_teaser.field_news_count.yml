@@ -1,0 +1,25 @@
+uuid: 1beb5e84-dbd3-41b3-a574-ad62f08bee8d
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_news_count
+    - paragraphs.paragraphs_type.news_teaser
+id: paragraph.news_teaser.field_news_count
+field_name: field_news_count
+entity_type: paragraph
+bundle: news_teaser
+label: 'Anzahl Nachrichten'
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 3
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

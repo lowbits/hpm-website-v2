@@ -1,0 +1,10 @@
+uuid: 0b74dda0-f543-4c20-b21a-c51278fc9f6e
+langcode: de
+status: true
+dependencies: {  }
+id: deeplink
+label: 'Text mit Link'
+icon_uuid: null
+icon_default: null
+description: null
+behavior_plugins: {  }

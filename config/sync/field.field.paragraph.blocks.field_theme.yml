@@ -1,0 +1,21 @@
+uuid: 27a7f16f-8bfa-44ab-af7f-4803ad94bd15
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_theme
+    - paragraphs.paragraphs_type.blocks
+  module:
+    - options
+id: paragraph.blocks.field_theme
+field_name: field_theme
+entity_type: paragraph
+bundle: blocks
+label: Theme
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

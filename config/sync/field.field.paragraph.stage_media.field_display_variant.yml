@@ -1,0 +1,21 @@
+uuid: b42b1d3b-5701-436e-99c1-8886bd84bab0
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_display_variant
+    - paragraphs.paragraphs_type.stage_media
+  module:
+    - options
+id: paragraph.stage_media.field_display_variant
+field_name: field_display_variant
+entity_type: paragraph
+bundle: stage_media
+label: Darstellungsvariante
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

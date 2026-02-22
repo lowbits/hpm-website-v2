@@ -1,0 +1,19 @@
+{#
+/**
+ * @file
+ * Reusable button link component.
+ *
+ * Variables:
+ *   - url: The link URL (required).
+ *   - text: The link text (default: 'Mehr erfahren').
+ *   - variant: Optional button variant suffix, e.g. 'secondary' → 'button--secondary'.
+ */
+#}
+<a class="button{{ variant ? ' button--' ~ variant : '' }}"
+   href="{{ url }}"
+   title="{{ text|default('Mehr erfahren') }}">
+  <span>{{ text|default('Mehr erfahren') }}</span>
+  <span class="button-icon w-4.5">
+    {% include '@hpm/images/vectors/button-arrow.svg.twig' %}
+  </span>
+</a>

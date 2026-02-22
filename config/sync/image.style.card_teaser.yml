@@ -1,0 +1,15 @@
+uuid: b6735daa-e4aa-4c30-bd87-87c643f11e87
+langcode: de
+status: true
+dependencies: {  }
+name: card_teaser
+label: 'Card Teaser'
+effects:
+  c46a884f-170f-441d-b842-124d3ba7f129:
+    uuid: c46a884f-170f-441d-b842-124d3ba7f129
+    id: image_scale_and_crop
+    weight: null
+    data:
+      width: 600
+      height: 400
+      anchor: center-center

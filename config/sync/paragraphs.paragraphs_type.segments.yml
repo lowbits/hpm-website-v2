@@ -1,0 +1,10 @@
+uuid: 39ba09ab-4c48-41d8-b80e-d969cacda7af
+langcode: de
+status: true
+dependencies: {  }
+id: segments
+label: Geschäftsfelder
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

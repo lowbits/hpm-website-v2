@@ -1,0 +1,24 @@
+uuid: 58faa1a9-3ee4-43bb-9428-8c3c63eb8d50
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_logo
+    - media.type.image
+    - paragraphs.paragraphs_type.box_teaser
+id: paragraph.box_teaser.field_logo
+field_name: field_logo
+entity_type: paragraph
+bundle: box_teaser
+label: Logo
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:media'
+  handler_settings:
+    target_bundles:
+      image: image
+field_type: entity_reference

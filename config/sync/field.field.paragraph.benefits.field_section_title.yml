@@ -1,0 +1,19 @@
+uuid: e9cf1208-6e1d-4d67-b316-c717aa31f756
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_section_title
+    - paragraphs.paragraphs_type.benefits
+id: paragraph.benefits.field_section_title
+field_name: field_section_title
+entity_type: paragraph
+bundle: benefits
+label: 'Section Title'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

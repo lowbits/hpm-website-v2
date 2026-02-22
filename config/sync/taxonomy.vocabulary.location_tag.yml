@@ -1,0 +1,9 @@
+uuid: 0100aab1-f845-4b23-9fbf-78c13f7bb15d
+langcode: de
+status: true
+dependencies: {  }
+name: Standort-Tag
+vid: location_tag
+description: null
+weight: 0
+new_revision: false

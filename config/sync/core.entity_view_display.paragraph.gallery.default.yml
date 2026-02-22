@@ -1,0 +1,42 @@
+uuid: bd89c496-9465-4579-a971-c004011e736a
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.gallery.field_gallery_text
+    - field.field.paragraph.gallery.field_items
+    - field.field.paragraph.gallery.field_theme
+    - paragraphs.paragraphs_type.gallery
+  module:
+    - entity_reference_revisions
+    - options
+    - text
+id: paragraph.gallery.default
+targetEntityType: paragraph
+bundle: gallery
+mode: default
+content:
+  field_gallery_text:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_items:
+    type: entity_reference_revisions_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_theme:
+    type: list_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 2
+    region: content
+hidden: {  }

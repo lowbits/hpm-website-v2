@@ -1,0 +1,52 @@
+uuid: 58853690-b2a5-4481-bb0f-dc85a49cb8be
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.application_form.field_headline
+    - field.field.paragraph.application_form.field_intro_text
+    - field.field.paragraph.application_form.field_theme
+    - field.field.paragraph.application_form.field_webform
+    - paragraphs.paragraphs_type.application_form
+  module:
+    - text
+id: paragraph.application_form.default
+targetEntityType: paragraph
+bundle: application_form
+mode: default
+content:
+  field_headline:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_intro_text:
+    type: text_textarea
+    weight: 1
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_theme:
+    type: options_select
+    weight: 3
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_webform:
+    type: entity_reference_autocomplete
+    weight: 2
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true

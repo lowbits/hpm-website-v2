@@ -1,0 +1,19 @@
+uuid: b87890ba-c72d-4e27-92a3-898e220b0d9a
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_meta_label
+    - paragraphs.paragraphs_type.stage_media
+id: paragraph.stage_media.field_meta_label
+field_name: field_meta_label
+entity_type: paragraph
+bundle: stage_media
+label: Meta-Label
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

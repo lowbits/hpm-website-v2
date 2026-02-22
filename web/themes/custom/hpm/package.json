@@ -1,0 +1,23 @@
+{
+  "name": "hpm-theme",
+  "version": "1.0.0",
+  "private": true,
+  "description": "HPM Drupal theme build tools",
+  "scripts": {
+    "build:css": "npx @tailwindcss/cli -i css/src/tailwind.css -o css/dist/style.css --minify",
+    "watch:css": "npx @tailwindcss/cli -i css/src/tailwind.css -o css/dist/style.css --watch",
+    "build:js": "npx rollup -c",
+    "build": "npm run build:css && npm run build:js",
+    "watch": "npm run watch:css"
+  },
+  "devDependencies": {
+    "@tailwindcss/cli": "^4.1.0",
+    "@rollup/plugin-node-resolve": "^16.0.0",
+    "@rollup/plugin-terser": "^0.4.0",
+    "rollup": "^4.0.0"
+  },
+  "dependencies": {
+    "@splidejs/splide": "^4.1.0",
+    "gsap": "^3.13.0"
+  }
+}

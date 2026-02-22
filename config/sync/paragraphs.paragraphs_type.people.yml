@@ -1,0 +1,10 @@
+uuid: 8fa23779-25d7-4c61-9735-aed2ed6adca4
+langcode: de
+status: true
+dependencies: {  }
+id: people
+label: Personen
+icon_uuid: null
+icon_default: null
+description: null
+behavior_plugins: {  }

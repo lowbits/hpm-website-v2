@@ -1,0 +1,10 @@
+uuid: f1f262d3-f748-4b11-bd8e-6a90cb4ee688
+langcode: de
+status: true
+dependencies: {  }
+id: alternate
+label: 'Inhalte alternierend'
+icon_uuid: null
+icon_default: null
+description: null
+behavior_plugins: {  }

@@ -1,0 +1,19 @@
+uuid: b0ad1efc-4c8f-43db-bfa4-2f715d46e33b
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_city
+    - paragraphs.paragraphs_type.locations_teaser_item
+id: paragraph.locations_teaser_item.field_city
+field_name: field_city
+entity_type: paragraph
+bundle: locations_teaser_item
+label: City
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

@@ -1,0 +1,21 @@
+uuid: 71769c52-2ebc-4a48-a6e3-75656c84620f
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_theme
+    - paragraphs.paragraphs_type.benefits
+  module:
+    - options
+id: paragraph.benefits.field_theme
+field_name: field_theme
+entity_type: paragraph
+bundle: benefits
+label: Theme
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

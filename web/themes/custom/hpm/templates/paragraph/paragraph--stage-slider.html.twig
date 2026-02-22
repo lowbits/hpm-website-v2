@@ -1,0 +1,57 @@
+{#
+/**
+ * @file
+ * Stage slider with art-directed responsive images.
+ *
+ * Uses <picture> for art direction: portrait crop on mobile,
+ * wide landscape on desktop (breakpoint: 60rem / 960px).
+ * First slide loads eagerly (LCP), remaining slides lazy-load.
+ */
+#}
+{{ attach_library('hpm/slider-stage') }}
+<section{{ attributes.addClass('stage-slider', 'js-stage-slider', 'stage-section', 'overflow-hidden', 'pt-[5.5rem]', 'lg:pt-[7rem]') }}>
+  <div class="section-container">
+    <div class="stage-slider_slider splide js-splide-stage">
+      <div class="splide__track">
+        <ul class="splide__list">
+          {% for item in paragraph.field_slides %}
+            {% set slide = item.entity %}
+            {% set wide_media = slide.field_image.entity %}
+            {% set portrait_media = slide.field_image_portrait.entity %}
+            {% set caption_text = slide.field_caption.value %}
+            {% set is_first = loop.first %}
+            <li class="splide__slide">
+              <div class="stage-slider__item w-full">
+                <div class="stage-slider__image-box overflow-hidden relative pt-[133.33%] sm:pt-[92%] md:pt-[40%]">
+                  <picture class="absolute inset-0 block h-full w-full">
+                    {% if wide_media %}
+                      <source media="(min-width: 60rem)"
+                              srcset="{{ file_url(wide_media.field_media_image.entity.uri.value) }}"
+                              width="{{ wide_media.field_media_image.width }}"
+                              height="{{ wide_media.field_media_image.height }}">
+                    {% endif %}
+                    {% if portrait_media %}
+                      <img class="h-full w-full object-cover"
+                           src="{{ file_url(portrait_media.field_media_image.entity.uri.value) }}"
+                           alt="{{ caption_text }}"
+                           width="{{ portrait_media.field_media_image.width }}"
+                           height="{{ portrait_media.field_media_image.height }}"
+                           {% if is_first %}fetchpriority="high"{% else %}loading="lazy"{% endif %}>
+                    {% endif %}
+                  </picture>
+                </div>
+                {% if caption_text %}
+                  <p class="caption absolute opacity-0 text-white bottom-4.5 left-5">
+                    {{ caption_text }}
+                  </p>
+                {% endif %}
+              </div>
+            </li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+    <div class="stage-slider_dots js-stage-dots flex justify-center gap-2 py-3"
+         aria-label="Slider navigation"></div>
+  </div>
+</section>

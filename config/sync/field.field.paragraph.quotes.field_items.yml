@@ -1,0 +1,27 @@
+uuid: c44b7600-3888-4eee-b4b8-8e820ea193ec
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_items
+    - paragraphs.paragraphs_type.quote_item
+    - paragraphs.paragraphs_type.quotes
+  module:
+    - entity_reference_revisions
+id: paragraph.quotes.field_items
+field_name: field_items
+entity_type: paragraph
+bundle: quotes
+label: Items
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      quote_item: quote_item
+    negate: 0
+field_type: entity_reference_revisions

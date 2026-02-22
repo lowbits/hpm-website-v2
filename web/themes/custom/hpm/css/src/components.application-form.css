@@ -1,0 +1,96 @@
+.application .form-item {
+  @apply flex flex-col items-start gap-1 relative;
+  @apply mt-4 sm:mt-5 lg:mt-6;
+}
+.application .form-item.form-global-error {
+  @apply hidden text-hpm-red;
+}
+.application .label,
+.application .error {
+  @apply inline-block px-2.5;
+}
+.application .req {
+  @apply text-hpm-darkred;
+}
+.application input[type="text"],
+.application input[type="email"],
+.application input[type="tel"],
+.application .select,
+.application textarea {
+  @apply border-1 border-hpm-darkred rounded-full py-2 px-4 w-full;
+  @apply transition-colors duration-300;
+  @apply hover:bg-white focus:bg-white;
+}
+.application .select {
+  appearance: none;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  background-repeat: no-repeat;
+  background-size: 11px 7px;
+  background-position: right 1rem center;
+  @apply pr-8;
+}
+.application .drop {
+  @apply border-1 border-dashed border-hpm-darkred rounded-[1.5rem] pt-6 px-5 pb-4 text-center w-full;
+}
+.application .checkbox-line {
+  @apply flex flex-row gap-3;
+}
+.application [type="checkbox"] {
+  appearance: none;
+  @apply inline-block shrink-0 w-5 h-5 bg-hpm-beige border-1 border-hpm-darkred relative cursor-pointer;
+  @apply transition-colors duration-300;
+  @apply hover:bg-white;
+}
+.application input[type="checkbox"].appearance-none:checked::after {
+  content: '';
+  @apply absolute left-[6px] top-[3px] w-[6px] h-[9px]
+  border-b-2 border-r-2 border-hpm-red rotate-45;
+}
+.application .checkbox-line label a {
+  @apply underline underline-offset-2 transition-colors duration-300;
+  @apply hover:text-hpm-red;
+}
+.application .checkbox-line label,
+.application .error {
+  @apply text-[0.75rem] leading-[1rem];
+}
+.application .checkbox-line .error {
+  @apply pl-0;
+}
+.application .error {
+  @apply text-hpm-red opacity-0 max-h-0;
+  transition: max-height .3s ease, opacity .3s ease;
+}
+.application .error.is-error {
+  @apply opacity-100 max-h-4;
+}
+.application [type="submit"],
+.application .drop .btn {
+  @apply relative overflow-hidden bg-transparent border-[1px] rounded-full inline-block cursor-pointer
+  font-[.9375em] h-auto leading-[1.125rem] pt-[.875rem] pb-[1rem] px-[1.75rem]
+  hover:bg-hpm-darkred hover:text-white
+  focus:bg-hpm-darkred focus:text-white
+  has-[.button-icon]:pr-[3.5rem];
+  transition: background-color .3s ease,
+  border-color .3s ease,
+  color .3s ease;
+}
+.application [type="submit"] {
+  @apply relative;
+}
+.application [type="submit"] .button-icon {
+  @apply absolute right-[1.75rem] top-1/2 -translate-y-1/2 w-4;
+}
+.application .success {
+  @apply text-center mt-6 sm:mt-8 lg:mt-10;
+}
+.application .success-fade {
+  opacity: 0;
+  transform: translateY(15px);
+  transition: opacity 0.35s ease, transform 0.35s ease;
+}
+.application .success-fade.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}

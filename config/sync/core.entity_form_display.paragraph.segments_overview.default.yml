@@ -1,0 +1,21 @@
+uuid: 60ab08ec-a0bd-499e-8ece-6ff22d0864ef
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.segments_overview.field_theme
+    - paragraphs.paragraphs_type.segments_overview
+id: paragraph.segments_overview.default
+targetEntityType: paragraph
+bundle: segments_overview
+mode: default
+content:
+  field_theme:
+    type: options_select
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true

@@ -1,0 +1,22 @@
+uuid: baba8f75-6fb9-4260-844e-3fd1360827ff
+langcode: en
+status: true
+dependencies:
+  theme:
+    - hpm
+_core:
+  default_config_hash: nGE3EoPQQaQCuqTUtZgw0-KIzmrqdKDzdNQf2JyPUt4
+id: hpm_primary_local_tasks
+theme: hpm
+region: header
+weight: -4
+provider: null
+plugin: local_tasks_block
+settings:
+  id: local_tasks_block
+  label: 'Primäre Reiter'
+  label_display: '0'
+  provider: core
+  primary: true
+  secondary: false
+visibility: {  }

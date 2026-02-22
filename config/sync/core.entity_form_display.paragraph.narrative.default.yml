@@ -1,0 +1,88 @@
+uuid: 9897e53a-cf79-4c5c-8ccb-90ea9dda8619
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.narrative.field_accordion_items
+    - field.field.paragraph.narrative.field_box_position
+    - field.field.paragraph.narrative.field_box_theme
+    - field.field.paragraph.narrative.field_headline
+    - field.field.paragraph.narrative.field_image
+    - field.field.paragraph.narrative.field_link
+    - field.field.paragraph.narrative.field_text
+    - paragraphs.paragraphs_type.narrative
+  module:
+    - link
+    - media_library
+    - paragraphs
+    - text
+id: paragraph.narrative.default
+targetEntityType: paragraph
+bundle: narrative
+mode: default
+content:
+  field_accordion_items:
+    type: paragraphs
+    weight: 0
+    region: content
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: closed
+      closed_mode: summary
+      autocollapse: all
+      closed_mode_threshold: 0
+      add_mode: dropdown
+      form_display_mode: default
+      default_paragraph_type: _none
+      features:
+        collapse_edit_all: collapse_edit_all
+        duplicate: duplicate
+    third_party_settings: {  }
+  field_box_position:
+    type: options_select
+    weight: 1
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_box_theme:
+    type: options_select
+    weight: 2
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_headline:
+    type: string_textfield
+    weight: 3
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_image:
+    type: media_library_widget
+    weight: 4
+    region: content
+    settings:
+      media_types:
+        - image
+    third_party_settings: {  }
+  field_link:
+    type: link_default
+    weight: 5
+    region: content
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+  field_text:
+    type: text_textarea
+    weight: 6
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true

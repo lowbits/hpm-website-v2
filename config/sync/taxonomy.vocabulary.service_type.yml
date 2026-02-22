@@ -1,0 +1,9 @@
+uuid: a01e4f7d-e010-4825-aca2-f6af204a95b7
+langcode: de
+status: true
+dependencies: {  }
+name: Leistungsart
+vid: service_type
+description: null
+weight: 0
+new_revision: false

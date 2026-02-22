@@ -1,0 +1,26 @@
+uuid: f3832175-3541-472f-9bed-5043258bfad6
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_accordion_items
+    - paragraphs.paragraphs_type.accordion_item
+    - paragraphs.paragraphs_type.narrative
+  module:
+    - entity_reference_revisions
+id: paragraph.narrative.field_accordion_items
+field_name: field_accordion_items
+entity_type: paragraph
+bundle: narrative
+label: Akkordeon-Elemente
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      accordion_item: accordion_item
+field_type: entity_reference_revisions

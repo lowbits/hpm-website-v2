@@ -1,0 +1,62 @@
+uuid: 076c7b3b-b08c-4114-aa9c-ad5ec78a3a35
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.stage_media.field_content
+    - field.field.paragraph.stage_media.field_display_variant
+    - field.field.paragraph.stage_media.field_headline
+    - field.field.paragraph.stage_media.field_image
+    - field.field.paragraph.stage_media.field_meta_label
+    - paragraphs.paragraphs_type.stage_media
+  module:
+    - media
+    - options
+    - text
+id: paragraph.stage_media.default
+targetEntityType: paragraph
+bundle: stage_media
+mode: default
+content:
+  field_content:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  field_display_variant:
+    type: list_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 4
+    region: content
+  field_headline:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_image:
+    type: media_thumbnail
+    label: hidden
+    settings:
+      image_link: ''
+      image_style: ''
+      image_loading:
+        attribute: lazy
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_meta_label:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden: {  }

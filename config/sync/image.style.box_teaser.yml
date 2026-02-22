@@ -1,0 +1,15 @@
+uuid: 74acef6b-6d1e-459f-8727-f2081bb601d6
+langcode: de
+status: true
+dependencies: {  }
+name: box_teaser
+label: 'Box Teaser'
+effects:
+  96dab6d9-4a6e-4822-9399-5463e09562ad:
+    uuid: 96dab6d9-4a6e-4822-9399-5463e09562ad
+    id: image_scale_and_crop
+    weight: null
+    data:
+      width: 800
+      height: 1000
+      anchor: center-center

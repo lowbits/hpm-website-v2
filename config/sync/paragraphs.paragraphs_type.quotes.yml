@@ -1,0 +1,10 @@
+uuid: 20673230-6afa-4b63-abce-483f6f2705d4
+langcode: de
+status: true
+dependencies: {  }
+id: quotes
+label: Zitate-Slider
+icon_uuid: null
+icon_default: null
+description: null
+behavior_plugins: {  }

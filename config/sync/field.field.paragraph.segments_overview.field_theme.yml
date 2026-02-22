@@ -1,0 +1,21 @@
+uuid: 372c14b0-7d43-4cda-8338-771087c46669
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_theme
+    - paragraphs.paragraphs_type.segments_overview
+  module:
+    - options
+id: paragraph.segments_overview.field_theme
+field_name: field_theme
+entity_type: paragraph
+bundle: segments_overview
+label: Theme
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

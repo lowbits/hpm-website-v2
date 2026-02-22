@@ -1,0 +1,21 @@
+uuid: 52eb3f37-ed25-4ede-8f96-23d72b1357cd
+langcode: de
+status: true
+dependencies:
+  module:
+    - node
+id: node.field_extent
+field_name: field_extent
+entity_type: node
+type: string
+settings:
+  max_length: 255
+  case_sensitive: false
+  is_ascii: false
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

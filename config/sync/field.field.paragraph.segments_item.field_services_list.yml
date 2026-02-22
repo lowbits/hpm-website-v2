@@ -1,0 +1,22 @@
+uuid: eb373e71-ee07-4421-a80c-76bee6b6c947
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_services_list
+    - paragraphs.paragraphs_type.segments_item
+  module:
+    - text
+id: paragraph.segments_item.field_services_list
+field_name: field_services_list
+entity_type: paragraph
+bundle: segments_item
+label: 'Services List'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats: {  }
+field_type: text_long

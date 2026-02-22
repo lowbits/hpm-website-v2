@@ -1,0 +1,21 @@
+uuid: 816b95a3-7350-487d-b7e2-11f1961730d3
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_theme
+    - paragraphs.paragraphs_type.job_offers
+  module:
+    - options
+id: paragraph.job_offers.field_theme
+field_name: field_theme
+entity_type: paragraph
+bundle: job_offers
+label: Theme
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

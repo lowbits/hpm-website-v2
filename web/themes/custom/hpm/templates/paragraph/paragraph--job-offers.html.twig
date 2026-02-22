@@ -1,0 +1,8 @@
+{% set theme = content.field_theme|render|striptags|trim %}
+<div{{ attributes.addClass('content-section') }}
+  {% if theme %}data-theme="{{ theme }}"{% endif %}>
+  <div class="section-container">
+    {# Rendered via Views block #}
+    {{ drupal_view('job_listings', 'block_1') }}
+  </div>
+</div>

@@ -1,0 +1,26 @@
+uuid: 7a8eae93-dfb0-476d-b7ba-c558661425b3
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_items
+    - paragraphs.paragraphs_type.gallery
+  module:
+    - entity_reference_revisions
+id: paragraph.gallery.field_items
+field_name: field_items
+entity_type: paragraph
+bundle: gallery
+label: Items
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      gallery_item: gallery_item
+    negate: 0
+field_type: entity_reference_revisions

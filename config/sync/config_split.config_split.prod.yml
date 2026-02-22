@@ -1,0 +1,16 @@
+uuid: 59062003-1c33-4c00-8a24-2043463b11bc
+langcode: de
+status: false
+dependencies: {  }
+id: prod
+label: Production
+description: ''
+weight: 0
+stackable: false
+no_patching: false
+storage: null
+folder: ../config/split/prod
+module: {  }
+theme: {  }
+complete_list: {  }
+partial_list: {  }

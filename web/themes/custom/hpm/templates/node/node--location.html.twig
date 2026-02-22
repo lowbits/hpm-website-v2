@@ -1,0 +1,86 @@
+{{ attach_library('hpm/fade-ins') }}
+{{ attach_library('hpm/slider-gallery') }}
+<article{{ attributes.addClass('node', 'node--location') }}>
+  {{ title_prefix }}
+  {{ title_suffix }}
+
+  {# Stage #}
+  <div class="stage-section">
+    <div class="section-container">
+      <div class="grid grid-cols-12 gap-x-7">
+        <div class="col-span-12 lg:col-span-8 lg:col-start-3">
+          <p class="info meta-line--small mb-3">{{ 'Standort'|t }}</p>
+          <h1 class="h1">{{ content.field_city }}</h1>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  {# Location Image #}
+  {% if content.field_location_image|render|trim %}
+    <div class="section-container">
+      <div class="image-container js-image-zoom">
+        {{ content.field_location_image }}
+      </div>
+    </div>
+  {% endif %}
+
+  {# Content #}
+  <div class="content-section">
+    <div class="section-container">
+      <div class="grid grid-cols-12 gap-x-7">
+        <div class="col-span-12 lg:col-span-7">
+          {% if content.body|render|trim %}
+            <div class="formatted">
+              {{ content.body }}
+            </div>
+          {% endif %}
+        </div>
+        <aside class="col-span-12 lg:col-span-4 lg:col-start-9 mt-8 lg:mt-0">
+          {% if content.field_address|render|trim %}
+            <div class="mb-4">
+              <p class="info mb-2">{{ 'Adresse'|t }}</p>
+              {{ content.field_address }}
+            </div>
+          {% endif %}
+          {% if content.field_phone|render|trim %}
+            <div class="mb-4">
+              <p class="info mb-2">{{ 'Telefon'|t }}</p>
+              {{ content.field_phone }}
+            </div>
+          {% endif %}
+          {% if content.field_email|render|trim %}
+            <div class="mb-4">
+              <p class="info mb-2">{{ 'E-Mail'|t }}</p>
+              {{ content.field_email }}
+            </div>
+          {% endif %}
+          {% if content.field_maps_link|render|trim %}
+            <div class="mt-6">
+              {{ content.field_maps_link }}
+            </div>
+          {% endif %}
+        </aside>
+      </div>
+    </div>
+  </div>
+
+  {# Gallery #}
+  {% if content.field_gallery|render|trim %}
+    <div class="content-section">
+      <div class="gallery-slider js-gallery-slider">
+        {{ content.field_gallery }}
+      </div>
+    </div>
+  {% endif %}
+
+  {# Team Members #}
+  {% if content.field_team_members|render|trim %}
+    <div class="content-section">
+      <div class="section-container">
+        <h2 class="h3 mb-8">{{ 'Unser Team'|t }}</h2>
+        {{ content.field_team_members }}
+      </div>
+    </div>
+  {% endif %}
+</article>

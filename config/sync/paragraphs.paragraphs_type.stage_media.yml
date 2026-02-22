@@ -1,0 +1,10 @@
+uuid: 17de2c1b-0980-40f9-8f11-91936fb31a7e
+langcode: de
+status: true
+dependencies: {  }
+id: stage_media
+label: Bild-Stage
+icon_uuid: null
+icon_default: null
+description: null
+behavior_plugins: {  }

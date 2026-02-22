@@ -1,0 +1,24 @@
+uuid: 216daee4-8771-4538-8094-018cc24168b9
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_business_field
+    - node.type.business_field_page
+    - taxonomy.vocabulary.business_field
+id: node.business_field_page.field_business_field
+field_name: field_business_field
+entity_type: node
+bundle: business_field_page
+label: Geschäftsfeld
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      business_field: business_field
+field_type: entity_reference

@@ -1,0 +1,55 @@
+{{ attach_library('hpm/fade-ins') }}
+<article{{ attributes.addClass('node', 'node--job-listing') }}>
+  {{ title_prefix }}
+  {{ title_suffix }}
+
+  {# Stage #}
+  <div class="stage-section">
+    <div class="section-container">
+      <div class="grid grid-cols-12 gap-x-7">
+        <div class="col-span-12 lg:col-span-8 lg:col-start-3">
+          <p class="info meta-line--small mb-3">{{ 'Stellenangebot'|t }}</p>
+          <h1 class="h1">{{ label }}</h1>
+          <div class="flex flex-wrap gap-4 mt-4">
+            {% if content.field_job_location|render|trim %}
+              <span class="copy">{{ content.field_job_location }}</span>
+            {% endif %}
+            {% if content.field_experience_level|render|trim %}
+              <span class="copy">{{ content.field_experience_level }}</span>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  {# Body #}
+  {% if content.body|render|trim %}
+    <div class="content-section">
+      <div class="section-container">
+        <div class="grid grid-cols-12 gap-x-7">
+          <div class="col-span-12 lg:col-span-8 lg:col-start-3">
+            <div class="formatted">
+              {{ content.body }}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  {% endif %}
+
+  {# Paragraphs #}
+  {% if content.field_paragraphs|render|trim %}
+    {{ content.field_paragraphs }}
+  {% endif %}
+
+  {# Contact Person #}
+  {% if content.field_contact_person|render|trim %}
+    <div class="content-section">
+      <div class="section-container">
+        <h2 class="h3 mb-6">{{ 'Ihr Ansprechpartner'|t }}</h2>
+        {{ content.field_contact_person }}
+      </div>
+    </div>
+  {% endif %}
+</article>

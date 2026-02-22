@@ -1,0 +1,21 @@
+uuid: 4e42ac7d-8cef-48d7-8713-88fc3eba660e
+langcode: de
+status: true
+dependencies:
+  module:
+    - node
+id: job_listing
+label: 'Job Listing'
+type: 'canonical_entities:node'
+pattern: 'stellenangebote/[node:title]'
+selection_criteria:
+  d2219fd3-3f68-4f25-9288-46eb66f873b8:
+    id: 'entity_bundle:node'
+    negate: false
+    context_mapping:
+      node: node
+    bundles:
+      job_listing: job_listing
+selection_logic: plugin
+weight: 0
+relationships: {  }

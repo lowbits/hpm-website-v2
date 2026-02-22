@@ -1,0 +1,22 @@
+uuid: cd14d1bd-73b1-4fa0-ad34-3bd1f066c92c
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_text
+    - paragraphs.paragraphs_type.poster
+  module:
+    - text
+id: paragraph.poster.field_text
+field_name: field_text
+entity_type: paragraph
+bundle: poster
+label: Text
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats: {  }
+field_type: text_long

@@ -1,0 +1,41 @@
+uuid: d9602b81-a8ee-4552-9ea8-c8e31e73b6d7
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.people.field_people
+    - field.field.paragraph.people.field_section_title
+    - field.field.paragraph.people.field_theme
+    - paragraphs.paragraphs_type.people
+id: paragraph.people.default
+targetEntityType: paragraph
+bundle: people
+mode: default
+content:
+  field_people:
+    type: entity_reference_autocomplete
+    weight: 1
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_section_title:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_theme:
+    type: options_select
+    weight: 2
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true

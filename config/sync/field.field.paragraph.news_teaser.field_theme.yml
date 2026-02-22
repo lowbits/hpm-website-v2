@@ -1,0 +1,23 @@
+uuid: c4a8e291-5d3f-4b7a-8c16-3f9d2e1a0b54
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_theme
+    - paragraphs.paragraphs_type.news_teaser
+  module:
+    - options
+id: paragraph.news_teaser.field_theme
+field_name: field_theme
+entity_type: paragraph
+bundle: news_teaser
+label: Theme
+description: 'Nur Weiß oder Beige verwenden.'
+required: false
+translatable: true
+default_value:
+  -
+    value: weiss
+default_value_callback: ''
+settings: {  }
+field_type: list_string

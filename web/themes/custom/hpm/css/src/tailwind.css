@@ -1,0 +1,299 @@
+@import "tailwindcss";
+@import "./themes.css";
+@import "./formatted.css";
+@import "./buttons-links.css";
+@import "./slider.css";
+@import "./components.alternate.css";
+@import "./components.application-form.css";
+@import "./components.header.css";
+@import "./components.navigation.css";
+@import "./components.segments-overview.css";
+@import "./components.slider.css";
+@import "./js-animation-styles.css";
+
+@source "../../templates/**/*.twig";
+@source "../../components/**/*.twig";
+
+
+/************************ Webfonts ***************************/
+/* Case Text */
+@font-face {
+  font-display: swap;
+  font-family: 'Case Text';
+  font-style: normal;
+  font-weight: 400;
+  src: url('../../fonts/CaseText-Regular.woff2') format('woff2');
+}
+@font-face {
+  font-display: swap;
+  font-family: 'Case Text';
+  font-style: normal;
+  font-weight: 300;
+  src: url('../../fonts/CaseText-SemiLight.woff2') format('woff2');
+}
+@font-face {
+  font-display: swap;
+  font-family: 'Case Text';
+  font-style: normal;
+  font-weight: 700;
+  src: url('../../fonts/CaseText-Bold.woff2') format('woff2');
+}
+/* Erato */
+@font-face {
+  font-display: swap;
+  font-family: 'Erato';
+  font-style: normal;
+  font-weight: 700;
+  src: url('../../fonts/EratoBol-webfont.woff2') format('woff2');
+}
+@font-face {
+  font-display: swap;
+  font-family: 'Erato';
+  font-style: normal;
+  font-weight: 400;
+  src: url('../../fonts/eratolig-webfont.woff2') format('woff2');
+}
+
+
+@theme {
+  /* Breakpoints */
+  --breakpoint-sm: 45rem;
+  --breakpoint-md: 60rem;
+  --breakpoint-lg: 82rem;
+  --breakpoint-xl: 120rem;
+  --breakpoint-2xl: 120rem;
+
+  /* Colors */
+  --color-black: #000000;
+  --color-lightgrey: #F9F9F9;
+  --color-midgrey: #d0d0d0;
+  --color-darkgrey: #666666;
+
+  --color-hpm-red: #E21320;
+  --color-hpm-darkred: #540011;
+  --color-hpm-darkred-60: #915F69;
+  --color-hpm-darkred-30: #BEA5AA;
+  --color-hpm-beige: #F5F1EA;
+  --color-hpm-lightblue: #B0CCEA;
+  --color-hpm-lightblue-60: #D1E0F2;
+  --color-hpm-lightblue-40: #E0EBF7;
+  --color-hpm-lightblue-20: #F0F5FA;
+  --color-hpm-darkgreen: #03322D;
+  --color-hpm-darkgreen-60: #668582;
+  --color-hpm-darkgreen-40: #99ADAB;
+  --color-hpm-darkgreen-20: #CCD6D6;
+  --color-hpm-track: rgb(190, 165, 170);
+
+  /* Font Families */
+  --font-case: 'Case Text', sans-serif;
+  --font-erato: 'Erato', serif;
+
+  /* Spacing */
+  --spacing-spacing-xs: 3rem;
+  --spacing-spacing-sm: 4.5rem;
+  --spacing-spacing-md: 4.5rem;
+  --spacing-spacing-lg: 5.5rem;
+  --spacing-spacing-xl: 8rem;
+
+  /* Easing */
+  --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-inOutQuad: cubic-bezier(0.45, 0, 0.55, 1);
+  --ease-easeOut-BPJ: cubic-bezier(0.57, 0, 0.07, 1);
+}
+
+@layer base {
+
+  html {
+    @apply h-full;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    @apply font-case font-normal leading-normal text-[.9375rem] text-hpm-darkred;
+    @apply h-full relative;
+  }
+
+  h1, h2, h3, h4 {
+    font-weight: normal;
+  }
+
+  .h1, .h2, .h3, .h4, .blockquote {
+    @apply font-case text-hpm-darkred font-light;
+  }
+
+  .h1 {
+    @apply text-[2rem] leading-[1.12];
+    @apply sm:text-[2.5rem];
+    @apply lg:text-[3.25rem];
+  }
+
+  .h2 {
+    @apply text-[1.625rem] leading-[1.16];
+    @apply sm:text-[2rem];
+    @apply lg:text-[2.5rem];
+  }
+  .h2 + p, .h2 + .copy, .h2 + .formatted {
+    @apply mt-4 lg:mt-5 xl:mt-6;
+  }
+
+  .h3 {
+    @apply text-[1.375rem] leading-[1.2];
+    @apply sm:text-[1.625rem];
+    @apply lg:text-[2rem];
+  }
+  .h3 + p,
+  .h3 + .copy,
+  .h3 + .formatted {
+    @apply mt-4 lg:mt-5 xl:mt-6;
+  }
+
+  .h4 {
+    @apply text-[1.0625rem] leading-[1.4];
+    @apply sm:text-[1.1875rem];
+    @apply lg:text-[1.375rem];
+  }
+
+  .h3-serif, .h4-serif, .quote-small, .quote-large {
+    @apply font-erato font-light;
+  }
+
+  .h3-serif {
+    @apply text-[1.5rem] leading-[1.22];
+    @apply sm:text-[1.75rem];
+    @apply lg:text-[2.125rem];
+  }
+  .h3-serif + p,
+  .h3-serif + .copy,
+  .h3-serif + .formatted {
+    @apply mt-4 lg:mt-5 xl:mt-6;
+  }
+
+  .h4-serif {
+    @apply text-[1.5rem] leading-[1.3];
+    @apply sm:text-[1.25rem];
+    @apply lg:text-[1.5rem];
+  }
+
+  .quote-small {
+    @apply text-[1.375rem] leading-[1.28];
+    @apply sm:text-[1.625rem];
+    @apply lg:text-[2.125rem];
+  }
+  .quote-large {
+    @apply text-[1.625rem] leading-[1.2];
+    @apply sm:text-[2.125rem];
+    @apply lg:text-[2.6875rem];
+  }
+  .quote-small + p,
+  .quote-small + .copy,
+  .quote-small + .formatted {
+    @apply mt-4 lg:mt-5 xl:mt-6;
+  }
+
+  p, .copy, .copy-bold, .formatted {
+    @apply font-case font-normal leading-normal text-[.9375rem];
+  }
+  .copy-bold {
+    @apply font-bold;
+  }
+
+  p + .button-container,
+  p + .link-container,
+  .copy + .button-container,
+  .copy + .link-container,
+  .formatted + .button-container,
+  .formatted + .link-container {
+    @apply mt-4 sm:mt-5 lg:mt-6;
+  }
+
+  p a,
+  .copy a,
+  .formatted a {
+    @apply text-hpm-darkred underline underline-offset-4 transition-colors duration-300;
+    @apply hover:text-hpm-red;
+  }
+
+  .info, .caption {
+    @apply text-[.9375rem] leading-[1.3] uppercase tracking-[.0625rem];
+  }
+
+  .credits {
+    @apply text-hpm-darkred-30 text-[.625rem] leading-[1.2];
+  }
+
+  .nav-link {
+    @apply font-case font-light text-[1.375rem] leading-[1.5rem] sm:leading-[1.5rem] lg:text-[1.5rem] lg:leading-[1.75rem];
+  }
+
+  .nav-link.nav-link--small {
+    @apply font-erato text-[.875rem] tracking-[0.5px] leading-[1.25] uppercase lg:text-[1rem];
+  }
+
+  /******* Page Layout Classes *******/
+  .section-container {
+    @apply mx-auto w-full xl:max-w-[120rem] px-5 sm:px-12 lg:px-20 xl:px-24;
+  }
+
+  .content-section {
+    @apply my-spacing-xs sm:my-spacing-sm lg:my-spacing-lg xl:my-spacing-xl;
+  }
+  .stage-section {
+    @apply pt-[7rem] lg:pt-[10rem];
+    @apply mb-spacing-xs sm:mb-spacing-sm lg:mb-spacing-lg xl:mb-spacing-xl;
+  }
+}
+
+/* Eigene Komponenten im Tailwind-Context definieren */
+@layer components {
+
+  .image-container { @apply relative overflow-hidden; }
+  .image-container img { @apply block w-[100%]; }
+
+  .image-box { @apply relative w-full h-0 pt-[100%]; }
+  .image-box img, .image-box picture { @apply absolute w-full h-full inset-0 object-cover; }
+
+  .meta-line--small,
+  .meta-line--medium,
+  .meta-line--large {
+    @apply inline-block relative after:content-none;
+  }
+  .meta-line--small:after,
+  .meta-line--medium:after,
+  .meta-line--large:after {
+    @apply inline-block absolute h-[0.0625rem] top-1/2 -right-2.5 translate-x-full -translate-y-1/2;
+    content: '';
+    @apply bg-hpm-darkred;
+  }
+  .meta-line--small:after { @apply w-[3.75rem]}
+  .meta-line--medium:after { @apply w-[5.625rem]}
+  .meta-line--red:after { @apply bg-hpm-red; }
+
+  /* Stage Slider */
+  .stage-slider_dots .dot {
+    @apply cursor-pointer rounded-full border-0 bg-hpm-darkred opacity-60 transition-[width] duration-200 ease-out w-1.5 h-1.5;
+    appearance: none;
+  }
+
+  .stage-slider_dots .dot.is-active {
+    @apply opacity-100 w-7;
+  }
+
+  .stage-slider_dots .dot__track {
+    @apply block w-full h-full rounded-full overflow-hidden bg-hpm-darkred-30;
+  }
+
+  .stage-slider_dots .dot__bar {
+    @apply block h-full w-full rounded-full bg-hpm-darkred;
+    transform: scaleX(0);
+    transform-origin: left center;
+  }
+
+}
+
+@layer utilities {
+  .dash-list {
+    @apply [&>li]:before:content-['–'] [&>li]:before:mr-2 [&>li]:before:text-hpm-red;
+  }
+}

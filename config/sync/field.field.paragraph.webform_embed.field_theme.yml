@@ -1,0 +1,21 @@
+uuid: dc4a9272-0a85-4ff4-81d7-9241de699dc9
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_theme
+    - paragraphs.paragraphs_type.webform_embed
+  module:
+    - options
+id: paragraph.webform_embed.field_theme
+field_name: field_theme
+entity_type: paragraph
+bundle: webform_embed
+label: Farbschema
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

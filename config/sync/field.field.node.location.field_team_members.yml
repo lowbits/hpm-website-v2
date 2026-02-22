@@ -1,0 +1,24 @@
+uuid: 1f6df704-9059-4bb1-90cd-ef6b874e6f68
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_team_members
+    - node.type.location
+    - node.type.person
+id: node.location.field_team_members
+field_name: field_team_members
+entity_type: node
+bundle: location
+label: Teammitglieder
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      person: person
+field_type: entity_reference

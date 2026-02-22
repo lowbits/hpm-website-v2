@@ -1,0 +1,24 @@
+uuid: 8b15b42a-a509-4e9c-9952-49d64a76554a
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_person_role
+    - node.type.person
+    - taxonomy.vocabulary.person_role
+id: node.person.field_person_role
+field_name: field_person_role
+entity_type: node
+bundle: person
+label: Rolle
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      person_role: person_role
+field_type: entity_reference

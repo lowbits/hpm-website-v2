@@ -1,0 +1,53 @@
+{#
+/**
+ * @file
+ * Map teaser – SVG map + text with CTA button.
+ */
+#}
+<section{{ attributes.addClass('map-teaser', 'overflow-hidden', 'js-map') }}
+  {% if theme_css %}data-theme="{{ theme_css }}"{% endif %}>
+  <div class="section-container grid grid-cols-12 gap-7
+              sm:items-center">
+
+    {# Map SVG #}
+    <div class="map-teaser__container relative
+                col-span-10 col-start-2
+                sm:col-span-6 sm:col-start-auto sm:order-2 sm:h-[42vw]
+                md:px-10 md:py-0 md:h-[38vw]
+                lg:px-[3rem] lg:h-[30vw]
+                xl:h-156 xl:col-span-6 xl:col-start-6">
+      <div class="sm:relative sm:top-1/2 sm:translate-x-[2vw] sm:w-[50vw]
+                  md:-translate-y-1/2 md:w-[41vw]
+                  lg:w-[36vw]
+                  xl:w-full">
+        {% include '@hpm/images/vectors/map2.svg.twig' %}
+      </div>
+    </div>
+
+    {# Content #}
+    <div class="js-element-group col-span-12 mt-8
+                sm:col-span-6 sm:mt-0
+                md:col-span-5 md:col-start-2 md:order-1
+                xl:col-span-4">
+      {% if paragraph.field_meta_label.value %}
+        <h2 class="info mb-4 lg:mb-6">
+          {{ paragraph.field_meta_label.value }}
+        </h2>
+      {% endif %}
+      {% if paragraph.field_text.value %}
+        <p class="quote-small">
+          {{ paragraph.field_text.value|striptags }}
+        </p>
+      {% endif %}
+      {% if button_url %}
+        <div class="button-container">
+          {% include '@hpm/templates/components/button-link.html.twig' with {
+            url: button_url,
+            text: button_text
+          } only %}
+        </div>
+      {% endif %}
+    </div>
+
+  </div>
+</section>

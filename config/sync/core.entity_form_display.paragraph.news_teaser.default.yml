@@ -1,0 +1,69 @@
+uuid: 0ec8148b-0e43-4a7c-a995-5b2d740d8999
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.news_teaser.field_link
+    - field.field.paragraph.news_teaser.field_meta_label
+    - field.field.paragraph.news_teaser.field_news_count
+    - field.field.paragraph.news_teaser.field_section_title
+    - field.field.paragraph.news_teaser.field_text
+    - field.field.paragraph.news_teaser.field_theme
+    - paragraphs.paragraphs_type.news_teaser
+  module:
+    - link
+    - options
+    - text
+id: paragraph.news_teaser.default
+targetEntityType: paragraph
+bundle: news_teaser
+mode: default
+content:
+  field_meta_label:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_section_title:
+    type: string_textfield
+    weight: 1
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_text:
+    type: text_textarea
+    weight: 2
+    region: content
+    settings:
+      rows: 3
+      placeholder: ''
+    third_party_settings: {  }
+  field_link:
+    type: link_default
+    weight: 3
+    region: content
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+  field_theme:
+    type: options_select
+    weight: 4
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_news_count:
+    type: number
+    weight: 5
+    region: content
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true

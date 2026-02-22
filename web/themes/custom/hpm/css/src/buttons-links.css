@@ -1,0 +1,98 @@
+@layer components {
+
+  .button-container {
+    @apply flex gap-x-4 gap-y-1;
+  }
+  .button {
+    @apply relative overflow-hidden bg-transparent
+    border-[1px] border-hpm-darkred rounded-full inline-block
+    font-[.9375em] h-auto leading-[1.125rem]
+    pt-[.875rem] pb-[1rem] px-[1.75rem]
+    hover:bg-hpm-darkred hover:text-white
+    focus:bg-hpm-darkred focus:text-white
+    has-[.button-icon]:pr-[3.5rem];
+    transition: background-color .3s ease,
+    border-color .3s ease,
+    color .3s ease;
+  }
+  .button.button--small {
+    @apply pt-[.625rem] px-[1.5rem] pb-[.75rem] has-[.button-icon]:pr-[3rem];
+  }
+  .button.button--small .button-icon {
+    @apply right-[1.25rem];
+  }
+  .button .button-text {
+    @apply transition-colors duration-300 ease-in-out;
+  }
+  .button .button-icon {
+    @apply absolute right-[1.75rem] top-1/2 -translate-y-1/2 w-4;
+  }
+
+  .text-link {
+    @apply relative overflow-hidden text-left bg-transparent text-white pb-[3px] leading-[1.4] pr-6 inline-block items-center;
+  }
+  .text-link::before,
+  .text-link::after {
+    @apply absolute bottom-0 left-0 right-0 h-px content-[''] transition-transform duration-300 ease-in-out;
+  }
+  .text-link::before {
+    @apply bg-hpm-darkred;
+  }
+  .text-link::after {
+    @apply bg-hpm-red translate-x-[-101%];
+  }
+
+  .text-link--navi-back {
+    @apply pl-6 pr-0 text-white;
+  }
+  .text-link--back {
+    @apply pl-6 pr-0 text-white;
+  }
+  .text-link--navi-back .svg path {
+    @apply fill-white;
+  }
+
+  .footer .text-link {
+    @apply pr-0;
+  }
+  .footer .text-link::before {
+    @apply hidden;
+  }
+  .footer .text-link::after {
+    @apply !bg-white;
+  }
+
+  .text-link__text {
+    @apply inline-block transition-transform duration-300 ease-in-out;
+  }
+  .text-link .link-icon {
+    @apply absolute top-[56%] right-0 block h-3 w-3 -translate-y-1/2 -mt-[1px] overflow-hidden transition-transform duration-300 ease-in-out z-[2];
+  }
+  .text-link .link-icon svg {
+    @apply transition-transform duration-300 ease-in-out;
+  }
+  .text-link .link-icon svg path {
+    @apply fill-hpm-red;
+  }
+  .text-link .link-icon--back {
+    @apply left-0 right-auto rotate-180 top-[42%];
+  }
+  .text-link .link-icon svg path {
+    @apply fill-hpm-red;
+  }
+  .text-link::before {
+    @apply bg-hpm-red;
+  }
+  .text-link::after {
+    @apply bg-hpm-darkred;
+  }
+
+  @media (any-hover: hover) {
+    .text-link:hover::after {
+      @apply translate-x-0;
+    }
+  }
+  .text-link:focus::after {
+    @apply translate-x-0;
+  }
+}

@@ -1,0 +1,21 @@
+uuid: d5b9f382-6e4a-4c8b-9d27-4a0e3f2b1c65
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_text
+    - paragraphs.paragraphs_type.news_teaser
+  module:
+    - text
+id: paragraph.news_teaser.field_text
+field_name: field_text
+entity_type: paragraph
+bundle: news_teaser
+label: Slider-Text
+description: 'Beschreibungstext neben den Slider-Steuerungen.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

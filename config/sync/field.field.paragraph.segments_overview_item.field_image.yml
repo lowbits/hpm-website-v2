@@ -1,0 +1,24 @@
+uuid: f2247a99-aff9-47e4-8230-46c7511ab190
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_image
+    - media.type.image
+    - paragraphs.paragraphs_type.segments_overview_item
+id: paragraph.segments_overview_item.field_image
+field_name: field_image
+entity_type: paragraph
+bundle: segments_overview_item
+label: Image
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:media'
+  handler_settings:
+    target_bundles:
+      image: image
+field_type: entity_reference

@@ -1,0 +1,19 @@
+uuid: daeb0b11-5b35-4f0a-b460-9825e65d2989
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_extent
+    - node.type.project
+id: node.project.field_extent
+field_name: field_extent
+entity_type: node
+bundle: project
+label: Umfang
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

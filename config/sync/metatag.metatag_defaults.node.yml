@@ -1,0 +1,12 @@
+uuid: 922271e7-e78a-4784-96c7-9bc6771edc06
+langcode: de
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: rpwvgyEURXLz_JjgMCrkS1rUv-0k3L79BpO-ReN7fDI
+id: node
+label: Inhalt
+tags:
+  title: '[node:title] | HÖCKER Project Managers'
+  description: '[node:summary]'
+  canonical_url: '[node:url]'

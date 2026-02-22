@@ -1,0 +1,10 @@
+uuid: 348625bf-fc67-48ec-b3e0-30f5497049e2
+langcode: de
+status: true
+dependencies: {  }
+id: stage_slider_item
+label: 'Stage-Slider Slide'
+icon_uuid: null
+icon_default: null
+description: null
+behavior_plugins: {  }

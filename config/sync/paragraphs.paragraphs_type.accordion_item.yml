@@ -1,0 +1,10 @@
+uuid: 0bebd437-6ed3-4859-adfb-2b9f8b584dcc
+langcode: de
+status: true
+dependencies: {  }
+id: accordion_item
+label: Akkordeon-Element
+icon_uuid: null
+icon_default: null
+description: null
+behavior_plugins: {  }

@@ -1,0 +1,20 @@
+uuid: ecc7b354-97eb-4202-8a8b-182d841467e7
+langcode: en
+status: true
+dependencies:
+  theme:
+    - hpm
+_core:
+  default_config_hash: 6aOgWsNTXjqrDm98TXSAjP6qd2nCijD1xw45MrnbK-Y
+id: hpm_page_title
+theme: hpm
+region: header
+weight: -5
+provider: null
+plugin: page_title_block
+settings:
+  id: page_title_block
+  label: Seitentitel
+  label_display: '0'
+  provider: core
+visibility: {  }

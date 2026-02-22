@@ -1,0 +1,51 @@
+uuid: f77f7f14-ad6b-45a4-842e-acf18e11e047
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.quote_item.field_author
+    - field.field.paragraph.quote_item.field_image
+    - field.field.paragraph.quote_item.field_quote
+    - field.field.paragraph.quote_item.field_theme
+    - paragraphs.paragraphs_type.quote_item
+  module:
+    - media_library
+    - text
+id: paragraph.quote_item.default
+targetEntityType: paragraph
+bundle: quote_item
+mode: default
+content:
+  field_author:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_image:
+    type: media_library_widget
+    weight: 1
+    region: content
+    settings:
+      media_types:
+        - image
+    third_party_settings: {  }
+  field_quote:
+    type: text_textarea
+    weight: 2
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_theme:
+    type: options_select
+    weight: 3
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true

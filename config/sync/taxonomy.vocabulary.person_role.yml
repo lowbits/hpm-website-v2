@@ -1,0 +1,9 @@
+uuid: cc8877df-16e1-4664-a98d-aa961e126f37
+langcode: de
+status: true
+dependencies: {  }
+name: Personenrolle
+vid: person_role
+description: null
+weight: 0
+new_revision: false

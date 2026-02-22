@@ -1,0 +1,94 @@
+uuid: 94a5f21d-992c-4d2d-abcc-430a87c49b63
+langcode: de
+status: open
+dependencies: {  }
+weight: 0
+open: null
+close: null
+uid: 0
+template: false
+archive: false
+id: contact
+title: Kontakt
+description: null
+categories: {  }
+elements: |
+
+  name:
+    "#type": textfield
+    "#title": Name
+    "#required": true
+  email:
+    "#type": email
+    "#title": E-Mail
+    "#required": true
+  phone:
+    "#type": tel
+    "#title": Telefon
+  subject:
+    "#type": textfield
+    "#title": Betreff
+    "#required": true
+  message:
+    "#type": textarea
+    "#title": Nachricht
+    "#required": true
+  privacy:
+    "#type": checkbox
+    "#title": "Ich habe die Datenschutzerklärung gelesen und stimme der Verarbeitung meiner Daten zu."
+    "#required": true
+css: ''
+javascript: ''
+settings:
+  confirmation_type: message
+  confirmation_message: 'Vielen Dank für Ihre Nachricht. Wir werden uns zeitnah bei Ihnen melden.'
+  form_submit_label: Absenden
+access:
+  create:
+    roles:
+      - anonymous
+      - authenticated
+    users: {  }
+    permissions: {  }
+  view_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  update_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  delete_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  purge_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  view_own:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  update_own:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  delete_own:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  administer:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  test:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  configuration:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+handlers: {  }
+variants: {  }

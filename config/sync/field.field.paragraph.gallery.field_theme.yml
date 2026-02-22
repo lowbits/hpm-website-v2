@@ -1,0 +1,21 @@
+uuid: 99786afd-cdf1-414a-a881-5963ff14219f
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_theme
+    - paragraphs.paragraphs_type.gallery
+  module:
+    - options
+id: paragraph.gallery.field_theme
+field_name: field_theme
+entity_type: paragraph
+bundle: gallery
+label: Theme
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

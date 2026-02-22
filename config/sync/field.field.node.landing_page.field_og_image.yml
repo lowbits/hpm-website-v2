@@ -1,0 +1,24 @@
+uuid: cb4892e5-bf8f-4971-88a6-c5a821952e5a
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_og_image
+    - media.type.image
+    - node.type.landing_page
+id: node.landing_page.field_og_image
+field_name: field_og_image
+entity_type: node
+bundle: landing_page
+label: OG-Bild
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:media'
+  handler_settings:
+    target_bundles:
+      image: image
+field_type: entity_reference

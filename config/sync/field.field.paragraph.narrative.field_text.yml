@@ -1,0 +1,22 @@
+uuid: fc9f19a9-900d-4917-86c7-15a72e828c21
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_text
+    - paragraphs.paragraphs_type.narrative
+  module:
+    - text
+id: paragraph.narrative.field_text
+field_name: field_text
+entity_type: paragraph
+bundle: narrative
+label: Text
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats: {  }
+field_type: text_long

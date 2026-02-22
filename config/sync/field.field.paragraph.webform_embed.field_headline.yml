@@ -1,0 +1,19 @@
+uuid: d1935e47-9aac-4985-9adb-87a94e5f820e
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_headline
+    - paragraphs.paragraphs_type.webform_embed
+id: paragraph.webform_embed.field_headline
+field_name: field_headline
+entity_type: paragraph
+bundle: webform_embed
+label: Überschrift
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

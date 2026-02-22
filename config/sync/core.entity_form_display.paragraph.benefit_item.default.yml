@@ -1,0 +1,44 @@
+uuid: 5d30f78b-d1fb-4b10-b1d3-7a55e5bbf64d
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.benefit_item.field_headline
+    - field.field.paragraph.benefit_item.field_icon
+    - field.field.paragraph.benefit_item.field_text
+    - paragraphs.paragraphs_type.benefit_item
+  module:
+    - media_library
+    - text
+id: paragraph.benefit_item.default
+targetEntityType: paragraph
+bundle: benefit_item
+mode: default
+content:
+  field_headline:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_icon:
+    type: media_library_widget
+    weight: 1
+    region: content
+    settings:
+      media_types:
+        - image
+    third_party_settings: {  }
+  field_text:
+    type: text_textarea
+    weight: 2
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true

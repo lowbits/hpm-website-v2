@@ -1,0 +1,12 @@
+uuid: edeb1c51-fde7-45d2-8a20-6acd1240f8c9
+langcode: de
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.locations_overview
+id: paragraph.locations_overview.default
+targetEntityType: paragraph
+bundle: locations_overview
+mode: default
+content: {  }
+hidden: {  }

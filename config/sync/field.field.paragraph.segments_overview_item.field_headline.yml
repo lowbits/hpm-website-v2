@@ -1,0 +1,19 @@
+uuid: bb23ce34-eb5d-45ad-a61c-de49424506f4
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_headline
+    - paragraphs.paragraphs_type.segments_overview_item
+id: paragraph.segments_overview_item.field_headline
+field_name: field_headline
+entity_type: paragraph
+bundle: segments_overview_item
+label: Headline
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

@@ -1,0 +1,20 @@
+@layer components {
+  .media--left, .media--right {
+    @apply relative;
+  }
+  .media--right .image-container {
+    @apply -mr-[1.5rem] sm:-mr-[3rem] lg:-mr-[5rem] 2xl:-mr-[2rem];
+  }
+  .media--right .credits {
+    @apply absolute left-[-2px] bottom-0 -rotate-90 origin-bottom-left sm:left-[-4px];
+  }
+  .media--right .credits span {
+    @apply relative block rotate-180 origin-center;
+  }
+  .media--left .image-container {
+    @apply -ml-[1.5rem] sm:-ml-[3rem] lg:-ml-[5rem] 2xl:-ml-[2rem];
+  }
+  .media--left .credits {
+    @apply absolute right-[-2px] bottom-0 rotate-90 origin-bottom-right sm:right-[-4px];
+  }
+}

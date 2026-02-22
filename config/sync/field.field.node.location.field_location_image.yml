@@ -1,0 +1,24 @@
+uuid: 1d53fbbc-bbb1-44de-a83b-a07388fd9c32
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_location_image
+    - media.type.image
+    - node.type.location
+id: node.location.field_location_image
+field_name: field_location_image
+entity_type: node
+bundle: location
+label: Standortbild
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:media'
+  handler_settings:
+    target_bundles:
+      image: image
+field_type: entity_reference

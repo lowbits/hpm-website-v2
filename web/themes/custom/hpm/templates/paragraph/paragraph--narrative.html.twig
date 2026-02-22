@@ -1,0 +1,42 @@
+{{ attach_library('hpm/accordion') }}
+{% set box_position = content.field_box_position|render|striptags|trim|default('right') %}
+{% set box_theme = content.field_box_theme|render|striptags|trim %}
+<div{{ attributes.addClass('content-section') }}>
+  <div class="section-container">
+    <div class="grid grid-cols-12 gap-x-7 items-start">
+      {# Image #}
+      <div class="col-span-12 lg:col-span-7 {{ box_position == 'left' ? 'lg:order-2 lg:col-start-6' : 'lg:order-1' }}">
+        {% if content.field_image|render|trim %}
+          <div class="image-container js-image-zoom">
+            {{ content.field_image }}
+          </div>
+        {% endif %}
+      </div>
+
+      {# Content Box #}
+      <div class="col-span-12 lg:col-span-5 {{ box_position == 'left' ? 'lg:order-1' : 'lg:order-2 lg:col-start-8' }} -mt-16 lg:-mt-24 relative z-10 js-up-slide"
+           {% if box_theme %}data-theme="{{ box_theme }}"{% endif %}>
+        <div class="p-8 lg:p-12 {{ box_theme == 'darkred' ? 'bg-hpm-darkred text-hpm-beige' : 'bg-white' }}">
+          {% if content.field_headline|render|trim %}
+            <h2 class="h3">{{ content.field_headline }}</h2>
+          {% endif %}
+          {% if content.field_text|render|trim %}
+            <div class="formatted mt-4 lg:mt-6">
+              {{ content.field_text }}
+            </div>
+          {% endif %}
+          {% if content.field_accordion_items|render|trim %}
+            <div class="accordion mt-6">
+              {{ content.field_accordion_items }}
+            </div>
+          {% endif %}
+          {% if content.field_link|render|trim %}
+            <div class="button-container mt-6">
+              {{ content.field_link }}
+            </div>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

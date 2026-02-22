@@ -1,0 +1,10 @@
+uuid: b0896c94-f561-4873-b65f-66896b16e98f
+langcode: de
+status: true
+dependencies: {  }
+id: timeline_item
+label: Chronik-Eintrag
+icon_uuid: null
+icon_default: null
+description: null
+behavior_plugins: {  }

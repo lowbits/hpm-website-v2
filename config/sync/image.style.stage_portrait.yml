@@ -1,0 +1,15 @@
+uuid: c2bbc2fd-e837-4953-a0df-db8d691328bc
+langcode: de
+status: true
+dependencies: {  }
+name: stage_portrait
+label: 'Stage Portrait'
+effects:
+  1969a086-f5ab-4704-969b-ac34aea324cd:
+    uuid: 1969a086-f5ab-4704-969b-ac34aea324cd
+    id: image_scale_and_crop
+    weight: null
+    data:
+      width: 750
+      height: 1000
+      anchor: center-center

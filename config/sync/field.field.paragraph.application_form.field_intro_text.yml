@@ -1,0 +1,22 @@
+uuid: ada3c311-cf9f-4a70-9390-7115b6bcfa45
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_intro_text
+    - paragraphs.paragraphs_type.application_form
+  module:
+    - text
+id: paragraph.application_form.field_intro_text
+field_name: field_intro_text
+entity_type: paragraph
+bundle: application_form
+label: 'Intro Text'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats: {  }
+field_type: text_long

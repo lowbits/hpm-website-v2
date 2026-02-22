@@ -1,0 +1,27 @@
+uuid: db01ac9e-1caf-4396-bc00-e54de0d6eb4e
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_items
+    - paragraphs.paragraphs_type.block_item
+    - paragraphs.paragraphs_type.blocks
+  module:
+    - entity_reference_revisions
+id: paragraph.blocks.field_items
+field_name: field_items
+entity_type: paragraph
+bundle: blocks
+label: Items
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      block_item: block_item
+    negate: 0
+field_type: entity_reference_revisions

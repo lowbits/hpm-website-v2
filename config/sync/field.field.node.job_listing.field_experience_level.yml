@@ -1,0 +1,24 @@
+uuid: b3f4685c-d2b9-433a-91a8-50ec219ef77d
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_experience_level
+    - node.type.job_listing
+    - taxonomy.vocabulary.experience_level
+id: node.job_listing.field_experience_level
+field_name: field_experience_level
+entity_type: node
+bundle: job_listing
+label: Erfahrungsstufe
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      experience_level: experience_level
+field_type: entity_reference

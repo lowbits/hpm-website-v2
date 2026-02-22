@@ -1,0 +1,20 @@
+@layer components {
+  .segments-overview-item img {
+    transition: transform .5s ease;
+  }
+  .segments-overview-item .overlay,
+  .segments-overview-item .indicator {
+    transition: transform .5s ease 0s;
+  }
+  .segments-overview-item:hover img {
+    transform: scale(1.05);
+    transition: transform .7s ease;
+  }
+  .segments-overview-item:hover .overlay {
+    transform: translateY(-3rem);
+    transition: transform .7s ease 0s;
+  }
+  .segments-overview-item:hover .indicator {
+    transform: scale(1.2);
+  }
+}

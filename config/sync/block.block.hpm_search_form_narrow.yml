@@ -1,0 +1,23 @@
+uuid: 656f271c-955a-45d6-abac-12201ab0340f
+langcode: en
+status: true
+dependencies:
+  module:
+    - search
+  theme:
+    - hpm
+_core:
+  default_config_hash: _nZjxxdypO6xrOAJkCYD81v0L7wh2zbCAVO7_C-UKIc
+id: hpm_search_form_narrow
+theme: hpm
+region: header
+weight: -4
+provider: null
+plugin: search_form_block
+settings:
+  id: search_form_block
+  label: 'Suchformular (schmal)'
+  label_display: '0'
+  provider: search
+  page_id: null
+visibility: {  }

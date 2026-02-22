@@ -1,0 +1,21 @@
+uuid: d791c4df-534a-4678-afb1-94bb3debae8b
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.projects_overview.field_theme
+    - paragraphs.paragraphs_type.projects_overview
+id: paragraph.projects_overview.default
+targetEntityType: paragraph
+bundle: projects_overview
+mode: default
+content:
+  field_theme:
+    type: options_select
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true

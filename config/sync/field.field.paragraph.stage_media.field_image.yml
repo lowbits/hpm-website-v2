@@ -1,0 +1,24 @@
+uuid: 4a8ec8f8-ab8a-47a5-b279-f76e6a607950
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_image
+    - media.type.image
+    - paragraphs.paragraphs_type.stage_media
+id: paragraph.stage_media.field_image
+field_name: field_image
+entity_type: paragraph
+bundle: stage_media
+label: Bild
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:media'
+  handler_settings:
+    target_bundles:
+      image: image
+field_type: entity_reference

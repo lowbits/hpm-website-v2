@@ -1,0 +1,75 @@
+{#
+/**
+ * @file
+ * News teaser slider – section title + controls + Splide carousel.
+ */
+#}
+{{ attach_library('hpm/slider-teaser') }}
+<section{{ attributes.addClass('news-teaser', 'teaser-slider', 'content-section', 'js-teaser-slider') }}
+  {% if theme_css %}data-theme="{{ theme_css }}"{% endif %}>
+  <div class="section-container">
+    <div class="section-title flex flex-col gap-5 mb-9 col-span-12
+                sm:mb-12 sm:flex-row sm:items-center sm:justify-between
+                md:gap-12
+                lg:mb-16
+                xl:items-center">
+      <div class="flex flex-col gap-3">
+        {% if paragraph.field_meta_label.value %}
+          <h2 class="info">{{ paragraph.field_meta_label.value }}</h2>
+          {% if paragraph.field_section_title.value %}
+            <h3 class="h2 text-hpm-red">{{ paragraph.field_section_title.value }}</h3>
+          {% endif %}
+        {% elseif paragraph.field_section_title.value %}
+          <h2 class="h2 text-hpm-red">{{ paragraph.field_section_title.value }}</h2>
+        {% endif %}
+      </div>
+      {% if button_url %}
+        <div class="section-title__button shrink-0">
+          {% include '@hpm/templates/components/button-link.html.twig' with {
+            url: button_url,
+            text: button_text,
+          } only %}
+        </div>
+      {% endif %}
+    </div>
+  </div>
+  <div class="section-container">
+    <div class="grid grid-cols-12 gap-x-7 gap-y-10">
+      <div class="news-teaser__controls col-span-12 flex flex-col-reverse gap-6 relative z-2
+                  items-start
+                  sm:col-span-8 sm:items-start
+                  md:col-span-4 md:items-start md:gap-0 md:mt-0 md:flex-col
+                  lg:col-span-3">
+        <div class="slider-controls__buttons flex gap-2">
+          <button class="slider-button slider-button--previous js-slider-button-prev" type="button">
+            <div class="slider-button__icon">
+              {% include '@hpm/images/vectors/button-arrow.svg.twig' %}
+            </div>
+          </button>
+          <button class="slider-button slider-button--next js-slider-button-next" type="button">
+            <div class="slider-button__icon">
+              {% include '@hpm/images/vectors/button-arrow.svg.twig' %}
+            </div>
+          </button>
+        </div>
+        {% if paragraph.field_text.value %}
+          <p class="copy sm:mt-6">
+            {{ paragraph.field_text.value|striptags }}
+          </p>
+        {% endif %}
+      </div>
+      <div class="news-teaser__item-list col-span-11
+                  sm:col-span-11
+                  md:col-span-8
+                  lg:col-span-9">
+        <div class="splide teaser-slider-carousel">
+          <div class="splide__track">
+            <div class="splide__list">
+              {{ drupal_view('news_teaser_block', 'block_1') }}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

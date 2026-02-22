@@ -1,0 +1,10 @@
+uuid: eb743bfd-d6c6-4a82-8e97-f564b95adf98
+langcode: de
+status: true
+dependencies: {  }
+id: job_offers
+label: Stellenangebote
+icon_uuid: null
+icon_default: null
+description: null
+behavior_plugins: {  }

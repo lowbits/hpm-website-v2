@@ -1,0 +1,37 @@
+{#
+/**
+ * @file
+ * Footer meta menu — renders in two columns (secondary links + legal links).
+ */
+#}
+{% if items %}
+  {% set halfway = (items|length / 2)|round(0, 'ceil') %}
+  <div class="grid grid-cols-2 gap-x-5 gap-y-10">
+    <div class="js-footer-inner pt-4 relative">
+      <div class="bg-hpm-red w-[7.5rem] h-[0.0625rem] absolute top-0 left-0"></div>
+      <ul class="footer-menu flex flex-col gap-2">
+        {% for item in items|slice(0, halfway) %}
+          <li>
+            <a href="{{ item.url }}"
+               class="font-erato text-[1.0625rem] text-white leading-[1.25] relative inline-block overflow-hidden pb-[2px] hover:after:translate-x-0 after:content-[''] after:absolute after:bottom-0 after:left-0 after:right-0 after:h-px after:bg-white after:-translate-x-full after:transition-transform after:duration-300">
+              {{ item.title }}
+            </a>
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+    <div class="js-footer-inner pt-4 relative">
+      <div class="bg-hpm-red w-[7.5rem] h-[0.0625rem] absolute top-0 left-0"></div>
+      <ul class="footer-menu flex flex-col gap-2">
+        {% for item in items|slice(halfway) %}
+          <li>
+            <a href="{{ item.url }}"
+               class="font-erato text-[1.0625rem] text-white leading-[1.25] relative inline-block overflow-hidden pb-[2px] hover:after:translate-x-0 after:content-[''] after:absolute after:bottom-0 after:left-0 after:right-0 after:h-px after:bg-white after:-translate-x-full after:transition-transform after:duration-300">
+              {{ item.title }}
+            </a>
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+{% endif %}

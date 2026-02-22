@@ -1,0 +1,22 @@
+uuid: 75b49c77-1a12-4679-b0a0-61996f73f687
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_text_secondary
+    - node.type.business_field_page
+  module:
+    - text
+id: node.business_field_page.field_text_secondary
+field_name: field_text_secondary
+entity_type: node
+bundle: business_field_page
+label: 'Text sekundär'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats: {  }
+field_type: text_long

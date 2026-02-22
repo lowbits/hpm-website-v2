@@ -1,0 +1,30 @@
+{#
+/**
+ * @file
+ * Stage slider item paragraph template.
+ */
+#}
+{% set caption = content.field_caption|render|striptags|trim %}
+<div class="carousel__item stage-slider__item ml-0 absolute w-full cursor-grab">
+  <div class="stage-slider__image-box carousel__image-box h-full top-0 left-0 overflow-hidden relative pt-[133.33%] sm:pt-[92%] md:pt-[40%]">
+    {% if content.field_image_portrait[0] %}
+      {% set portrait_img = content.field_image_portrait[0]['#media'] ?? content.field_image_portrait[0]['#item'] %}
+      <img class="tall absolute inset-0 h-full w-full object-cover md:hidden"
+           src="{{ file_url(paragraph.field_image_portrait.entity.field_media_image.entity.uri.value) }}"
+           alt="{{ caption }}"
+           loading="lazy">
+    {% endif %}
+    {% if content.field_image[0] %}
+      <img class="wide absolute inset-0 hidden h-full w-full object-cover md:block"
+           src="{{ file_url(paragraph.field_image.entity.field_media_image.entity.uri.value) }}"
+           alt="{{ caption }}"
+           loading="lazy">
+    {% endif %}
+  </div>
+
+  {% if caption %}
+    <p class="caption absolute opacity-0 text-white bottom-4.5 left-5">
+      {{ caption }}
+    </p>
+  {% endif %}
+</div>

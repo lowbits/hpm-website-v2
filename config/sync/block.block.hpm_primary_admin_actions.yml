@@ -1,0 +1,20 @@
+uuid: f86e89f3-7823-4502-9231-480fff18d86a
+langcode: en
+status: true
+dependencies:
+  theme:
+    - hpm
+_core:
+  default_config_hash: Q9_2whdOj1YIomfvsIfopROW4FT_X5pY0DjdOiOaQ5U
+id: hpm_primary_admin_actions
+theme: hpm
+region: header
+weight: -5
+provider: null
+plugin: local_actions_block
+settings:
+  id: local_actions_block
+  label: 'Primäre Verwaltungsaktionen'
+  label_display: '0'
+  provider: core
+visibility: {  }

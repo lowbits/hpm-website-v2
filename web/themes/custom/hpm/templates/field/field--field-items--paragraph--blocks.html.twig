@@ -1,0 +1,10 @@
+{#
+/**
+ * @file
+ * Field template for block items – renders items without field wrapper
+ * so they become direct grid children.
+ */
+#}
+{% for item in items %}
+  {{ item.content }}
+{% endfor %}

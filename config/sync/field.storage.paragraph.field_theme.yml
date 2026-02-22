@@ -1,0 +1,36 @@
+uuid: b44891c4-6ef8-4d80-8d44-29e337b6ccd3
+langcode: de
+status: true
+dependencies:
+  module:
+    - options
+    - paragraphs
+id: paragraph.field_theme
+field_name: field_theme
+entity_type: paragraph
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: default
+      label: Standard
+    -
+      value: dark
+      label: Dunkel
+    -
+      value: brand
+      label: Marke
+    -
+      value: weiss
+      label: Weiß
+    -
+      value: beige
+      label: Beige
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

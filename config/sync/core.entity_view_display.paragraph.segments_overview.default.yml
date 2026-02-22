@@ -1,0 +1,22 @@
+uuid: 2068ebd1-d1e3-40b3-81f7-0e8cb2e3f22b
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.segments_overview.field_theme
+    - paragraphs.paragraphs_type.segments_overview
+  module:
+    - options
+id: paragraph.segments_overview.default
+targetEntityType: paragraph
+bundle: segments_overview
+mode: default
+content:
+  field_theme:
+    type: list_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden: {  }

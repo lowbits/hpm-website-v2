@@ -1,0 +1,22 @@
+uuid: 07de1cd7-396b-4cbc-a640-542188c958bd
+langcode: en
+status: true
+dependencies:
+  theme:
+    - hpm
+_core:
+  default_config_hash: ydSxdq7R66I8UMC460rOzlfzvlUL4VRbdwc6z9DWaUI
+id: hpm_secondary_local_tasks
+theme: hpm
+region: header
+weight: -2
+provider: null
+plugin: local_tasks_block
+settings:
+  id: local_tasks_block
+  label: 'Sekundäre Reiter'
+  label_display: '0'
+  provider: core
+  primary: false
+  secondary: true
+visibility: {  }

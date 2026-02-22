@@ -1,0 +1,19 @@
+uuid: 4e8a4b7b-6ced-4d62-8b0d-b50a97de4a38
+langcode: de
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus:
+      - main
+      - footer
+    parent: 'main:'
+name: Geschäftsfeldseite
+type: business_field_page
+description: null
+help: null
+new_revision: true
+preview_mode: 1
+display_submitted: true

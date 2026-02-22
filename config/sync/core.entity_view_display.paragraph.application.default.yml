@@ -1,0 +1,63 @@
+uuid: 10ce4522-cb61-4419-a744-bafb8ff6bce0
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.application.field_headline
+    - field.field.paragraph.application.field_link
+    - field.field.paragraph.application.field_small_text
+    - field.field.paragraph.application.field_text
+    - field.field.paragraph.application.field_theme
+    - paragraphs.paragraphs_type.application
+  module:
+    - link
+    - options
+    - text
+id: paragraph.application.default
+targetEntityType: paragraph
+bundle: application
+mode: default
+content:
+  field_headline:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_link:
+    type: link
+    label: above
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  field_small_text:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_text:
+    type: text_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_theme:
+    type: list_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 4
+    region: content
+hidden: {  }

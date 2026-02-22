@@ -1,0 +1,46 @@
+{{ attach_library('hpm/fade-ins') }}
+<article{{ attributes.addClass('node', 'node--news') }}>
+  {{ title_prefix }}
+  {{ title_suffix }}
+
+  {# Stage #}
+  <div class="stage-section">
+    <div class="section-container">
+      <div class="grid grid-cols-12 gap-x-7">
+        <div class="col-span-12 lg:col-span-8 lg:col-start-3">
+          {% if content.field_news_category|render|trim %}
+            <p class="info meta-line--small mb-3">{{ content.field_news_category }}</p>
+          {% endif %}
+          <h1 class="h1">{{ label }}</h1>
+          {% if content.field_news_date|render|trim %}
+            <p class="copy mt-4 text-hpm-darkred-60">{{ content.field_news_date }}</p>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  {# Image #}
+  {% if content.field_news_image|render|trim %}
+    <div class="section-container">
+      <div class="image-container js-image-zoom">
+        {{ content.field_news_image }}
+      </div>
+    </div>
+  {% endif %}
+
+  {# Body #}
+  {% if content.body|render|trim %}
+    <div class="content-section">
+      <div class="section-container">
+        <div class="grid grid-cols-12 gap-x-7">
+          <div class="col-span-12 lg:col-span-8 lg:col-start-3">
+            <div class="formatted">
+              {{ content.body }}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  {% endif %}
+</article>

@@ -1,0 +1,24 @@
+uuid: 6975067d-8cdb-4f16-9230-e213761cf5dd
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_contact_person
+    - node.type.job_listing
+    - node.type.person
+id: node.job_listing.field_contact_person
+field_name: field_contact_person
+entity_type: node
+bundle: job_listing
+label: Ansprechpartner
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      person: person
+field_type: entity_reference

@@ -1,0 +1,17 @@
+<div{{ attributes.addClass('person-card') }}>
+  {% if content.field_person_image|render|trim %}
+    <div class="image-container aspect-[4/5] mb-4">
+      {{ content.field_person_image }}
+    </div>
+  {% endif %}
+  <h3 class="h4">{{ label }}</h3>
+  {% if content.field_position|render|trim %}
+    <p class="copy text-hpm-darkred-60 mt-1">{{ content.field_position }}</p>
+  {% endif %}
+  {% if content.field_email|render|trim %}
+    <p class="copy mt-2">{{ content.field_email }}</p>
+  {% endif %}
+  {% if content.field_phone|render|trim %}
+    <p class="copy">{{ content.field_phone }}</p>
+  {% endif %}
+</div>

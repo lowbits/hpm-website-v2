@@ -1,0 +1,65 @@
+{#
+/**
+ * @file
+ * Alternating content section – image + text side by side.
+ */
+#}
+{{ attach_library('hpm/accordion') }}
+{% set position = paragraph.field_media_position.value|default('right') %}
+{% set has_accordion = content.field_accordion_items|render|trim %}
+<section{{ attributes.addClass('alternate', 'content-section') }}
+  {% if theme_css %}data-theme="{{ theme_css }}"{% endif %}>
+  <div class="section-container">
+    <div class="grid grid-cols-1 gap-7
+                sm:grid-cols-12
+                {% if not has_accordion %}md:items-center{% else %}md:items-start{% endif %}">
+      {# Image #}
+      <div class="{{ position == 'right' ? 'media--right' : 'media--left' }}
+                  col-span-12
+                  sm:col-span-10 {{ position == 'right' ? 'sm:col-start-3' : 'sm:col-start-1' }}
+                  md:col-span-6 md:col-start-1 {{ position == 'right' ? 'md:order-last md:col-start-7' }}">
+        {% if content.field_image|render|trim %}
+          <div class="image-container js-zoom-image" data-delay=".3">
+            {{ content.field_image }}
+          </div>
+        {% endif %}
+      </div>
+
+      {# Content #}
+      <div class="col-span-12 js-element-group
+                  sm:col-span-8 sm:col-start-3
+                  md:col-span-5
+                  lg:col-span-4 {{ position == 'right' ? 'lg:col-start-2' : 'md:col-start-8 lg:col-start-8' }}">
+        {% if paragraph.field_meta_label.value %}
+          <div class="info mb-4">
+            {{ paragraph.field_meta_label.value }}
+          </div>
+        {% endif %}
+        {% if paragraph.field_headline.value %}
+          <h2 class="font-case text-hpm-darkred font-light text-hpm-red text-[2rem] mb-4">
+            {{ paragraph.field_headline.value }}
+          </h2>
+        {% endif %}
+        {% if paragraph.field_text.value %}
+          <div class="formatted mt-4">
+            {{ paragraph.field_text.value|raw }}
+          </div>
+        {% endif %}
+        {% if has_accordion %}
+          <div class="accordion-block js-accordion mt-6">
+            {{ content.field_accordion_items }}
+          </div>
+        {% endif %}
+        {% if button_url %}
+          <div class="button-container mt-4">
+            {% include '@hpm/templates/components/button-link.html.twig' with {
+              url: button_url,
+              text: button_text,
+              variant: 'secondary'
+            } only %}
+          </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</section>

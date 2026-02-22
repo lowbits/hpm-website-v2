@@ -1,0 +1,21 @@
+uuid: cc85a97f-8bce-4ab8-a0bc-787b3815dde7
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_box_position
+    - paragraphs.paragraphs_type.narrative
+  module:
+    - options
+id: paragraph.narrative.field_box_position
+field_name: field_box_position
+entity_type: paragraph
+bundle: narrative
+label: Box-Position
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

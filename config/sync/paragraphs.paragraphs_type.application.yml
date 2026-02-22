@@ -1,0 +1,10 @@
+uuid: 4e6f5131-06d7-479f-b395-7d251cff3f6c
+langcode: de
+status: true
+dependencies: {  }
+id: application
+label: Bewerbungsinfo
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

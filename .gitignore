@@ -1,0 +1,29 @@
+# Composer dependencies (rebuilt on deploy)
+node_modules/
+/vendor/
+/web/core/
+/web/modules/contrib/
+/web/themes/contrib/
+/web/profiles/contrib/
+/web/libraries/
+
+# Drupal files (user uploads, generated assets)
+/web/sites/default/files/
+/web/sites/simpletest/
+
+# Drupal settings (contain credentials)
+/web/sites/default/settings.local.php
+/web/sites/default/services.yml
+
+# DDEV
+/.ddev/
+
+# OS / IDE
+.DS_Store
+.idea/
+*.swp
+
+# Build artifacts
+/web/sites/default/files/php/
+/web/sites/default/files/css/
+/web/sites/default/files/js/

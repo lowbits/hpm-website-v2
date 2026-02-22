@@ -1,0 +1,23 @@
+uuid: f04dc5f7-f800-4514-a180-c53f4b815957
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_external_link
+    - node.type.news
+  module:
+    - link
+id: node.news.field_external_link
+field_name: field_external_link
+entity_type: node
+bundle: news
+label: 'Externer Link'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  title: 1
+  link_type: 17
+field_type: link

@@ -1,0 +1,72 @@
+uuid: 5d6c3ee7-6147-4ddf-a08c-0b3cf427abb3
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.locations_teaser_item.field_city
+    - field.field.paragraph.locations_teaser_item.field_contact_data
+    - field.field.paragraph.locations_teaser_item.field_credits
+    - field.field.paragraph.locations_teaser_item.field_email
+    - field.field.paragraph.locations_teaser_item.field_image
+    - field.field.paragraph.locations_teaser_item.field_link
+    - paragraphs.paragraphs_type.locations_teaser_item
+  module:
+    - link
+    - text
+id: paragraph.locations_teaser_item.default
+targetEntityType: paragraph
+bundle: locations_teaser_item
+mode: default
+content:
+  field_city:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_contact_data:
+    type: text_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  field_credits:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_email:
+    type: basic_string
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 4
+    region: content
+  field_image:
+    type: entity_reference_entity_view
+    label: above
+    settings:
+      view_mode: default
+      link: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_link:
+    type: link
+    label: above
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    weight: 5
+    region: content
+hidden: {  }

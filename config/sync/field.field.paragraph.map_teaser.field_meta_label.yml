@@ -1,0 +1,19 @@
+uuid: ff057e4b-b69b-4649-afc3-04df09de8fe7
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_meta_label
+    - paragraphs.paragraphs_type.map_teaser
+id: paragraph.map_teaser.field_meta_label
+field_name: field_meta_label
+entity_type: paragraph
+bundle: map_teaser
+label: Meta-Label
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

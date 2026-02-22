@@ -1,0 +1,10 @@
+uuid: 6f896a08-8a5c-4ee1-b356-b28e2c7c3b93
+langcode: de
+status: true
+dependencies: {  }
+id: locations_teaser_item
+label: Standort-Teaser
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

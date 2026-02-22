@@ -1,0 +1,21 @@
+uuid: 20383a84-baae-40b0-b14a-dabd6cc19117
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_theme
+    - paragraphs.paragraphs_type.projects_overview
+  module:
+    - options
+id: paragraph.projects_overview.field_theme
+field_name: field_theme
+entity_type: paragraph
+bundle: projects_overview
+label: Theme
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

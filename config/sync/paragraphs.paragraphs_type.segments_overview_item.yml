@@ -1,0 +1,10 @@
+uuid: 5c24d75d-38fd-4d06-bb4d-e9df81a5769d
+langcode: de
+status: true
+dependencies: {  }
+id: segments_overview_item
+label: Geschäftsfeld-Teaser
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

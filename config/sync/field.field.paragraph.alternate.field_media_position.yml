@@ -1,0 +1,21 @@
+uuid: 15345235-70f4-4574-83fe-3c1d757028bf
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_media_position
+    - paragraphs.paragraphs_type.alternate
+  module:
+    - options
+id: paragraph.alternate.field_media_position
+field_name: field_media_position
+entity_type: paragraph
+bundle: alternate
+label: Medienposition
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

@@ -1,0 +1,10 @@
+{#
+/**
+ * @file
+ * Unformatted rows for news teaser block.
+ * Outputs each row without wrapper divs so Splide slide markup stays clean.
+ */
+#}
+{% for row in rows %}
+  {{ row.content }}
+{% endfor %}

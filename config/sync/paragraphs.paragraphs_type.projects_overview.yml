@@ -1,0 +1,10 @@
+uuid: 06c5ed56-1b6e-4a35-bb44-98a69ec86a82
+langcode: de
+status: true
+dependencies: {  }
+id: projects_overview
+label: Projektübersicht
+icon_uuid: null
+icon_default: null
+description: null
+behavior_plugins: {  }

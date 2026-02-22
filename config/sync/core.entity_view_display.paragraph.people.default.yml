@@ -1,0 +1,41 @@
+uuid: 0a315fe5-bf4f-4245-add5-8e3ca8c9585b
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.people.field_people
+    - field.field.paragraph.people.field_section_title
+    - field.field.paragraph.people.field_theme
+    - paragraphs.paragraphs_type.people
+  module:
+    - options
+id: paragraph.people.default
+targetEntityType: paragraph
+bundle: people
+mode: default
+content:
+  field_people:
+    type: entity_reference_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: false
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_section_title:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_theme:
+    type: list_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 2
+    region: content
+hidden: {  }

@@ -1,0 +1,19 @@
+uuid: 3e8dfc7e-5a37-4dfd-b97e-0f1277693097
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_author
+    - paragraphs.paragraphs_type.quote_item
+id: paragraph.quote_item.field_author
+field_name: field_author
+entity_type: paragraph
+bundle: quote_item
+label: Autor
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

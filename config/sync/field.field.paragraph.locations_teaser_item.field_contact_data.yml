@@ -1,0 +1,22 @@
+uuid: 2196356c-7a1e-40a6-99c6-d6a45535928c
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_contact_data
+    - paragraphs.paragraphs_type.locations_teaser_item
+  module:
+    - text
+id: paragraph.locations_teaser_item.field_contact_data
+field_name: field_contact_data
+entity_type: paragraph
+bundle: locations_teaser_item
+label: 'Contact Data'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats: {  }
+field_type: text_long

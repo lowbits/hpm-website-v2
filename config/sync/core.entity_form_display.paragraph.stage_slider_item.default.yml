@@ -1,0 +1,43 @@
+uuid: c219f813-5cc7-4c59-8c2f-6de366446aaa
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.stage_slider_item.field_caption
+    - field.field.paragraph.stage_slider_item.field_image
+    - field.field.paragraph.stage_slider_item.field_image_portrait
+    - paragraphs.paragraphs_type.stage_slider_item
+  module:
+    - media_library
+id: paragraph.stage_slider_item.default
+targetEntityType: paragraph
+bundle: stage_slider_item
+mode: default
+content:
+  field_caption:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_image:
+    type: media_library_widget
+    weight: 1
+    region: content
+    settings:
+      media_types:
+        - image
+    third_party_settings: {  }
+  field_image_portrait:
+    type: media_library_widget
+    weight: 2
+    region: content
+    settings:
+      media_types:
+        - image
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true

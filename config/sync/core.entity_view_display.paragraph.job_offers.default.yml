@@ -1,0 +1,22 @@
+uuid: 41875116-e621-4c4e-a053-ae163b349f43
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.job_offers.field_theme
+    - paragraphs.paragraphs_type.job_offers
+  module:
+    - options
+id: paragraph.job_offers.default
+targetEntityType: paragraph
+bundle: job_offers
+mode: default
+content:
+  field_theme:
+    type: list_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden: {  }

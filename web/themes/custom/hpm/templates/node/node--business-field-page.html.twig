@@ -1,0 +1,57 @@
+{{ attach_library('hpm/fade-ins') }}
+<article{{ attributes.addClass('node', 'node--business-field-page') }}>
+  {{ title_prefix }}
+  {{ title_suffix }}
+
+  <div class="segment" {% if content.field_anchor_id|render|trim %}id="{{ content.field_anchor_id|render|striptags|trim }}"{% endif %}>
+    {# Segment Image #}
+    {% if content.field_segment_image|render|trim %}
+      <div class="image-container js-image-zoom">
+        {{ content.field_segment_image }}
+      </div>
+    {% endif %}
+
+    <div class="content-section">
+      <div class="section-container">
+        <div class="grid grid-cols-12 gap-x-7">
+          <div class="col-span-12 lg:col-span-8 lg:col-start-3">
+            {% if content.field_headline_primary|render|trim %}
+              <h2 class="h2">{{ content.field_headline_primary }}</h2>
+            {% endif %}
+            {% if content.field_text_primary|render|trim %}
+              <div class="formatted mt-4 lg:mt-5 xl:mt-6">
+                {{ content.field_text_primary }}
+              </div>
+            {% endif %}
+          </div>
+        </div>
+
+        {% if content.field_headline_secondary|render|trim or content.field_text_secondary|render|trim %}
+          <div class="grid grid-cols-12 gap-x-7 mt-spacing-xs sm:mt-spacing-sm lg:mt-spacing-lg">
+            <div class="col-span-12 lg:col-span-8 lg:col-start-3">
+              {% if content.field_headline_secondary|render|trim %}
+                <h3 class="h3">{{ content.field_headline_secondary }}</h3>
+              {% endif %}
+              {% if content.field_text_secondary|render|trim %}
+                <div class="formatted mt-4 lg:mt-5 xl:mt-6">
+                  {{ content.field_text_secondary }}
+                </div>
+              {% endif %}
+            </div>
+          </div>
+        {% endif %}
+
+        {% if content.field_services|render|trim %}
+          <div class="grid grid-cols-12 gap-x-7 mt-8 lg:mt-12">
+            <div class="col-span-12 lg:col-span-8 lg:col-start-3">
+              <h4 class="info mb-4">{{ 'Leistungen'|t }}</h4>
+              <ul class="dash-list">
+                {{ content.field_services }}
+              </ul>
+            </div>
+          </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</article>

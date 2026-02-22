@@ -1,0 +1,54 @@
+uuid: ba4f5b04-0764-492a-9f5e-e3e4b9dc2f68
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.deeplink.field_headline
+    - field.field.paragraph.deeplink.field_link
+    - field.field.paragraph.deeplink.field_text
+    - field.field.paragraph.deeplink.field_theme
+    - paragraphs.paragraphs_type.deeplink
+  module:
+    - link
+    - options
+    - text
+id: paragraph.deeplink.default
+targetEntityType: paragraph
+bundle: deeplink
+mode: default
+content:
+  field_headline:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_link:
+    type: link
+    label: hidden
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_text:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_theme:
+    type: list_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 3
+    region: content
+hidden: {  }

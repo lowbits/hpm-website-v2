@@ -1,0 +1,32 @@
+uuid: 5c055922-a1c5-47db-9ec0-7041d9d7ebed
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.stage_title.field_headline
+    - field.field.paragraph.stage_title.field_meta_label
+    - paragraphs.paragraphs_type.stage_title
+id: paragraph.stage_title.default
+targetEntityType: paragraph
+bundle: stage_title
+mode: default
+content:
+  field_headline:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_meta_label:
+    type: string_textfield
+    weight: 1
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true

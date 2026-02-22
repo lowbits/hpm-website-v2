@@ -1,0 +1,24 @@
+uuid: b83e00c3-8112-48e3-b480-f0792163054d
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_job_location
+    - node.type.job_listing
+    - taxonomy.vocabulary.location_tag
+id: node.job_listing.field_job_location
+field_name: field_job_location
+entity_type: node
+bundle: job_listing
+label: Standort
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      location_tag: location_tag
+field_type: entity_reference

@@ -1,0 +1,21 @@
+uuid: 07a01539-ec1e-47cb-839f-61ead02becd4
+langcode: de
+status: true
+dependencies:
+  module:
+    - node
+id: location
+label: Location
+type: 'canonical_entities:node'
+pattern: 'standorte/[node:field_city]'
+selection_criteria:
+  c9e8b767-9183-414d-b74c-68d148b3860f:
+    id: 'entity_bundle:node'
+    negate: false
+    context_mapping:
+      node: node
+    bundles:
+      location: location
+selection_logic: plugin
+weight: 0
+relationships: {  }

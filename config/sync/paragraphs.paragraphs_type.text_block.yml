@@ -1,0 +1,10 @@
+uuid: 9eba43da-52d0-4c29-bcfe-4d21ca44f718
+langcode: de
+status: true
+dependencies: {  }
+id: text_block
+label: Textbereich
+icon_uuid: null
+icon_default: null
+description: null
+behavior_plugins: {  }

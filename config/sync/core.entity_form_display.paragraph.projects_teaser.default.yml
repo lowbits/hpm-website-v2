@@ -1,0 +1,41 @@
+uuid: fb021cc4-622d-49d8-b8a1-896705ccdbb9
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.projects_teaser.field_business_field
+    - field.field.paragraph.projects_teaser.field_section_title
+    - field.field.paragraph.projects_teaser.field_theme
+    - paragraphs.paragraphs_type.projects_teaser
+id: paragraph.projects_teaser.default
+targetEntityType: paragraph
+bundle: projects_teaser
+mode: default
+content:
+  field_business_field:
+    type: entity_reference_autocomplete
+    weight: 0
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_section_title:
+    type: string_textfield
+    weight: 1
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_theme:
+    type: options_select
+    weight: 2
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true

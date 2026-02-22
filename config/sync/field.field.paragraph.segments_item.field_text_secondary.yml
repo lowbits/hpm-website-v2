@@ -1,0 +1,22 @@
+uuid: ff9da911-f437-4b79-9be1-9c64eac6b411
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_text_secondary
+    - paragraphs.paragraphs_type.segments_item
+  module:
+    - text
+id: paragraph.segments_item.field_text_secondary
+field_name: field_text_secondary
+entity_type: paragraph
+bundle: segments_item
+label: 'Secondary Text'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats: {  }
+field_type: text_long

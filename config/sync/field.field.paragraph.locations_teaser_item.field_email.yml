@@ -1,0 +1,19 @@
+uuid: 0f8d59ee-343a-485e-a6f4-5667a169b833
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_email
+    - paragraphs.paragraphs_type.locations_teaser_item
+id: paragraph.locations_teaser_item.field_email
+field_name: field_email
+entity_type: paragraph
+bundle: locations_teaser_item
+label: Email
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: email

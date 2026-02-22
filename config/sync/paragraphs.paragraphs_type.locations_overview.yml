@@ -1,0 +1,10 @@
+uuid: 99b54d53-bcf3-4121-8ed2-8702cba283e2
+langcode: de
+status: true
+dependencies: {  }
+id: locations_overview
+label: Standorte-Übersicht
+icon_uuid: null
+icon_default: null
+description: null
+behavior_plugins: {  }

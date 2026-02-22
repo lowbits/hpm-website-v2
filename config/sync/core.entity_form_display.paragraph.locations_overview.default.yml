@@ -1,0 +1,14 @@
+uuid: 7d5c8316-290f-4346-b77c-fb2c4fb433e2
+langcode: de
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.locations_overview
+id: paragraph.locations_overview.default
+targetEntityType: paragraph
+bundle: locations_overview
+mode: default
+content: {  }
+hidden:
+  created: true
+  status: true

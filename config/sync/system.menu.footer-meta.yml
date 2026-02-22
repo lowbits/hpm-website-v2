@@ -1,0 +1,8 @@
+uuid: 95dcfdbc-9d42-442c-ae5e-efa1474fa447
+langcode: de
+status: true
+dependencies: {  }
+id: footer-meta
+label: 'Footer Meta'
+description: 'Sekundäre Footer-Links (Projekte, Neuigkeiten, Datenschutz, Impressum)'
+locked: false

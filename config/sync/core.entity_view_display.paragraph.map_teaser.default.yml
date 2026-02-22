@@ -1,0 +1,54 @@
+uuid: 195dbc7e-1a2c-4cae-9201-0ebac3a8c823
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.map_teaser.field_link
+    - field.field.paragraph.map_teaser.field_meta_label
+    - field.field.paragraph.map_teaser.field_text
+    - field.field.paragraph.map_teaser.field_theme
+    - paragraphs.paragraphs_type.map_teaser
+  module:
+    - link
+    - options
+    - text
+id: paragraph.map_teaser.default
+targetEntityType: paragraph
+bundle: map_teaser
+mode: default
+content:
+  field_link:
+    type: link
+    label: hidden
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_meta_label:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_text:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_theme:
+    type: list_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 3
+    region: content
+hidden: {  }

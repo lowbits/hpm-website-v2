@@ -1,0 +1,15 @@
+uuid: e70fc723-4be7-4ff3-9bdb-137c9be69a76
+langcode: de
+status: true
+dependencies: {  }
+name: person_portrait
+label: 'Person Portrait'
+effects:
+  e2fef0fe-b306-4fcd-9a57-e6de275993ed:
+    uuid: e2fef0fe-b306-4fcd-9a57-e6de275993ed
+    id: image_scale_and_crop
+    weight: null
+    data:
+      width: 400
+      height: 500
+      anchor: center-center

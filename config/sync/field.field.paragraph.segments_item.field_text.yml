@@ -1,0 +1,22 @@
+uuid: 284acb52-ee4f-4952-8bb3-d9371071b3d8
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_text
+    - paragraphs.paragraphs_type.segments_item
+  module:
+    - text
+id: paragraph.segments_item.field_text
+field_name: field_text
+entity_type: paragraph
+bundle: segments_item
+label: Text
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats: {  }
+field_type: text_long

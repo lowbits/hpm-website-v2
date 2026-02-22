@@ -1,0 +1,15 @@
+uuid: f281162e-6f0b-4ced-818b-fa6ea29afcfb
+langcode: de
+status: true
+dependencies: {  }
+name: segment_wide
+label: 'Segment Wide'
+effects:
+  4f9ea047-22c0-48ff-a76b-383b26520565:
+    uuid: 4f9ea047-22c0-48ff-a76b-383b26520565
+    id: image_scale_and_crop
+    weight: null
+    data:
+      width: 1400
+      height: 600
+      anchor: center-center

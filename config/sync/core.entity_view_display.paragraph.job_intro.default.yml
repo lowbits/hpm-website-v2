@@ -1,0 +1,57 @@
+uuid: c955eb60-ae55-42d1-ba08-a1f8f5529c43
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.job_intro.field_experience_level
+    - field.field.paragraph.job_intro.field_location
+    - field.field.paragraph.job_intro.field_meta_label
+    - field.field.paragraph.job_intro.field_section_title
+    - field.field.paragraph.job_intro.field_starting_time
+    - paragraphs.paragraphs_type.job_intro
+id: paragraph.job_intro.default
+targetEntityType: paragraph
+bundle: job_intro
+mode: default
+content:
+  field_experience_level:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 4
+    region: content
+  field_location:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_meta_label:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_section_title:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_starting_time:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 3
+    region: content
+hidden: {  }

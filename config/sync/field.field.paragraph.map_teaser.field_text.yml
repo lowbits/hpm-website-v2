@@ -1,0 +1,22 @@
+uuid: 5d040009-c329-4ec4-bdd8-fe5f7cf22dd1
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_text
+    - paragraphs.paragraphs_type.map_teaser
+  module:
+    - text
+id: paragraph.map_teaser.field_text
+field_name: field_text
+entity_type: paragraph
+bundle: map_teaser
+label: Text
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats: {  }
+field_type: text_long

@@ -1,0 +1,25 @@
+uuid: 289efa6a-1414-46d0-988c-090edfda7e2d
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_slides
+    - paragraphs.paragraphs_type.stage_slider
+  module:
+    - entity_reference_revisions
+id: paragraph.stage_slider.field_slides
+field_name: field_slides
+entity_type: paragraph
+bundle: stage_slider
+label: Slides
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      stage_slider_item: stage_slider_item
+field_type: entity_reference_revisions

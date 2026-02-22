@@ -1,0 +1,35 @@
+{#
+/**
+ * @file
+ * News teaser card – image, date, category, headline + link.
+ * Used as a Splide slide inside the news-teaser carousel.
+ */
+#}
+{% set date_raw = node.field_news_date.value %}
+{% set category = node.field_news_category.entity ? node.field_news_category.entity.label : '' %}
+{% set media = node.field_news_image.entity %}
+<div{{ attributes.addClass('news-teaser-item', 'splide__slide') }}>
+  {% if media and media.field_media_image.entity %}
+    <div class="relative mb-4">
+      <div class="image-container js-zoom-image" data-delay=".3">
+        {{ drupal_image(media.field_media_image.entity.uri.value, 'wide', {alt: media.field_media_image.alt, loading: 'lazy'}) }}
+      </div>
+    </div>
+  {% endif %}
+  <div class="info mb-3 text-hpm-red">
+    {% if date_raw %}{{ date_raw|date('d. F Y') }}{% endif %}{% if category %}{% if date_raw %} &bull; {% endif %}{{ category }}{% endif %}
+  </div>
+  <h3 class="h4">
+    {{ label }}
+  </h3>
+  <div class="mt-5 lg:mt-6">
+    <a class="text-link text-hpm-darkred copy"
+       href="{{ url }}"
+       title="Artikel lesen">
+      <span class="text-link__text copy">Artikel lesen</span>
+      <span class="link-icon">
+        {% include '@hpm/images/vectors/button-arrow.svg.twig' %}
+      </span>
+    </a>
+  </div>
+</div>

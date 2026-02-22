@@ -1,0 +1,9 @@
+uuid: ab8e6bc3-9008-4d6c-a335-09595d7521d2
+langcode: de
+status: true
+dependencies: {  }
+name: Geschäftsfeld
+vid: business_field
+description: null
+weight: 0
+new_revision: false

@@ -1,0 +1,35 @@
+uuid: a062552c-89e9-4487-86d7-d6e55708f8be
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.stage_slider.field_slides
+    - paragraphs.paragraphs_type.stage_slider
+  module:
+    - paragraphs
+id: paragraph.stage_slider.default
+targetEntityType: paragraph
+bundle: stage_slider
+mode: default
+content:
+  field_slides:
+    type: paragraphs
+    weight: 0
+    region: content
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: closed
+      closed_mode: summary
+      autocollapse: all
+      closed_mode_threshold: 0
+      add_mode: dropdown
+      form_display_mode: default
+      default_paragraph_type: _none
+      features:
+        collapse_edit_all: collapse_edit_all
+        duplicate: duplicate
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true

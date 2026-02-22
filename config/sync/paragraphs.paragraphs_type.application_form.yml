@@ -1,0 +1,10 @@
+uuid: 7bc28bb8-d39c-48d0-b9bc-a0968b7eb345
+langcode: de
+status: true
+dependencies: {  }
+id: application_form
+label: Bewerbungsformular
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

@@ -1,0 +1,22 @@
+uuid: e7d7574a-3a61-40c0-b852-33e97fe4d7aa
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_text
+    - paragraphs.paragraphs_type.alternate
+  module:
+    - text
+id: paragraph.alternate.field_text
+field_name: field_text
+entity_type: paragraph
+bundle: alternate
+label: Text
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats: {  }
+field_type: text_long

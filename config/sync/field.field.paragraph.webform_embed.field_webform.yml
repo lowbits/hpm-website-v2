@@ -1,0 +1,21 @@
+uuid: a41a5c8b-90a4-481a-85ba-d93abf8b90fb
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_webform
+    - paragraphs.paragraphs_type.webform_embed
+id: paragraph.webform_embed.field_webform
+field_name: field_webform
+entity_type: paragraph
+bundle: webform_embed
+label: Webformular
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:webform'
+  handler_settings: {  }
+field_type: entity_reference

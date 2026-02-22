@@ -1,0 +1,24 @@
+uuid: defac2f8-db6e-41e0-b960-fc2de55b2cde
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_person_image
+    - media.type.image
+    - node.type.person
+id: node.person.field_person_image
+field_name: field_person_image
+entity_type: node
+bundle: person
+label: Bild
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:media'
+  handler_settings:
+    target_bundles:
+      image: image
+field_type: entity_reference

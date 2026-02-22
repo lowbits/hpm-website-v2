@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "drupal": {
+      "command": "ddev",
+      "args": ["drush", "mcp-tools:serve", "--uri=https://hpm-website-v2.ddev.site:33001"]
+    }
+  }
+}

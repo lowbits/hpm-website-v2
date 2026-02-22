@@ -1,0 +1,24 @@
+<div{{ attributes.addClass('content-section', 'relative') }}>
+  {% if content.field_image|render|trim %}
+    <div class="image-container js-image-zoom">
+      {{ content.field_image }}
+    </div>
+  {% endif %}
+  <div class="section-container relative z-10 -mt-16 lg:-mt-24">
+    <div class="grid grid-cols-12 gap-x-7">
+      <div class="col-span-12 lg:col-span-8 lg:col-start-3 bg-white p-8 lg:p-12 js-up-slide">
+        {% if content.field_meta_label|render|trim %}
+          <p class="info meta-line--small mb-3">{{ content.field_meta_label }}</p>
+        {% endif %}
+        {% if content.field_headline|render|trim %}
+          <h2 class="h2">{{ content.field_headline }}</h2>
+        {% endif %}
+        {% if content.field_text|render|trim %}
+          <div class="formatted mt-4 lg:mt-6">
+            {{ content.field_text }}
+          </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>

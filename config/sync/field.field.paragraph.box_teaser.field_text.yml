@@ -1,0 +1,22 @@
+uuid: b55d820d-06b7-49aa-8b92-8fac767a25b5
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_text
+    - paragraphs.paragraphs_type.box_teaser
+  module:
+    - text
+id: paragraph.box_teaser.field_text
+field_name: field_text
+entity_type: paragraph
+bundle: box_teaser
+label: Text
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats: {  }
+field_type: text_long

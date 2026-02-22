@@ -1,0 +1,19 @@
+uuid: 3e52eb3b-5dd3-4b02-b78a-82c3d4ae4a7e
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_small_text
+    - paragraphs.paragraphs_type.application
+id: paragraph.application.field_small_text
+field_name: field_small_text
+entity_type: paragraph
+bundle: application
+label: 'Small Text'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

@@ -1,0 +1,103 @@
+{{ attach_library('hpm/fade-ins') }}
+{{ attach_library('hpm/slider-gallery') }}
+<article{{ attributes.addClass('node', 'node--project') }}>
+  {{ title_prefix }}
+  {{ title_suffix }}
+
+  {# Stage #}
+  <div class="stage-section">
+    <div class="section-container">
+      <div class="grid grid-cols-12 gap-x-7">
+        <div class="col-span-12 lg:col-span-8 lg:col-start-3">
+          {% if content.field_meta_label|render|trim %}
+            <p class="info meta-line--small mb-3">{{ content.field_meta_label }}</p>
+          {% endif %}
+          <h1 class="h1">{{ label }}</h1>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  {# Hero Image #}
+  {% if content.field_project_image|render|trim %}
+    <div class="section-container">
+      <div class="image-container js-image-zoom">
+        {{ content.field_project_image }}
+      </div>
+    </div>
+  {% endif %}
+
+  {# Content #}
+  <div class="content-section">
+    <div class="section-container">
+      <div class="grid grid-cols-12 gap-x-7">
+        {# Body Text #}
+        <div class="col-span-12 lg:col-span-7 lg:col-start-1">
+          {% if content.field_teaser_text|render|trim %}
+            <p class="h4 mb-6">{{ content.field_teaser_text }}</p>
+          {% endif %}
+          {% if content.body|render|trim %}
+            <div class="formatted">
+              {{ content.body }}
+            </div>
+          {% endif %}
+        </div>
+
+        {# Sidebar Facts #}
+        <aside class="col-span-12 lg:col-span-4 lg:col-start-9 mt-8 lg:mt-0">
+          <dl class="flex flex-col gap-4">
+            {% if content.field_client|render|trim %}
+              <div>
+                <dt class="info">{{ 'Auftraggeber:in'|t }}</dt>
+                <dd class="copy mt-1">{{ content.field_client }}</dd>
+              </div>
+            {% endif %}
+            {% if content.field_budget|render|trim %}
+              <div>
+                <dt class="info">{{ 'Investition'|t }}</dt>
+                <dd class="copy mt-1">{{ content.field_budget }}</dd>
+              </div>
+            {% endif %}
+            {% if content.field_extent|render|trim %}
+              <div>
+                <dt class="info">{{ 'Umfang'|t }}</dt>
+                <dd class="copy mt-1">{{ content.field_extent }}</dd>
+              </div>
+            {% endif %}
+            {% if content.field_runtime|render|trim %}
+              <div>
+                <dt class="info">{{ 'Laufzeit'|t }}</dt>
+                <dd class="copy mt-1">{{ content.field_runtime }}</dd>
+              </div>
+            {% endif %}
+            {% if content.field_services|render|trim %}
+              <div>
+                <dt class="info">{{ 'Leistungen'|t }}</dt>
+                <dd class="copy mt-1">{{ content.field_services }}</dd>
+              </div>
+            {% endif %}
+          </dl>
+        </aside>
+      </div>
+    </div>
+  </div>
+
+  {# Gallery #}
+  {% if content.field_gallery|render|trim %}
+    <div class="content-section">
+      <div class="gallery-slider js-gallery-slider">
+        {{ content.field_gallery }}
+      </div>
+    </div>
+  {% endif %}
+
+  {# Related Projects #}
+  {% if content.field_related_projects|render|trim %}
+    <div class="content-section">
+      <div class="section-container">
+        <h2 class="h3 mb-8">{{ 'Ähnliche Projekte'|t }}</h2>
+        {{ content.field_related_projects }}
+      </div>
+    </div>
+  {% endif %}
+</article>

@@ -1,0 +1,151 @@
+{# Header #}
+<header class="header js-header fixed inset-x-0 top-0 z-30 transition-transform will-change-transform">
+  {# Logo #}
+  <div class="header__logo-box absolute h-10 w-48
+              left-5 top-6
+              sm:left-12
+              lg:left-20 lg:top-8
+              xl:left-[calc(50%-60rem+6rem)]">
+    <a class="logo-link block cursor-pointer transition-transform duration-300 [&_svg_path]:fill-hpm-red [&_svg_path]:transition-[fill] [&_svg_path]:duration-500 max-sm:[.nav-open_&_svg_path]:fill-white"
+       href="{{ path('<front>') }}"
+       title="{{ 'Zum Start'|t }}">
+      {% include '@hpm/images/vectors/hpm-brand.svg.twig' %}
+    </a>
+  </div>
+
+  {# Menu Button #}
+  <button class="header__menu-button nav-button js-nav-button fixed right-5 top-5 z-30 h-[3.125rem] w-[3.125rem]
+             rounded-full bg-hpm-red p-0 hover:bg-hpm-darkred
+             [&.is-active]:bg-white hover:[&.is-active]:bg-hpm-red
+              sm:right-11
+              lg:right-19 lg:top-[1.875rem]"
+      aria-controls="offcanvas-nav"
+      aria-expanded="false"
+      aria-label="{{ 'Menü öffnen'|t }}">
+    <span class="line line-1 absolute left-1/2 top-1/2 z-[3] block h-0.5 w-[30px]" aria-hidden="true"></span>
+    <span class="line line-2 absolute left-1/2 top-1/2 z-[3] block h-0.5 w-[30px]" aria-hidden="true"></span>
+    <span class="line line-3 absolute left-1/2 top-1/2 z-[3] block h-0.5 w-[20px]" aria-hidden="true"></span>
+    <span class="label pointer-events-none absolute top-1/2 hidden h-[18px] w-[49px] -translate-y-1/2 flex-row items-center justify-start gap-0 sm:flex">
+      <span class="label-box pointer-events-none absolute right-0 top-0">
+        <span class="info label-menu block leading-[19px] transition-[color,opacity,transform] duration-400 ease-out">
+          {{ 'Menü'|t }}
+        </span>
+      </span>
+      <span class="label-box pointer-events-none absolute right-0 top-0">
+        <span class="info label-close block leading-[19px]">
+          {{ 'Schliessen'|t }}
+        </span>
+      </span>
+    </span>
+  </button>
+
+  {# Contact Button #}
+  <a class="button button--small header__contact z-2" href="/kontakt" title="{{ 'Kontakt aufnehmen'|t }}">
+    <span class="button-text">{{ 'Kontakt'|t }}</span>
+  </a>
+</header>
+
+{# Navigation Panel (right-side sliding panel with multi-level menus) #}
+<div class="navigation-multilevel js-navigation
+            fixed inset-y-0 right-0 z-25
+            flex items-stretch
+            w-full bg-hpm-darkred text-white
+            sm:w-[24rem] lg:w-[32rem]"
+     data-theme="darkred">
+  <div class="section-container xl:px-20 flex items-stretch">
+    <div class="navigation-inner flex w-full flex-col justify-between py-[5.5rem]
+                lg:pt-[3rem] lg:pb-0">
+
+      <div class="navigation__spacer"></div>
+
+      {{ page.navigation }}
+
+      <nav class="navigation-additional relative flex flex-col items-start gap-3" aria-label="{{ 'Weitere Links'|t }}">
+        <a href="/projekte" class="text-link text-white text-[20px] leading-[1.4]">{{ 'Projekte'|t }}</a>
+        <a href="/neuigkeiten" class="text-link text-white text-[20px] leading-[1.4]">{{ 'Neuigkeiten'|t }}</a>
+      </nav>
+
+      <div class="navigation-social flex gap-4 pt-4 sm:pt-6 lg:pt-8">
+        <a href="https://www.linkedin.com/company/hoecker-project-managers/" target="_blank" rel="noopener" class="w-5 h-5 [&_svg_path]:fill-white" aria-label="LinkedIn">
+          {% include '@hpm/images/vectors/icon-linkedin.svg.twig' %}
+        </a>
+        <a href="https://www.xing.com/pages/hockerprojectmanagers" target="_blank" rel="noopener" class="w-5 h-5 [&_svg_path]:fill-white" aria-label="Xing">
+          {% include '@hpm/images/vectors/icon-xing.svg.twig' %}
+        </a>
+        <a href="https://www.kununu.com/de/hoecker-project-managers" target="_blank" rel="noopener" class="w-5 h-5 [&_svg_path]:fill-white" aria-label="kununu">
+          {% include '@hpm/images/vectors/icon-kununu.svg.twig' %}
+        </a>
+      </div>
+
+      <div class="navigation__spacer hidden sm:block lg:hidden"></div>
+    </div>
+  </div>
+</div>
+
+{# Main Content #}
+<div class="flex flex-col min-h-full">
+  <main id="main-content" class="display-block flex-1">
+    {% if page.hero %}
+      {{ page.hero }}
+    {% endif %}
+    {{ page.content }}
+  </main>
+
+  {# Footer #}
+  <footer class="footer bg-hpm-darkred text-white py-12 lg:pb-14 lg:pt-16" data-theme="darkred">
+    <div class="section-container grid grid-cols-12 gap-x-7 gap-y-11 js-footer-items lg:gap-y-11">
+
+      {# Brand #}
+      <div class="footer__brand js-footer-inner col-span-12 sm:col-span-12 lg:col-span-3">
+        <div class="footer__logo-container h-10 w-48 [&_svg_path]:fill-white">
+          {% include '@hpm/images/vectors/hpm-brand.svg.twig' %}
+        </div>
+      </div>
+
+      {# Footer First #}
+      {% if page.footer_first %}
+        <div class="col-span-6 sm:col-span-3 lg:col-span-2">
+          <div class="js-footer-inner pt-4 relative">
+            <div class="bg-hpm-red w-[7.5rem] h-[0.0625rem] absolute top-0 left-0"></div>
+            {{ page.footer_first }}
+          </div>
+        </div>
+      {% endif %}
+
+      {# Footer Second (two sub-columns: secondary + legal links) #}
+      {% if page.footer_second %}
+        <div class="col-span-6 sm:col-span-3 lg:col-span-4">
+          {{ page.footer_second }}
+        </div>
+      {% endif %}
+
+      {# Footer Third (newsletter CTA) #}
+      {% if page.footer_third %}
+        <div class="js-footer-inner col-span-12 pt-[1.125rem] relative sm:col-span-5 sm:col-start-8 lg:col-span-3 lg:col-start-auto">
+          <div class="bg-hpm-red w-[7.5rem] h-[0.0625rem] absolute top-0 left-0"></div>
+          <div class="formatted text-white [&_a]:text-white">
+            {{ page.footer_third }}
+          </div>
+        </div>
+      {% endif %}
+
+      {# Footer Bottom (social links + DQS seal) #}
+      <div class="footer__footer js-footer-inner col-span-12 flex items-center justify-between sm:items-end">
+        <div class="flex gap-4">
+          <a href="https://www.linkedin.com/company/hoecker-project-managers/" target="_blank" rel="noopener" class="w-5 h-5 [&_svg_path]:fill-white" aria-label="LinkedIn">
+            {% include '@hpm/images/vectors/icon-linkedin.svg.twig' %}
+          </a>
+          <a href="https://www.xing.com/pages/hockerprojectmanagers" target="_blank" rel="noopener" class="w-5 h-5 [&_svg_path]:fill-white" aria-label="Xing">
+            {% include '@hpm/images/vectors/icon-xing.svg.twig' %}
+          </a>
+          <a href="https://www.kununu.com/de/hoecker-project-managers" target="_blank" rel="noopener" class="w-5 h-5 [&_svg_path]:fill-white" aria-label="kununu">
+            {% include '@hpm/images/vectors/icon-kununu.svg.twig' %}
+          </a>
+        </div>
+        <div class="w-[5.625rem] sm:w-[8rem] [&_svg_path]:fill-white">
+          {% include '@hpm/images/vectors/logo-dqs.svg.twig' %}
+        </div>
+      </div>
+    </div>
+  </footer>
+</div>

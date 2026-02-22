@@ -1,0 +1,24 @@
+uuid: 5b1cc55a-c025-4c13-912a-bf37230cae40
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_image_portrait
+    - media.type.image
+    - paragraphs.paragraphs_type.stage_slider_item
+id: paragraph.stage_slider_item.field_image_portrait
+field_name: field_image_portrait
+entity_type: paragraph
+bundle: stage_slider_item
+label: 'Bild (Hochformat)'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:media'
+  handler_settings:
+    target_bundles:
+      image: image
+field_type: entity_reference

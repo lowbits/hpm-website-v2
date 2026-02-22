@@ -1,0 +1,22 @@
+uuid: 08256900-2adc-42ff-8de9-adc68bf122d1
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - hpm
+_core:
+  default_config_hash: erQSEZF2XUjNmgTl0uNRBzmg18ZGXwUcw2FhApoeuHk
+id: hpm_content
+theme: hpm
+region: content
+weight: 0
+provider: null
+plugin: system_main_block
+settings:
+  id: system_main_block
+  label: 'Hauptinhalt der Seite'
+  label_display: '0'
+  provider: system
+visibility: {  }

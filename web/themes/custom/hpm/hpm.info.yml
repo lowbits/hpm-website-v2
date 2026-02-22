@@ -1,0 +1,23 @@
+name: HPM
+type: theme
+description: 'Custom theme for HÖCKER Project Managers website.'
+core_version_requirement: ^11
+base theme: false
+package: Custom
+
+regions:
+  header: Header
+  navigation: Navigation
+  hero: Hero
+  content: Content
+  sidebar: Sidebar
+  footer_first: 'Footer First'
+  footer_second: 'Footer Second'
+  footer_third: 'Footer Third'
+  footer_bottom: 'Footer Bottom'
+
+libraries:
+  - hpm/global
+
+libraries-override:
+  claro/global-styling: false

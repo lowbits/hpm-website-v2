@@ -1,0 +1,22 @@
+uuid: 74012d05-062f-4c47-b40b-f75f261e0344
+langcode: en
+status: false
+dependencies:
+  module:
+    - system
+  theme:
+    - hpm
+_core:
+  default_config_hash: eYL19CLDyinGTWYQfBD1DswWzglEotE_kHnHx3AxTXM
+id: hpm_powered
+theme: hpm
+region: footer_bottom
+weight: 0
+provider: null
+plugin: system_powered_by_block
+settings:
+  id: system_powered_by_block
+  label: 'Angetrieben durch Drupal'
+  label_display: '0'
+  provider: system
+visibility: {  }

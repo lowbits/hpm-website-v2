@@ -1,0 +1,27 @@
+{% set variant = content.field_display_variant|render|striptags|trim %}
+<div{{ attributes.addClass('stage-section') }}>
+  <div class="section-container">
+    <div class="grid grid-cols-12 gap-x-7">
+      <div class="col-span-12 lg:col-span-6 lg:col-start-1 js-element-group">
+        {% if content.field_meta_label|render|trim %}
+          <p class="info meta-line--small mb-3">{{ content.field_meta_label }}</p>
+        {% endif %}
+        {% if content.field_headline|render|trim %}
+          <h1 class="h1">{{ content.field_headline }}</h1>
+        {% endif %}
+        {% if content.field_content|render|trim %}
+          <div class="formatted mt-4 lg:mt-6">
+            {{ content.field_content }}
+          </div>
+        {% endif %}
+      </div>
+      {% if content.field_image|render|trim %}
+        <div class="col-span-12 lg:col-span-5 lg:col-start-8 mt-8 lg:mt-0">
+          <div class="image-container js-image-zoom">
+            {{ content.field_image }}
+          </div>
+        </div>
+      {% endif %}
+    </div>
+  </div>
+</div>

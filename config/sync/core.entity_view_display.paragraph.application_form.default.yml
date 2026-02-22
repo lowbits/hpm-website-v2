@@ -1,0 +1,49 @@
+uuid: 7335fa4d-6ac7-4d1c-a370-3f12d0d6e482
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.application_form.field_headline
+    - field.field.paragraph.application_form.field_intro_text
+    - field.field.paragraph.application_form.field_theme
+    - field.field.paragraph.application_form.field_webform
+    - paragraphs.paragraphs_type.application_form
+  module:
+    - options
+    - text
+id: paragraph.application_form.default
+targetEntityType: paragraph
+bundle: application_form
+mode: default
+content:
+  field_headline:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_intro_text:
+    type: text_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_theme:
+    type: list_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  field_webform:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 2
+    region: content
+hidden: {  }

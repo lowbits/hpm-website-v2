@@ -1,0 +1,22 @@
+uuid: d4ab81e7-93a8-4a52-8115-39a003180892
+langcode: en
+status: true
+dependencies:
+  module:
+    - help
+  theme:
+    - hpm
+_core:
+  default_config_hash: VfPFqqxfkomud5CO8DUijw85QIl9GIxh_nIxLOYESxg
+id: hpm_help
+theme: hpm
+region: header
+weight: 0
+provider: null
+plugin: help_block
+settings:
+  id: help_block
+  label: Hilfe
+  label_display: '0'
+  provider: help
+visibility: {  }

@@ -1,0 +1,102 @@
+@layer components {
+
+  .slider-item {
+    @apply absolute;
+  }
+  .teaser-slider .news-teaser-item,
+  .teaser-slider .projects-teaser-item {
+    @apply absolute block mr-6;
+    @apply w-full sm:w-[56vw] md:w-[40vw] lg:w-[32vw] xl:w-[36rem];
+  }
+  .teaser-slider .splide__slide.news-teaser-item {
+    @apply relative mr-0;
+    @apply w-full sm:w-[56vw] md:w-[40vw] lg:w-[32vw] xl:w-[36rem];
+  }
+
+  /* Override splide-core.min.css overflow:hidden so slides extend to the
+     screen edge (matching original Flickity behaviour). !important is needed
+     because the vendor CSS is unlayered while this rule lives in
+     @layer components which has lower cascade priority. */
+  .teaser-slider .splide__track {
+    overflow: visible !important;
+  }
+  .teaser-slider .benefits-item {
+    @apply w-full sm:w-[18.5rem] mr-6;
+  }
+  .teaser-slider .slider-item.is-passed,
+  .teaser-slider .projects-teaser-item.is-passed,
+  .teaser-slider .splide__slide.news-teaser-item.is-passed {
+    @apply opacity-0;
+  }
+
+  /* Quotes Slider */
+  .quotes-slider .slider-item .quotes-image,
+  .quotes-slider .slider-item .quotes-content {
+    @apply opacity-0;
+  }
+  .quotes-slider .slider-item.is-selected .quotes-image,
+  .quotes-slider .slider-item.is-selected .quotes-content{
+    @apply opacity-100;
+  }
+
+  /* Timeline Slider */
+  .timeline-slider .slider-item {
+    @apply block mr-6;
+    transition: opacity .5s ease;
+  }
+  .timeline-slider .slider-item .timeline-year {
+    @apply font-case font-normal text-[1.0625rem] leading-[2rem] sm:text-[1.1875rem] lg:text-[1.375rem];
+    transition: font-size .5s ease;
+  }
+  .timeline-slider .slider-item .timedot {
+    transition: transform .5s ease;
+    transform-origin: center left;
+  }
+  .timeline-slider .slider-item .text {
+    transition: transform .5s ease;
+    transform-origin: center left;
+  }
+  .timeline-slider .slider-item.is-selected .timeline-text {
+    transition-delay: .2s;
+  }
+  .timeline-slider .slider-item.is-selected .timeline-year {
+    @apply text-[1.375rem] sm:text-[1.625rem] lg:text-[2rem];
+  }
+  .timeline-slider .slider-item.is-selected .timedot {
+    transform: scale(1.5);
+  }
+  .timeline-slider .slider-item.is-passed {
+    @apply opacity-0;
+  }
+
+  /* Gallery */
+  .gallery-slider .slider-item {
+    @apply block mr-5 sm:mr-6 lg:mr-7;
+  }
+  .gallery-slider .slider-item img {
+    @apply h-[12rem] w-auto
+    sm:h-[24rem]
+    lg:h-[32rem];
+  }
+
+  /* Controls & Buttons */
+  .slider-button {
+    @apply bg-transparent flex items-center justify-center rounded-full border-hpm-darkred border-1;
+    @apply h-[3rem] w-[3rem];
+    @apply hover:cursor-pointer hover:bg-hpm-darkred;
+    transition: background-color .3s ease,
+                border-color .3s ease,
+                color .3s ease;
+  }
+  .slider-button.is-disabled {
+    @apply opacity-50 pointer-events-none;
+  }
+  .slider-button__icon {
+    @apply block;
+  }
+
+  .slider-button--previous { @apply -left-1 }
+  .slider-button--previous .slider-button__icon { @apply rotate-180; }
+
+  .slider-button--next { @apply right-[11px] sm:-right-1; }
+}

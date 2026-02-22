@@ -1,0 +1,15 @@
+uuid: ed48feeb-2eb1-40cd-afb3-1cbed5d9d39e
+langcode: de
+status: true
+dependencies: {  }
+name: gallery_slide
+label: 'Gallery Slide'
+effects:
+  79b30da9-63fa-4f59-9268-791ef58ce415:
+    uuid: 79b30da9-63fa-4f59-9268-791ef58ce415
+    id: image_scale
+    weight: null
+    data:
+      width: 1400
+      height: null
+      upscale: false

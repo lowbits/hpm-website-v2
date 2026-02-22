@@ -1,0 +1,128 @@
+uuid: 2bdd4eda-5a2a-4c96-8034-2aa087475134
+langcode: de
+status: open
+dependencies: {  }
+weight: 0
+open: null
+close: null
+uid: 0
+template: false
+archive: false
+id: application
+title: Bewerbung
+description: null
+categories: {  }
+elements: |
+
+  name:
+    "#type": textfield
+    "#title": Name
+    "#required": true
+  email:
+    "#type": email
+    "#title": E-Mail
+    "#required": true
+  phone:
+    "#type": tel
+    "#title": Telefon
+  location:
+    "#type": select
+    "#title": "Gewünschter Standort"
+    "#required": true
+    "#options":
+      augsburg: Augsburg
+      berlin: Berlin
+      bochum: Bochum
+      darmstadt: Darmstadt
+      duisburg: Duisburg
+      hamburg: Hamburg
+      koeln: Köln
+      muenchen: München
+      nuernberg: Nürnberg
+  salary:
+    "#type": textfield
+    "#title": Gehaltsvorstellung
+  resume:
+    "#type": managed_file
+    "#title": "Lebenslauf (PDF)"
+    "#required": true
+    "#file_extensions": pdf
+    "#max_filesize": "10"
+  cover_letter:
+    "#type": managed_file
+    "#title": "Anschreiben (PDF)"
+    "#file_extensions": pdf
+    "#max_filesize": "10"
+  certificates:
+    "#type": managed_file
+    "#title": "Zeugnisse (PDF)"
+    "#file_extensions": pdf
+    "#max_filesize": "20"
+    "#multiple": true
+  privacy_data:
+    "#type": checkbox
+    "#title": "Ich stimme der Verarbeitung meiner personenbezogenen Daten gemäß der Datenschutzerklärung zu."
+    "#required": true
+  privacy_storage:
+    "#type": checkbox
+    "#title": "Ich bin damit einverstanden, dass meine Bewerbungsunterlagen für 6 Monate gespeichert werden."
+    "#required": true
+  privacy_contact:
+    "#type": checkbox
+    "#title": "Ich bin damit einverstanden, dass mich HÖCKER Project Managers bezüglich meiner Bewerbung kontaktiert."
+    "#required": true
+css: ''
+javascript: ''
+settings:
+  confirmation_type: message
+  confirmation_message: 'Vielen Dank für Ihre Bewerbung. Wir werden Ihre Unterlagen sorgfältig prüfen und uns bei Ihnen melden.'
+  form_submit_label: 'Bewerbung absenden'
+access:
+  create:
+    roles:
+      - anonymous
+      - authenticated
+    users: {  }
+    permissions: {  }
+  view_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  update_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  delete_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  purge_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  view_own:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  update_own:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  delete_own:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  administer:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  test:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  configuration:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+handlers: {  }
+variants: {  }

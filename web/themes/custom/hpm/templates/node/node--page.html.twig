@@ -1,0 +1,23 @@
+{{ attach_library('hpm/fade-ins') }}
+<article{{ attributes.addClass('node', 'node--page') }}>
+  {{ title_prefix }}
+  {{ title_suffix }}
+
+  {% if content.field_paragraphs|render|trim %}
+    {{ content.field_paragraphs }}
+  {% endif %}
+
+  {% if content.body|render|trim %}
+    <div class="content-section">
+      <div class="section-container">
+        <div class="grid grid-cols-12 gap-x-7">
+          <div class="col-span-12 lg:col-span-8 lg:col-start-3">
+            <div class="formatted">
+              {{ content.body }}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  {% endif %}
+</article>

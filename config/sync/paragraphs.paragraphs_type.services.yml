@@ -1,0 +1,10 @@
+uuid: 3e785767-329c-4f1e-8b71-d14d144f8bb2
+langcode: de
+status: true
+dependencies: {  }
+id: services
+label: Kompetenzen
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

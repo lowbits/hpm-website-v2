@@ -1,0 +1,21 @@
+uuid: f8a3c1d2-7e45-4b9a-a612-3d8f0c5e9b71
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_theme
+    - paragraphs.paragraphs_type.intro
+  module:
+    - options
+id: paragraph.intro.field_theme
+field_name: field_theme
+entity_type: paragraph
+bundle: intro
+label: Theme
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

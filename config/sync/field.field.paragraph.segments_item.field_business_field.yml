@@ -1,0 +1,24 @@
+uuid: 7a026d61-d114-4c8d-b2f5-b715e01fcd37
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_business_field
+    - paragraphs.paragraphs_type.segments_item
+    - taxonomy.vocabulary.business_field
+id: paragraph.segments_item.field_business_field
+field_name: field_business_field
+entity_type: paragraph
+bundle: segments_item
+label: 'Business Field'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      business_field: business_field
+field_type: entity_reference

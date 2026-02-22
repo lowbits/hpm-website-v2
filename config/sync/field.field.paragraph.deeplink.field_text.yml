@@ -1,0 +1,22 @@
+uuid: 375c1619-e073-4058-896e-f8a69537a3f5
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_text
+    - paragraphs.paragraphs_type.deeplink
+  module:
+    - text
+id: paragraph.deeplink.field_text
+field_name: field_text
+entity_type: paragraph
+bundle: deeplink
+label: Text
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats: {  }
+field_type: text_long

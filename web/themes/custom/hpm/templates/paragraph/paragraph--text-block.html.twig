@@ -1,0 +1,16 @@
+<div{{ attributes.addClass('content-section') }}>
+  <div class="section-container">
+    <div class="grid grid-cols-12 gap-x-7">
+      <div class="col-span-12 lg:col-span-8 lg:col-start-3 js-element-group">
+        {% if content.field_headline|render|trim %}
+          <h2 class="h2">{{ content.field_headline }}</h2>
+        {% endif %}
+        {% if content.field_text|render|trim %}
+          <div class="formatted">
+            {{ content.field_text }}
+          </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>

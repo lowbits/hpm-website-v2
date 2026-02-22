@@ -1,0 +1,22 @@
+uuid: 00817481-4201-4489-a318-57d4da4a9d2d
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_address
+    - node.type.location
+  module:
+    - text
+id: node.location.field_address
+field_name: field_address
+entity_type: node
+bundle: location
+label: Adresse
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats: {  }
+field_type: text_long

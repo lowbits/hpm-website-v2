@@ -1,0 +1,21 @@
+uuid: 706590cc-d6b7-4c95-aafe-dd2e5772d967
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_display_size
+    - paragraphs.paragraphs_type.box_teaser
+  module:
+    - options
+id: paragraph.box_teaser.field_display_size
+field_name: field_display_size
+entity_type: paragraph
+bundle: box_teaser
+label: Anzeigegröße
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string
