@@ -871,6 +871,7 @@ if (getenv('DRUPAL_DB_HOST')) {
   $settings['trusted_host_patterns'] = array_filter(
     explode(',', getenv('DRUPAL_TRUSTED_HOSTS') ?: ''),
   );
+  $config['config_split.config_split.dev']['status'] = FALSE;
 }
 
 // Automatically generated include for settings managed by ddev.
