@@ -17,6 +17,8 @@ RUN npm run build
 # Stage 2: Production image
 FROM webdevops/php-nginx:8.3
 
+RUN apt-get update && apt-get install -y mariadb-client && rm -rf /var/lib/apt/lists/*
+
 ENV WEB_DOCUMENT_ROOT=/app/web
 
 # Copy Composer from official image
