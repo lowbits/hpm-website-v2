@@ -35,8 +35,6 @@ module:
   language: 0
   link: 0
   locale: 0
-  mcp_tools: 0
-  mcp_tools_stdio: 0
   media: 0
   media_library: 0
   menu_link_content: 0
@@ -68,9 +66,8 @@ module:
   content_translation: 10
   views: 10
   paragraphs: 11
-  standard: 1000
 theme:
   olivero: 0
   claro: 0
   hpm: 0
-profile: standard
+profile: minimal
