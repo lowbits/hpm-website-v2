@@ -1,16 +1,28 @@
-<div{{ attributes.addClass('content-section') }}>
-  <div class="section-container">
-    <div class="grid grid-cols-12 gap-x-7">
-      <div class="col-span-12 lg:col-span-8 lg:col-start-3 js-element-group">
-        {% if content.field_headline|render|trim %}
-          <h2 class="h2">{{ content.field_headline }}</h2>
-        {% endif %}
-        {% if content.field_text|render|trim %}
-          <div class="formatted">
-            {{ content.field_text }}
-          </div>
-        {% endif %}
-      </div>
+{#
+/**
+ * @file
+ * Text block – simple headline + body text section.
+ *
+ * Fields: field_headline, field_text, field_theme.
+ */
+#}
+<section{{ attributes.addClass('content-section') }}
+  {% if theme_css %}data-theme="{{ theme_css }}"{% endif %}>
+  <div class="section-container grid grid-cols-1 gap-7
+              sm:grid-cols-12">
+    <div class="js-element-group
+                sm:col-span-10 sm:col-start-2
+                md:col-span-8 md:col-start-3
+                lg:col-span-7 lg:col-start-3
+                xl:col-span-6 xl:col-start-3">
+      {% if content.field_headline|render|trim %}
+        <h2 class="h2">{{ content.field_headline }}</h2>
+      {% endif %}
+      {% if content.field_text|render|trim %}
+        <div class="formatted">
+          {{ content.field_text }}
+        </div>
+      {% endif %}
     </div>
   </div>
-</div>
+</section>

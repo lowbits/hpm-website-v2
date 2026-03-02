@@ -12,11 +12,14 @@ type: list_string
 settings:
   allowed_values:
     -
-      value: default
-      label: Standard
+      value: image
+      label: Bild
     -
-      value: centered
-      label: Zentriert
+      value: visual
+      label: Visual
+    -
+      value: map
+      label: Karte
   allowed_values_function: ''
 module: options
 locked: false

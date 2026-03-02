@@ -1,0 +1,32 @@
+<?php
+
+/**
+ * @file
+ * Form alterations for HPM paragraph types.
+ */
+
+/**
+ * Implements hook_field_widget_single_element_form_alter().
+ *
+ * Restricts field_theme options per paragraph type.
+ */
+function hpm_tweaks_field_widget_single_element_form_alter(&$element, &$form_state, $context) {
+  $field_name = $context['items']->getFieldDefinition()->getName();
+  if ($field_name !== 'field_theme') {
+    return;
+  }
+  $bundle = $context['items']->getEntity()->bundle();
+  $theme_limits = [
+    'people' => ['weiss', 'beige'],
+    'quotes' => ['weiss', 'beige'],
+  ];
+  if (isset($theme_limits[$bundle])) {
+    $allowed = array_flip(array_merge(['_none'], $theme_limits[$bundle]));
+    if (isset($element['#options'])) {
+      $element['#options'] = array_intersect_key($element['#options'], $allowed);
+    }
+    elseif (isset($element['value']['#options'])) {
+      $element['value']['#options'] = array_intersect_key($element['value']['#options'], $allowed);
+    }
+  }
+}

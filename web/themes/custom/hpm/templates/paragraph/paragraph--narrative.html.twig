@@ -1,42 +1,93 @@
+{#
+/**
+ * @file
+ * Narrative – full-width image with absolutely positioned content box overlay.
+ *
+ * Fields: field_box_position (left/right), field_box_theme (dark/red),
+ *         field_headline, field_text, field_accordion_items, field_image,
+ *         field_credits, field_link, field_anchor_id.
+ */
+#}
 {{ attach_library('hpm/accordion') }}
-{% set box_position = content.field_box_position|render|striptags|trim|default('right') %}
-{% set box_theme = content.field_box_theme|render|striptags|trim %}
-<div{{ attributes.addClass('content-section') }}>
-  <div class="section-container">
-    <div class="grid grid-cols-12 gap-x-7 items-start">
+{% set box_position = paragraph.field_box_position.value|default('left') %}
+{% set box_theme = paragraph.field_box_theme.value|default('dark') %}
+<section{{ attributes.addClass('narrative', 'relative', 'content-section', 'overflow-hidden', 'max-sm:mb-0') }}>
+  {% if paragraph.field_anchor_id.value %}
+    <div id="{{ paragraph.field_anchor_id.value }}"></div>
+  {% endif %}
+  <div class="section-container max-sm:px-0 grid grid-cols-12 gap-x-5
+              lg:gap-x-6">
+
+    <div class="relative col-span-12 grid grid-cols-12 gap-x-5
+                lg:gap-x-6">
       {# Image #}
-      <div class="col-span-12 lg:col-span-7 {{ box_position == 'left' ? 'lg:order-2 lg:col-start-6' : 'lg:order-1' }}">
+      <div class="col-span-12
+                  sm:col-span-11 sm:col-start-2
+                  md:col-span-10 md:col-start-3
+                  lg:col-span-12 lg:col-start-auto">
         {% if content.field_image|render|trim %}
-          <div class="image-container js-image-zoom">
-            {{ content.field_image }}
+          <div class="relative">
+            <div class="image-container js-zoom-image" data-delay=".2">
+              {{ content.field_image }}
+            </div>
+            {% if paragraph.field_credits.value %}
+              <div class="credits absolute {{ box_position == 'left' ? 'right-[-2px] bottom-0 rotate-90 origin-bottom-right sm:right-[-4px]' : 'left-[-2px] bottom-0 -rotate-90 origin-bottom-left sm:left-[-4px]' }}">
+                <span class="{{ box_position == 'right' ? 'relative block rotate-180 origin-center' }}">
+                  {{ paragraph.field_credits.value }}
+                </span>
+              </div>
+            {% endif %}
           </div>
         {% endif %}
       </div>
 
       {# Content Box #}
-      <div class="col-span-12 lg:col-span-5 {{ box_position == 'left' ? 'lg:order-1' : 'lg:order-2 lg:col-start-8' }} -mt-16 lg:-mt-24 relative z-10 js-up-slide"
-           {% if box_theme %}data-theme="{{ box_theme }}"{% endif %}>
-        <div class="p-8 lg:p-12 {{ box_theme == 'darkred' ? 'bg-hpm-darkred text-hpm-beige' : 'bg-white' }}">
-          {% if content.field_headline|render|trim %}
-            <h2 class="h3">{{ content.field_headline }}</h2>
+      <div class="relative z-[2] col-span-12
+                  sm:col-span-10
+                  sm:-top-8
+                  lg:absolute
+                  {% if box_position == 'left' %}
+                    lg:-left-8 lg:bottom-8 lg:top-auto lg:w-[41%]
+                  {% else %}
+                    lg:top-8 lg:-right-8 lg:w-[41%]
+                  {% endif %}">
+        <div class="text-white
+                    {{ box_theme == 'dark' ? 'bg-hpm-darkred' : 'bg-hpm-red' }} js-element-group
+                    px-6 py-8
+                    sm:px-8 sm:!py-8"
+             data-theme="{{ box_theme == 'dark' ? 'darkred' : 'red' }}">
+
+          {% if paragraph.field_headline.value %}
+            <h2 class="h3 text-white">
+              {{ paragraph.field_headline.value }}
+            </h2>
           {% endif %}
-          {% if content.field_text|render|trim %}
-            <div class="formatted mt-4 lg:mt-6">
-              {{ content.field_text }}
+
+          {% if paragraph.field_text.value %}
+            <div class="formatted">
+              {{ paragraph.field_text.value|raw }}
             </div>
           {% endif %}
+
           {% if content.field_accordion_items|render|trim %}
-            <div class="accordion mt-6">
+            <div class="accordion-block js-accordion mt-6">
               {{ content.field_accordion_items }}
             </div>
           {% endif %}
-          {% if content.field_link|render|trim %}
-            <div class="button-container mt-6">
-              {{ content.field_link }}
+
+          {% if button_url %}
+            <div class="button-container">
+              {% include '@hpm/templates/components/button-link.html.twig' with {
+                url: button_url,
+                text: button_text,
+                variant: 'secondary'
+              } only %}
             </div>
           {% endif %}
+
         </div>
       </div>
     </div>
+
   </div>
-</div>
+</section>

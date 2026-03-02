@@ -1,0 +1,88 @@
+{#
+/**
+ * @file
+ * People – section title + grid of reusable person nodes.
+ *
+ * Fields: field_section_title (string),
+ *         field_people (entity_reference to person nodes),
+ *         field_theme (weiss/beige).
+ *
+ * Person node fields: title (Name*), field_person_image (Bild*, 600x800 3:4),
+ *                     field_credits, field_description (Beschreibung*), field_email.
+ */
+#}
+<section{{ attributes.addClass('content-section') }}
+  {% if theme_css %}data-theme="{{ theme_css }}"{% endif %}>
+  <div class="section-container">
+
+    {# Section title #}
+    {% if paragraph.field_section_title.value %}
+      <div class="section-title flex flex-col gap-5 mb-9 col-span-12
+                  sm:mb-12 sm:flex-row sm:items-center sm:justify-between
+                  md:flex-row md:gap-12
+                  lg:mb-16
+                  xl:items-center">
+        <div class="flex flex-col gap-3">
+          <h2 class="h2 text-hpm-red">{{ paragraph.field_section_title.value }}</h2>
+        </div>
+      </div>
+    {% endif %}
+
+    {# People grid #}
+    <div class="grid grid-cols-1 gap-x-7 gap-y-10
+                sm:grid-cols-2 sm:gap-y-12
+                md:grid-cols-3 md:gap-x-14
+                lg:gap-y-14 lg:gap-x-7">
+      {% for item in paragraph.field_people %}
+        {% set person = item.entity %}
+        {% set person_media = person.field_person_image.entity %}
+        <div class="people__item relative
+                    grid grid-cols-8 sm:grid-cols-6
+                    lg:grid-cols-4">
+          <div class="flex flex-col items-start gap-3
+                      col-span-8
+                      sm:gap-4 sm:col-span-5
+                      md:col-span-6
+                      lg:gap-4.5 lg:col-span-3">
+
+            {# Portrait (3:4, 600x800) #}
+            {% if person_media %}
+              <div class="portrait relative w-[80%] sm:w-full">
+                <div class="image-box pt-[133.33%]">
+                  <img src="{{ file_url(person_media.field_media_image.entity.uri.value) }}"
+                       alt="{{ person.label }}"
+                       loading="lazy">
+                </div>
+                {% if person.field_credits.value %}
+                  <div class="credits text-hpm-darkred-30 absolute origin-bottom-right
+                              -right-0.5 bottom-0 rotate-90">
+                    {{ person.field_credits.value }}
+                  </div>
+                {% endif %}
+              </div>
+            {% endif %}
+
+            {# Name / Description / Email #}
+            <div class="flex flex-col gap-2">
+              <h3 class="h4-serif">
+                {{ person.label }}
+              </h3>
+              <div>
+                {% if person.field_description.value %}
+                  <p>{{ person.field_description.value|raw }}</p>
+                {% endif %}
+                {% if person.field_email.value %}
+                  <p>
+                    <a href="mailto:{{ person.field_email.value }}"
+                       title="E-Mail an {{ person.label }}">{{ person.field_email.value }}</a>
+                  </p>
+                {% endif %}
+              </div>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+
+  </div>
+</section>

@@ -12,14 +12,11 @@ type: list_string
 settings:
   allowed_values:
     -
-      value: default
-      label: Standard
-    -
       value: dark
-      label: Dunkel
+      label: Dark
     -
-      value: brand
-      label: Marke
+      value: red
+      label: Red
   allowed_values_function: ''
 module: options
 locked: false

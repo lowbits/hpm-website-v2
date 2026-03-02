@@ -2,18 +2,10 @@
   @apply py-spacing-xs sm:py-spacing-sm lg:py-spacing-lg xl:py-spacing-xl;
 }
 
-[data-theme]:has(+[data-theme]),
-[data-theme]:has(+.segment),
-[data-theme]:last-child {
-  @apply mb-0;
-}
-[data-theme] + [data-theme] {
-  @apply mt-0;
-}
-[data-theme="darkred"] + [data-theme="darkred"],
-[data-theme="red"] + [data-theme="red"],
-[data-theme="beige"] + [data-theme="beige"] {
-  @apply -mt-spacing-xs sm:-mt-spacing-sm lg:-mt-spacing-lg xl:-mt-spacing-xl;
+/* Themed content-sections: use padding only (from [data-theme] rule above),
+   remove margin so background color fills the full area. */
+.content-section[data-theme] {
+  @apply my-0;
 }
 
 [data-theme="darkred"] .button,
@@ -43,6 +35,16 @@
 
 [data-theme="red"] { @apply bg-hpm-red; }
 [data-theme="red"] .button-icon svg path { @apply fill-hpm-darkred; }
+
+[data-theme="darkred"] .accordion__box,
+[data-theme="red"] .accordion__box {
+  @apply border-white;
+}
+
+[data-theme="darkred"] .accordion__button svg path,
+[data-theme="red"] .accordion__button svg path {
+  @apply fill-white;
+}
 
 [data-theme="beige"] {
   @apply bg-hpm-beige;

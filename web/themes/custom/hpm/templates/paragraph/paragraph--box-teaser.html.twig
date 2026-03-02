@@ -2,6 +2,10 @@
 /**
  * @file
  * Box teaser – image with overlapping colored content box.
+ *
+ * Fields: field_display_size (small/large), field_box_position (left/right),
+ *         field_image, field_credits, field_logo, field_headline, field_text,
+ *         field_link.
  */
 #}
 {% set size = content.field_display_size|render|striptags|trim|default('large') %}
@@ -17,11 +21,37 @@
                 md:col-span-7 md:col-start-auto
                 lg:col-span-6
                 xl:col-span-5
-                {{ box_position == 'right' ? 'lg:col-start-2 xl:col-start-2' : 'md:order-2 lg:col-start-7' }}">
+                {% if size == 'small' %}
+                  {% if box_position == 'right' %}
+                    lg:col-start-2
+                    xl:col-start-2
+                  {% else %}
+                    md:order-2
+                    lg:col-start-6
+                  {% endif %}
+                {% else %}
+                  {% if box_position == 'right' %}
+                    lg:col-start-1
+                    xl:col-start-2
+                  {% else %}
+                    md:order-2
+                    lg:col-start-7
+                  {% endif %}
+                {% endif %}">
       <div class="relative">
         {% if content.field_image|render|trim %}
           <div class="image-container js-zoom-image" data-delay=".4">
             {{ content.field_image }}
+          </div>
+        {% endif %}
+        {% if paragraph.field_credits.value %}
+          <div class="credits absolute bottom-0
+                      {% if box_position == 'right' %}
+                        left-[-2px] -rotate-90 origin-bottom-left sm:left-[-4px]
+                      {% else %}
+                        right-[-2px] rotate-90 origin-bottom-right sm:right-[-4px]
+                      {% endif %}">
+            <span class="{{ box_position == 'right' ? 'relative block rotate-180 origin-center' }}">{{ paragraph.field_credits.value }}</span>
           </div>
         {% endif %}
       </div>
@@ -32,12 +62,30 @@
                 sm:col-span-10 sm:-mt-12
                 md:col-span-5 md:mt-8
                 lg:mt-12
-                {{ box_position == 'right'
-                    ? 'md:-ml-[3rem] lg:col-span-5 xl:col-span-4'
-                    : 'md:order-1 lg:col-span-5 lg:col-start-2 xl:col-span-4 xl:col-start-2' }}">
+                {% if size == 'small' %}
+                  {% if box_position == 'right' %}
+                    md:-ml-[3rem]
+                    lg:col-span-4 lg:col-start-auto
+                  {% else %}
+                    md:order-1
+                    lg:col-span-4 lg:col-start-2
+                  {% endif %}
+                {% else %}
+                  {% if box_position == 'right' %}
+                    md:-ml-[3rem]
+                    lg:col-span-5
+                    xl:col-span-4
+                  {% else %}
+                    lg:col-span-5 lg:col-start-2
+                    xl:col-span-4 xl:col-start-2
+                  {% endif %}
+                {% endif %}">
       <div class="text-white bg-hpm-red js-element-group
                   px-6 py-8
-                  sm:px-10 sm:py-11"
+                  sm:px-10 sm:!py-11
+                  {% if box_position != 'right' %}
+                    md:[width:calc(100%+3rem)]
+                  {% endif %}"
            data-theme="red">
 
         {% if content.field_logo|render|trim %}

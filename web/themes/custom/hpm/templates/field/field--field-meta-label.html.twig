@@ -1,0 +1,10 @@
+{#
+/**
+ * @file
+ * Field template for field_meta_label – renders without wrapper markup.
+ *
+ * Plain string fields used inline inside headings/paragraphs must not
+ * have the default <div> wrapper that field.html.twig adds.
+ */
+#}
+{% for item in items %}{{ item.content }}{% endfor %}

@@ -4,14 +4,12 @@ status: true
 dependencies:
   config:
     - field.field.paragraph.quote_item.field_author
+    - field.field.paragraph.quote_item.field_credits
     - field.field.paragraph.quote_item.field_image
     - field.field.paragraph.quote_item.field_quote
-    - field.field.paragraph.quote_item.field_theme
     - paragraphs.paragraphs_type.quote_item
   module:
     - media
-    - options
-    - text
 id: paragraph.quote_item.default
 targetEntityType: paragraph
 bundle: quote_item
@@ -36,18 +34,6 @@ content:
     third_party_settings: {  }
     weight: 0
     region: content
-  field_quote:
-    type: text_default
-    label: hidden
-    settings: {  }
-    third_party_settings: {  }
-    weight: 1
-    region: content
-  field_theme:
-    type: list_default
-    label: hidden
-    settings: {  }
-    third_party_settings: {  }
-    weight: 3
-    region: content
-hidden: {  }
+hidden:
+  field_credits: true
+  field_quote: true

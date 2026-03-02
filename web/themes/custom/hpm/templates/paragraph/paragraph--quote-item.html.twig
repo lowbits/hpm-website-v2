@@ -1,0 +1,68 @@
+{#
+/**
+ * @file
+ * Quote item – single slide in the quotes carousel.
+ *
+ * Fields: field_image, field_credits, field_quote (text_long),
+ *         field_author (string), field_theme (list_string: lightblue/red/beige/darkgreen/darkred/green).
+ */
+#}
+{% set item_theme = paragraph.field_theme.value|default('lightblue') %}
+{% set text_color = item_theme in ['red', 'darkgreen', 'darkred', 'green'] ? 'white' : null %}
+{% set bg_map = {
+  'darkgreen': 'bg-hpm-darkgreen',
+  'lightblue': 'bg-hpm-lightblue',
+  'red': 'bg-hpm-red',
+  'beige': 'bg-hpm-beige',
+  'darkred': 'bg-hpm-darkred',
+  'green': 'bg-hpm-darkgreen-60',
+} %}
+<div{{ attributes.addClass('quotes-item', 'slider-item') }}>
+  <div>
+    <div class="grid grid-cols-12 gap-0">
+      {# Image #}
+      <div class="quotes-image col-span-12 relative
+                  sm:col-span-11 sm:col-start-2
+                  md:col-span-6 md:order-2">
+        <div class="relative">
+          {% if content.field_image|render|trim %}
+            <div class="image-container js-zoom-image" data-delay=".3">
+              {{ content.field_image }}
+            </div>
+          {% endif %}
+          {% if paragraph.field_credits.value %}
+            <div class="credits absolute right-[-2px] bottom-0 rotate-90 origin-bottom-right sm:right-[-4px]">
+              {{ paragraph.field_credits.value }}
+            </div>
+          {% endif %}
+        </div>
+      </div>
+
+      {# Quote box #}
+      <div class="quotes-content col-span-12 relative z-2
+                  sm:col-span-11 sm:-mt-12
+                  md:col-span-6 md:order-1 md:mt-16 md:-mr-[3rem] md:[width:calc(100%+3rem)]
+                  lg:col-span-5">
+        <div class="box p-6
+                    sm:p-8
+                    lg:mt-8 lg:p-10
+                    {{ bg_map[item_theme]|default('bg-hpm-lightblue') }}
+                    {{ text_color == 'white' ? 'text-white' }}">
+          <div class="w-[3.75rem] h-[0.0625rem] mb-4
+                      lg:mb-6
+                      {{ text_color == 'white' ? 'bg-white' : 'bg-hpm-darkred' }}"></div>
+          {% if paragraph.field_quote.value %}
+            <blockquote class="quote-small">
+              &bdquo;{{ paragraph.field_quote.value }}&ldquo;
+            </blockquote>
+          {% endif %}
+          {% if paragraph.field_author.value %}
+            <div class="copy">
+              {{ paragraph.field_author.value }}
+            </div>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

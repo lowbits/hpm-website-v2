@@ -3,7 +3,6 @@ langcode: de
 status: true
 dependencies:
   config:
-    - field.field.paragraph.stage_media.field_content
     - field.field.paragraph.stage_media.field_display_variant
     - field.field.paragraph.stage_media.field_headline
     - field.field.paragraph.stage_media.field_image
@@ -12,19 +11,11 @@ dependencies:
   module:
     - media
     - options
-    - text
 id: paragraph.stage_media.default
 targetEntityType: paragraph
 bundle: stage_media
 mode: default
 content:
-  field_content:
-    type: text_default
-    label: hidden
-    settings: {  }
-    third_party_settings: {  }
-    weight: 3
-    region: content
   field_display_variant:
     type: list_default
     label: hidden

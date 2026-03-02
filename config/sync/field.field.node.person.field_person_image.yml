@@ -11,8 +11,8 @@ field_name: field_person_image
 entity_type: node
 bundle: person
 label: Bild
-description: ''
-required: false
+description: 'Bild: 600 x 800 px (3:4)'
+required: true
 translatable: true
 default_value: {  }
 default_value_callback: ''

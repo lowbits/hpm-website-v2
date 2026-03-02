@@ -1,15 +1,17 @@
-uuid: b5477329-6157-4832-bd02-63ccbe867f29
+uuid: 0a028a64-1ef1-42a8-a2a6-1f2f2b7fb688
 langcode: de
 status: true
 dependencies:
   module:
-    - paragraphs
-id: paragraph.field_quote
-field_name: field_quote
-entity_type: paragraph
-type: string_long
+    - node
+id: node.field_credits
+field_name: field_credits
+entity_type: node
+type: string
 settings:
+  max_length: 255
   case_sensitive: false
+  is_ascii: false
 module: core
 locked: false
 cardinality: 1

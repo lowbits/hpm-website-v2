@@ -1,0 +1,118 @@
+{#
+/**
+ * @file
+ * Quotes slider – carousel of quote items with navigation controls.
+ *
+ * Fields: field_items (entity_reference to quote_item paragraphs).
+ * Quote item fields: field_image, field_credits, field_quote, field_author.
+ * Theme color cycles automatically by index: lightblue, red, beige, darkgreen.
+ */
+#}
+{{ attach_library('hpm/slider-quotes') }}
+{# Tailwind safelist: bg-hpm-lightblue bg-hpm-red bg-hpm-beige bg-hpm-darkgreen #}
+{% set colors = ['lightblue', 'red', 'beige', 'darkgreen'] %}
+{% set bg_classes = {
+  'lightblue': 'bg-hpm-lightblue',
+  'red': 'bg-hpm-red',
+  'beige': 'bg-hpm-beige',
+  'darkgreen': 'bg-hpm-darkgreen',
+} %}
+<section{{ attributes.addClass('quotes', 'quote-slider', 'content-section', 'js-quotes-slider') }}
+  {% if theme_css %}data-theme="{{ theme_css }}"{% endif %}>
+  <div class="section-container">
+
+    <div class="grid grid-cols-12 gap-x-7 gap-y-10 relative">
+
+      {# Slider controls #}
+      <div class="quotes__controls col-span-12 relative z-2
+                  sm:col-span-2
+                  md:col-span-1 md:absolute md:top-0 md:left-0
+                  lg:relative">
+        <div class="slider-controls__buttons flex gap-2 shrink-0">
+          <button class="slider-button slider-button--previous js-slider-button-prev shrink-0">
+            <div class="slider-button__icon">
+              {% include '@hpm/images/vectors/button-arrow.svg.twig' %}
+            </div>
+          </button>
+          <button class="slider-button slider-button--next js-slider-button-next shrink-0">
+            <div class="slider-button__icon">
+              {% include '@hpm/images/vectors/button-arrow.svg.twig' %}
+            </div>
+          </button>
+        </div>
+      </div>
+
+      {# Slider items (Splide structure) #}
+      <div class="news-teaser__item-list col-span-12 relative z-1
+                  sm:col-span-10
+                  md:col-span-12
+                  lg:col-span-11">
+        <div class="quotes-slider splide">
+          <div class="splide__track">
+            <div class="splide__list">
+              {% for item in paragraph.field_items %}
+                {% set quote = item.entity %}
+                {% set item_color = colors[loop.index0 % 4] %}
+                {% set text_color = item_color in ['red', 'darkgreen'] ? 'white' : null %}
+
+                <div class="splide__slide quotes-item slider-item">
+                  <div>
+                    <div class="grid grid-cols-12 gap-0">
+                      {# Image #}
+                      <div class="quotes-image col-span-12 relative
+                                  sm:col-span-11 sm:col-start-2
+                                  md:col-span-6 md:order-2">
+                        <div class="relative">
+                          {% set quote_media = quote.field_image.entity %}
+                          {% if quote_media %}
+                            <div class="image-container js-zoom-image" data-delay=".3">
+                              <img src="{{ file_url(quote_media.field_media_image.entity.uri.value) }}"
+                                   alt="{{ quote.field_author.value }}"
+                                   loading="lazy">
+                            </div>
+                          {% endif %}
+                          {% if quote.field_credits.value %}
+                            <div class="credits absolute right-[-2px] bottom-0 rotate-90 origin-bottom-right sm:right-[-4px]">
+                              {{ quote.field_credits.value }}
+                            </div>
+                          {% endif %}
+                        </div>
+                      </div>
+
+                      {# Quote box #}
+                      <div class="quotes-content col-span-12 relative z-2
+                                  sm:col-span-11 sm:-mt-12
+                                  md:col-span-6 md:order-1 md:mt-16 md:-mr-[3rem] md:[width:calc(100%+3rem)]
+                                  lg:col-span-5">
+                        <div class="box p-6
+                                    sm:p-8
+                                    lg:mt-8 lg:p-10
+                                    {{ bg_classes[item_color] }}
+                                    {{ text_color == 'white' ? 'text-white' }}">
+                          <div class="w-[3.75rem] h-[0.0625rem] mb-4
+                                      lg:mb-6
+                                      {{ text_color == 'white' ? 'bg-white' : 'bg-hpm-darkred' }}"></div>
+                          {% if quote.field_quote.value %}
+                            <blockquote class="quote-small">
+                              &bdquo;{{ quote.field_quote.value }}&ldquo;
+                            </blockquote>
+                          {% endif %}
+                          {% if quote.field_author.value %}
+                            <div class="copy">
+                              {{ quote.field_author.value }}
+                            </div>
+                          {% endif %}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>

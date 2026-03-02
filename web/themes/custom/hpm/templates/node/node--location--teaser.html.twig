@@ -1,0 +1,64 @@
+{#
+/**
+ * @file
+ * Location teaser card for the locations overview grid.
+ *
+ * Node fields: title, field_location_image (media), field_credits,
+ *              field_city, field_address (text_long), field_phone,
+ *              field_email, field_maps_link.
+ */
+#}
+{% set media = node.field_location_image.entity %}
+<div{{ attributes.addClass('location-teaser-item', 'flex', 'flex-col', 'items-start', 'gap-3', 'sm:gap-5', 'lg:gap-6') }}>
+
+  {# Image #}
+  {% if media and media.field_media_image.entity %}
+    <div class="relative w-full">
+      <div class="image-box pt-[66%]">
+        <img src="{{ file_url(media.field_media_image.entity.uri.value) }}"
+             alt="{{ node.field_city.value }}"
+             loading="lazy">
+      </div>
+      {% if node.field_credits.value %}
+        <div class="credits text-hpm-darkred-30 absolute origin-bottom-right
+                    -right-0.5 bottom-0 rotate-90">
+          {{ node.field_credits.value }}
+        </div>
+      {% endif %}
+    </div>
+  {% endif %}
+
+  <div class="flex flex-col gap-4 lg:gap-5">
+    {# City + Contact #}
+    <div class="flex flex-col gap-3">
+      <h3 class="h4-serif text-hpm-red">
+        {{ node.field_city.value }}
+      </h3>
+      <div>
+        {% if node.field_address.value %}
+          {{ node.field_address.value|raw }}
+        {% endif %}
+        {% if node.field_phone.value %}
+          <br>{{ node.field_phone.value }}
+        {% endif %}
+        {% if node.field_email.value %}
+          <br><a class="underline underline-offset-3 hover:text-hpm-red transition-colors duration-300"
+                 href="mailto:{{ node.field_email.value }}"
+                 title="E-Mail senden">{{ node.field_email.value }}</a>
+        {% endif %}
+      </div>
+    </div>
+
+    {# Link to detail #}
+    <div class="button-container">
+      <a class="button"
+         href="{{ url }}"
+         title="Standort {{ node.field_city.value }}">
+        <span>Zum Standortportrait</span>
+        <span class="button-icon">
+          {% include '@hpm/images/vectors/button-arrow.svg.twig' %}
+        </span>
+      </a>
+    </div>
+  </div>
+</div>

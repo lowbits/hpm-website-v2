@@ -1,21 +1,19 @@
-uuid: 5172c587-752c-42d4-ab5e-7ef1a5e38adf
+uuid: ff4cb33b-ebb3-4f2e-a885-c5613c7307fa
 langcode: de
 status: true
 dependencies:
   config:
-    - field.storage.paragraph.field_theme
+    - field.storage.paragraph.field_credits
     - paragraphs.paragraphs_type.quote_item
-  module:
-    - options
-id: paragraph.quote_item.field_theme
-field_name: field_theme
+id: paragraph.quote_item.field_credits
+field_name: field_credits
 entity_type: paragraph
 bundle: quote_item
-label: Theme
+label: Credits
 description: ''
 required: false
 translatable: true
 default_value: {  }
 default_value_callback: ''
 settings: {  }
-field_type: list_string
+field_type: string

@@ -27,7 +27,15 @@ content:
   links:
     weight: 101
     region: content
+  field_paragraphs:
+    type: entity_reference_revisions_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 1
+    region: content
 hidden:
   field_meta_label: true
-  field_paragraphs: true
   langcode: true

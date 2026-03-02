@@ -6,6 +6,7 @@ dependencies:
     - field.field.node.location.body
     - field.field.node.location.field_address
     - field.field.node.location.field_city
+    - field.field.node.location.field_credits
     - field.field.node.location.field_email
     - field.field.node.location.field_gallery
     - field.field.node.location.field_location_image
@@ -42,6 +43,14 @@ content:
   field_city:
     type: string_textfield
     weight: 2
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_credits:
+    type: string_textfield
+    weight: 6
     region: content
     settings:
       size: 60

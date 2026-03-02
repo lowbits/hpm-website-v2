@@ -1,0 +1,84 @@
+{#
+/**
+ * @file
+ * Timeline slider – chronological carousel with colored dots.
+ *
+ * Fields: field_headline, field_items (entity_reference to timeline_item paragraphs),
+ *         field_theme.
+ */
+#}
+{{ attach_library('hpm/slider-timeline') }}
+{# Tailwind safelist: bg-hpm-darkred bg-hpm-lightblue bg-hpm-red bg-hpm-darkgreen #}
+{% set colors = ['darkred', 'lightblue', 'red', 'darkgreen'] %}
+<section{{ attributes.addClass('timeline', 'content-section', 'js-timeline-slider') }}
+  {% if theme_css %}data-theme="{{ theme_css }}"{% endif %}>
+  <div class="section-container">
+
+    {# Section title #}
+    {% if paragraph.field_headline.value %}
+      <div class="section-title flex flex-col gap-5 mb-9 col-span-12
+                  sm:mb-12 sm:flex-row sm:items-center sm:justify-between
+                  md:flex-row md:gap-12
+                  lg:mb-16
+                  xl:items-center">
+        <div class="flex flex-col gap-3">
+          <h2 class="h2 text-hpm-red">{{ paragraph.field_headline.value }}</h2>
+        </div>
+      </div>
+    {% endif %}
+
+    <div class="grid grid-cols-12 gap-x-7 gap-y-10 relative">
+
+      {# Slider controls #}
+      <div class="timeline__controls col-span-12 relative z-2
+                  sm:col-span-3
+                  lg:col-span-4 lg:relative">
+        <div class="slider-controls__buttons flex gap-2 shrink-0">
+          <button class="slider-button slider-button--previous js-slider-button-prev shrink-0">
+            <div class="slider-button__icon">
+              {% include '@hpm/images/vectors/button-arrow.svg.twig' %}
+            </div>
+          </button>
+          <button class="slider-button slider-button--next js-slider-button-next shrink-0">
+            <div class="slider-button__icon">
+              {% include '@hpm/images/vectors/button-arrow.svg.twig' %}
+            </div>
+          </button>
+        </div>
+      </div>
+
+      {# Slider items (Splide structure) #}
+      <div class="news-teaser__item-list col-span-11
+                  sm:col-span-9
+                  lg:col-span-8">
+        <div class="timeline-slider splide">
+          <div class="splide__track">
+            <div class="splide__list">
+              {% for item in paragraph.field_items %}
+                {% set timeline_item = item.entity %}
+                {% set bg_color = colors[loop.index0 % 4] %}
+                <div class="splide__slide slider-item flex flex-col items-start gap-3 cursor-grab
+                            w-[74vw] sm:w-[50vw] md:w-[32vw] lg:w-[23vw] xl:w-[22rem]">
+                  <div class="timeline relative w-full mb-2">
+                    <div class="timeline-line border-t-2 border-hpm-red border-solid absolute top-1/2 left-0 -right-6
+                                [.is-selected_&,.is-passed_&]:border-dashed [.splide__slide:last-child_&]:hidden"></div>
+                    <div class="timedot w-5 h-5 rounded-full relative
+                                bg-hpm-{{ bg_color }}"></div>
+                  </div>
+                  <div class="timeline-year">
+                    {{ timeline_item.field_year.value }}
+                  </div>
+                  <p class="copy mt-0 opacity-0 transition-[opacity] duration-500
+                            [.is-selected_&]:opacity-100">
+                    {{ timeline_item.field_text.value|raw }}
+                  </p>
+                </div>
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>

@@ -21,22 +21,22 @@
     border-color .3s ease,
     background-color .3s ease;
   }
-  .quotes-slider .slider-item .quotes-image,
-  .quotes-slider .slider-item .quotes-content {
+  .quotes-slider .splide__slide .quotes-image,
+  .quotes-slider .splide__slide .quotes-content {
     transition: opacity .5s var(--ease-smooth);
   }
-  .quotes-slider .slider-item .quotes-image img {
+  .quotes-slider .splide__slide .quotes-image img {
     transition: transform .5s var(--ease-smooth);
     transform: scale(1.1);
   }
-  .quotes-slider .slider-item.is-selected .quotes-image {
+  .quotes-slider .splide__slide.is-active .quotes-image {
     transition: opacity .7s var(--ease-smooth) .2s;
   }
-  .quotes-slider .slider-item.is-selected .quotes-image img {
+  .quotes-slider .splide__slide.is-active .quotes-image img {
     transition: transform .7s var(--ease-smooth) .2;
     transform: scale(1);
   }
-  .quotes-slider .slider-item.is-selected .quotes-content {
+  .quotes-slider .splide__slide.is-active .quotes-content {
     transition: opacity .7s  var(--ease-smooth) .2s;
   }
 

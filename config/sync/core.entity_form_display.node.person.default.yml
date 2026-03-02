@@ -3,6 +3,8 @@ langcode: de
 status: true
 dependencies:
   config:
+    - field.field.node.person.field_credits
+    - field.field.node.person.field_description
     - field.field.node.person.field_email
     - field.field.node.person.field_location
     - field.field.node.person.field_person_image
@@ -13,7 +15,7 @@ dependencies:
   module:
     - media_library
     - path
-    - telephone
+    - text
 id: node.person.default
 targetEntityType: node
 bundle: person
@@ -25,9 +27,25 @@ content:
     region: content
     settings: {  }
     third_party_settings: {  }
+  field_credits:
+    type: string_textfield
+    weight: 2
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_description:
+    type: text_textarea
+    weight: 4
+    region: content
+    settings:
+      rows: 3
+      placeholder: ''
+    third_party_settings: {  }
   field_email:
     type: email_default
-    weight: 1
+    weight: 5
     region: content
     settings:
       placeholder: ''
@@ -35,7 +53,7 @@ content:
     third_party_settings: {  }
   field_location:
     type: entity_reference_autocomplete
-    weight: 2
+    weight: 6
     region: content
     settings:
       match_operator: CONTAINS
@@ -45,36 +63,11 @@ content:
     third_party_settings: {  }
   field_person_image:
     type: media_library_widget
-    weight: 3
+    weight: 1
     region: content
     settings:
       media_types:
         - image
-    third_party_settings: {  }
-  field_person_role:
-    type: entity_reference_autocomplete
-    weight: 4
-    region: content
-    settings:
-      match_operator: CONTAINS
-      match_limit: 10
-      size: 60
-      placeholder: ''
-    third_party_settings: {  }
-  field_phone:
-    type: telephone_default
-    weight: 5
-    region: content
-    settings:
-      placeholder: ''
-    third_party_settings: {  }
-  field_position:
-    type: string_textfield
-    weight: 6
-    region: content
-    settings:
-      size: 60
-      placeholder: ''
     third_party_settings: {  }
   langcode:
     type: language_select
@@ -98,7 +91,7 @@ content:
     third_party_settings: {  }
   title:
     type: string_textfield
-    weight: 0
+    weight: 3
     region: content
     settings:
       size: 60
@@ -120,5 +113,8 @@ content:
     settings: {  }
     third_party_settings: {  }
 hidden:
+  field_person_role: true
+  field_phone: true
+  field_position: true
   promote: true
   sticky: true

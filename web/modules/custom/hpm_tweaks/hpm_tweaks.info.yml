@@ -1,0 +1,5 @@
+name: HPM Tweaks
+type: module
+description: Form alterations and customizations for HPM paragraph types.
+core_version_requirement: ^10.3 || ^11
+package: Custom
