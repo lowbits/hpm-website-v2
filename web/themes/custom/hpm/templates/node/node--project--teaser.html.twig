@@ -1,0 +1,39 @@
+{#
+/**
+ * @file
+ * Project teaser card – image, title, teaser text + link.
+ * Used in the projects listing View grid.
+ */
+#}
+{% set media = node.field_project_image.entity %}
+<div{{ attributes.addClass('projects-teaser-item', 'flex', 'flex-col', 'items-start', 'gap-3', 'sm:gap-5', 'lg:gap-6') }}>
+  {% if media and media.field_media_image.entity %}
+    <div class="relative w-full">
+      <div class="image-box pt-[66%]">
+        <img src="{{ file_url(media.field_media_image.entity.uri.value) }}"
+             alt="{{ node.label }}"
+             loading="lazy">
+      </div>
+      {% if media.field_credits.value %}
+        <div class="credits text-hpm-darkred-30 absolute origin-bottom-right
+                    -right-0.5 bottom-0 rotate-90">
+          {{ media.field_credits.value }}
+        </div>
+      {% endif %}
+    </div>
+  {% endif %}
+  <div class="flex flex-col gap-4 lg:gap-5">
+    <div class="flex flex-col gap-3">
+      <h3 class="h4-serif text-hpm-red">{{ label }}</h3>
+      {% if node.field_teaser_text.value %}
+        <div>{{ node.field_teaser_text.value }}</div>
+      {% endif %}
+    </div>
+    <div class="button-container">
+      {% include '@hpm/templates/components/button-link.html.twig' with {
+        url: url,
+        text: 'Zum Projekt',
+      } only %}
+    </div>
+  </div>
+</div>

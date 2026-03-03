@@ -1,0 +1,98 @@
+{#
+/**
+ * @file
+ * Benefits slider – carousel of benefit items with navigation controls.
+ *
+ * Fields: field_meta_label, field_section_title, field_items (benefit_item paragraphs),
+ *         field_theme.
+ * Benefit item fields: field_icon (file: svg/png), field_headline, field_text.
+ */
+#}
+{{ attach_library('hpm/slider-benefits') }}
+<section{{ attributes.addClass('benefits', 'teaser-slider', 'content-section', 'js-benefits-slider') }}
+  {% if theme_css %}data-theme="{{ theme_css }}"{% endif %}>
+  <div class="section-container">
+
+    {# Section title #}
+    {% if paragraph.field_section_title.value or paragraph.field_meta_label.value %}
+      <div class="section-title flex flex-col gap-5 mb-9 col-span-12
+                  sm:mb-12 sm:flex-row sm:items-center sm:justify-between
+                  md:flex-row md:gap-12
+                  lg:mb-16
+                  xl:items-center">
+        <div class="flex flex-col gap-3">
+          {% if paragraph.field_meta_label.value %}
+            <p class="info text-hpm-red meta-line--red meta-line--medium">
+              {{ paragraph.field_meta_label.value }}
+            </p>
+          {% endif %}
+          {% if paragraph.field_section_title.value %}
+            <h2 class="h2 text-hpm-red">{{ paragraph.field_section_title.value }}</h2>
+          {% endif %}
+        </div>
+      </div>
+    {% endif %}
+
+    <div class="grid grid-cols-12 gap-x-7 gap-y-10">
+
+      {# Slider controls #}
+      <div class="news-teaser__controls col-span-12 flex flex-col-reverse gap-6 relative z-2
+                  items-start
+                  sm:col-span-12 sm:items-center sm:flex-row-reverse
+                  md:col-span-4 md:items-start md:gap-0 md:mt-3 md:flex-col
+                  lg:col-span-3">
+        <div class="slider-controls__buttons flex gap-2">
+          <button class="slider-button slider-button--previous js-slider-button-prev">
+            <div class="slider-button__icon">
+              {% include '@hpm/images/vectors/button-arrow.svg.twig' %}
+            </div>
+          </button>
+          <button class="slider-button slider-button--next js-slider-button-next">
+            <div class="slider-button__icon">
+              {% include '@hpm/images/vectors/button-arrow.svg.twig' %}
+            </div>
+          </button>
+        </div>
+      </div>
+
+      {# Slider items (Splide structure) #}
+      <div class="news-teaser__item-list col-span-11
+                  sm:col-span-11
+                  md:col-span-8
+                  lg:col-span-9">
+        <div class="benefits-slider teaser-slider splide">
+          <div class="splide__track">
+            <div class="splide__list">
+              {% for item in paragraph.field_items %}
+                {% set benefit = item.entity %}
+                <div class="splide__slide benefits-item p-5 sm:p-6 lg:p-8 bg-hpm-red text-white flex flex-col
+                            h-[29rem]
+                            sm:h-[28rem]
+                            lg:h-[31rem]">
+                  <div class="flex flex-col gap-4 items-start js-element-group">
+                    {% set icon_file = benefit.field_icon.entity %}
+                    {% if icon_file %}
+                      <div class="w-full flex justify-center">
+                        <div class="w-[9.5rem] h-[9.5rem] [&>img]:w-full">
+                          <img src="{{ file_url(icon_file.uri.value) }}"
+                               alt="{{ benefit.field_headline.value }}"
+                               loading="lazy">
+                        </div>
+                      </div>
+                    {% endif %}
+                    {% if benefit.field_headline.value %}
+                      <h3 class="h4-serif">{{ benefit.field_headline.value }}</h3>
+                    {% endif %}
+                    {% if benefit.field_text.value %}
+                      <div class="copy">{{ benefit.field_text.value|raw }}</div>
+                    {% endif %}
+                  </div>
+                </div>
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

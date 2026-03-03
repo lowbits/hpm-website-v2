@@ -1,8 +1,16 @@
-{% set theme = content.field_theme|render|striptags|trim %}
-<div{{ attributes.addClass('content-section') }}
-  {% if theme %}data-theme="{{ theme }}"{% endif %}>
+{#
+/**
+ * @file
+ * Projects overview – embeds the projects_listing View (with BEF filter links).
+ *
+ * The View renders project teasers in a CSS grid via its own templates.
+ * Editors add intro content (meta label, blockquote) as separate paragraphs
+ * above this one on the page node.
+ */
+#}
+<section{{ attributes.addClass('content-section') }}
+  {% if theme_css %}data-theme="{{ theme_css }}"{% endif %}>
   <div class="section-container">
-    {# Rendered via Views block #}
     {{ drupal_view('projects_listing', 'block_1') }}
   </div>
-</div>
+</section>

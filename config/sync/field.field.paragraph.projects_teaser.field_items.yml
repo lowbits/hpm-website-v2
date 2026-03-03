@@ -1,0 +1,27 @@
+uuid: 8ebf9315-c8c6-49d6-b5e6-ae0c09d44e5d
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_items
+    - paragraphs.paragraphs_type.projects_teaser
+    - paragraphs.paragraphs_type.projects_teaser_item
+  module:
+    - entity_reference_revisions
+id: paragraph.projects_teaser.field_items
+field_name: field_items
+entity_type: paragraph
+bundle: projects_teaser
+label: Items
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      projects_teaser_item: projects_teaser_item
+    negate: 0
+field_type: entity_reference_revisions

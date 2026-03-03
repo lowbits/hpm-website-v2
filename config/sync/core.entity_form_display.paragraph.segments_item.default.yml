@@ -4,18 +4,20 @@ status: true
 dependencies:
   config:
     - field.field.paragraph.segments_item.field_anchor_id
-    - field.field.paragraph.segments_item.field_business_field
     - field.field.paragraph.segments_item.field_credits
     - field.field.paragraph.segments_item.field_headline
     - field.field.paragraph.segments_item.field_headline_secondary
     - field.field.paragraph.segments_item.field_image
+    - field.field.paragraph.segments_item.field_items
     - field.field.paragraph.segments_item.field_section_title
     - field.field.paragraph.segments_item.field_services_list
+    - field.field.paragraph.segments_item.field_teaser_text
     - field.field.paragraph.segments_item.field_text
     - field.field.paragraph.segments_item.field_text_secondary
     - paragraphs.paragraphs_type.segments_item
   module:
     - media_library
+    - paragraphs
     - text
 id: paragraph.segments_item.default
 targetEntityType: paragraph
@@ -30,25 +32,7 @@ content:
       size: 60
       placeholder: ''
     third_party_settings: {  }
-  field_business_field:
-    type: entity_reference_autocomplete
-    weight: 9
-    region: content
-    settings:
-      match_operator: CONTAINS
-      match_limit: 10
-      size: 60
-      placeholder: ''
-    third_party_settings: {  }
   field_credits:
-    type: string_textfield
-    weight: 3
-    region: content
-    settings:
-      size: 60
-      placeholder: ''
-    third_party_settings: {  }
-  field_headline:
     type: string_textfield
     weight: 4
     region: content
@@ -56,9 +40,17 @@ content:
       size: 60
       placeholder: ''
     third_party_settings: {  }
+  field_headline:
+    type: string_textfield
+    weight: 5
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
   field_headline_secondary:
     type: string_textfield
-    weight: 7
+    weight: 8
     region: content
     settings:
       size: 60
@@ -66,10 +58,28 @@ content:
     third_party_settings: {  }
   field_image:
     type: media_library_widget
-    weight: 2
+    weight: 3
     region: content
     settings:
       media_types: {  }
+    third_party_settings: {  }
+  field_items:
+    type: paragraphs
+    weight: 20
+    region: content
+    settings:
+      title: Projekt-Teaser
+      title_plural: Projekt-Teaser
+      edit_mode: closed
+      closed_mode: summary
+      autocollapse: all
+      closed_mode_threshold: 0
+      add_mode: button
+      form_display_mode: default
+      default_paragraph_type: ''
+      features:
+        collapse_edit_all: collapse_edit_all
+        duplicate: duplicate
     third_party_settings: {  }
   field_section_title:
     type: string_textfield
@@ -81,15 +91,23 @@ content:
     third_party_settings: {  }
   field_services_list:
     type: text_textarea
-    weight: 6
+    weight: 7
     region: content
     settings:
       rows: 5
       placeholder: ''
     third_party_settings: {  }
+  field_teaser_text:
+    type: string_textfield
+    weight: 2
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
   field_text:
     type: text_textarea
-    weight: 5
+    weight: 6
     region: content
     settings:
       rows: 5
@@ -97,7 +115,7 @@ content:
     third_party_settings: {  }
   field_text_secondary:
     type: text_textarea
-    weight: 8
+    weight: 9
     region: content
     settings:
       rows: 5

@@ -1,0 +1,22 @@
+uuid: 81c265cb-5383-46dc-98e7-c92de521dcca
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.projects_teaser_item.field_credits
+    - field.field.paragraph.projects_teaser_item.field_headline
+    - field.field.paragraph.projects_teaser_item.field_image
+    - field.field.paragraph.projects_teaser_item.field_link
+    - field.field.paragraph.projects_teaser_item.field_teaser_text
+    - paragraphs.paragraphs_type.projects_teaser_item
+id: paragraph.projects_teaser_item.default
+targetEntityType: paragraph
+bundle: projects_teaser_item
+mode: default
+content: {  }
+hidden:
+  field_credits: true
+  field_headline: true
+  field_image: true
+  field_link: true
+  field_teaser_text: true

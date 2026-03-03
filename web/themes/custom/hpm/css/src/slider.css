@@ -8,8 +8,9 @@
     @apply absolute block mr-6;
     @apply w-full sm:w-[56vw] md:w-[40vw] lg:w-[32vw] xl:w-[36rem];
   }
-  .teaser-slider .splide__slide.news-teaser-item {
-    @apply relative mr-0;
+  .teaser-slider .splide__slide.news-teaser-item,
+  .teaser-slider .splide__slide.projects-teaser-item {
+    @apply relative block mr-0;
     @apply w-full sm:w-[56vw] md:w-[40vw] lg:w-[32vw] xl:w-[36rem];
   }
 
@@ -20,12 +21,15 @@
   .teaser-slider .splide__track {
     overflow: visible !important;
   }
-  .teaser-slider .benefits-item {
-    @apply w-full sm:w-[18.5rem] mr-6;
+  /* Benefits Slider */
+  .teaser-slider .splide__slide.benefits-item {
+    @apply relative block;
+    @apply w-full sm:w-[18.5rem];
   }
   .teaser-slider .slider-item.is-passed,
   .teaser-slider .projects-teaser-item.is-passed,
-  .teaser-slider .splide__slide.news-teaser-item.is-passed {
+  .teaser-slider .splide__slide.news-teaser-item.is-passed,
+  .teaser-slider .splide__slide.projects-teaser-item.is-passed {
     @apply opacity-0;
   }
 

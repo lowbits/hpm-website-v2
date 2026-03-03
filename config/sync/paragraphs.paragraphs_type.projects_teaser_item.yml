@@ -1,9 +1,9 @@
-uuid: 3620b421-867f-41cb-b640-b6899469eb16
+uuid: 5404d1ee-cb8f-472a-84ee-19d95d631593
 langcode: de
 status: true
 dependencies: {  }
-id: segments_overview
-label: 'Segments Overview'
+id: projects_teaser_item
+label: 'Projects Teaser Item'
 icon_uuid: null
 icon_default: null
 description: null

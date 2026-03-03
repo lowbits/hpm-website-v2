@@ -1,0 +1,27 @@
+uuid: c4475c36-9714-4ceb-ade9-8673ed9815eb
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_items
+    - paragraphs.paragraphs_type.segments_overview
+    - paragraphs.paragraphs_type.segments_overview_item
+  module:
+    - entity_reference_revisions
+id: paragraph.segments_overview.field_items
+field_name: field_items
+entity_type: paragraph
+bundle: segments_overview
+label: Items
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      segments_overview_item: segments_overview_item
+    negate: 0
+field_type: entity_reference_revisions

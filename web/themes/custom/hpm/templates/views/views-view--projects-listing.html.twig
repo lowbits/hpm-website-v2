@@ -1,0 +1,20 @@
+{#
+/**
+ * @file
+ * View wrapper for the projects listing page.
+ * Renders filter links + project grid inside section-container.
+ */
+#}
+<section class="content-section">
+  <div class="section-container">
+    {% if exposed %}
+      <div class="mb-8 lg:mb-12">
+        {{ exposed }}
+      </div>
+    {% endif %}
+    {{ rows }}
+    {% if pager %}
+      {{ pager }}
+    {% endif %}
+  </div>
+</section>

@@ -1,0 +1,133 @@
+{#
+/**
+ * @file
+ * Single Geschäftsfeld section – hero image, body text, services list,
+ * optional secondary text block.
+ *
+ * Variables from preprocess:
+ *   - is_even_item: TRUE for 2nd, 4th, 6th item → beige theme.
+ *   - segment_delta: 0-based position in parent list.
+ */
+#}
+{% set anchor = paragraph.field_anchor_id.value %}
+{% set title = paragraph.field_section_title.value %}
+{% set media = paragraph.field_image.entity %}
+{% set credits = paragraph.field_credits.value %}
+{% set headline = paragraph.field_headline.value %}
+{% set body = paragraph.field_text.value %}
+{% set services = paragraph.field_services_list.value %}
+{% set headline2 = paragraph.field_headline_secondary.value %}
+{% set body2 = paragraph.field_text_secondary.value %}
+
+<section{{ attributes.addClass('segment', 'py-spacing-xs', 'sm:py-spacing-sm', 'lg:py-spacing-lg', 'xl:py-spacing-xl') }}
+  id="{{ anchor }}"
+  {% if is_even_item %}data-theme="beige"{% endif %}>
+  <div class="section-container">
+
+    {# Section heading #}
+    <div class="section-title mb-9 grid grid-cols-12 sm:gap-7
+                sm:mb-12
+                lg:mb-16">
+      <div class="col-span-12 xl:col-span-10 xl:col-start-2">
+        <h2 class="h2 text-hpm-red">{{ title }}</h2>
+      </div>
+    </div>
+
+    {# Hero image #}
+    {% if media and media.field_media_image.entity %}
+      <div class="relative">
+        <div class="image-container js-zoom-image">
+          <img src="{{ file_url(media.field_media_image.entity.uri.value) }}"
+               alt="Geschäftsfeld {{ title }}"
+               loading="lazy">
+        </div>
+        {% if credits %}
+          <div class="credits absolute right-[-2px] bottom-0 rotate-90 origin-bottom-right sm:right-[-4px]">
+            {{ credits }}
+          </div>
+        {% endif %}
+      </div>
+    {% endif %}
+
+    {# Primary content: headline, body text + services list #}
+    {% if headline or body or services %}
+      <div class="js-element-group grid grid-cols-12 gap-x-7 gap-y-10
+                  mt-9
+                  sm:mt-11 sm:gap-y-12
+                  md:mt-11
+                  lg:mt-15
+                  xl:mt-18">
+
+        <h3 class="h3-serif text-hpm-red col-span-12
+                   sm:col-span-10 sm:col-start-2
+                   md:col-span-12 md:col-start-auto
+                   xl:col-span-10 xl:col-start-2">
+          {{ headline }}
+        </h3>
+
+        {% if body %}
+          <div class="js-element-group col-span-12
+                      sm:col-span-10 sm:col-start-2
+                      md:col-span-6 md:col-start-1
+                      xl:col-span-5 xl:col-start-2
+                      {{ is_even_item ? 'md:order-last md:col-start-7 xl:col-start-7' }}">
+            <div class="formatted">
+              {{ body|raw }}
+            </div>
+          </div>
+        {% endif %}
+
+        {% if services %}
+          <div class="col-span-12
+                      sm:col-span-10 sm:col-start-2
+                      md:col-span-5
+                      lg:col-span-5
+                      xl:col-span-4 {{ is_even_item ? 'lg:col-start-1 xl:col-start-2' : 'md:col-start-8 lg:col-start-8 xl:col-start-8' }}"
+               data-delay=".4">
+            <h4 class="info text-hpm-red">
+              Einblick in unser Leistungsspektrum
+            </h4>
+            <ul class="list-none dash-list mt-4 [&>li]:flex [&>li]:gap-1">
+              {{ services|raw }}
+            </ul>
+          </div>
+        {% endif %}
+      </div>
+    {% endif %}
+
+    {# Optional secondary content block #}
+    {% if headline2 %}
+      <div class="js-element-group grid grid-cols-12 gap-x-7 gap-y-4
+                  mt-9
+                  sm:mt-11 sm:gap-y-5
+                  md:mt-11
+                  lg:mt-15
+                  xl:mt-18">
+        <div class="col-span-12
+                    sm:col-span-10 sm:col-start-2
+                    md:col-span-5 md:col-start-1
+                    xl:col-start-2">
+          <h3 class="h3-serif text-hpm-red">
+            {{ headline2 }}
+          </h3>
+        </div>
+        {% if body2 %}
+          <div class="formatted col-span-12
+                      sm:col-span-10 sm:col-start-2
+                      md:col-span-6 md:col-start-7
+                      lg:col-start-6
+                      xl:col-span-5 xl:col-start-7">
+            {{ body2|raw }}
+          </div>
+        {% endif %}
+      </div>
+    {% endif %}
+
+    {# Nested paragraphs (e.g. projects teaser) #}
+    {% for key, item in content.field_items %}
+      {% if key matches '/^\\d+$/' %}
+        {{ item }}
+      {% endif %}
+    {% endfor %}
+  </div>
+</section>

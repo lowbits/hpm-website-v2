@@ -8,7 +8,7 @@ dependencies:
     - field.field.paragraph.benefit_item.field_text
     - paragraphs.paragraphs_type.benefit_item
   module:
-    - media_library
+    - file
     - text
 id: paragraph.benefit_item.default
 targetEntityType: paragraph
@@ -24,12 +24,11 @@ content:
       placeholder: ''
     third_party_settings: {  }
   field_icon:
-    type: media_library_widget
-    weight: 1
+    type: file_generic
+    weight: 0
     region: content
     settings:
-      media_types:
-        - image
+      progress_indicator: throbber
     third_party_settings: {  }
   field_text:
     type: text_textarea

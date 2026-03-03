@@ -75,4 +75,19 @@ function hpm_preprocess_paragraph(&$variables) {
     $variables['button_url'] = $link->getUrl()->toString();
     $variables['button_text'] = $link->title;
   }
+
+  // Determine delta (position) for segments_item within its parent.
+  if ($paragraph->bundle() === 'segments_item') {
+    $parent = $paragraph->getParentEntity();
+    if ($parent && $parent->hasField('field_items')) {
+      foreach ($parent->get('field_items') as $delta => $item) {
+        if ((int) $item->target_id === (int) $paragraph->id()) {
+          $variables['segment_delta'] = $delta;
+          // Even delta (0-indexed) = 2nd, 4th item → beige theme.
+          $variables['is_even_item'] = ($delta % 2 === 1);
+          break;
+        }
+      }
+    }
+  }
 }

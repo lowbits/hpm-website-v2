@@ -1,4 +1,4 @@
-uuid: fd314122-82c2-4474-87cf-b1fc5375c445
+uuid: c796b6f9-7c36-4f87-affd-e6b05cdca3df
 langcode: de
 status: true
 dependencies:
@@ -7,11 +7,10 @@ dependencies:
     - field.field.paragraph.segments_overview_item.field_image
     - field.field.paragraph.segments_overview_item.field_link_target
     - field.field.paragraph.segments_overview_item.field_number
-    - field.field.paragraph.segments_overview_item.field_text
+    - field.field.paragraph.segments_overview_item.field_teaser_text
     - paragraphs.paragraphs_type.segments_overview_item
   module:
     - media_library
-    - text
 id: paragraph.segments_overview_item.default
 targetEntityType: paragraph
 bundle: segments_overview_item
@@ -48,14 +47,15 @@ content:
       size: 60
       placeholder: ''
     third_party_settings: {  }
-  field_text:
-    type: text_textarea
+  field_teaser_text:
+    type: string_textfield
     weight: 4
     region: content
     settings:
-      rows: 5
+      size: 60
       placeholder: ''
     third_party_settings: {  }
 hidden:
   created: true
+  field_text: true
   status: true

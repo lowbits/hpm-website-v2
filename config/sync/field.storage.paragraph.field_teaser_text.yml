@@ -1,19 +1,20 @@
-uuid: b191d2ee-0deb-4b51-879d-b645a7addff2
+uuid: 794107c4-665e-4e61-985e-32a41f050220
 langcode: de
 status: true
 dependencies:
   module:
     - paragraphs
-    - taxonomy
-id: paragraph.field_business_field
-field_name: field_business_field
+id: paragraph.field_teaser_text
+field_name: field_teaser_text
 entity_type: paragraph
-type: entity_reference
+type: string
 settings:
-  target_type: taxonomy_term
+  max_length: 255
+  case_sensitive: false
+  is_ascii: false
 module: core
 locked: false
-cardinality: -1
+cardinality: 1
 translatable: true
 indexes: {  }
 persist_with_no_fields: false

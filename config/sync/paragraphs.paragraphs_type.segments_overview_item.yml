@@ -1,10 +1,10 @@
-uuid: 5c24d75d-38fd-4d06-bb4d-e9df81a5769d
+uuid: b2b50c82-baf5-4ee8-88cc-36980dcb6245
 langcode: de
 status: true
 dependencies: {  }
 id: segments_overview_item
-label: Geschäftsfeld-Teaser
+label: 'Segments Overview Item'
 icon_uuid: null
 icon_default: null
-description: ''
+description: null
 behavior_plugins: {  }

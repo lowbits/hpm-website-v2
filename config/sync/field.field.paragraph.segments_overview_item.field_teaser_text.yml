@@ -1,22 +1,19 @@
-uuid: edf3931a-aa70-4275-8f5b-d1087c31a503
+uuid: 4cfbac12-3f43-41c1-98f1-2da64ce13341
 langcode: de
 status: true
 dependencies:
   config:
-    - field.storage.paragraph.field_text
+    - field.storage.paragraph.field_teaser_text
     - paragraphs.paragraphs_type.segments_overview_item
-  module:
-    - text
-id: paragraph.segments_overview_item.field_text
-field_name: field_text
+id: paragraph.segments_overview_item.field_teaser_text
+field_name: field_teaser_text
 entity_type: paragraph
 bundle: segments_overview_item
-label: Text
+label: 'Teaser Text'
 description: ''
 required: false
 translatable: true
 default_value: {  }
 default_value_callback: ''
-settings:
-  allowed_formats: {  }
-field_type: text_long
+settings: {  }
+field_type: string

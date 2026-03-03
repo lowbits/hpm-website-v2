@@ -1,8 +1,57 @@
-{% set theme = content.field_theme|render|striptags|trim %}
-<div{{ attributes.addClass('content-section') }}
-  {% if theme %}data-theme="{{ theme }}"{% endif %}>
-  <div class="section-container">
-    {# Rendered via Views block #}
-    {{ drupal_view('business_fields', 'block_1') }}
+{#
+/**
+ * @file
+ * Segments overview – grid of Geschäftsfeld teaser cards with anchor links.
+ *
+ * Fields: field_items (segments_overview_item paragraphs), field_theme.
+ */
+#}
+<section{{ attributes.addClass('content-section') }}
+  {% if theme_css %}data-theme="{{ theme_css }}"{% endif %}>
+  <div class="section-container js-element-group grid grid-cols-1 gap-5
+              sm:grid-cols-2 sm:gap-7
+              md:grid-cols-3
+              lg:gap-10">
+    {% for ref in paragraph.field_items %}
+      {% set item = ref.entity %}
+      {% set media = item.field_image.entity %}
+      {% set anchor = item.field_link_target.value %}
+      {% set headline = item.field_headline.value %}
+      {% set number = item.field_number.value|default('%02d'|format(loop.index)) %}
+      {% set text = item.field_teaser_text.value %}
+      <a class="segments-overview-item relative overflow-hidden"
+         href="#{{ anchor }}">
+        {% if media and media.field_media_image.entity %}
+          <div class="portrait relative w-full">
+            <div class="image-box pt-[133.33%]">
+              <img src="{{ file_url(media.field_media_image.entity.uri.value) }}"
+                   alt="{{ headline }}"
+                   loading="lazy">
+            </div>
+          </div>
+        {% endif %}
+        <div class="overlay absolute bg-gradient-to-b from-[rgba(0,0,0,0)] to-[rgba(0,0,0,1)]
+                    h-1/2 left-0 -bottom-12 right-0"></div>
+        <div class="absolute bottom-0 left-0 right-0 p-5
+                    flex flex-col gap-3 text-white
+                    sm:p-7">
+          <h3 class="h3 text-white">
+            {{ number }}<br>
+            {{ headline }}
+          </h3>
+          <div class="flex gap-3 items-end justify-between">
+            {% if text %}
+              <p class="copy mt-0 min-h-12">{{ text }}</p>
+            {% endif %}
+            <div class="indicator h-12 w-12 flex items-center justify-center shrink-0
+                        [&_svg_path]:fill-white border border-white rounded-full">
+              <div class="w-5">
+                {% include '@hpm/images/vectors/button-arrow.svg.twig' %}
+              </div>
+            </div>
+          </div>
+        </div>
+      </a>
+    {% endfor %}
   </div>
-</div>
+</section>

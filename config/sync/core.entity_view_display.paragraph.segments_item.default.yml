@@ -4,17 +4,19 @@ status: true
 dependencies:
   config:
     - field.field.paragraph.segments_item.field_anchor_id
-    - field.field.paragraph.segments_item.field_business_field
     - field.field.paragraph.segments_item.field_credits
     - field.field.paragraph.segments_item.field_headline
     - field.field.paragraph.segments_item.field_headline_secondary
     - field.field.paragraph.segments_item.field_image
+    - field.field.paragraph.segments_item.field_items
     - field.field.paragraph.segments_item.field_section_title
     - field.field.paragraph.segments_item.field_services_list
+    - field.field.paragraph.segments_item.field_teaser_text
     - field.field.paragraph.segments_item.field_text
     - field.field.paragraph.segments_item.field_text_secondary
     - paragraphs.paragraphs_type.segments_item
   module:
+    - entity_reference_revisions
     - text
 id: paragraph.segments_item.default
 targetEntityType: paragraph
@@ -28,14 +30,6 @@ content:
       link_to_entity: false
     third_party_settings: {  }
     weight: 0
-    region: content
-  field_business_field:
-    type: entity_reference_label
-    label: above
-    settings:
-      link: true
-    third_party_settings: {  }
-    weight: 9
     region: content
   field_credits:
     type: string
@@ -70,6 +64,15 @@ content:
     third_party_settings: {  }
     weight: 2
     region: content
+  field_items:
+    type: entity_reference_revisions_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 10
+    region: content
   field_section_title:
     type: string
     label: above
@@ -99,4 +102,5 @@ content:
     third_party_settings: {  }
     weight: 8
     region: content
-hidden: {  }
+hidden:
+  field_teaser_text: true

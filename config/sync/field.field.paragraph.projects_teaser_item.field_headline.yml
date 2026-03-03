@@ -1,14 +1,14 @@
-uuid: beb06ce5-aec5-4f5c-a8ed-5c9bc12f74f2
+uuid: 78ae1a09-6ea1-43eb-8f78-d14307135ab9
 langcode: de
 status: true
 dependencies:
   config:
     - field.storage.paragraph.field_headline
-    - paragraphs.paragraphs_type.segments_overview_item
-id: paragraph.segments_overview_item.field_headline
+    - paragraphs.paragraphs_type.projects_teaser_item
+id: paragraph.projects_teaser_item.field_headline
 field_name: field_headline
 entity_type: paragraph
-bundle: segments_overview_item
+bundle: projects_teaser_item
 label: Headline
 description: ''
 required: false

@@ -17,6 +17,7 @@ function hpm_tweaks_field_widget_single_element_form_alter(&$element, &$form_sta
   }
   $bundle = $context['items']->getEntity()->bundle();
   $theme_limits = [
+    'benefits' => ['weiss', 'beige'],
     'people' => ['weiss', 'beige'],
     'quotes' => ['weiss', 'beige'],
   ];

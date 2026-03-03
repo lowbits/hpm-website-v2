@@ -7,6 +7,7 @@ module:
   allowed_formats: 0
   announcements_feed: 0
   automated_cron: 0
+  better_exposed_filters: 0
   big_pipe: 0
   block: 0
   block_content: 0
@@ -35,6 +36,8 @@ module:
   language: 0
   link: 0
   locale: 0
+  mcp_tools: 0
+  mcp_tools_stdio: 0
   media: 0
   media_library: 0
   menu_link_content: 0
@@ -66,9 +69,9 @@ module:
   content_translation: 10
   views: 10
   paragraphs: 11
-  minimal: 1000
+  standard: 1000
 theme:
   olivero: 0
   claro: 0
   hpm: 0
-profile: minimal
+profile: standard

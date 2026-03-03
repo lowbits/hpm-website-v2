@@ -27,6 +27,20 @@
   .button .button-icon {
     @apply absolute right-[1.75rem] top-1/2 -translate-y-1/2 w-4;
   }
+  @media (any-hover: hover) {
+    .button:hover .button-icon svg {
+      animation: button-icon-slide-right 1s cubic-bezier(0.45, 0, 0.55, 1) infinite forwards;
+    }
+  }
+
+  @keyframes button-icon-slide-right {
+    0%   { opacity: 1; transform: translate(0, 0); }
+    20%  { opacity: 1; }
+    50%  { opacity: 0; transform: translate(50%, 0); }
+    51%  { opacity: 0; transform: translate(-50%, 0); }
+    70%  { opacity: 1; }
+    100% { opacity: 1; transform: translate(0, 0); }
+  }
 
   .text-link {
     @apply relative overflow-hidden text-left bg-transparent text-white pb-[3px] leading-[1.4] pr-6 inline-block items-center;

@@ -1,0 +1,14 @@
+{#
+/**
+ * @file
+ * Segments container – renders each Geschäftsfeld section.
+ *
+ * Fields: field_items (segments_item paragraphs).
+ * The overview grid is a separate segments_overview paragraph.
+ */
+#}
+{% for key, item in content.field_items %}
+  {% if key matches '/^\\d+$/' %}
+    {{ item }}
+  {% endif %}
+{% endfor %}

@@ -1,0 +1,30 @@
+uuid: db683a83-1a31-431e-a11c-cf6d5fd27e27
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_items
+    - paragraphs.paragraphs_type.projects_teaser
+    - paragraphs.paragraphs_type.segments_item
+  module:
+    - entity_reference_revisions
+id: paragraph.segments_item.field_items
+field_name: field_items
+entity_type: paragraph
+bundle: segments_item
+label: Inhalt
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      projects_teaser: projects_teaser
+    target_bundles_drag_drop:
+      projects_teaser:
+        weight: 0
+        enabled: true
+field_type: entity_reference_revisions
