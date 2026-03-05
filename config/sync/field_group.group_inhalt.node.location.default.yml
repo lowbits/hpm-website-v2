@@ -1,0 +1,27 @@
+uuid: ee5f6a7b-8c9d-0123-efab-234567890123
+langcode: de
+status: true
+dependencies:
+  module:
+    - node
+id: node.location.default.group_inhalt
+field_name: group_inhalt
+entity_type: node
+bundle: location
+mode: default
+type: tab
+parent_name: group_tabs
+label: Inhalt
+description: ''
+weight: 4
+format_type: tab
+format_settings:
+  classes: ''
+  show_empty_fields: false
+  id: ''
+  formatter: closed
+  description: ''
+  required_fields: true
+children:
+  - field_paragraphs
+  - field_location_tag

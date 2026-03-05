@@ -1,0 +1,29 @@
+uuid: cc3d4e5f-6a7b-8901-cdef-012345678901
+langcode: de
+status: true
+dependencies:
+  module:
+    - node
+id: node.location.default.group_kontakt
+field_name: group_kontakt
+entity_type: node
+bundle: location
+mode: default
+type: tab
+parent_name: group_tabs
+label: Kontakt
+description: ''
+weight: 2
+format_type: tab
+format_settings:
+  classes: ''
+  show_empty_fields: false
+  id: ''
+  formatter: closed
+  description: ''
+  required_fields: true
+children:
+  - field_address
+  - field_phone
+  - field_email
+  - field_maps_link

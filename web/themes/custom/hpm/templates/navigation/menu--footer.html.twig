@@ -7,15 +7,13 @@
  */
 #}
 {% if items %}
-  <ul class="footer-menu flex flex-col gap-2">
+  <div class="footer__link-container flex flex-col items-start justify-start gap-4 xl:gap-6">
     {% for item in items %}
-      <li>
-        <a href="{{ item.url }}"
-           class="font-erato text-[1.0625rem] text-white leading-[1.25] relative inline-block overflow-hidden pb-[2px] hover:after:translate-x-0 after:content-[''] after:absolute after:bottom-0 after:left-0 after:right-0 after:h-px after:bg-white after:-translate-x-full after:transition-transform after:duration-300"
-           {{ item.in_active_trail ? 'aria-current="page"' }}>
-          {{ item.title }}
-        </a>
-      </li>
+      <a href="{{ item.url }}"
+         class="text-link font-erato text-[1.0625rem] leading-[1.2] inline-block text-white [&:after]:bg-white"
+         {{ item.in_active_trail ? 'aria-current="page"' }}>
+        <span class="text-link__text">{{ item.title }}</span>
+      </a>
     {% endfor %}
-  </ul>
+  </div>
 {% endif %}

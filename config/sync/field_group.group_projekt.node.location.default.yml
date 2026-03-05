@@ -1,0 +1,26 @@
+uuid: bb2c3d4e-5f6a-7890-bcde-f01234567890
+langcode: de
+status: true
+dependencies:
+  module:
+    - node
+id: node.location.default.group_projekt
+field_name: group_projekt
+entity_type: node
+bundle: location
+mode: default
+type: tab
+parent_name: group_tabs
+label: Projekt
+description: ''
+weight: 1
+format_type: tab
+format_settings:
+  classes: ''
+  show_empty_fields: false
+  id: ''
+  formatter: closed
+  description: ''
+  required_fields: true
+children:
+  - field_project

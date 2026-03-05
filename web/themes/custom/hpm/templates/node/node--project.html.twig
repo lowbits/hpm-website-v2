@@ -4,91 +4,190 @@
   {{ title_prefix }}
   {{ title_suffix }}
 
-  {# Stage #}
-  <div class="stage-section">
-    <div class="section-container">
-      <div class="grid grid-cols-12 gap-x-7">
-        <div class="col-span-12 lg:col-span-8 lg:col-start-3">
-          {% if content.field_meta_label|render|trim %}
-            <p class="info meta-line--small mb-3">{{ content.field_meta_label }}</p>
-          {% endif %}
+  {# Stage: meta + headline + back link + image #}
+  <section class="location-project-details stage-section">
+    <div class="section-container grid grid-cols-12 gap-y-7
+                sm:gap-x-7">
+      <div class="flex flex-col items-start gap-3
+                  col-span-12
+                  sm:col-span-10 sm:col-start-2
+                  md:py-4
+                  lg:py-6
+                  xl:py-9">
+        {% if node.field_meta_label.value %}
+          <h1 class="info text-hpm-red meta-line--red meta-line--medium">
+            {{ node.field_meta_label.value }}
+          </h1>
+          <h2 class="h1">{{ label }}</h2>
+        {% else %}
           <h1 class="h1">{{ label }}</h1>
-        </div>
+        {% endif %}
       </div>
-    </div>
-  </div>
 
-  {# Hero Image #}
-  {% if content.field_project_image|render|trim %}
-    <div class="section-container">
-      <div class="image-container js-image-zoom">
-        {{ content.field_project_image }}
+      <div class="col-span-12 mt-2
+                  sm:col-span-10 sm:col-start-2 sm:mt-3
+                  md:col-span-12 md:col-start-1">
+        <a class="text-link text-link--back font-case text-[0.9375rem] leading-[1.2] text-hpm-darkred"
+           href="/projekte"
+           title="Zur Projektübersicht">
+          <span class="text-link__text copy">Alle Projekte</span>
+          <span class="link-icon link-icon--back -mt-[1px]">
+            {% include '@hpm/images/vectors/button-arrow.svg.twig' %}
+          </span>
+        </a>
       </div>
-    </div>
-  {% endif %}
 
-  {# Content #}
-  <div class="content-section">
-    <div class="section-container">
-      <div class="grid grid-cols-12 gap-x-7">
-        {# Body Text #}
-        <div class="col-span-12 lg:col-span-7 lg:col-start-1">
-          {% if content.field_teaser_text|render|trim %}
-            <p class="h4 mb-6">{{ content.field_teaser_text }}</p>
-          {% endif %}
-          {% if content.body|render|trim %}
-            <div class="formatted">
-              {{ content.body }}
-            </div>
-          {% endif %}
+      {% set media = node.field_project_image.entity %}
+      {% if media and media.field_media_image.entity %}
+        <div class="col-span-12">
+          <div class="image-container js-zoom-image">
+            <img src="{{ file_url(media.field_media_image.entity.uri.value) }}"
+                 alt="{{ label }}"
+                 loading="lazy">
+          </div>
         </div>
+      {% endif %}
+    </div>
+  </section>
 
-        {# Sidebar Facts #}
-        <aside class="col-span-12 lg:col-span-4 lg:col-start-9 mt-8 lg:mt-0">
+  {# Content: text + sidebar facts #}
+  <section class="content-section">
+    <div class="section-container grid grid-cols-1 gap-7
+                sm:grid-cols-12">
+
+      {# Body text #}
+      <div class="col-span-12
+                  sm:col-span-10 sm:col-start-2
+                  md:col-span-6 md:col-start-2
+                  lg:col-span-6 lg:col-start-2
+                  xl:col-span-5 xl:col-start-2">
+        {% if content.body|render|trim %}
+          <div class="formatted">
+            {{ content.body }}
+          </div>
+        {% endif %}
+      </div>
+
+      {# Sidebar: project facts + contact #}
+      <aside class="col-span-12
+                    sm:col-span-10 sm:col-start-2
+                    md:col-span-4 md:col-start-9
+                    lg:col-span-4 lg:col-start-9">
+        <div class="flex flex-col items-start gap-9">
+
+          {# Project facts #}
           <dl class="flex flex-col gap-4">
-            {% if content.field_client|render|trim %}
+            {% if node.field_client.value %}
               <div>
-                <dt class="info">{{ 'Auftraggeber:in'|t }}</dt>
-                <dd class="copy mt-1">{{ content.field_client }}</dd>
+                <dt class="info text-hpm-red">{{ 'Auftraggeber:in'|t }}</dt>
+                <dd class="copy mt-1">{{ node.field_client.value }}</dd>
               </div>
             {% endif %}
-            {% if content.field_budget|render|trim %}
+            {% if node.field_budget.value %}
               <div>
-                <dt class="info">{{ 'Investition'|t }}</dt>
-                <dd class="copy mt-1">{{ content.field_budget }}</dd>
+                <dt class="info text-hpm-red">{{ 'Investition'|t }}</dt>
+                <dd class="copy mt-1">{{ node.field_budget.value }}</dd>
               </div>
             {% endif %}
-            {% if content.field_extent|render|trim %}
+            {% if node.field_extent.value %}
               <div>
-                <dt class="info">{{ 'Umfang'|t }}</dt>
-                <dd class="copy mt-1">{{ content.field_extent }}</dd>
+                <dt class="info text-hpm-red">{{ 'Umfang'|t }}</dt>
+                <dd class="copy mt-1">{{ node.field_extent.value }}</dd>
               </div>
             {% endif %}
-            {% if content.field_runtime|render|trim %}
+            {% if node.field_runtime.value %}
               <div>
-                <dt class="info">{{ 'Laufzeit'|t }}</dt>
-                <dd class="copy mt-1">{{ content.field_runtime }}</dd>
+                <dt class="info text-hpm-red">{{ 'Laufzeit'|t }}</dt>
+                <dd class="copy mt-1">{{ node.field_runtime.value }}</dd>
               </div>
             {% endif %}
-            {% if content.field_services|render|trim %}
+            {% if node.field_project_status.entity %}
               <div>
-                <dt class="info">{{ 'Leistungen'|t }}</dt>
-                <dd class="copy mt-1">{{ content.field_services }}</dd>
+                <dt class="info text-hpm-red">{{ 'Status'|t }}</dt>
+                <dd class="copy mt-1">{{ node.field_project_status.entity.name.value }}</dd>
+              </div>
+            {% endif %}
+            {% if node.field_services|length %}
+              <div>
+                <dt class="info text-hpm-red">{{ 'Leistungen'|t }}</dt>
+                <dd class="copy mt-1">
+                  <ul class="dash-list">
+                    {% for item in node.field_services %}
+                      <li>{{ item.entity.name.value }}</li>
+                    {% endfor %}
+                  </ul>
+                </dd>
               </div>
             {% endif %}
           </dl>
-        </aside>
-      </div>
+
+          {# External link #}
+          {% if node.field_external_link.0.url %}
+            <div class="button-container">
+              <a class="text-link font-case leading-[1.2] text-hpm-darkred"
+                 href="{{ node.field_external_link.0.url }}"
+                 title="{{ node.field_external_link.0.title }}"
+                 target="_blank"
+                 rel="noopener noreferrer">
+                <span class="text-link__text copy">{{ node.field_external_link.0.title|default('Externe Projektinformationen'|t) }}</span>
+                <span class="link-icon -rotate-45 -translate-y-[0.5rem]">
+                  {% include '@hpm/images/vectors/button-arrow.svg.twig' %}
+                </span>
+              </a>
+            </div>
+          {% endif %}
+
+        </div>
+      </aside>
     </div>
-  </div>
+  </section>
+  <div id="content"> </div>
 
   {# Gallery #}
-  {% if content.field_gallery|render|trim %}
-    <div class="content-section">
-      <div class="gallery-slider js-gallery-slider">
-        {{ content.field_gallery }}
+  {% if node.field_gallery|length %}
+    <section class="gallery gallery-slider content-section js-gallery-slider">
+      <div class="section-container">
+        <div class="grid grid-cols-12 gap-x-7 gap-y-10 relative">
+          <div class="col-span-12 relative z-2">
+            <div class="slider-controls__buttons flex gap-2 shrink-0">
+              <button class="slider-button slider-button--previous js-slider-button-prev shrink-0">
+                <div class="slider-button__icon">
+                  {% include '@hpm/images/vectors/button-arrow.svg.twig' %}
+                </div>
+              </button>
+              <button class="slider-button slider-button--next js-slider-button-next shrink-0">
+                <div class="slider-button__icon">
+                  {% include '@hpm/images/vectors/button-arrow.svg.twig' %}
+                </div>
+              </button>
+            </div>
+          </div>
+          <div class="col-span-12 relative z-1">
+            <div class="gallery-slider carousel">
+              {% for item in node.field_gallery %}
+                {% set gallery_media = item.entity %}
+                {% if gallery_media and gallery_media.field_media_image.entity %}
+                  <div class="gallery-item slider-item !w-auto inline-flex flex-col items-start gap-1">
+                    <div class="relative shrink-0">
+                      <div class="slider-image shrink-0 js-zoom-image overflow-hidden relative" data-delay=".3">
+                        <img src="{{ file_url(gallery_media.field_media_image.entity.uri.value) }}"
+                             alt="{{ gallery_media.field_media_image.alt }}"
+                             loading="lazy">
+                      </div>
+                      {% if gallery_media.field_credits.value is defined and gallery_media.field_credits.value %}
+                        <div class="credits absolute right-[-2px] bottom-0 rotate-90 origin-bottom-right sm:right-[-4px]">
+                          {{ gallery_media.field_credits.value }}
+                        </div>
+                      {% endif %}
+                    </div>
+                  </div>
+                {% endif %}
+              {% endfor %}
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
+    </section>
   {% endif %}
 
   {# Related Projects #}

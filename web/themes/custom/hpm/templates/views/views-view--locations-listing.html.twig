@@ -1,0 +1,11 @@
+{#
+/**
+ * @file
+ * View wrapper for the locations listing.
+ * Strips default view chrome – rows handle their own grid.
+ */
+#}
+{{ rows }}
+{% if pager %}
+  {{ pager }}
+{% endif %}

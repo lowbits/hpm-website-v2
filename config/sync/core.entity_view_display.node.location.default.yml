@@ -1,0 +1,88 @@
+uuid: e5f6a7b8-c9d0-1234-efab-345678901234
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.field.node.location.body
+    - field.field.node.location.field_address
+    - field.field.node.location.field_city
+    - field.field.node.location.field_credits
+    - field.field.node.location.field_email
+    - field.field.node.location.field_gallery
+    - field.field.node.location.field_location_image
+    - field.field.node.location.field_location_tag
+    - field.field.node.location.field_maps_link
+    - field.field.node.location.field_meta_label
+    - field.field.node.location.field_paragraphs
+    - field.field.node.location.field_phone
+    - field.field.node.location.field_project
+    - field.field.node.location.field_team_members
+    - node.type.location
+  module:
+    - entity_reference_revisions
+    - text
+    - user
+id: node.location.default
+targetEntityType: node
+bundle: location
+mode: default
+content:
+  body:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_gallery:
+    type: entity_reference_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: false
+    third_party_settings: {  }
+    weight: 5
+    region: content
+  field_location_image:
+    type: entity_reference_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_paragraphs:
+    type: entity_reference_revisions_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 10
+    region: content
+  field_team_members:
+    type: entity_reference_entity_view
+    label: hidden
+    settings:
+      view_mode: teaser
+      link: false
+    third_party_settings: {  }
+    weight: 6
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  field_address: true
+  field_city: true
+  field_credits: true
+  field_email: true
+  field_location_tag: true
+  field_maps_link: true
+  field_meta_label: true
+  field_phone: true
+  field_project: true
+  langcode: true

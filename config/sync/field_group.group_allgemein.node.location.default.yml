@@ -1,0 +1,31 @@
+uuid: aa1b2c3d-4e5f-6789-abcd-ef0123456789
+langcode: de
+status: true
+dependencies:
+  module:
+    - node
+id: node.location.default.group_allgemein
+field_name: group_allgemein
+entity_type: node
+bundle: location
+mode: default
+type: tab
+parent_name: group_tabs
+label: Allgemein
+description: ''
+weight: 0
+format_type: tab
+format_settings:
+  classes: ''
+  show_empty_fields: false
+  id: ''
+  formatter: open
+  description: ''
+  required_fields: true
+children:
+  - title
+  - field_meta_label
+  - field_city
+  - field_location_image
+  - field_credits
+  - body

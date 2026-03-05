@@ -35,17 +35,11 @@
         {{ node.field_city.value }}
       </h3>
       <div>
-        {% if node.field_address.value %}
-          {{ node.field_address.value|raw }}
-        {% endif %}
-        {% if node.field_phone.value %}
-          <br>{{ node.field_phone.value }}
-        {% endif %}
-        {% if node.field_email.value %}
-          <br><a class="underline underline-offset-3 hover:text-hpm-red transition-colors duration-300"
+        {%- if node.field_address.value %}{{ node.field_address.value|striptags('<br>')|raw }}{% endif -%}
+        {%- if node.field_phone.value %}<br>{{ node.field_phone.value }}{% endif -%}
+        {%- if node.field_email.value %}<br><a class="underline underline-offset-3 hover:text-hpm-red transition-colors duration-300"
                  href="mailto:{{ node.field_email.value }}"
-                 title="E-Mail senden">{{ node.field_email.value }}</a>
-        {% endif %}
+                 title="E-Mail senden">{{ node.field_email.value }}</a>{% endif -%}
       </div>
     </div>
 

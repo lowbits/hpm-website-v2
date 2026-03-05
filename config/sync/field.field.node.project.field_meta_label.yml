@@ -1,19 +1,20 @@
-uuid: b712e18a-389a-4b6a-9129-73ebe0494fb7
+uuid: d5e6f7a8-b9c0-1234-defa-567890123456
 langcode: de
 status: true
 dependencies:
   config:
     - field.storage.node.field_meta_label
-    - node.type.page
-id: node.page.field_meta_label
+    - node.type.project
+id: node.project.field_meta_label
 field_name: field_meta_label
 entity_type: node
-bundle: page
+bundle: project
 label: Meta-Label
-description: ''
+description: 'Angezeigt über der Überschrift (z.B. "Projekt")'
 required: false
 translatable: true
-default_value: {  }
+default_value:
+  - value: Projekt
 default_value_callback: ''
 settings: {  }
 field_type: string

@@ -109,4 +109,32 @@
   .text-link:focus::after {
     @apply translate-x-0;
   }
+
+  /* BEF filter links (inline) */
+  .bef-filter-inline .form-actions,
+  .bef-filter-inline label[for] {
+    @apply hidden;
+  }
+  .bef-filter-inline ul {
+    @apply flex flex-wrap gap-2;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .bef-filter-inline ul a {
+    @apply inline-block border border-hpm-darkred rounded-full
+           text-[.9375rem] leading-[1.125rem]
+           pt-[.625rem] pb-[.75rem] px-[1.5rem]
+           text-hpm-darkred no-underline
+           transition-colors duration-300;
+  }
+  .bef-filter-inline ul a:hover {
+    @apply bg-hpm-darkred text-white;
+  }
+  .bef-filter-inline ul a.is-active,
+  .bef-filter-inline ul a.bef-link--selected,
+  .bef-filter-inline ul .is-active a,
+  .bef-filter-inline ul li.active a {
+    @apply bg-hpm-darkred text-white;
+  }
 }

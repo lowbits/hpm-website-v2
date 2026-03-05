@@ -14,42 +14,48 @@
                   md:py-4
                   lg:py-6
                   xl:py-9">
-        <h1 class="info text-hpm-red meta-line--red meta-line--medium">
-          {{ 'Standort'|t }}
+        {% if node.field_meta_label.value %}
+          <p class="info text-hpm-red meta-line--red meta-line--medium">
+            {{ node.field_meta_label.value }}
+          </p>
+        {% endif %}
+        <h1 class="h1">
+          {{ label }}
         </h1>
-        <h2 class="h1">
-          {{ node.field_city.value }}
-        </h2>
       </div>
 
       <div class="col-span-12 mt-2
                   sm:col-span-10 sm:col-start-2 sm:mt-3
                   md:col-span-12 md:col-start-1">
-        <a class="text-link text-link--back font-case leading-[1.2] text-hpm-darkred"
+        <a class="text-link text-link--back font-case text-[0.9375rem] leading-[1.2] text-hpm-darkred"
            href="/standorte"
            title="Zur Standortübersicht">
           <span class="text-link__text copy">Zur Übersicht</span>
-          <span class="link-icon rotate-180">
+          <span class="link-icon link-icon--back -mt-[1px]">
             {% include '@hpm/images/vectors/button-arrow.svg.twig' %}
           </span>
         </a>
       </div>
 
-      {% if content.field_location_image|render|trim %}
+      {% set media = node.field_location_image.entity %}
+      {% if media and media.field_media_image.entity %}
         <div class="col-span-12">
           <div class="image-container js-zoom-image">
-            {{ content.field_location_image }}
+            <img src="{{ file_url(media.field_media_image.entity.uri.value) }}"
+                 alt="{{ label }}"
+                 loading="lazy">
           </div>
         </div>
       {% endif %}
     </div>
   </section>
 
-  {# Content: description text + contact sidebar #}
+  {# Content: formatted text + sidebar #}
   <section class="content-section">
     <div class="section-container grid grid-cols-1 gap-7
                 sm:grid-cols-12">
-      {# Text #}
+
+      {# Formatted text #}
       <div class="col-span-12
                   sm:col-span-10 sm:col-start-2
                   md:col-span-6 md:col-start-2
@@ -62,63 +68,144 @@
         {% endif %}
       </div>
 
-      {# Contact sidebar #}
-      <div class="col-span-12
-                  sm:col-span-10 sm:col-start-2
-                  md:col-span-4 md:col-start-9
-                  lg:col-span-4 lg:col-start-9">
-        <div class="flex flex-col items-start gap-7">
-          <div class="flex flex-col items-start gap-2">
-            <h4 class="info text-hpm-red">Kontakt</h4>
-            <div class="formatted">
-              {% if node.field_address.value %}
-                {{ node.field_address.value|raw }}
-              {% endif %}
-              {% if node.field_phone.value %}
-                <br>{{ node.field_phone.value }}
-              {% endif %}
-              {% if node.field_email.value %}
-                <br><a href="mailto:{{ node.field_email.value }}">{{ node.field_email.value }}</a>
-              {% endif %}
-            </div>
+      {# Sidebar: contact #}
+      <aside class="col-span-12
+                    sm:col-span-10 sm:col-start-2
+                    md:col-span-4 md:col-start-9
+                    lg:col-span-4 lg:col-start-9">
+        <div class="flex flex-col items-start gap-9">
+
+          {# Contact info #}
+          <div class="flex flex-col items-start gap-4">
+            <h4 class="info text-hpm-red">{{ 'Kontakt'|t }}</h4>
+            <address class="formatted not-italic">
+              {%- if node.field_address.value %}{{ node.field_address.value|striptags('<br>')|raw }}{% endif -%}
+              {%- if node.field_phone.value %}<br>{{ node.field_phone.value }}{% endif -%}
+              {%- if node.field_email.value %}<br><a href="mailto:{{ node.field_email.value }}">{{ node.field_email.value }}</a>{% endif -%}
+            </address>
+            {% if node.field_maps_link.0.url %}
+              <a class="button"
+                 href="{{ node.field_maps_link.0.url }}"
+                 title="{{ 'Standort auf Google Maps'|t }}"
+                 target="_blank"
+                 rel="noopener noreferrer">
+                <span>Google Maps</span>
+                <span class="button-icon">
+                  {% include '@hpm/images/vectors/button-arrow.svg.twig' %}
+                </span>
+              </a>
+            {% endif %}
           </div>
-          {% if node.field_maps_link.0.url %}
-            <a class="button"
-               href="{{ node.field_maps_link.0.url }}"
-               title="Standort {{ node.field_city.value }}"
-               target="_blank">
-              <span>Google Maps</span>
-              <span class="button-icon">
-                {% include '@hpm/images/vectors/button-arrow.svg.twig' %}
-              </span>
-            </a>
-          {% endif %}
+
         </div>
-      </div>
+      </aside>
     </div>
   </section>
   <div id="content"> </div>
 
-  {# Gallery #}
-  {% if content.field_gallery|render|trim %}
-    <div class="content-section">
-      <div class="gallery-slider js-gallery-slider">
-        {{ content.field_gallery }}
+  {# Gallery (from field_gallery) #}
+  {% if node.field_gallery|length %}
+    <section class="gallery gallery-slider content-section js-gallery-slider">
+      <div class="section-container">
+        <div class="grid grid-cols-12 gap-x-7 gap-y-10 relative">
+          <div class="col-span-12 relative z-2">
+            <div class="slider-controls__buttons flex gap-2 shrink-0">
+              <button class="slider-button slider-button--previous js-slider-button-prev shrink-0">
+                <div class="slider-button__icon">
+                  {% include '@hpm/images/vectors/button-arrow.svg.twig' %}
+                </div>
+              </button>
+              <button class="slider-button slider-button--next js-slider-button-next shrink-0">
+                <div class="slider-button__icon">
+                  {% include '@hpm/images/vectors/button-arrow.svg.twig' %}
+                </div>
+              </button>
+            </div>
+          </div>
+          <div class="col-span-12 relative z-1">
+            <div class="gallery-slider carousel">
+              {% for item in node.field_gallery %}
+                {% set gallery_media = item.entity %}
+                {% if gallery_media and gallery_media.field_media_image.entity %}
+                  <div class="gallery-item slider-item !w-auto inline-flex flex-col items-start gap-1">
+                    <div class="relative shrink-0">
+                      <div class="slider-image shrink-0 js-zoom-image overflow-hidden relative" data-delay=".3">
+                        <img src="{{ file_url(gallery_media.field_media_image.entity.uri.value) }}"
+                             alt="{{ gallery_media.field_media_image.alt }}"
+                             loading="lazy">
+                      </div>
+                      {% if gallery_media.field_credits.value is defined and gallery_media.field_credits.value %}
+                        <div class="credits absolute right-[-2px] bottom-0 rotate-90 origin-bottom-right sm:right-[-4px]">
+                          {{ gallery_media.field_credits.value }}
+                        </div>
+                      {% endif %}
+                    </div>
+                  </div>
+                {% endif %}
+              {% endfor %}
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
+    </section>
   {% endif %}
 
-  {# Team Members (people from this location) #}
-  {% if content.field_team_members|render|trim %}
-    <div class="content-section" data-theme="beige">
+  {# Team Members (from field_team_members) #}
+  {% if node.field_team_members|length %}
+    <section class="content-section" data-theme="beige">
       <div class="section-container">
         <h2 class="h3 mb-8">{{ 'Unser Team'|t }}</h2>
-        {{ content.field_team_members }}
+        <div class="grid grid-cols-1 gap-x-7 gap-y-10
+                    sm:grid-cols-2 sm:gap-y-12
+                    md:grid-cols-3 md:gap-x-14
+                    lg:gap-y-14 lg:gap-x-7">
+          {% for item in node.field_team_members %}
+            {% set person = item.entity %}
+            {% set person_media = person.field_person_image.entity %}
+            <div class="people__item relative
+                        grid grid-cols-8 sm:grid-cols-6
+                        lg:grid-cols-4">
+              <div class="flex flex-col items-start gap-3
+                          col-span-8
+                          sm:gap-4 sm:col-span-5
+                          md:col-span-6
+                          lg:gap-4.5 lg:col-span-3">
+                {% if person_media %}
+                  <div class="portrait relative w-[80%] sm:w-full">
+                    <div class="image-box pt-[133.33%]">
+                      <img src="{{ file_url(person_media.field_media_image.entity.uri.value) }}"
+                           alt="{{ person.label }}"
+                           loading="lazy">
+                    </div>
+                    {% if person.field_credits.value %}
+                      <div class="credits text-hpm-darkred-30 absolute origin-bottom-right
+                                  -right-0.5 bottom-0 rotate-90">
+                        {{ person.field_credits.value }}
+                      </div>
+                    {% endif %}
+                  </div>
+                {% endif %}
+                <div class="flex flex-col gap-2">
+                  <h3 class="h4-serif">{{ person.label }}</h3>
+                  <div>
+                    {% if person.field_description.value %}
+                      <p>{{ person.field_description.value|raw }}</p>
+                    {% endif %}
+                    {% if person.field_email.value %}
+                      <p><a href="mailto:{{ person.field_email.value }}"
+                            title="E-Mail an {{ person.label }}">{{ person.field_email.value }}</a></p>
+                    {% endif %}
+                  </div>
+                </div>
+              </div>
+            </div>
+          {% endfor %}
+        </div>
       </div>
-    </div>
+    </section>
   {% endif %}
 
-  {# Remaining paragraphs #}
+  {# Additional flexible content via paragraphs #}
   {% if content.field_paragraphs|render|trim %}
     {{ content.field_paragraphs }}
   {% endif %}

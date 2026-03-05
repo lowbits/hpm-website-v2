@@ -1,0 +1,32 @@
+uuid: c1c2c3c4-d5d6-e7e8-f9f0-a1a2a3a4a5a6
+langcode: de
+status: true
+dependencies:
+  module:
+    - node
+id: node.project.default.group_projektdaten
+field_name: group_projektdaten
+entity_type: node
+bundle: project
+mode: default
+type: tab
+parent_name: group_tabs
+label: Projektdaten
+description: ''
+weight: 1
+format_type: tab
+format_settings:
+  classes: ''
+  show_empty_fields: false
+  id: ''
+  formatter: closed
+  description: ''
+  required_fields: true
+children:
+  - field_client
+  - field_budget
+  - field_extent
+  - field_runtime
+  - field_project_status
+  - field_services
+  - field_external_link

@@ -1,0 +1,28 @@
+uuid: ff6a7b8c-9d0e-1234-fabc-345678901234
+langcode: de
+status: true
+dependencies:
+  module:
+    - node
+id: node.location.default.group_tabs
+field_name: group_tabs
+entity_type: node
+bundle: location
+mode: default
+type: tabs
+parent_name: ''
+label: Tabs
+description: ''
+weight: 0
+format_type: tabs
+format_settings:
+  classes: ''
+  show_empty_fields: false
+  id: ''
+  direction: horizontal
+children:
+  - group_allgemein
+  - group_projekt
+  - group_kontakt
+  - group_medien
+  - group_inhalt

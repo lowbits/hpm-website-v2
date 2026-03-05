@@ -10,6 +10,8 @@ dependencies:
     - field.field.node.project.field_extent
     - field.field.node.project.field_external_link
     - field.field.node.project.field_gallery
+    - field.field.node.project.field_meta_label
+    - field.field.node.project.field_short_title
     - field.field.node.project.field_project_image
     - field.field.node.project.field_project_status
     - field.field.node.project.field_related_projects
@@ -18,99 +20,67 @@ dependencies:
     - field.field.node.project.field_teaser_text
     - node.type.project
   module:
+    - field_group
     - link
     - media_library
     - path
+    - text
 id: node.project.default
 targetEntityType: node
 bundle: project
 mode: default
 content:
-  created:
-    type: datetime_timestamp
-    weight: 96
+  title:
+    type: string_textfield
+    weight: 0
     region: content
-    settings: {  }
+    settings:
+      size: 60
+      placeholder: ''
     third_party_settings: {  }
-  field_budget:
+  field_short_title:
     type: string_textfield
     weight: 1
     region: content
     settings:
       size: 60
-      placeholder: ''
+      placeholder: 'z.B. EnLAG 19'
     third_party_settings: {  }
-  field_business_field:
-    type: entity_reference_autocomplete
+  field_meta_label:
+    type: string_textfield
     weight: 2
     region: content
     settings:
-      match_operator: CONTAINS
-      match_limit: 10
       size: 60
-      placeholder: ''
-    third_party_settings: {  }
-  field_client:
-    type: string_textfield
-    weight: 3
-    region: content
-    settings:
-      size: 60
-      placeholder: ''
-    third_party_settings: {  }
-  field_extent:
-    type: string_textfield
-    weight: 4
-    region: content
-    settings:
-      size: 60
-      placeholder: ''
-    third_party_settings: {  }
-  field_external_link:
-    type: link_default
-    weight: 5
-    region: content
-    settings:
-      placeholder_url: ''
-      placeholder_title: ''
-    third_party_settings: {  }
-  field_gallery:
-    type: media_library_widget
-    weight: 6
-    region: content
-    settings:
-      media_types:
-        - image
+      placeholder: 'z.B. Projekt'
     third_party_settings: {  }
   field_project_image:
     type: media_library_widget
-    weight: 7
+    weight: 2
     region: content
     settings:
       media_types:
         - image
     third_party_settings: {  }
-  field_project_status:
-    type: entity_reference_autocomplete
-    weight: 8
+  field_teaser_text:
+    type: string_textarea
+    weight: 3
     region: content
     settings:
-      match_operator: CONTAINS
-      match_limit: 10
-      size: 60
+      rows: 3
       placeholder: ''
     third_party_settings: {  }
-  field_related_projects:
-    type: entity_reference_autocomplete
-    weight: 9
+  body:
+    type: text_textarea_with_summary
+    weight: 4
     region: content
     settings:
-      match_operator: CONTAINS
-      match_limit: 10
-      size: 60
+      rows: 9
+      summary_rows: 3
       placeholder: ''
+      show_summary: false
     third_party_settings: {  }
-  field_runtime:
+  field_client:
     type: string_textfield
     weight: 10
     region: content
@@ -118,9 +88,33 @@ content:
       size: 60
       placeholder: ''
     third_party_settings: {  }
-  field_services:
-    type: entity_reference_autocomplete
+  field_budget:
+    type: string_textfield
     weight: 11
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_extent:
+    type: string_textfield
+    weight: 12
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_runtime:
+    type: string_textfield
+    weight: 13
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_project_status:
+    type: entity_reference_autocomplete
+    weight: 14
     region: content
     settings:
       match_operator: CONTAINS
@@ -128,20 +122,74 @@ content:
       size: 60
       placeholder: ''
     third_party_settings: {  }
-  field_teaser_text:
-    type: string_textarea
-    weight: 12
+  field_services:
+    type: entity_reference_autocomplete
+    weight: 15
     region: content
     settings:
-      rows: 5
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_external_link:
+    type: link_default
+    weight: 16
+    region: content
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+  field_gallery:
+    type: media_library_widget
+    weight: 20
+    region: content
+    settings:
+      media_types:
+        - image
+    third_party_settings: {  }
+  field_related_projects:
+    type: entity_reference_autocomplete
+    weight: 21
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_business_field:
+    type: entity_reference_autocomplete
+    weight: 22
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
       placeholder: ''
     third_party_settings: {  }
   langcode:
     type: language_select
-    weight: 2
+    weight: 90
     region: content
     settings:
       include_locked: true
+    third_party_settings: {  }
+  created:
+    type: datetime_timestamp
+    weight: 96
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  uid:
+    type: entity_reference_autocomplete
+    weight: 97
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
     third_party_settings: {  }
   path:
     type: path
@@ -156,30 +204,86 @@ content:
     settings:
       display_label: true
     third_party_settings: {  }
-  title:
-    type: string_textfield
-    weight: 0
-    region: content
-    settings:
-      size: 60
-      placeholder: ''
-    third_party_settings: {  }
-  uid:
-    type: entity_reference_autocomplete
-    weight: 97
-    region: content
-    settings:
-      match_operator: CONTAINS
-      match_limit: 10
-      size: 60
-      placeholder: ''
-    third_party_settings: {  }
   url_redirects:
     weight: 50
     region: content
     settings: {  }
     third_party_settings: {  }
 hidden:
-  body: true
   promote: true
   sticky: true
+third_party_settings:
+  field_group:
+    group_tabs:
+      children:
+        - group_allgemein
+        - group_projektdaten
+        - group_medien
+      parent_name: ''
+      weight: 0
+      format_type: tabs
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        direction: horizontal
+      label: Tabs
+      region: content
+    group_allgemein:
+      children:
+        - title
+        - field_short_title
+        - field_meta_label
+        - field_project_image
+        - field_teaser_text
+        - body
+      parent_name: group_tabs
+      weight: 0
+      format_type: tab
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        formatter: open
+        description: ''
+        required_fields: true
+      label: Allgemein
+      region: content
+    group_projektdaten:
+      children:
+        - field_client
+        - field_budget
+        - field_extent
+        - field_runtime
+        - field_project_status
+        - field_services
+        - field_external_link
+      parent_name: group_tabs
+      weight: 1
+      format_type: tab
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        formatter: closed
+        description: ''
+        required_fields: true
+      label: Projektdaten
+      region: content
+    group_medien:
+      children:
+        - field_gallery
+        - field_related_projects
+        - field_business_field
+      parent_name: group_tabs
+      weight: 2
+      format_type: tab
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        formatter: closed
+        description: ''
+        required_fields: true
+      label: 'Medien & Verknüpfungen'
+      region: content

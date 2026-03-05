@@ -1,14 +1,13 @@
 {#
 /**
  * @file
- * Locations overview – grid of location teaser cards via Views.
+ * Locations overview – embeds the locations_listing View.
+ *
+ * The View renders location teasers in a CSS grid via its own templates.
  */
 #}
 <section{{ attributes.addClass('content-section') }}>
-  <div class="section-container grid grid-cols-1 gap-x-7 gap-y-12 js-element-group
-              sm:grid-cols-2 sm:gap-y-14
-              md:grid-cols-3
-              lg:gap-y-20">
+  <div class="section-container">
     {{ drupal_view('locations_listing', 'block_1') }}
   </div>
 </section>

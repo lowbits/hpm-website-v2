@@ -65,15 +65,18 @@
         <a href="/neuigkeiten" class="text-link text-white text-[20px] leading-[1.4]">{{ 'Neuigkeiten'|t }}</a>
       </nav>
 
-      <div class="navigation-social flex gap-4 pt-4 sm:pt-6 lg:pt-8">
-        <a href="https://www.linkedin.com/company/hoecker-project-managers/" target="_blank" rel="noopener" class="w-5 h-5 [&_svg_path]:fill-white" aria-label="LinkedIn">
-          {% include '@hpm/images/vectors/icon-linkedin.svg.twig' %}
+      <div class="social-links flex gap-5 pt-4 sm:pt-6 lg:pt-8">
+        <a href="https://www.xing.com/pages/hockerprojectmanagersgmbh" target="_blank" rel="noopener" title="Höcker Project Managers auf Xing"
+           class="social-link flex h-[42px] w-[42px] items-center justify-center rounded-full border border-white bg-transparent transition-colors duration-300 ease-in-out hover:bg-white focus:bg-white md:h-[48px] md:w-[48px] hover:[&_svg_path]:fill-hpm-darkred [&_svg_path]:transition-fill [&_svg_path]:duration-300">
+          <span class="w-6 block">{% include '@hpm/images/vectors/icon-xing.svg.twig' %}</span>
         </a>
-        <a href="https://www.xing.com/pages/hockerprojectmanagers" target="_blank" rel="noopener" class="w-5 h-5 [&_svg_path]:fill-white" aria-label="Xing">
-          {% include '@hpm/images/vectors/icon-xing.svg.twig' %}
+        <a href="https://www.linkedin.com/company/hoecker-project-managers/" target="_blank" rel="noopener" title="Höcker Project Managers auf LinkedIn"
+           class="social-link flex h-[42px] w-[42px] items-center justify-center rounded-full border border-white bg-transparent transition-colors duration-300 ease-in-out hover:bg-white focus:bg-white md:h-[48px] md:w-[48px] hover:[&_svg_path]:fill-hpm-darkred [&_svg_path]:transition-fill [&_svg_path]:duration-300">
+          <span class="w-6 block">{% include '@hpm/images/vectors/icon-linkedin.svg.twig' %}</span>
         </a>
-        <a href="https://www.kununu.com/de/hoecker-project-managers" target="_blank" rel="noopener" class="w-5 h-5 [&_svg_path]:fill-white" aria-label="kununu">
-          {% include '@hpm/images/vectors/icon-kununu.svg.twig' %}
+        <a href="https://www.kununu.com/de/hoecker-project-managers" target="_blank" rel="noopener" title="Höcker Project Managers auf kununu"
+           class="social-link flex h-[42px] w-[42px] items-center justify-center rounded-full border border-white bg-transparent transition-colors duration-300 ease-in-out hover:bg-white focus:bg-white md:h-[48px] md:w-[48px] hover:[&_svg_path]:fill-hpm-darkred [&_svg_path]:transition-fill [&_svg_path]:duration-300">
+          <span class="w-6 block">{% include '@hpm/images/vectors/icon-kununu.svg.twig' %}</span>
         </a>
       </div>
 
@@ -120,26 +123,37 @@
       {% endif %}
 
       {# Footer Third (newsletter CTA) #}
-      {% if page.footer_third %}
-        <div class="js-footer-inner col-span-12 pt-[1.125rem] relative sm:col-span-5 sm:col-start-8 lg:col-span-3 lg:col-start-auto">
-          <div class="bg-hpm-red w-[7.5rem] h-[0.0625rem] absolute top-0 left-0"></div>
-          <div class="formatted text-white [&_a]:text-white">
-            {{ page.footer_third }}
-          </div>
+      <div class="js-footer-inner col-span-12 pt-[1.125rem] relative sm:col-span-5 sm:col-start-8 lg:col-span-3 lg:col-start-auto">
+        <div class="bg-hpm-red w-[7.5rem] h-[0.0625rem] absolute top-0 left-0"></div>
+        <p class="copy">Auf dem Laufenden bleiben? Jetzt zum Newsletter anmelden.</p>
+        <div class="button-container mt-4">
+          <a class="button"
+             href="https://a730f20c.sibforms.com/serve/MUIFAO_wMjXsyTFmNhnLzpaX7O6kHWMNif5C2qYxF2heQKy_rQDrhNEx7-Q10Ql-tSHrueqDuWkC5-Q_lPjz3iOpq5LFirZt1gc4TjlCO3Bm90E78konZsYt951GpdjHf0DwR2HD0FBnJxaGWrco6roAYy86-e3d_jCZJwLxM9lUsyOgZWolkQbSGjUNhdNJq52hgK-NxfHmbW9dNw=="
+             title="{{ 'Newsletter abonnieren'|t }}"
+             target="_blank"
+             rel="noopener noreferrer">
+            <span>{{ 'Newsletter abonnieren'|t }}</span>
+            <span class="button-icon">
+              {% include '@hpm/images/vectors/button-arrow.svg.twig' %}
+            </span>
+          </a>
         </div>
-      {% endif %}
+      </div>
 
       {# Footer Bottom (social links + DQS seal) #}
       <div class="footer__footer js-footer-inner col-span-12 flex items-center justify-between sm:items-end">
-        <div class="flex gap-4">
-          <a href="https://www.linkedin.com/company/hoecker-project-managers/" target="_blank" rel="noopener" class="w-5 h-5 [&_svg_path]:fill-white" aria-label="LinkedIn">
-            {% include '@hpm/images/vectors/icon-linkedin.svg.twig' %}
+        <div class="social-links flex gap-5 p-0">
+          <a href="https://www.xing.com/pages/hockerprojectmanagersgmbh" target="_blank" rel="noopener" title="Höcker Project Managers auf Xing"
+             class="social-link flex h-[42px] w-[42px] items-center justify-center rounded-full border border-white bg-transparent transition-colors duration-300 ease-in-out hover:bg-white focus:bg-white md:h-[48px] md:w-[48px] hover:[&_svg_path]:fill-hpm-darkred [&_svg_path]:transition-fill [&_svg_path]:duration-300">
+            <span class="w-6 block">{% include '@hpm/images/vectors/icon-xing.svg.twig' %}</span>
           </a>
-          <a href="https://www.xing.com/pages/hockerprojectmanagers" target="_blank" rel="noopener" class="w-5 h-5 [&_svg_path]:fill-white" aria-label="Xing">
-            {% include '@hpm/images/vectors/icon-xing.svg.twig' %}
+          <a href="https://www.linkedin.com/company/hoecker-project-managers/" target="_blank" rel="noopener" title="Höcker Project Managers auf LinkedIn"
+             class="social-link flex h-[42px] w-[42px] items-center justify-center rounded-full border border-white bg-transparent transition-colors duration-300 ease-in-out hover:bg-white focus:bg-white md:h-[48px] md:w-[48px] hover:[&_svg_path]:fill-hpm-darkred [&_svg_path]:transition-fill [&_svg_path]:duration-300">
+            <span class="w-6 block">{% include '@hpm/images/vectors/icon-linkedin.svg.twig' %}</span>
           </a>
-          <a href="https://www.kununu.com/de/hoecker-project-managers" target="_blank" rel="noopener" class="w-5 h-5 [&_svg_path]:fill-white" aria-label="kununu">
-            {% include '@hpm/images/vectors/icon-kununu.svg.twig' %}
+          <a href="https://www.kununu.com/de/hoecker-project-managers" target="_blank" rel="noopener" title="Höcker Project Managers auf kununu"
+             class="social-link flex h-[42px] w-[42px] items-center justify-center rounded-full border border-white bg-transparent transition-colors duration-300 ease-in-out hover:bg-white focus:bg-white md:h-[48px] md:w-[48px] hover:[&_svg_path]:fill-hpm-darkred [&_svg_path]:transition-fill [&_svg_path]:duration-300">
+            <span class="w-6 block">{% include '@hpm/images/vectors/icon-kununu.svg.twig' %}</span>
           </a>
         </div>
         <div class="w-[5.625rem] sm:w-[8rem] [&_svg_path]:fill-white">

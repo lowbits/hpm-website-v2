@@ -5,16 +5,14 @@
  * Renders filter links + project grid inside section-container.
  */
 #}
-<section class="content-section">
-  <div class="section-container">
+<div class="section-container">
     {% if exposed %}
-      <div class="mb-8 lg:mb-12">
+      <nav class="bef-filter-inline mb-8 lg:mb-12" aria-label="{{ 'Filter nach Geschäftsfeld'|t }}">
         {{ exposed }}
-      </div>
+      </nav>
     {% endif %}
     {{ rows }}
     {% if pager %}
       {{ pager }}
     {% endif %}
-  </div>
-</section>
+</div>

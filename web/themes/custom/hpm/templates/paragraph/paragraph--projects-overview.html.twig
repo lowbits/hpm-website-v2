@@ -8,9 +8,7 @@
  * above this one on the page node.
  */
 #}
-<section{{ attributes.addClass('content-section') }}
+<div{{ attributes }}
   {% if theme_css %}data-theme="{{ theme_css }}"{% endif %}>
-  <div class="section-container">
-    {{ drupal_view('projects_listing', 'block_1') }}
-  </div>
-</section>
+  {{ drupal_view('projects_listing', 'block_1') }}
+</div>

@@ -1,0 +1,30 @@
+uuid: b1b2b3b4-c5c6-d7d8-e9e0-f1f2f3f4f5f6
+langcode: de
+status: true
+dependencies:
+  module:
+    - node
+id: node.project.default.group_allgemein
+field_name: group_allgemein
+entity_type: node
+bundle: project
+mode: default
+type: tab
+parent_name: group_tabs
+label: Allgemein
+description: ''
+weight: 0
+format_type: tab
+format_settings:
+  classes: ''
+  show_empty_fields: false
+  id: ''
+  formatter: open
+  description: ''
+  required_fields: true
+children:
+  - title
+  - field_meta_label
+  - field_project_image
+  - field_teaser_text
+  - body

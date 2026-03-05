@@ -1,0 +1,27 @@
+uuid: dd4e5f6a-7b8c-9012-defa-123456789012
+langcode: de
+status: true
+dependencies:
+  module:
+    - node
+id: node.location.default.group_medien
+field_name: group_medien
+entity_type: node
+bundle: location
+mode: default
+type: tab
+parent_name: group_tabs
+label: 'Medien & Team'
+description: ''
+weight: 3
+format_type: tab
+format_settings:
+  classes: ''
+  show_empty_fields: false
+  id: ''
+  formatter: closed
+  description: ''
+  required_fields: true
+children:
+  - field_gallery
+  - field_team_members

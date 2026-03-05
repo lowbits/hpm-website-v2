@@ -1,0 +1,28 @@
+uuid: d1d2d3d4-e5e6-f7f8-a9a0-b1b2b3b4b5b6
+langcode: de
+status: true
+dependencies:
+  module:
+    - node
+id: node.project.default.group_medien
+field_name: group_medien
+entity_type: node
+bundle: project
+mode: default
+type: tab
+parent_name: group_tabs
+label: 'Medien & Verknüpfungen'
+description: ''
+weight: 2
+format_type: tab
+format_settings:
+  classes: ''
+  show_empty_fields: false
+  id: ''
+  formatter: closed
+  description: ''
+  required_fields: true
+children:
+  - field_gallery
+  - field_related_projects
+  - field_business_field

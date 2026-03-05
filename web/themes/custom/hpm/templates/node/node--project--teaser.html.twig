@@ -24,7 +24,7 @@
   {% endif %}
   <div class="flex flex-col gap-4 lg:gap-5">
     <div class="flex flex-col gap-3">
-      <h3 class="h4-serif text-hpm-red">{{ label }}</h3>
+      <h3 class="h4-serif text-hpm-red">{{ node.field_short_title.value ?: label }}</h3>
       {% if node.field_teaser_text.value %}
         <div>{{ node.field_teaser_text.value }}</div>
       {% endif %}
