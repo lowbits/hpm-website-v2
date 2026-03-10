@@ -40,6 +40,7 @@ module:
   mcp_tools_stdio: 0
   media: 0
   media_library: 0
+  media_library_bulk_upload: 0
   menu_link_content: 0
   menu_ui: 0
   metatag: 0

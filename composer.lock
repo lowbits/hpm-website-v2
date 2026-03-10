@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "4e967ad0bdaa9f09831a5ed206710f57",
+    "content-hash": "2c970f713c61fec7a317035a6de6d93e",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -2387,6 +2387,54 @@
             "support": {
                 "source": "https://git.drupalcode.org/project/mcp_tools",
                 "issues": "https://www.drupal.org/project/issues/mcp_tools"
+            }
+        },
+        {
+            "name": "drupal/media_library_bulk_upload",
+            "version": "1.0.6",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/media_library_bulk_upload.git",
+                "reference": "1.0.6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/media_library_bulk_upload-1.0.6.zip",
+                "reference": "1.0.6",
+                "shasum": "d8d154267b65f7a966708e2481781298e733196b"
+            },
+            "require": {
+                "drupal/core": "^10.3 || ^11"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "drupal": {
+                    "version": "1.0.6",
+                    "datestamp": "1761757443",
+                    "security-coverage": {
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "anybody",
+                    "homepage": "https://www.drupal.org/user/291091"
+                },
+                {
+                    "name": "hchonov",
+                    "homepage": "https://www.drupal.org/user/2901211"
+                }
+            ],
+            "description": "Allows uploading files in bulk and converting them to media entities using the media library.",
+            "homepage": "https://www.drupal.org/project/media_library_bulk_upload",
+            "support": {
+                "source": "https://git.drupalcode.org/project/media_library_bulk_upload"
             }
         },
         {
