@@ -17,7 +17,7 @@
       {% if media.field_credits.value %}
         <div class="credits text-hpm-darkred-30 absolute origin-bottom-right
                     -right-0.5 bottom-0 rotate-90">
-          {{ media.field_credits.value }}
+          {{ media.field_credits.value starts with '©' ? media.field_credits.value : '© ' ~ media.field_credits.value }}
         </div>
       {% endif %}
     </div>

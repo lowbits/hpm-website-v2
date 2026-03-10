@@ -53,10 +53,10 @@
                        alt="{{ person.label }}"
                        loading="lazy">
                 </div>
-                {% if person.field_credits.value %}
+                {% if person_media.field_credits.value %}
                   <div class="credits text-hpm-darkred-30 absolute origin-bottom-right
                               -right-0.5 bottom-0 rotate-90">
-                    {{ person.field_credits.value }}
+                    {{ person_media.field_credits.value starts with '©' ? person_media.field_credits.value : '© ' ~ person_media.field_credits.value }}
                   </div>
                 {% endif %}
               </div>

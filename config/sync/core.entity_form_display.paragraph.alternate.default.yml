@@ -26,7 +26,7 @@ mode: default
 content:
   field_accordion_items:
     type: paragraphs
-    weight: 9
+    weight: 7
     region: content
     settings:
       title: Paragraph
@@ -44,7 +44,7 @@ content:
     third_party_settings: {  }
   field_caption:
     type: string_textfield
-    weight: 8
+    weight: 9
     region: content
     settings:
       size: 60
@@ -60,7 +60,7 @@ content:
     third_party_settings: {  }
   field_image:
     type: media_library_widget
-    weight: 7
+    weight: 8
     region: content
     settings:
       media_types:

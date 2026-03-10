@@ -11,65 +11,69 @@ global:
 gsap:
   js:
     js/dist/gsap.min.js: { minified: true, preprocess: false }
+    js/dist/ScrollTrigger.min.js: { minified: true, preprocess: false }
   dependencies:
     - core/drupal
 
-splide:
+flickity:
   css:
     component:
-      js/dist/splide-core.min.css: { minified: true }
+      js/dist/flickity.min.css: { minified: true }
   js:
-    js/dist/splide.min.js: { minified: true, preprocess: false }
+    js/dist/flickity.pkgd.min.js: { minified: true, preprocess: false }
   dependencies:
     - core/drupal
 
 slider-stage:
-  css:
-    component:
-      js/dist/splide-core.min.css: { minified: true }
   js:
-    js/dist/stage-slider.js: { minified: true }
+    js/dist/stage-slider.js: {}
   dependencies:
-    - core/drupal
+    - hpm/flickity
+    - hpm/gsap
 
 slider-teaser:
   js:
-    js/dist/teaser-slider.js: { minified: true }
+    js/dist/teaser-slider.js: {}
   dependencies:
-    - hpm/splide
+    - hpm/flickity
+    - hpm/gsap
 
 slider-quotes:
   js:
-    js/dist/quotes-slider.js: { minified: true }
+    js/dist/quotes-slider.js: {}
   dependencies:
-    - hpm/splide
+    - hpm/flickity
+    - hpm/gsap
 
 slider-timeline:
   js:
-    js/dist/timeline-slider.js: { minified: true }
+    js/dist/timeline-slider.js: {}
   dependencies:
-    - hpm/splide
+    - hpm/flickity
+    - hpm/gsap
 
 slider-benefits:
   js:
-    js/dist/benefits-slider.js: { minified: true }
+    js/dist/benefits-slider.js: {}
   dependencies:
-    - hpm/splide
+    - hpm/flickity
+    - hpm/gsap
 
 slider-gallery:
   js:
-    js/dist/gallery-slider.js: { minified: true }
+    js/dist/gallery-slider.js: {}
   dependencies:
-    - hpm/splide
+    - hpm/flickity
+    - hpm/gsap
 
 fade-ins:
   js:
-    js/dist/fade-ins.js: { minified: true }
+    js/dist/fade-ins.js: {}
   dependencies:
     - hpm/gsap
 
 accordion:
   js:
-    js/dist/accordion.js: { minified: true }
+    js/dist/accordion.js: {}
   dependencies:
     - hpm/gsap

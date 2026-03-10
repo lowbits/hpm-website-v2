@@ -1,97 +1,165 @@
 /**
  * @file
- * Gallery slider using Splide carousel.
- *
- * Horizontal auto-width slider with prev/next buttons.
- * Targets .js-gallery-slider sections containing a .carousel element.
+ * Gallery slider – Flickity carousel with geometric is-passed tracking.
  */
 (function (Drupal) {
   'use strict';
 
+  var GallerySlider = (function () {
+    function GallerySlider(elementOrSelector) {
+      var self = this;
+
+      this.root = typeof elementOrSelector === 'string'
+        ? document.querySelector(elementOrSelector)
+        : elementOrSelector;
+
+      if (!this.root) {
+        console.warn('GallerySlider: root element not found.', elementOrSelector);
+        return;
+      }
+
+      this.carouselEl = this.root.querySelector('.gallery-slider');
+      if (!this.carouselEl) {
+        console.warn('GallerySlider: .gallery-slider not found within root.', this.root);
+        return;
+      }
+
+      this.nextArrow = this.root.querySelector('.js-slider-button-next');
+      this.prevArrow = this.root.querySelector('.js-slider-button-prev');
+
+      if (!this.nextArrow || !this.prevArrow) {
+        console.warn('GallerySlider: missing prev/next arrow buttons.', this.root);
+      }
+
+      this.flkty = new Flickity(this.carouselEl, {
+        adaptiveHeight: false,
+        cellAlign: 'left',
+        draggable: true,
+        contain: false,
+        pageDots: false,
+        prevNextButtons: false,
+        initialIndex: 0,
+        wrapAround: false
+      });
+
+      this.slideCount = 0;
+
+      this.flkty.on('ready', function () {
+        self.slideCount = self.flkty.slides.length;
+        var index = self.flkty.selectedIndex;
+        self.setCurrentSlide(index);
+        self.updatePassedSlides();
+        if (typeof ScrollTrigger !== 'undefined') ScrollTrigger.refresh();
+      });
+
+      this.flkty.on('change', function (index) { self.onSlideChange(index); });
+      this.flkty.on('settle', function () {
+        if (typeof ScrollTrigger !== 'undefined') ScrollTrigger.refresh();
+      });
+
+      if (this.prevArrow) {
+        this.prevArrow.addEventListener('click', function (event) {
+          event.preventDefault();
+          self.flkty.previous();
+        });
+      }
+
+      if (this.nextArrow) {
+        this.nextArrow.addEventListener('click', function (event) {
+          event.preventDefault();
+          self.flkty.next();
+        });
+      }
+
+      var init = function () { self.refresh(); };
+
+      if (document.readyState === 'complete') init();
+      else window.addEventListener('load', init);
+
+      window.addEventListener('resize', function () {
+        self.updatePassedSlides();
+      });
+    }
+
+    GallerySlider.prototype.onSlideChange = function (index) {
+      this.setCurrentSlide(index);
+      this.updatePassedSlides();
+    };
+
+    GallerySlider.prototype.updatePassedSlides = function () {
+      if (!this.flkty || !this.flkty.cells || this.flkty.cells.length === 0) return;
+
+      var selectedIndex = this.flkty.selectedIndex;
+      var activeCell = this.flkty.cells[selectedIndex];
+      if (!activeCell) return;
+
+      var activeEl = activeCell.element;
+      var activeRect = activeEl.getBoundingClientRect();
+
+      if (activeRect.width === 0) {
+        this.flkty.cells.forEach(function (cell) {
+          cell.element.classList.remove('is-passed');
+        });
+        return;
+      }
+
+      var activeCenterX = activeRect.left + activeRect.width / 2;
+
+      this.flkty.cells.forEach(function (cell) {
+        var el = cell.element;
+        var rect = el.getBoundingClientRect();
+        var centerX = rect.left + rect.width / 2;
+        var isLeftOfActive = centerX < activeCenterX - 1;
+
+        if (isLeftOfActive) el.classList.add('is-passed');
+        else el.classList.remove('is-passed');
+      });
+    };
+
+    GallerySlider.prototype.setCurrentSlide = function (index) {
+      if (!this.prevArrow || !this.nextArrow) return;
+
+      if (typeof index !== 'number') {
+        index = this.flkty ? this.flkty.selectedIndex : 0;
+      }
+
+      if (index === 0) {
+        this.prevArrow.classList.add('is-disabled');
+      } else {
+        this.prevArrow.classList.remove('is-disabled');
+      }
+
+      if (index === this.slideCount - 1) {
+        this.nextArrow.classList.add('is-disabled');
+      } else {
+        this.nextArrow.classList.remove('is-disabled');
+      }
+    };
+
+    GallerySlider.prototype.refresh = function () {
+      if (!this.flkty) return;
+
+      this.flkty.reloadCells();
+      this.flkty.resize();
+      this.flkty.reposition();
+      this.slideCount = this.flkty.slides.length;
+
+      var index = this.flkty.selectedIndex;
+      this.setCurrentSlide(index);
+      this.updatePassedSlides();
+
+      if (typeof ScrollTrigger !== 'undefined') ScrollTrigger.refresh();
+    };
+
+    return GallerySlider;
+  })();
+
   Drupal.behaviors.hpmGallerySlider = {
     attach: function (context) {
-      var sliders = context.querySelectorAll('.js-gallery-slider');
-      sliders.forEach(function (root) {
-        if (root.dataset.hpmSliderInit) return;
-        root.dataset.hpmSliderInit = 'true';
-
-        var carousel = root.querySelector('.carousel');
-        if (!carousel) return;
-
-        // Wrap carousel content in Splide markup.
-        var items = carousel.querySelectorAll('.gallery-item');
-        if (!items.length) return;
-
-        carousel.classList.add('splide');
-        var track = document.createElement('div');
-        track.className = 'splide__track';
-        var list = document.createElement('div');
-        list.className = 'splide__list';
-
-        items.forEach(function (item) {
-          item.classList.add('splide__slide');
-          list.appendChild(item);
-        });
-
-        track.appendChild(list);
-        carousel.appendChild(track);
-
-        var prevBtn = root.querySelector('.js-slider-button-prev');
-        var nextBtn = root.querySelector('.js-slider-button-next');
-
-        var splide = new Splide(carousel, {
-          type: 'slide',
-          autoWidth: true,
-          gap: '1.25rem',
-          arrows: false,
-          pagination: false,
-          drag: true,
-          speed: 600,
-          easing: 'ease',
-          trimSpace: false,
-          mediaQuery: 'min',
-          breakpoints: {
-            640: { gap: '1.5rem' },
-            1024: { gap: '1.75rem' },
-          },
-        });
-
-        splide.mount();
-
-        function updateButtons(index) {
-          if (!prevBtn || !nextBtn) return;
-          var end = splide.length - 1;
-          if (index <= 0) {
-            prevBtn.classList.add('is-disabled');
-          } else {
-            prevBtn.classList.remove('is-disabled');
-          }
-          if (index >= end) {
-            nextBtn.classList.add('is-disabled');
-          } else {
-            nextBtn.classList.remove('is-disabled');
-          }
-        }
-
-        splide.on('move', function (newIndex) {
-          updateButtons(newIndex);
-        });
-
-        if (prevBtn) {
-          prevBtn.addEventListener('click', function (e) {
-            e.preventDefault();
-            splide.go('<');
-          });
-        }
-
-        if (nextBtn) {
-          nextBtn.addEventListener('click', function (e) {
-            e.preventDefault();
-            splide.go('>');
-          });
-        }
-
-        updateButtons(splide.index);
+      context.querySelectorAll('.js-gallery-slider').forEach(function (el) {
+        if (el.dataset.hpmSliderInit) return;
+        el.dataset.hpmSliderInit = 'true';
+        new GallerySlider(el);
       });
     }
   };

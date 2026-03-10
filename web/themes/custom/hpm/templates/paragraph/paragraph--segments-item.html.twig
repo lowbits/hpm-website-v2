@@ -12,7 +12,7 @@
 {% set anchor = paragraph.field_anchor_id.value %}
 {% set title = paragraph.field_section_title.value %}
 {% set media = paragraph.field_image.entity %}
-{% set credits = paragraph.field_credits.value %}
+{% set credits = media.field_credits.value %}
 {% set headline = paragraph.field_headline.value %}
 {% set body = paragraph.field_text.value %}
 {% set services = paragraph.field_services_list.value %}
@@ -43,7 +43,7 @@
         </div>
         {% if credits %}
           <div class="credits absolute right-[-2px] bottom-0 rotate-90 origin-bottom-right sm:right-[-4px]">
-            {{ credits }}
+            {{ credits starts with '©' ? credits : '© ' ~ credits }}
           </div>
         {% endif %}
       </div>

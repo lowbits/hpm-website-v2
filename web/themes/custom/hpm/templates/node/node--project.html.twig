@@ -40,10 +40,17 @@
       {% set media = node.field_project_image.entity %}
       {% if media and media.field_media_image.entity %}
         <div class="col-span-12">
-          <div class="image-container js-zoom-image">
-            <img src="{{ file_url(media.field_media_image.entity.uri.value) }}"
-                 alt="{{ label }}"
-                 loading="lazy">
+          <div class="relative">
+            <div class="image-container js-zoom-image">
+              <img src="{{ file_url(media.field_media_image.entity.uri.value) }}"
+                   alt="{{ label }}"
+                   loading="lazy">
+            </div>
+            {% if media.field_credits.value %}
+              <div class="credits absolute right-[-2px] bottom-0 rotate-90 origin-bottom-right sm:right-[-4px]">
+                {{ media.field_credits.value starts with '©' ? media.field_credits.value : '© ' ~ media.field_credits.value }}
+              </div>
+            {% endif %}
           </div>
         </div>
       {% endif %}
@@ -176,7 +183,7 @@
                       </div>
                       {% if gallery_media.field_credits.value is defined and gallery_media.field_credits.value %}
                         <div class="credits absolute right-[-2px] bottom-0 rotate-90 origin-bottom-right sm:right-[-4px]">
-                          {{ gallery_media.field_credits.value }}
+                          {{ gallery_media.field_credits.value starts with '©' ? gallery_media.field_credits.value : '© ' ~ gallery_media.field_credits.value }}
                         </div>
                       {% endif %}
                     </div>

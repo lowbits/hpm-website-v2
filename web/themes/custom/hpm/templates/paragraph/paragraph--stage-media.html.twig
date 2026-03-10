@@ -72,7 +72,12 @@
                  data-delay=".4" data-duration="1.8">
               {{ content.field_image }}
             </div>
-            {# Credits rendered by media entity if available #}
+            {% set media_credits = paragraph.field_image.entity.field_credits.value %}
+            {% if media_credits %}
+              <div class="credits absolute right-[-2px] bottom-0 rotate-90 origin-bottom-right sm:right-[-4px]">
+                {{ media_credits starts with '©' ? media_credits : '© ' ~ media_credits }}
+              </div>
+            {% endif %}
           </div>
         {% endif %}
       {% endif %}

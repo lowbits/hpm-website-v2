@@ -23,8 +23,16 @@
   {# Image #}
   {% if content.field_news_image|render|trim %}
     <div class="section-container">
-      <div class="image-container js-image-zoom">
-        {{ content.field_news_image }}
+      <div class="relative">
+        <div class="image-container js-image-zoom">
+          {{ content.field_news_image }}
+        </div>
+        {% set news_media = node.field_news_image.entity %}
+        {% if news_media and news_media.field_credits.value %}
+          <div class="credits absolute right-[-2px] bottom-0 rotate-90 origin-bottom-right sm:right-[-4px]">
+            {{ news_media.field_credits.value starts with '©' ? news_media.field_credits.value : '© ' ~ news_media.field_credits.value }}
+          </div>
+        {% endif %}
       </div>
     </div>
   {% endif %}

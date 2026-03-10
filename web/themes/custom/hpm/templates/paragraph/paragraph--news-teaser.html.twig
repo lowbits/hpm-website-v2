@@ -1,7 +1,7 @@
 {#
 /**
  * @file
- * News teaser slider – section title + controls + Splide carousel.
+ * News teaser slider – section title + controls + Flickity carousel.
  */
 #}
 {{ attach_library('hpm/slider-teaser') }}
@@ -62,12 +62,8 @@
                   sm:col-span-11
                   md:col-span-8
                   lg:col-span-9">
-        <div class="splide teaser-slider-carousel">
-          <div class="splide__track">
-            <div class="splide__list">
+        <div class="teaser-slider carousel">
               {{ drupal_view('news_teaser_block', 'block_1') }}
-            </div>
-          </div>
         </div>
       </div>
     </div>

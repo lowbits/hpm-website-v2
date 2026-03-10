@@ -3,12 +3,12 @@
  * @file
  * Location teaser card for the locations overview grid.
  *
- * Node fields: title, field_location_image (media), field_credits,
- *              field_city, field_address (text_long), field_phone,
- *              field_email, field_maps_link.
+ * Node fields: title, field_location_image (media), field_teaser_image (media),
+ *              field_teaser_caption, field_city, field_address (text_long),
+ *              field_phone, field_email, field_maps_link.
  */
 #}
-{% set media = node.field_location_image.entity %}
+{% set media = node.field_teaser_image.entity|default(node.field_location_image.entity) %}
 <div{{ attributes.addClass('location-teaser-item', 'flex', 'flex-col', 'items-start', 'gap-3', 'sm:gap-5', 'lg:gap-6') }}>
 
   {# Image #}
@@ -19,10 +19,10 @@
              alt="{{ node.field_city.value }}"
              loading="lazy">
       </div>
-      {% if node.field_credits.value %}
+      {% if media.field_credits.value %}
         <div class="credits text-hpm-darkred-30 absolute origin-bottom-right
                     -right-0.5 bottom-0 rotate-90">
-          {{ node.field_credits.value }}
+          {{ media.field_credits.value starts with '©' ? media.field_credits.value : '© ' ~ media.field_credits.value }}
         </div>
       {% endif %}
     </div>

@@ -4,7 +4,7 @@
  * Quotes slider – carousel of quote items with navigation controls.
  *
  * Fields: field_items (entity_reference to quote_item paragraphs).
- * Quote item fields: field_image, field_credits, field_quote, field_author.
+ * Quote item fields: field_image, field_quote, field_author.
  * Theme color cycles automatically by index: lightblue, red, beige, darkgreen.
  */
 #}
@@ -42,20 +42,18 @@
         </div>
       </div>
 
-      {# Slider items (Splide structure) #}
+      {# Slider items (Flickity structure) #}
       <div class="news-teaser__item-list col-span-12 relative z-1
                   sm:col-span-10
                   md:col-span-12
                   lg:col-span-11">
-        <div class="quotes-slider splide">
-          <div class="splide__track">
-            <div class="splide__list">
+        <div class="quotes-slider">
               {% for item in paragraph.field_items %}
                 {% set quote = item.entity %}
                 {% set item_color = colors[loop.index0 % 4] %}
                 {% set text_color = item_color in ['red', 'darkgreen'] ? 'white' : null %}
 
-                <div class="splide__slide quotes-item slider-item">
+                <div class="quotes-item slider-item">
                   <div>
                     <div class="grid grid-cols-12 gap-0">
                       {# Image #}
@@ -71,9 +69,10 @@
                                    loading="lazy">
                             </div>
                           {% endif %}
-                          {% if quote.field_credits.value %}
+                          {% set media_credits = quote_media.field_credits.value %}
+                          {% if media_credits %}
                             <div class="credits absolute right-[-2px] bottom-0 rotate-90 origin-bottom-right sm:right-[-4px]">
-                              {{ quote.field_credits.value }}
+                              {{ media_credits starts with '©' ? media_credits : '© ' ~ media_credits }}
                             </div>
                           {% endif %}
                         </div>
@@ -108,8 +107,6 @@
                   </div>
                 </div>
               {% endfor %}
-            </div>
-          </div>
         </div>
       </div>
 

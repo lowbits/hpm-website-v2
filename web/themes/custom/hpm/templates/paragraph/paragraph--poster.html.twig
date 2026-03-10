@@ -4,7 +4,7 @@
  * Poster – title section (2-column) with full-width image below.
  *
  * Fields: field_meta_label, field_headline, field_text, field_image,
- *         field_credits, field_theme.
+ *         field_theme.
  */
 #}
 <section{{ attributes.addClass('poster', 'content-section') }}
@@ -41,9 +41,10 @@
           <div class="image-container js-zoom-image" data-delay=".4">
             {{ content.field_image }}
           </div>
-          {% if paragraph.field_credits.value %}
+          {% set media_credits = paragraph.field_image.entity.field_credits.value %}
+          {% if media_credits %}
             <div class="credits absolute right-[-2px] bottom-0 rotate-90 origin-bottom-right sm:right-[-4px]">
-              {{ paragraph.field_credits.value }}
+              {{ media_credits starts with '©' ? media_credits : '© ' ~ media_credits }}
             </div>
           {% endif %}
         </div>

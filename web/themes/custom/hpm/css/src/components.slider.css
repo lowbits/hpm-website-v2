@@ -10,7 +10,7 @@
 
   .teaser-slider .slider-item,
   .teaser-slider .projects-teaser-item,
-  .teaser-slider .splide__slide.news-teaser-item {
+  .teaser-slider .news-teaser-item {
     transition: opacity .5s var(--ease-smooth);
   }
 
@@ -21,22 +21,22 @@
     border-color .3s ease,
     background-color .3s ease;
   }
-  .quotes-slider .splide__slide .quotes-image,
-  .quotes-slider .splide__slide .quotes-content {
+  .quotes-slider .slider-item .quotes-image,
+  .quotes-slider .slider-item .quotes-content {
     transition: opacity .5s var(--ease-smooth);
   }
-  .quotes-slider .splide__slide .quotes-image img {
+  .quotes-slider .slider-item .quotes-image img {
     transition: transform .5s var(--ease-smooth);
     transform: scale(1.1);
   }
-  .quotes-slider .splide__slide.is-active .quotes-image {
+  .quotes-slider .slider-item.is-selected .quotes-image {
     transition: opacity .7s var(--ease-smooth) .2s;
   }
-  .quotes-slider .splide__slide.is-active .quotes-image img {
+  .quotes-slider .slider-item.is-selected .quotes-image img {
     transition: transform .7s var(--ease-smooth) .2;
     transform: scale(1);
   }
-  .quotes-slider .splide__slide.is-active .quotes-content {
+  .quotes-slider .slider-item.is-selected .quotes-content {
     transition: opacity .7s  var(--ease-smooth) .2s;
   }
 
