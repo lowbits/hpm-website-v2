@@ -9,11 +9,14 @@ dependencies:
     - field.field.node.location.field_credits
     - field.field.node.location.field_email
     - field.field.node.location.field_gallery
+    - field.field.node.location.field_gallery_text
     - field.field.node.location.field_location_image
     - field.field.node.location.field_location_tag
     - field.field.node.location.field_maps_link
     - field.field.node.location.field_meta_label
     - field.field.node.location.field_paragraphs
+    - field.field.node.location.field_teaser_caption
+    - field.field.node.location.field_teaser_image
     - field.field.node.location.field_phone
     - field.field.node.location.field_project
     - field.field.node.location.field_team_members
@@ -36,6 +39,8 @@ third_party_settings:
         - group_kontakt
         - group_medien
         - group_inhalt
+      label: Tabs
+      region: content
       parent_name: ''
       weight: 0
       format_type: tabs
@@ -44,8 +49,6 @@ third_party_settings:
         show_empty_fields: false
         id: ''
         direction: horizontal
-      label: Tabs
-      region: content
     group_allgemein:
       children:
         - title
@@ -53,7 +56,11 @@ third_party_settings:
         - field_city
         - field_location_image
         - field_credits
+        - field_teaser_image
+        - field_teaser_caption
         - body
+      label: Allgemein
+      region: content
       parent_name: group_tabs
       weight: 0
       format_type: tab
@@ -64,11 +71,11 @@ third_party_settings:
         formatter: open
         description: ''
         required_fields: true
-      label: Allgemein
-      region: content
     group_projekt:
       children:
         - field_project
+      label: Projekt
+      region: content
       parent_name: group_tabs
       weight: 1
       format_type: tab
@@ -79,14 +86,14 @@ third_party_settings:
         formatter: closed
         description: ''
         required_fields: true
-      label: Projekt
-      region: content
     group_kontakt:
       children:
         - field_address
         - field_phone
         - field_email
         - field_maps_link
+      label: Kontakt
+      region: content
       parent_name: group_tabs
       weight: 2
       format_type: tab
@@ -97,12 +104,13 @@ third_party_settings:
         formatter: closed
         description: ''
         required_fields: true
-      label: Kontakt
-      region: content
     group_medien:
       children:
         - field_gallery
+        - field_gallery_text
         - field_team_members
+      label: 'Medien & Team'
+      region: content
       parent_name: group_tabs
       weight: 3
       format_type: tab
@@ -113,12 +121,12 @@ third_party_settings:
         formatter: closed
         description: ''
         required_fields: true
-      label: 'Medien & Team'
-      region: content
     group_inhalt:
       children:
         - field_paragraphs
         - field_location_tag
+      label: Inhalt
+      region: content
       parent_name: group_tabs
       weight: 4
       format_type: tab
@@ -129,53 +137,11 @@ third_party_settings:
         formatter: closed
         description: ''
         required_fields: true
-      label: Inhalt
-      region: content
 id: node.location.default
 targetEntityType: node
 bundle: location
 mode: default
 content:
-  title:
-    type: string_textfield
-    weight: 0
-    region: content
-    settings:
-      size: 60
-      placeholder: ''
-    third_party_settings: {  }
-  field_meta_label:
-    type: string_textfield
-    weight: 1
-    region: content
-    settings:
-      size: 60
-      placeholder: 'z.B. Standort, Hauptsitz, Niederlassung'
-    third_party_settings: {  }
-  field_city:
-    type: string_textfield
-    weight: 2
-    region: content
-    settings:
-      size: 60
-      placeholder: ''
-    third_party_settings: {  }
-  field_location_image:
-    type: media_library_widget
-    weight: 3
-    region: content
-    settings:
-      media_types:
-        - image
-    third_party_settings: {  }
-  field_credits:
-    type: string_textfield
-    weight: 4
-    region: content
-    settings:
-      size: 60
-      placeholder: ''
-    third_party_settings: {  }
   body:
     type: text_textarea_with_summary
     weight: 5
@@ -186,15 +152,11 @@ content:
       placeholder: ''
       show_summary: false
     third_party_settings: {  }
-  field_project:
-    type: entity_reference_autocomplete
-    weight: 6
+  created:
+    type: datetime_timestamp
+    weight: 96
     region: content
-    settings:
-      match_operator: CONTAINS
-      match_limit: 10
-      size: 60
-      placeholder: 'Projekt suchen...'
+    settings: {  }
     third_party_settings: {  }
   field_address:
     type: text_textarea
@@ -204,11 +166,20 @@ content:
       rows: 3
       placeholder: ''
     third_party_settings: {  }
-  field_phone:
-    type: telephone_default
-    weight: 11
+  field_city:
+    type: string_textfield
+    weight: 2
     region: content
     settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_credits:
+    type: string_textfield
+    weight: 4
+    region: content
+    settings:
+      size: 60
       placeholder: ''
     third_party_settings: {  }
   field_email:
@@ -219,14 +190,6 @@ content:
       placeholder: ''
       size: 60
     third_party_settings: {  }
-  field_maps_link:
-    type: link_default
-    weight: 13
-    region: content
-    settings:
-      placeholder_url: ''
-      placeholder_title: ''
-    third_party_settings: {  }
   field_gallery:
     type: media_library_widget
     weight: 20
@@ -235,15 +198,47 @@ content:
       media_types:
         - image
     third_party_settings: {  }
-  field_team_members:
+  field_gallery_text:
+    type: text_textarea
+    weight: 20
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_location_image:
+    type: media_library_widget
+    weight: 3
+    region: content
+    settings:
+      media_types:
+        - image
+    third_party_settings: {  }
+  field_location_tag:
     type: entity_reference_autocomplete
-    weight: 21
+    weight: 26
     region: content
     settings:
       match_operator: CONTAINS
       match_limit: 10
       size: 60
       placeholder: ''
+    third_party_settings: {  }
+  field_maps_link:
+    type: link_default
+    weight: 13
+    region: content
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+  field_meta_label:
+    type: string_textfield
+    weight: 1
+    region: content
+    settings:
+      size: 60
+      placeholder: 'z.B. Standort, Hauptsitz, Niederlassung'
     third_party_settings: {  }
   field_paragraphs:
     type: paragraphs
@@ -263,15 +258,48 @@ content:
         collapse_edit_all: collapse_edit_all
         duplicate: duplicate
     third_party_settings: {  }
-  field_location_tag:
+  field_phone:
+    type: telephone_default
+    weight: 11
+    region: content
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+  field_project:
     type: entity_reference_autocomplete
-    weight: 26
+    weight: 6
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: 'Projekt suchen...'
+    third_party_settings: {  }
+  field_team_members:
+    type: entity_reference_autocomplete
+    weight: 21
     region: content
     settings:
       match_operator: CONTAINS
       match_limit: 10
       size: 60
       placeholder: ''
+    third_party_settings: {  }
+  field_teaser_caption:
+    type: string_textfield
+    weight: 6
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_teaser_image:
+    type: media_library_widget
+    weight: 5
+    region: content
+    settings:
+      media_types:
+        - image
     third_party_settings: {  }
   langcode:
     type: language_select
@@ -279,22 +307,6 @@ content:
     region: content
     settings:
       include_locked: true
-    third_party_settings: {  }
-  created:
-    type: datetime_timestamp
-    weight: 96
-    region: content
-    settings: {  }
-    third_party_settings: {  }
-  uid:
-    type: entity_reference_autocomplete
-    weight: 97
-    region: content
-    settings:
-      match_operator: CONTAINS
-      match_limit: 10
-      size: 60
-      placeholder: ''
     third_party_settings: {  }
   path:
     type: path
@@ -308,6 +320,24 @@ content:
     region: content
     settings:
       display_label: true
+    third_party_settings: {  }
+  title:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  uid:
+    type: entity_reference_autocomplete
+    weight: 97
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
     third_party_settings: {  }
   url_redirects:
     weight: 50

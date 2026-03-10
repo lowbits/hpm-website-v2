@@ -9,11 +9,14 @@ dependencies:
     - field.field.node.location.field_credits
     - field.field.node.location.field_email
     - field.field.node.location.field_gallery
+    - field.field.node.location.field_gallery_text
     - field.field.node.location.field_location_image
     - field.field.node.location.field_location_tag
     - field.field.node.location.field_maps_link
     - field.field.node.location.field_meta_label
     - field.field.node.location.field_paragraphs
+    - field.field.node.location.field_teaser_caption
+    - field.field.node.location.field_teaser_image
     - field.field.node.location.field_phone
     - field.field.node.location.field_project
     - field.field.node.location.field_team_members
@@ -43,6 +46,13 @@ content:
     third_party_settings: {  }
     weight: 5
     region: content
+  field_gallery_text:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 4
+    region: content
   field_location_image:
     type: entity_reference_entity_view
     label: hidden
@@ -69,6 +79,23 @@ content:
       link: false
     third_party_settings: {  }
     weight: 6
+    region: content
+  field_teaser_caption:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_teaser_image:
+    type: entity_reference_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: false
+    third_party_settings: {  }
+    weight: 3
     region: content
   links:
     settings: {  }

@@ -5,7 +5,7 @@
  *
  * Fields: field_box_position (left/right), field_box_theme (dark/red),
  *         field_headline, field_text, field_accordion_items, field_image,
- *         field_credits, field_link, field_anchor_id.
+ *         field_link, field_anchor_id.
  */
 #}
 {{ attach_library('hpm/accordion') }}
@@ -30,14 +30,18 @@
             <div class="image-container js-zoom-image" data-delay=".2">
               {{ content.field_image }}
             </div>
-            {% if paragraph.field_credits.value %}
+            {% set media_credits = paragraph.field_image.entity.field_credits.value %}
+            {% if media_credits %}
               <div class="credits absolute {{ box_position == 'left' ? 'right-[-2px] bottom-0 rotate-90 origin-bottom-right sm:right-[-4px]' : 'left-[-2px] bottom-0 -rotate-90 origin-bottom-left sm:left-[-4px]' }}">
                 <span class="{{ box_position == 'right' ? 'relative block rotate-180 origin-center' }}">
-                  {{ paragraph.field_credits.value }}
+                  {{ media_credits starts with '©' ? media_credits : '© ' ~ media_credits }}
                 </span>
               </div>
             {% endif %}
           </div>
+          {% if paragraph.field_caption.value %}
+            <p class="caption mt-2">{{ paragraph.field_caption.value }}</p>
+          {% endif %}
         {% endif %}
       </div>
 

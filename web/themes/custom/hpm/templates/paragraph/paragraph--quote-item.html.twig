@@ -3,7 +3,7 @@
  * @file
  * Quote item – single slide in the quotes carousel.
  *
- * Fields: field_image, field_credits, field_quote (text_long),
+ * Fields: field_image, field_quote (text_long),
  *         field_author (string), field_theme (list_string: lightblue/red/beige/darkgreen/darkred/green).
  */
 #}
@@ -30,9 +30,10 @@
               {{ content.field_image }}
             </div>
           {% endif %}
-          {% if paragraph.field_credits.value %}
+          {% set media_credits = paragraph.field_image.entity.field_credits.value %}
+          {% if media_credits %}
             <div class="credits absolute right-[-2px] bottom-0 rotate-90 origin-bottom-right sm:right-[-4px]">
-              {{ paragraph.field_credits.value }}
+              {{ media_credits starts with '©' ? media_credits : '© ' ~ media_credits }}
             </div>
           {% endif %}
         </div>

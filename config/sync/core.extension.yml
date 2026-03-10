@@ -16,7 +16,6 @@ module:
   comment: 0
   config: 0
   config_split: 0
-  content_translation: 10
   contextual: 0
   crop: 0
   datetime: 0
@@ -41,23 +40,22 @@ module:
   mcp_tools_stdio: 0
   media: 0
   media_library: 0
+  media_library_bulk_upload: 0
   menu_link_content: 0
   menu_ui: 0
   metatag: 0
   metatag_open_graph: 0
-  minimal: 1000
   mysql: 0
   node: 0
   options: 0
   page_cache: 0
-  paragraphs: 11
   path: 0
   path_alias: 0
-  pathauto: 1
   redirect: 0
   responsive_image: 0
   search: 0
   shortcut: 0
+  svg_image: 0
   system: 0
   taxonomy: 0
   telephone: 0
@@ -68,8 +66,12 @@ module:
   twig_tweak: 0
   update: 0
   user: 0
-  views: 10
   webform: 0
+  pathauto: 1
+  content_translation: 10
+  views: 10
+  paragraphs: 11
+  minimal: 1000
 theme:
   olivero: 0
   claro: 0

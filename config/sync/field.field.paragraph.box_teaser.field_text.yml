@@ -11,7 +11,7 @@ id: paragraph.box_teaser.field_text
 field_name: field_text
 entity_type: paragraph
 bundle: box_teaser
-label: Text
+label: Text/Autor
 description: ''
 required: false
 translatable: true

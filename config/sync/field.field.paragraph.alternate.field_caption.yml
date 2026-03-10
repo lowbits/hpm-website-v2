@@ -1,0 +1,19 @@
+uuid: 8b4a6dce-de12-4ae0-b4bf-772e2b5584be
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_caption
+    - paragraphs.paragraphs_type.alternate
+id: paragraph.alternate.field_caption
+field_name: field_caption
+entity_type: paragraph
+bundle: alternate
+label: Caption
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

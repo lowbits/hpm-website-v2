@@ -22,6 +22,15 @@
           <div class="image-container js-zoom-image" data-delay=".3">
             {{ content.field_image }}
           </div>
+          {% set media_credits = paragraph.field_image.entity.field_credits.value %}
+          {% if media_credits %}
+            <div class="credits">
+              <span>{{ media_credits starts with '©' ? media_credits : '© ' ~ media_credits }}</span>
+            </div>
+          {% endif %}
+          {% if paragraph.field_caption.value %}
+            <p class="caption mt-2">{{ paragraph.field_caption.value }}</p>
+          {% endif %}
         {% endif %}
       </div>
 

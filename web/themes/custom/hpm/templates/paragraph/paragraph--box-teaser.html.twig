@@ -4,7 +4,7 @@
  * Box teaser – image with overlapping colored content box.
  *
  * Fields: field_display_size (small/large), field_box_position (left/right),
- *         field_image, field_credits, field_logo, field_headline, field_text,
+ *         field_image, field_logo, field_headline, field_text,
  *         field_link.
  */
 #}
@@ -44,14 +44,15 @@
             {{ content.field_image }}
           </div>
         {% endif %}
-        {% if paragraph.field_credits.value %}
+        {% set media_credits = paragraph.field_image.entity.field_credits.value %}
+        {% if media_credits %}
           <div class="credits absolute bottom-0
                       {% if box_position == 'right' %}
                         left-[-2px] -rotate-90 origin-bottom-left sm:left-[-4px]
                       {% else %}
                         right-[-2px] rotate-90 origin-bottom-right sm:right-[-4px]
                       {% endif %}">
-            <span class="{{ box_position == 'right' ? 'relative block rotate-180 origin-center' }}">{{ paragraph.field_credits.value }}</span>
+            <span class="{{ box_position == 'right' ? 'relative block rotate-180 origin-center' }}">{{ media_credits starts with '©' ? media_credits : '© ' ~ media_credits }}</span>
           </div>
         {% endif %}
       </div>
@@ -108,9 +109,13 @@
           </div>
         {% endif %}
 
-        {% if content.field_link|render|trim %}
+        {% if button_url %}
           <div class="button-container">
-            {{ content.field_link }}
+            {% include '@hpm/templates/components/button-link.html.twig' with {
+              url: button_url,
+              text: button_text,
+              variant: 'secondary'
+            } only %}
           </div>
         {% endif %}
       </div>

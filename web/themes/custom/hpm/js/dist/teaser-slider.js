@@ -1,104 +1,185 @@
 /**
  * @file
- * Teaser slider using Splide carousel.
- *
- * Replicates the Flickity-based teaser slider behaviour:
- *  - overflow visible (slides extend to screen edge on the right)
- *  - passed slides fade out via .is-passed + CSS opacity transition
- *  - fade fires at the START of the slide animation (not after)
+ * Teaser slider – Flickity carousel with is-passed tracking.
  */
 (function (Drupal) {
   'use strict';
 
+  var TeaserSlider = (function () {
+    function TeaserSlider(elementOrSelector) {
+      var self = this;
+
+      this.root = typeof elementOrSelector === 'string'
+        ? document.querySelector(elementOrSelector)
+        : elementOrSelector;
+
+      if (!this.root) {
+        console.warn('TeaserSlider: root element not found.', elementOrSelector);
+        return;
+      }
+
+      this.isBenefits = this.root.classList.contains('benefits');
+
+      this.carouselEl = this.root.querySelector('.carousel');
+      if (!this.carouselEl) {
+        console.warn('TeaserSlider: .carousel not found within root.', this.root);
+        return;
+      }
+
+      // Unwrap Drupal's views-element-container so slides are
+      // direct children of .carousel as Flickity requires.
+      var viewsWrapper = this.carouselEl.querySelector('.views-element-container');
+      if (viewsWrapper) {
+        while (viewsWrapper.firstChild) {
+          this.carouselEl.appendChild(viewsWrapper.firstChild);
+        }
+        viewsWrapper.remove();
+      }
+
+      this.nextArrow = this.root.querySelector('.js-slider-button-next');
+      this.prevArrow = this.root.querySelector('.js-slider-button-prev');
+
+      if (!this.nextArrow || !this.prevArrow) {
+        console.warn('TeaserSlider: missing prev/next arrow buttons.', this.root);
+      }
+
+      this.flkty = new Flickity(this.carouselEl, {
+        adaptiveHeight: false,
+        cellAlign: 'left',
+        draggable: true,
+        pageDots: false,
+        prevNextButtons: false,
+        initialIndex: 0,
+        wrapAround: false
+      });
+
+      this.slideCount = 0;
+
+      this.flkty.on('ready', function () {
+        self.slideCount = self.flkty.slides.length;
+
+        if (self.isBenefits) {
+          self.equalizeHeights();
+        }
+
+        self.setCurrentSlide(self.flkty.selectedIndex);
+        self.updatePassedSlides(self.flkty.selectedIndex);
+        if (typeof ScrollTrigger !== 'undefined') ScrollTrigger.refresh();
+      });
+
+      this.flkty.on('settle', function () {
+        if (typeof ScrollTrigger !== 'undefined') ScrollTrigger.refresh();
+      });
+
+      this.flkty.on('change', function (index) { self.onSlideChange(index); });
+
+      if (this.prevArrow) {
+        this.prevArrow.addEventListener('click', function (event) {
+          event.preventDefault();
+          self.flkty.previous();
+        });
+      }
+
+      if (this.nextArrow) {
+        this.nextArrow.addEventListener('click', function (event) {
+          event.preventDefault();
+          self.flkty.next();
+        });
+      }
+
+      var init = function () { self.refresh(); };
+
+      if (document.readyState === 'complete') init();
+      else window.addEventListener('load', init);
+
+      window.addEventListener('resize', function () {
+        if (self.isBenefits) {
+          self.equalizeHeights();
+        }
+      });
+    }
+
+    TeaserSlider.prototype.onSlideChange = function (index) {
+      this.setCurrentSlide(index);
+      this.updatePassedSlides(index);
+    };
+
+    TeaserSlider.prototype.updatePassedSlides = function (activeIndex) {
+      if (!this.flkty || !this.flkty.cells) return;
+
+      this.flkty.cells.forEach(function (cell, i) {
+        var slide = cell.element;
+        if (!slide) return;
+
+        if (i < activeIndex) {
+          slide.classList.add('is-passed');
+        } else {
+          slide.classList.remove('is-passed');
+        }
+      });
+    };
+
+    TeaserSlider.prototype.setCurrentSlide = function (index) {
+      if (!this.prevArrow || !this.nextArrow) return;
+
+      if (index === 0) {
+        this.prevArrow.classList.add('is-disabled');
+      } else {
+        this.prevArrow.classList.remove('is-disabled');
+      }
+
+      if (index === this.slideCount - 1) {
+        this.nextArrow.classList.add('is-disabled');
+      } else {
+        this.nextArrow.classList.remove('is-disabled');
+      }
+    };
+
+    TeaserSlider.prototype.refresh = function () {
+      if (!this.flkty) return;
+
+      this.flkty.reloadCells();
+      this.flkty.resize();
+      this.flkty.reposition();
+      this.slideCount = this.flkty.slides.length;
+
+      if (this.isBenefits) {
+        this.equalizeHeights();
+      }
+
+      this.setCurrentSlide(this.flkty.selectedIndex);
+      this.updatePassedSlides(this.flkty.selectedIndex);
+    };
+
+    TeaserSlider.prototype.equalizeHeights = function () {
+      if (!this.flkty || !this.flkty.cells || this.flkty.cells.length === 0) return;
+
+      this.flkty.cells.forEach(function (cell) {
+        cell.element.style.height = 'auto';
+      });
+
+      var maxHeight = 0;
+      this.flkty.cells.forEach(function (cell) {
+        var h = cell.element.offsetHeight;
+        if (h > maxHeight) maxHeight = h;
+      });
+
+      this.flkty.cells.forEach(function (cell) {
+        cell.element.style.height = maxHeight + 'px';
+      });
+
+      this.flkty.resize();
+    };
+
+    return TeaserSlider;
+  })();
+
   Drupal.behaviors.hpmTeaserSlider = {
     attach: function (context) {
-      var sliders = context.querySelectorAll('.js-teaser-slider');
-      sliders.forEach(function (root) {
-        if (root.dataset.hpmSliderInit) return;
-        root.dataset.hpmSliderInit = 'true';
-
-        var splideEl = root.querySelector('.splide');
-        if (!splideEl) return;
-
-        // Unwrap Drupal's views-element-container so slides are
-        // direct children of .splide__list as Splide requires.
-        var list = splideEl.querySelector('.splide__list');
-        if (list) {
-          var viewsWrapper = list.querySelector('.views-element-container');
-          if (viewsWrapper) {
-            while (viewsWrapper.firstChild) {
-              list.appendChild(viewsWrapper.firstChild);
-            }
-            viewsWrapper.remove();
-          }
-        }
-
-        var prevBtn = root.querySelector('.js-slider-button-prev');
-        var nextBtn = root.querySelector('.js-slider-button-next');
-
-        var splide = new Splide(splideEl, {
-          type: 'slide',
-          autoWidth: true,
-          gap: '1.5rem',
-          arrows: false,
-          pagination: false,
-          drag: true,
-          speed: 600,
-          easing: 'ease',
-          trimSpace: false,
-        });
-
-        splide.mount();
-
-        function updateButtons(index) {
-          if (!prevBtn || !nextBtn) return;
-          var end = splide.length - 1;
-          if (index <= 0) {
-            prevBtn.classList.add('is-disabled');
-          } else {
-            prevBtn.classList.remove('is-disabled');
-          }
-          if (index >= end) {
-            nextBtn.classList.add('is-disabled');
-          } else {
-            nextBtn.classList.remove('is-disabled');
-          }
-        }
-
-        function updatePassed(index) {
-          var slides = splideEl.querySelectorAll('.splide__slide');
-          slides.forEach(function (slide, i) {
-            if (i < index) {
-              slide.classList.add('is-passed');
-            } else {
-              slide.classList.remove('is-passed');
-            }
-          });
-        }
-
-        // Use 'move' (fires BEFORE animation) so the opacity fade
-        // runs simultaneously with the slide transition.
-        splide.on('move', function (newIndex) {
-          updateButtons(newIndex);
-          updatePassed(newIndex);
-        });
-
-        if (prevBtn) {
-          prevBtn.addEventListener('click', function (e) {
-            e.preventDefault();
-            splide.go('<');
-          });
-        }
-
-        if (nextBtn) {
-          nextBtn.addEventListener('click', function (e) {
-            e.preventDefault();
-            splide.go('>');
-          });
-        }
-
-        updateButtons(splide.index);
-        updatePassed(splide.index);
+      context.querySelectorAll('.js-teaser-slider').forEach(function (el) {
+        if (el.dataset.hpmSliderInit) return;
+        el.dataset.hpmSliderInit = 'true';
+        new TeaserSlider(el);
       });
     }
   };

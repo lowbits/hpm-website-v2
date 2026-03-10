@@ -1,4 +1,44 @@
+/* Override Flickity's unlayered overflow:hidden — must be outside @layer to win cascade */
+.carousel .flickity-viewport {
+  overflow: visible;
+}
+
 @layer components {
+
+  /* Stage / Carousel (Flickity) */
+  .carousel,
+  .quote-slider {
+    outline: none;
+  }
+  .carousel__item img {
+    @apply opacity-0;
+    transition: opacity .5s cubic-bezier(0, 0, .18, 1.055), transform .5s cubic-bezier(0, 0, .18, 1.055);
+  }
+  .carousel__item .caption {
+    @apply opacity-0;
+    transform: translateX(1.5rem);
+    transition: transform .3s ease 0s, opacity .5s ease 0s;
+  }
+  .carousel__item .credits {
+    @apply opacity-0;
+    transition: opacity .5s ease 0s;
+  }
+  .carousel__item.is-selected img,
+  .carousel__item.is-selected .caption,
+  .carousel__item.is-selected .credits {
+    opacity: 1 !important;
+  }
+  .carousel__item.is-selected .caption {
+    transform: translateX(0);
+    transition-delay: .3s;
+  }
+  .carousel__image-box {
+    transition: transform .7s ease;
+  }
+  .carousel__image-box img,
+  .carousel__image-box picture {
+    transform: scale(1);
+  }
 
   .slider-item {
     @apply absolute;
@@ -8,64 +48,48 @@
     @apply absolute block mr-6;
     @apply w-full sm:w-[56vw] md:w-[40vw] lg:w-[32vw] xl:w-[36rem];
   }
-  .teaser-slider .splide__slide.news-teaser-item,
-  .teaser-slider .splide__slide.projects-teaser-item {
-    @apply relative block mr-0;
-    @apply w-full sm:w-[56vw] md:w-[40vw] lg:w-[32vw] xl:w-[36rem];
-  }
 
-  /* Override splide-core.min.css overflow:hidden so slides extend to the
-     screen edge (matching original Flickity behaviour). !important is needed
-     because the vendor CSS is unlayered while this rule lives in
-     @layer components which has lower cascade priority. */
-  .teaser-slider .splide__track {
-    overflow: visible !important;
-  }
   /* Benefits Slider */
-  .teaser-slider .splide__slide.benefits-item {
+  .teaser-slider .benefits-item {
     @apply relative block;
     @apply w-full sm:w-[18.5rem];
   }
   .teaser-slider .slider-item.is-passed,
   .teaser-slider .projects-teaser-item.is-passed,
-  .teaser-slider .splide__slide.news-teaser-item.is-passed,
-  .teaser-slider .splide__slide.projects-teaser-item.is-passed {
+  .teaser-slider .news-teaser-item.is-passed {
     @apply opacity-0;
   }
 
   /* Quotes Slider */
-  .quotes-slider .splide__slide .quotes-image,
-  .quotes-slider .splide__slide .quotes-content {
+  .quotes-slider .slider-item .quotes-image,
+  .quotes-slider .slider-item .quotes-content {
     @apply opacity-0;
   }
-  .quotes-slider .splide__slide.is-active .quotes-image,
-  .quotes-slider .splide__slide.is-active .quotes-content{
+  .quotes-slider .slider-item.is-selected .quotes-image,
+  .quotes-slider .slider-item.is-selected .quotes-content {
     @apply opacity-100;
   }
 
   /* Timeline Slider */
-  .timeline-slider .splide__track {
-    overflow: visible !important;
-  }
-  .timeline-slider .splide__slide {
+  .timeline-slider .slider-item {
     @apply relative block;
     transition: opacity .5s ease;
   }
-  .timeline-slider .splide__slide .timeline-year {
+  .timeline-slider .slider-item .timeline-year {
     @apply font-case font-normal text-[1.0625rem] leading-[2rem] sm:text-[1.1875rem] lg:text-[1.375rem];
     transition: font-size .5s ease;
   }
-  .timeline-slider .splide__slide .timedot {
+  .timeline-slider .slider-item .timedot {
     transition: transform .5s ease;
     transform-origin: center left;
   }
-  .timeline-slider .splide__slide.is-selected .timeline-year {
+  .timeline-slider .slider-item.is-selected .timeline-year {
     @apply text-[1.375rem] sm:text-[1.625rem] lg:text-[2rem];
   }
-  .timeline-slider .splide__slide.is-selected .timedot {
+  .timeline-slider .slider-item.is-selected .timedot {
     transform: scale(1.5);
   }
-  .timeline-slider .splide__slide.is-passed {
+  .timeline-slider .slider-item.is-passed {
     @apply opacity-0;
   }
 

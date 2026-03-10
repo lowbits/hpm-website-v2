@@ -1,7 +1,7 @@
 {#
 /**
  * @file
- * Projects teaser – Splide slider of manually curated project items.
+ * Projects teaser – Flickity slider of manually curated project items.
  *
  * Fields: field_section_title, field_theme, field_items (projects_teaser_item).
  */
@@ -51,17 +51,15 @@
                   sm:col-span-11
                   md:col-span-8
                   lg:col-span-9">
-        <div class="splide teaser-slider-carousel">
-          <div class="splide__track">
-            <div class="splide__list">
+        <div class="teaser-slider carousel">
               {% for ref in paragraph.field_items %}
                 {% set item = ref.entity %}
                 {% set media = item.field_image.entity %}
-                {% set item_credits = item.field_credits.value %}
+                {% set item_credits = media.field_credits.value %}
                 {% set item_headline = item.field_headline.value %}
                 {% set item_text = item.field_teaser_text.value %}
                 {% set item_link = item.field_link.0 %}
-                <div class="splide__slide projects-teaser-item flex flex-col items-start gap-3
+                <div class="projects-teaser-item slider-item flex flex-col items-start gap-3
                             sm:gap-5 lg:gap-6">
                   {% if media and media.field_media_image.entity %}
                     <div class="relative w-full">
@@ -73,7 +71,7 @@
                       {% if item_credits %}
                         <div class="credits text-hpm-darkred-30 absolute origin-bottom-right
                                     -right-0.5 bottom-0 rotate-90">
-                          {{ item_credits }}
+                          {{ item_credits starts with '©' ? item_credits : '© ' ~ item_credits }}
                         </div>
                       {% endif %}
                     </div>
@@ -98,8 +96,6 @@
                   </div>
                 </div>
               {% endfor %}
-            </div>
-          </div>
         </div>
       </div>
     </div>
