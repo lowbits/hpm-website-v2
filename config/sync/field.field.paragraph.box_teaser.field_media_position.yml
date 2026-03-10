@@ -1,0 +1,21 @@
+uuid: b9d28165-c7a8-4e00-9633-b326458ca6f9
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_media_position
+    - paragraphs.paragraphs_type.box_teaser
+  module:
+    - options
+id: paragraph.box_teaser.field_media_position
+field_name: field_media_position
+entity_type: paragraph
+bundle: box_teaser
+label: Medienseite
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

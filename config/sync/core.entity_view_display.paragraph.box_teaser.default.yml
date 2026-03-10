@@ -8,7 +8,10 @@ dependencies:
     - field.field.paragraph.box_teaser.field_image
     - field.field.paragraph.box_teaser.field_link
     - field.field.paragraph.box_teaser.field_logo
+    - field.field.paragraph.box_teaser.field_media_position
+    - field.field.paragraph.box_teaser.field_quote
     - field.field.paragraph.box_teaser.field_text
+    - field.field.paragraph.box_teaser.field_white_spacer
     - paragraphs.paragraphs_type.box_teaser
   module:
     - link
@@ -69,11 +72,36 @@ content:
     third_party_settings: {  }
     weight: 3
     region: content
+  field_media_position:
+    type: list_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 6
+    region: content
+  field_quote:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 7
+    region: content
   field_text:
     type: text_default
     label: hidden
     settings: {  }
     third_party_settings: {  }
     weight: 1
+    region: content
+  field_white_spacer:
+    type: boolean
+    label: hidden
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    weight: 8
     region: content
 hidden: {  }

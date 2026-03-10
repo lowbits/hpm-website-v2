@@ -9,11 +9,14 @@ dependencies:
     - field.field.node.location.field_credits
     - field.field.node.location.field_email
     - field.field.node.location.field_gallery
+    - field.field.node.location.field_gallery_text
     - field.field.node.location.field_location_image
     - field.field.node.location.field_location_tag
     - field.field.node.location.field_maps_link
     - field.field.node.location.field_meta_label
     - field.field.node.location.field_paragraphs
+    - field.field.node.location.field_teaser_caption
+    - field.field.node.location.field_teaser_image
     - field.field.node.location.field_phone
     - field.field.node.location.field_project
     - field.field.node.location.field_team_members
@@ -53,6 +56,8 @@ third_party_settings:
         - field_city
         - field_location_image
         - field_credits
+        - field_teaser_image
+        - field_teaser_caption
         - body
       label: Allgemein
       region: content
@@ -102,6 +107,7 @@ third_party_settings:
     group_medien:
       children:
         - field_gallery
+        - field_gallery_text
         - field_team_members
       label: 'Medien & Team'
       region: content
@@ -192,6 +198,14 @@ content:
       media_types:
         - image
     third_party_settings: {  }
+  field_gallery_text:
+    type: text_textarea
+    weight: 20
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
   field_location_image:
     type: media_library_widget
     weight: 3
@@ -270,6 +284,22 @@ content:
       match_limit: 10
       size: 60
       placeholder: ''
+    third_party_settings: {  }
+  field_teaser_caption:
+    type: string_textfield
+    weight: 6
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_teaser_image:
+    type: media_library_widget
+    weight: 5
+    region: content
+    settings:
+      media_types:
+        - image
     third_party_settings: {  }
   langcode:
     type: language_select

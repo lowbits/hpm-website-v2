@@ -1,0 +1,23 @@
+uuid: 7a4f494e-7e97-4731-b7a4-c82a3e47fa7a
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_white_spacer
+    - paragraphs.paragraphs_type.box_teaser
+id: paragraph.box_teaser.field_white_spacer
+field_name: field_white_spacer
+entity_type: paragraph
+bundle: box_teaser
+label: 'White Spacer'
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: Ja
+  off_label: Nein
+field_type: boolean

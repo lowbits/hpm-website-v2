@@ -20,5 +20,34 @@ default_value_callback: ''
 settings:
   handler: 'default:paragraph'
   handler_settings:
-    target_bundles: null
+    target_bundles:
+      alternate: alternate
+      application: application
+      application_form: application_form
+      benefits: benefits
+      blocks: blocks
+      box_teaser: box_teaser
+      deeplink: deeplink
+      gallery: gallery
+      intro: intro
+      job_intro: job_intro
+      job_offers: job_offers
+      locations_overview: locations_overview
+      map_teaser: map_teaser
+      narrative: narrative
+      news_teaser: news_teaser
+      people: people
+      poster: poster
+      projects_overview: projects_overview
+      projects_teaser: projects_teaser
+      quotes: quotes
+      segments: segments
+      segments_overview: segments_overview
+      services: services
+      stage_media: stage_media
+      stage_slider: stage_slider
+      stage_title: stage_title
+      text_block: text_block
+      timeline: timeline
+      webform_embed: webform_embed
 field_type: entity_reference_revisions

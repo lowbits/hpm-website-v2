@@ -1,0 +1,22 @@
+uuid: a6216ab7-9355-4698-9a9d-83f5e22be83a
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_gallery_text
+    - node.type.location
+  module:
+    - text
+id: node.location.field_gallery_text
+field_name: field_gallery_text
+entity_type: node
+bundle: location
+label: 'Text für Galerie'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats: {  }
+field_type: text_long
