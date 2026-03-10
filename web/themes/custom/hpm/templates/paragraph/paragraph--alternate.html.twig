@@ -22,6 +22,9 @@
           <div class="image-container js-zoom-image" data-delay=".3">
             {{ content.field_image }}
           </div>
+          {% if paragraph.field_caption.value %}
+            <p class="caption mt-2">{{ paragraph.field_caption.value }}</p>
+          {% endif %}
         {% endif %}
       </div>
 
