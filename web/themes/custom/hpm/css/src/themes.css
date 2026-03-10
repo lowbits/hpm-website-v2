@@ -30,6 +30,7 @@
 [data-theme="darkred"] .svg-map .country path { @apply fill-hpm-red; }
 [data-theme="darkred"] .svg-map .locations circle { @apply fill-white; }
 [data-theme="darkred"] .text-link { @apply !text-white; }
+[data-theme="darkred"] .text-link .link-icon svg path { @apply fill-white; }
 [data-theme="darkred"] .text-link:before { @apply bg-white; }
 [data-theme="darkred"] .text-link:after { @apply bg-hpm-red; }
 

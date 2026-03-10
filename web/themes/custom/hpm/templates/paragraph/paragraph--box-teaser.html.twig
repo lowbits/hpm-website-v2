@@ -109,9 +109,13 @@
           </div>
         {% endif %}
 
-        {% if content.field_link|render|trim %}
+        {% if button_url %}
           <div class="button-container">
-            {{ content.field_link }}
+            {% include '@hpm/templates/components/button-link.html.twig' with {
+              url: button_url,
+              text: button_text,
+              variant: 'secondary'
+            } only %}
           </div>
         {% endif %}
       </div>

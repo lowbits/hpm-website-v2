@@ -24,10 +24,19 @@
   .is-scrolled .logo-link .typo {
     opacity: 0;
   }
+  /* Menu button transition */
+  .header__menu-button {
+    transition: background-color .3s ease,
+                border-color .3s ease,
+                opacity .3s ease,
+                transform .3s ease;
+    cursor: pointer;
+  }
+
   /* Menu button hover */
   @media (any-hover: hover) {
     .header__menu-button:hover .line-1 { transform: translate(-50%, -6px); }
-    .header__menu-button:hover .line-3 { transform: translate(-50%, 4px); }
+    .header__menu-button:hover .line-3 { transform: translate(-15px, 4px); }
     .header__menu-button:hover .label { right: 62px; }
   }
 
@@ -36,16 +45,17 @@
     transition: background-color .4s ease, opacity .4s ease, transform .4s ease;
   }
   .header__menu-button .line:first-child {
-    transform: translate(-50%, -6px);
+    transform: translate(-50%, -8px);
   }
   .header__menu-button .line:nth-child(2) {
     transform: translate(-50%, -1px);
   }
   .header__menu-button .line:nth-child(3) {
-    transform: translate(-15px, 4px);
+    transform: translate(-15px, 6px);
   }
   .header__menu-button .label {
-    @apply right-[68px];
+    @apply right-[68px] text-hpm-darkred;
+    transition: color .4s ease, right .4s ease, width .4s ease;
   }
   .header__menu-button.is-active {
     @apply bg-hpm-darkred;

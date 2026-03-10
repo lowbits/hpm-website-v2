@@ -15,7 +15,8 @@
 
   {# Menu Button #}
   <button class="header__menu-button nav-button js-nav-button fixed right-5 top-5 z-30 h-[3.125rem] w-[3.125rem]
-             rounded-full bg-hpm-red p-0 hover:bg-hpm-darkred
+             rounded-full bg-hpm-red p-0 overflow-visible
+             hover:bg-hpm-darkred
              [&.is-active]:bg-white hover:[&.is-active]:bg-hpm-red
               sm:right-11
               lg:right-19 lg:top-[1.875rem]"
@@ -25,7 +26,7 @@
     <span class="line line-1 absolute left-1/2 top-1/2 z-[3] block h-0.5 w-[30px]" aria-hidden="true"></span>
     <span class="line line-2 absolute left-1/2 top-1/2 z-[3] block h-0.5 w-[30px]" aria-hidden="true"></span>
     <span class="line line-3 absolute left-1/2 top-1/2 z-[3] block h-0.5 w-[20px]" aria-hidden="true"></span>
-    <span class="label pointer-events-none absolute top-1/2 hidden h-[18px] w-[49px] -translate-y-1/2 flex-row items-center justify-start gap-0 sm:flex">
+    <span class="label pointer-events-none absolute top-1/2 max-sm:hidden sm:flex h-[18px] w-[49px] -translate-y-1/2 flex-row items-center justify-start gap-0">
       <span class="label-box pointer-events-none absolute right-0 top-0">
         <span class="info label-menu block leading-[19px] transition-[color,opacity,transform] duration-400 ease-out">
           {{ 'Menü'|t }}
@@ -61,11 +62,25 @@
       {{ page.navigation }}
 
       <nav class="navigation-additional relative flex flex-col items-start gap-3" aria-label="{{ 'Weitere Links'|t }}">
-        <a href="/projekte" class="text-link text-white text-[20px] leading-[1.4]">{{ 'Projekte'|t }}</a>
-        <a href="/neuigkeiten" class="text-link text-white text-[20px] leading-[1.4]">{{ 'Neuigkeiten'|t }}</a>
+        <a class="text-link font-case text-[0.9375rem] leading-[1.2]"
+           href="/projekte"
+           title="{{ 'Projekte'|t }}">
+          <span class="text-link__text copy">{{ 'Projekte'|t }}</span>
+          <span class="link-icon -mt-[1px]">
+            {% include '@hpm/images/vectors/button-arrow.svg.twig' %}
+          </span>
+        </a>
+        <a class="text-link font-case text-[0.9375rem] leading-[1.2]"
+           href="/neuigkeiten"
+           title="{{ 'Neuigkeiten'|t }}">
+          <span class="text-link__text copy">{{ 'Neuigkeiten'|t }}</span>
+          <span class="link-icon -mt-[1px]">
+            {% include '@hpm/images/vectors/button-arrow.svg.twig' %}
+          </span>
+        </a>
       </nav>
 
-      <div class="social-links flex gap-5 pt-4 sm:pt-6 lg:pt-8">
+      <div class="navigation-social flex gap-5 pt-4 sm:pt-6 lg:pt-8">
         <a href="https://www.xing.com/pages/hockerprojectmanagersgmbh" target="_blank" rel="noopener" title="Höcker Project Managers auf Xing"
            class="social-link flex h-[42px] w-[42px] items-center justify-center rounded-full border border-white bg-transparent transition-colors duration-300 ease-in-out hover:bg-white focus:bg-white md:h-[48px] md:w-[48px] hover:[&_svg_path]:fill-hpm-darkred [&_svg_path]:transition-fill [&_svg_path]:duration-300">
           <span class="w-6 block">{% include '@hpm/images/vectors/icon-xing.svg.twig' %}</span>
