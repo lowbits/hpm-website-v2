@@ -33,8 +33,9 @@ Structure the commit message with issue references:
 <optional body with details>
 
 Fixes #N
-Co-Authored-By: Claude Opus 4.6 <noreply@anthropic.com>
 ```
+
+**IMPORTANT: Do NOT include `Co-Authored-By` lines in commits. No AI attribution.**
 
 **Commit types:**
 - `feat` — New feature or component
@@ -59,7 +60,6 @@ Implements the quotes carousel with auto-cycling theme colors
 and Splide integration.
 
 Fixes #42
-Co-Authored-By: Claude Opus 4.6 <noreply@anthropic.com>
 EOF
 )"
 ```
@@ -95,3 +95,9 @@ If the commit only partially addresses an issue:
 - Use `Relates to #N` instead of `Fixes #N`
 - Do NOT close the issue
 - Add a comment to the issue describing what was done and what remains
+
+IMPORTANT:
+
+Do NOT include any Claude Code attribution in commits or PRs — no `Co-Authored-By`, no `Generated with Claude Code`
+Use the conventional commit prefix that best matches the changes (fix, feat, chore, refactor, docs, etc.)
+The Closes #X syntax will automatically close the referenced issues when the PR is merged
