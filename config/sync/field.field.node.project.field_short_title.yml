@@ -9,7 +9,7 @@ id: node.project.field_short_title
 field_name: field_short_title
 entity_type: node
 bundle: project
-label: 'Kurztitel'
+label: Kurztitel
 description: 'Wird in der Projektübersicht angezeigt. Wenn leer, wird der volle Titel verwendet.'
 required: false
 translatable: true

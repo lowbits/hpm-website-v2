@@ -20,6 +20,24 @@ content:
     region: content
     settings: {  }
     third_party_settings: {  }
+  field_paragraphs:
+    type: paragraphs
+    weight: 32
+    region: content
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: closed
+      closed_mode: summary
+      autocollapse: all
+      closed_mode_threshold: 0
+      add_mode: dropdown
+      form_display_mode: default
+      default_paragraph_type: _none
+      features:
+        collapse_edit_all: collapse_edit_all
+        duplicate: duplicate
+    third_party_settings: {  }
   langcode:
     type: language_select
     weight: 2
@@ -62,24 +80,6 @@ content:
     weight: 50
     region: content
     settings: {  }
-    third_party_settings: {  }
-  field_paragraphs:
-    type: paragraphs
-    weight: 32
-    region: content
-    settings:
-      title: Paragraph
-      title_plural: Paragraphs
-      edit_mode: closed
-      closed_mode: summary
-      autocollapse: all
-      closed_mode_threshold: 0
-      add_mode: dropdown
-      form_display_mode: default
-      default_paragraph_type: _none
-      features:
-        collapse_edit_all: collapse_edit_all
-        duplicate: duplicate
     third_party_settings: {  }
 hidden:
   promote: true

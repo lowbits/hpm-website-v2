@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - field.field.paragraph.alternate.field_accordion_items
+    - field.field.paragraph.alternate.field_caption
     - field.field.paragraph.alternate.field_headline
     - field.field.paragraph.alternate.field_image
     - field.field.paragraph.alternate.field_link
@@ -25,7 +26,7 @@ mode: default
 content:
   field_accordion_items:
     type: paragraphs
-    weight: 8
+    weight: 9
     region: content
     settings:
       title: Paragraph
@@ -40,6 +41,14 @@ content:
       features:
         collapse_edit_all: collapse_edit_all
         duplicate: duplicate
+    third_party_settings: {  }
+  field_caption:
+    type: string_textfield
+    weight: 8
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
     third_party_settings: {  }
   field_headline:
     type: string_textfield

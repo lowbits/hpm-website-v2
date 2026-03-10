@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - field.field.paragraph.alternate.field_accordion_items
+    - field.field.paragraph.alternate.field_caption
     - field.field.paragraph.alternate.field_headline
     - field.field.paragraph.alternate.field_image
     - field.field.paragraph.alternate.field_link
@@ -32,6 +33,14 @@ content:
       link: ''
     third_party_settings: {  }
     weight: 7
+    region: content
+  field_caption:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 9
     region: content
   field_headline:
     type: string

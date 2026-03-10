@@ -33,14 +33,6 @@ content:
     third_party_settings: {  }
     weight: 1
     region: content
-  field_teaser_text:
-    type: string
-    label: hidden
-    settings:
-      link_to_entity: false
-    third_party_settings: {  }
-    weight: 0
-    region: content
   field_gallery:
     type: entity_reference_entity_view
     label: hidden
@@ -59,6 +51,14 @@ content:
     third_party_settings: {  }
     weight: 6
     region: content
+  field_teaser_text:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
   links:
     settings: {  }
     third_party_settings: {  }
@@ -75,4 +75,5 @@ hidden:
   field_project_status: true
   field_runtime: true
   field_services: true
+  field_short_title: true
   langcode: true

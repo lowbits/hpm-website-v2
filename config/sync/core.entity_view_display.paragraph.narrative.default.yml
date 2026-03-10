@@ -5,6 +5,7 @@ dependencies:
   config:
     - field.field.paragraph.narrative.field_accordion_items
     - field.field.paragraph.narrative.field_box_position
+    - field.field.paragraph.narrative.field_caption
     - field.field.paragraph.narrative.field_box_theme
     - field.field.paragraph.narrative.field_headline
     - field.field.paragraph.narrative.field_image
@@ -44,6 +45,14 @@ content:
     settings: {  }
     third_party_settings: {  }
     weight: 5
+    region: content
+  field_caption:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 7
     region: content
   field_headline:
     type: string

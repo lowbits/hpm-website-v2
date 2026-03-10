@@ -14,7 +14,8 @@ description: 'Angezeigt über der Überschrift (z.B. "Projekt")'
 required: false
 translatable: true
 default_value:
-  - value: Projekt
+  -
+    value: Projekt
 default_value_callback: ''
 settings: {  }
 field_type: string

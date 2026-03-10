@@ -14,7 +14,8 @@ description: 'Angezeigt über der Überschrift (z.B. "Standort", "Hauptsitz")'
 required: true
 translatable: true
 default_value:
-  - value: Standort
+  -
+    value: Standort
 default_value_callback: ''
 settings: {  }
 field_type: string
