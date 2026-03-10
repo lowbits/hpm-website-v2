@@ -9,7 +9,7 @@ id: paragraph.news_teaser.field_section_title
 field_name: field_section_title
 entity_type: paragraph
 bundle: news_teaser
-label: Abschnittstitel
+label: Bereichsüberschrift
 description: ''
 required: false
 translatable: true
