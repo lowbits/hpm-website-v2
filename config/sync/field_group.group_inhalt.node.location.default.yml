@@ -11,7 +11,7 @@ bundle: location
 mode: default
 type: tab
 parent_name: group_tabs
-label: Inhalt
+label: 'Weitere Inhalte'
 description: ''
 weight: 4
 format_type: tab
