@@ -33,6 +33,7 @@
         "drupal/pathauto": "^1.14",
         "drupal/redirect": "^1.12",
         "drupal/redis": "^1.11",
+        "drupal/svg_image": "^3.2",
         "drupal/token": "^1.17",
         "drupal/tool": "^1@alpha",
         "drupal/twig_tweak": "^3.4",
