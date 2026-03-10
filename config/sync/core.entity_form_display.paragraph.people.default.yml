@@ -14,7 +14,7 @@ mode: default
 content:
   field_people:
     type: entity_reference_autocomplete
-    weight: 1
+    weight: 2
     region: content
     settings:
       match_operator: CONTAINS
@@ -24,7 +24,7 @@ content:
     third_party_settings: {  }
   field_section_title:
     type: string_textfield
-    weight: 0
+    weight: 1
     region: content
     settings:
       size: 60
@@ -32,7 +32,7 @@ content:
     third_party_settings: {  }
   field_theme:
     type: options_select
-    weight: 2
+    weight: 0
     region: content
     settings: {  }
     third_party_settings: {  }
