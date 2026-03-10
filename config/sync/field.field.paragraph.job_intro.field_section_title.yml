@@ -9,7 +9,7 @@ id: paragraph.job_intro.field_section_title
 field_name: field_section_title
 entity_type: paragraph
 bundle: job_intro
-label: 'Section Title'
+label: Bereichsüberschrift
 description: ''
 required: false
 translatable: true

@@ -9,7 +9,7 @@ id: paragraph.segments_item.field_section_title
 field_name: field_section_title
 entity_type: paragraph
 bundle: segments_item
-label: 'Section Title'
+label: Bereichsüberschrift
 description: ''
 required: false
 translatable: true
