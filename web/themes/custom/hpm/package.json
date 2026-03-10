@@ -17,7 +17,6 @@
     "rollup": "^4.0.0"
   },
   "dependencies": {
-    "@splidejs/splide": "^4.1.0",
     "gsap": "^3.13.0"
   }
 }

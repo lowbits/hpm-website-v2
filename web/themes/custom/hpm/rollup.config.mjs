@@ -19,11 +19,7 @@ export default [
       format: 'iife',
       name: 'HPMStageSlider',
       sourcemap: false,
-      globals: {
-        '@splidejs/splide': 'Splide',
-        'gsap': 'gsap',
-      },
     },
-    plugins: [resolve(), terser()],
+    plugins: [terser()],
   },
 ];
