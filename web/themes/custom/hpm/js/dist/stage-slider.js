@@ -159,10 +159,15 @@
 
   Drupal.behaviors.hpmStageSlider = {
     attach: function (context) {
+      if (typeof Flickity === 'undefined') return;
       context.querySelectorAll('.js-stage-slider').forEach(function (el) {
         if (el.dataset.hpmSliderInit) return;
-        el.dataset.hpmSliderInit = 'true';
-        new StageSlider(el);
+        try {
+          new StageSlider(el);
+          el.dataset.hpmSliderInit = 'true';
+        } catch (e) {
+          console.warn('StageSlider init failed:', e);
+        }
       });
     }
   };

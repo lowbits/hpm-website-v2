@@ -129,10 +129,15 @@
 
   Drupal.behaviors.hpmBenefitsSlider = {
     attach: function (context) {
+      if (typeof Flickity === 'undefined') return;
       context.querySelectorAll('.js-benefits-slider').forEach(function (el) {
         if (el.dataset.hpmSliderInit) return;
-        el.dataset.hpmSliderInit = 'true';
-        new BenefitsSlider(el);
+        try {
+          new BenefitsSlider(el);
+          el.dataset.hpmSliderInit = 'true';
+        } catch (e) {
+          console.error('BenefitsSlider init failed:', e);
+        }
       });
     }
   };

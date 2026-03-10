@@ -165,10 +165,15 @@
 
   Drupal.behaviors.hpmQuotesSlider = {
     attach: function (context) {
+      if (typeof Flickity === 'undefined') return;
       context.querySelectorAll('.js-quotes-slider').forEach(function (el) {
         if (el.dataset.hpmSliderInit) return;
-        el.dataset.hpmSliderInit = 'true';
-        new QuotesSlider(el);
+        try {
+          new QuotesSlider(el);
+          el.dataset.hpmSliderInit = 'true';
+        } catch (e) {
+          console.error('QuotesSlider init failed:', e);
+        }
       });
     }
   };

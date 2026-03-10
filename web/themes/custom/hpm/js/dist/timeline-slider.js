@@ -132,10 +132,15 @@
 
   Drupal.behaviors.hpmTimelineSlider = {
     attach: function (context) {
+      if (typeof Flickity === 'undefined') return;
       context.querySelectorAll('.js-timeline-slider').forEach(function (el) {
         if (el.dataset.hpmSliderInit) return;
-        el.dataset.hpmSliderInit = 'true';
-        new TimelineSlider(el);
+        try {
+          new TimelineSlider(el);
+          el.dataset.hpmSliderInit = 'true';
+        } catch (e) {
+          console.error('TimelineSlider init failed:', e);
+        }
       });
     }
   };

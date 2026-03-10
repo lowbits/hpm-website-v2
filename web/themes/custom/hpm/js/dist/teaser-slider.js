@@ -176,10 +176,15 @@
 
   Drupal.behaviors.hpmTeaserSlider = {
     attach: function (context) {
+      if (typeof Flickity === 'undefined') return;
       context.querySelectorAll('.js-teaser-slider').forEach(function (el) {
         if (el.dataset.hpmSliderInit) return;
-        el.dataset.hpmSliderInit = 'true';
-        new TeaserSlider(el);
+        try {
+          new TeaserSlider(el);
+          el.dataset.hpmSliderInit = 'true';
+        } catch (e) {
+          console.error('TeaserSlider init failed:', e);
+        }
       });
     }
   };
