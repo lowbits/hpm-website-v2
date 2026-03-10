@@ -6,7 +6,7 @@
 #}
 {% set caption = content.field_caption|render|striptags|trim %}
 {% set credits = paragraph.field_image.entity.field_credits.value|default(paragraph.field_image_portrait.entity.field_credits.value) %}
-<div class="carousel__item stage-slider__item ml-0 absolute w-full cursor-grab">
+<div class="carousel__item stage-slider__item ml-0 w-full cursor-grab">
   <div class="stage-slider__image-box carousel__image-box h-full top-0 left-0 overflow-hidden relative pt-[133.33%] sm:pt-[92%] md:pt-[40%]">
     {% if content.field_image_portrait[0] %}
       {% set portrait_img = content.field_image_portrait[0]['#media'] ?? content.field_image_portrait[0]['#item'] %}
