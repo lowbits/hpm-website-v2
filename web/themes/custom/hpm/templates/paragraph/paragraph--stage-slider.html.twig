@@ -18,7 +18,7 @@
             {% set portrait_media = slide.field_image_portrait.entity %}
             {% set caption_text = slide.field_caption.value %}
             {% set is_first = loop.first %}
-            <div class="carousel__item stage-slider__item ml-0 absolute w-full cursor-grab">
+            <div class="carousel__item stage-slider__item ml-0 w-full cursor-grab">
               <div class="stage-slider__image-box carousel__image-box h-full top-0 left-0 overflow-hidden relative pt-[133.33%] sm:pt-[92%] md:pt-[40%]">
                 <picture class="absolute inset-0 block h-full w-full">
                   {% if wide_media %}
