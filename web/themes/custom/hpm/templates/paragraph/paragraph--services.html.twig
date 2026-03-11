@@ -1,0 +1,19 @@
+{#
+/**
+ * @file
+ * Services (Kompetenzen) container – renders child services_item paragraphs.
+ * Wraps each item for alternating layout (odd = beige + image left, even = image right).
+ */
+#}
+{{ attach_library('hpm/accordion') }}
+{{ attach_library('hpm/fade-ins') }}
+{% set index = 0 %}
+{% for key, item in content.field_items %}
+  {% if key|first in '0123456789' %}
+    {% set index = index + 1 %}
+    {% set is_odd = index is odd %}
+    <section class="services-item-wrapper content-section" {% if is_odd %}data-theme="beige"{% endif %} data-layout="{{ is_odd ? 'left' : 'right' }}" data-index="{{ '%02d'|format(index) }}">
+      {{ item }}
+    </section>
+  {% endif %}
+{% endfor %}
