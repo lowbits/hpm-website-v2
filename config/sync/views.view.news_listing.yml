@@ -3,6 +3,7 @@ langcode: de
 status: true
 dependencies:
   config:
+    - core.entity_view_mode.node.listing
     - core.entity_view_mode.node.teaser
     - node.type.news
   module:
@@ -60,7 +61,7 @@ display:
       row:
         type: 'entity:node'
         options:
-          view_mode: teaser
+          view_mode: listing
       query:
         type: views_query
       display_extenders: {  }
@@ -81,6 +82,10 @@ display:
         type: some
         options:
           items_per_page: 12
+      row:
+        type: 'entity:node'
+        options:
+          view_mode: teaser
       display_extenders: {  }
     cache_metadata:
       max-age: -1
