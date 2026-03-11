@@ -1,0 +1,80 @@
+{#
+/**
+ * @file
+ * Services item (Kompetenz) – image, text, list, accordion.
+ * Parent wrapper provides data-layout (left/right) and data-index (01, 02, …).
+ */
+#}
+{% set media = paragraph.field_image.entity %}
+{% set credits_value = media ? media.field_credits.value : null %}
+
+<div{{ attributes.addClass('services-item') }}>
+  <div class="section-container">
+
+    {# Section title with meta number and headline #}
+    <div class="section-title flex flex-col gap-5 mb-9
+        sm:mb-12 sm:flex-row sm:items-center sm:justify-between
+        md:flex-row md:gap-12
+        lg:mb-16
+        xl:items-center">
+      <div class="flex flex-col gap-3 items-start">
+        {% if paragraph.field_meta_label.value %}
+          <h3 class="info meta-line--medium">
+            {{ paragraph.field_meta_label.value }}
+          </h3>
+        {% endif %}
+        {% if paragraph.field_headline.value %}
+          <h3 class="h2 text-hpm-red">{{ paragraph.field_headline.value }}</h3>
+        {% endif %}
+      </div>
+    </div>
+
+    {# Two-column grid: image + content #}
+    <div class="grid grid-cols-1 gap-7
+        sm:grid-cols-12 sm:gap-y-12
+        md:items-start">
+
+      {# Image column – uses media--left / media--right from parent data-layout #}
+      <div class="services-item__media col-span-12
+          md:col-span-6 md:col-start-1">
+        {% if media and media.field_media_image.entity %}
+          <div class="relative">
+            <div class="image-container js-zoom-image" data-delay=".3">
+              {{ content.field_image }}
+            </div>
+            {% if credits_value %}
+              <div class="credits">
+                <span>{{ credits_value starts with '©' ? credits_value : '© ' ~ credits_value }}</span>
+              </div>
+            {% endif %}
+          </div>
+        {% endif %}
+      </div>
+
+      {# Content column #}
+      <div class="services-item__content col-span-12 js-element-group
+          sm:col-span-10 sm:col-start-2
+          md:col-span-5
+          lg:col-span-5">
+        {% if content.field_text|render|trim %}
+          <div class="formatted">
+            {{ content.field_text }}
+          </div>
+        {% endif %}
+        {% if paragraph.field_list.value %}
+          {% set list_html = paragraph.field_list.value|replace({'<ul>': '<ul class="list-none dash-list mt-4">'}) %}
+          {{ list_html|raw }}
+        {% endif %}
+
+        {# Accordion #}
+        {% if content.field_accordion_items|render|trim %}
+          <div class="accordion-block js-accordion mt-9
+                      sm:mt-11
+                      lg:mt-13">
+            {{ content.field_accordion_items }}
+          </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
