@@ -43,7 +43,7 @@
   }
 
   .text-link {
-    @apply relative overflow-hidden text-left bg-transparent text-white pb-[3px] leading-[1.4] pr-6 inline-block items-center;
+    @apply relative overflow-hidden text-left bg-transparent pb-[3px] leading-[1.4] pr-6 inline-block items-center;
   }
   .text-link::before,
   .text-link::after {
@@ -60,7 +60,7 @@
     @apply pl-6 pr-0 text-white;
   }
   .text-link--back {
-    @apply pl-6 pr-0 text-white;
+    @apply pl-6 pr-0;
   }
   .text-link--navi-back .svg path {
     @apply fill-white;

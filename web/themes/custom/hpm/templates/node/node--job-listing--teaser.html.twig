@@ -1,0 +1,41 @@
+{#
+/**
+ * @file
+ * Job listing teaser – single row in the job offers list.
+ */
+#}
+{% set location = '' %}
+{% set level = '' %}
+{% for item in node.field_paragraphs %}
+  {% if item.entity and item.entity.bundle() == 'job_intro' %}
+    {% set location = item.entity.field_location.entity ? item.entity.field_location.entity.label : '' %}
+    {% set lvls = [] %}
+    {% for lvl_item in item.entity.field_experience_level %}
+      {% if lvl_item.entity %}
+        {% set lvls = lvls|merge([lvl_item.entity.label]) %}
+      {% endif %}
+    {% endfor %}
+    {% set level = lvls|join(', ') %}
+  {% endif %}
+{% endfor %}
+
+<a{{ attributes.addClass('block', 'grid', 'grid-cols-12', 'gap-y-2', 'sm:gap-7', 'py-4', 'border-t-1', 'border-hpm-darkred', 'px-2', 'items-center', 'transition-colors', 'duration-300', '[&:hover]:bg-hpm-beige', 'relative') }}
+   href="{{ url }}" title="Zum Stellenangebot">
+  <div class="copy-bold text-hpm-darkred
+              col-span-11 sm:col-span-6">
+    {{ label }}
+  </div>
+  <div class="copy text-hpm-darkred
+              col-span-11 sm:col-span-3 sm:block">
+    {{ location }}<span class="inline sm:hidden">{% if level %}, {{ level }}{% endif %}</span>
+  </div>
+  <div class="copy text-hpm-darkred hidden sm:block
+              col-span-11 sm:col-span-3 sm:pr-6">
+    {{ level }}
+  </div>
+
+  <div class="w-4 flex items-center [&_svg_path]:fill-hpm-darkred
+              absolute top-7 md:top-1/2 right-2 -translate-y-1/2">
+    {% include '@hpm/images/vectors/button-arrow.svg.twig' %}
+  </div>
+</a>

@@ -1,0 +1,74 @@
+{#
+/**
+ * @file
+ * Job intro – back link, intro text, location/starting time/level details.
+ */
+#}
+{% set location = paragraph.field_location.entity ? paragraph.field_location.entity.label : '' %}
+{% set levels = [] %}
+{% for item in paragraph.field_experience_level %}
+  {% if item.entity %}
+    {% set levels = levels|merge([item.entity.label]) %}
+  {% endif %}
+{% endfor %}
+{% set level = levels|join(', ') %}
+{% set starting_time = paragraph.field_starting_time.value %}
+{% set intro = paragraph.field_section_title.value %}
+
+<section{{ attributes.addClass('content-section') }}>
+  <div class="section-container js-element-group
+              grid grid-cols-12 gap-y-6 sm:gap-7
+              sm:grid-cols-12 sm:gap-y-8
+              lg:gap-y-12">
+
+    <div class="col-span-12
+                sm:col-span-10 sm:col-start-2
+                lg:col-span-2 lg:col-start-auto">
+      <a class="text-link font-case text-[0.9375rem] leading-[1.2] text-hpm-darkred text-link--back"
+         href="/stellenangebote"
+         title="Zu den Stellenangeboten">
+        <span class="text-link__text copy">Zur Übersicht</span>
+        <span class="link-icon link-icon--back -mt-[1px]">
+          {% include '@hpm/images/vectors/button-arrow.svg.twig' %}
+        </span>
+      </a>
+    </div>
+
+    {% if intro %}
+      <div class="col-span-12
+                  sm:col-span-10 sm:col-start-2
+                  lg:col-span-8 lg:col-start-auto">
+        <h3 class="quote-small">
+          {{ intro }}
+        </h3>
+      </div>
+    {% endif %}
+
+    {% if location %}
+      <div class="col-span-12 flex flex-col gap-1
+                  sm:col-span-3 sm:col-start-2
+                  lg:col-span-3 lg:col-start-3">
+        <h4 class="info text-hpm-red">Standort</h4>
+        <p>{{ location }}</p>
+      </div>
+    {% endif %}
+
+    {% if starting_time %}
+      <div class="col-span-12 flex flex-col gap-1
+                  sm:col-span-3
+                  lg:col-span-3">
+        <h4 class="info text-hpm-red">Zeitpunkt</h4>
+        <p>{{ starting_time }}</p>
+      </div>
+    {% endif %}
+
+    {% if level %}
+      <div class="col-span-12 flex flex-col gap-1
+                  sm:col-span-4
+                  lg:col-span-3">
+        <h4 class="info text-hpm-red">Level</h4>
+        <p>{{ level }}</p>
+      </div>
+    {% endif %}
+  </div>
+</section>
