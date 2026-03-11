@@ -2,18 +2,115 @@
 /**
  * @file
  * Services (Kompetenzen) container – renders child services_item paragraphs.
- * Wraps each item for alternating layout (odd = beige + image left, even = image right).
  */
 #}
 {{ attach_library('hpm/accordion') }}
 {{ attach_library('hpm/fade-ins') }}
 {% set index = 0 %}
-{% for key, item in content.field_items %}
-  {% if key|first in '0123456789' %}
-    {% set index = index + 1 %}
-    {% set is_odd = index is odd %}
-    <section class="services-item-wrapper content-section" {% if is_odd %}data-theme="beige"{% endif %} data-layout="{{ is_odd ? 'left' : 'right' }}" data-index="{{ '%02d'|format(index) }}">
-      {{ item }}
-    </section>
-  {% endif %}
+{% for item in paragraph.field_items %}
+  {% set index = index + 1 %}
+  {% set is_odd = index is odd %}
+  {% set p = item.entity %}
+  {% set media = p.field_image.entity %}
+  {% set credits_value = media ? media.field_credits.value : null %}
+
+  <section class="content-section" {% if is_odd %}data-theme="beige"{% endif %}>
+    <div class="section-container">
+
+      {# Section title #}
+      <div class="section-title flex flex-col gap-5 mb-9
+          sm:mb-12 sm:flex-row sm:items-center sm:justify-between
+          md:flex-row md:gap-12
+          lg:mb-16
+          xl:items-center">
+        <div class="flex flex-col gap-3 items-start">
+          {% if p.field_meta_label.value %}
+            <h3 class="info meta-line--medium">
+              {{ p.field_meta_label.value }}
+            </h3>
+          {% endif %}
+          {% if p.field_headline.value %}
+            <h3 class="h2 text-hpm-red">{{ p.field_headline.value }}</h3>
+          {% endif %}
+        </div>
+      </div>
+
+      {# Two-column grid #}
+      <div class="grid grid-cols-1 gap-7
+          sm:grid-cols-12 sm:gap-y-12
+          md:items-start">
+
+        {# Image column #}
+        <div class="col-span-12
+            md:col-span-6 md:col-start-1 {{ not is_odd ? 'md:order-last md:col-start-7' }}">
+          {% if media and media.field_media_image.entity %}
+            <div class="relative">
+              <div class="image-container js-zoom-image
+                  {{ not is_odd
+                    ? '-mr-[1.5rem] sm:-mr-[3rem] lg:-mr-[5rem] 2xl:-mr-[2rem]'
+                    : '-ml-[1.5rem] sm:-ml-[3rem] lg:-ml-[5rem] 2xl:-ml-[2rem]'
+                  }}" data-delay=".3">
+                <img src="{{ file_url(media.field_media_image.entity.uri.value) }}" alt="{{ media.field_media_image.alt }}" loading="lazy">
+              </div>
+              {% if credits_value %}
+                <div class="credits absolute
+                    {{ not is_odd
+                      ? 'left-[-2px] bottom-0 -rotate-90 origin-bottom-left sm:left-[-4px]'
+                      : 'right-[-2px] bottom-0 rotate-90 origin-bottom-right sm:right-[-4px]'
+                    }}">
+                  <span class="{{ not is_odd ? 'relative block rotate-180 origin-center' }}">
+                    {{ credits_value starts with '©' ? credits_value : '© ' ~ credits_value }}
+                  </span>
+                </div>
+              {% endif %}
+            </div>
+          {% endif %}
+        </div>
+
+        {# Content column #}
+        <div class="col-span-12 js-element-group
+            sm:col-span-10 sm:col-start-2
+            md:col-span-5
+            lg:col-span-5 {{ not is_odd ? 'lg:col-start-1' : 'md:col-start-8 lg:col-start-8' }}">
+          {% if p.field_text.value %}
+            <div class="formatted">
+              {{ p.field_text.value|raw }}
+            </div>
+          {% endif %}
+          {% if p.field_list.value %}
+            {% set list_html = p.field_list.value|replace({'<ul>': '<ul class="list-none dash-list mt-4">'}) %}
+            {{ list_html|raw }}
+          {% endif %}
+
+          {# Accordion #}
+          {% set accordion_items = p.field_accordion_items %}
+          {% if accordion_items|length > 0 %}
+            <div class="accordion-block js-accordion mt-9
+                        sm:mt-11
+                        lg:mt-13">
+              {% for acc_item in accordion_items %}
+                {% set acc = acc_item.entity %}
+                {% if acc %}
+                  <div class="accordion__box js-accordion-item relative border-hpm-darkred border-t-1">
+                    <div class="js-accordion-head flex items-center gap-10 justify-between py-4 px-2 cursor-pointer">
+                      <h4 class="h4-serif">{{ acc.field_headline.value }}</h4>
+                      <div class="accordion__button w-3 h-5.25 relative transition-transform duration-300 translate-y-px
+                                  [.is-active_&]:-translate-y-0.5 [.is-active_&]:rotate-180">
+                        {% include '@hpm/images/vectors/accordion-arrow.svg.twig' %}
+                      </div>
+                    </div>
+                    {% if acc.field_text.value %}
+                      <div class="js-accordion-content pb-5 hidden formatted pl-3 pr-10">
+                        {{ acc.field_text.value|raw }}
+                      </div>
+                    {% endif %}
+                  </div>
+                {% endif %}
+              {% endfor %}
+            </div>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </section>
 {% endfor %}
