@@ -1,8 +1,41 @@
+{#
+/**
+ * @file
+ * Job offers list – table header + job listing rows from views block.
+ */
+#}
 {% set theme = content.field_theme|render|striptags|trim %}
-<div{{ attributes.addClass('content-section') }}
+
+<section{{ attributes.addClass('content-section') }}
   {% if theme %}data-theme="{{ theme }}"{% endif %}>
-  <div class="section-container">
-    {# Rendered via Views block #}
-    {{ drupal_view('job_listings', 'block_1') }}
+  <div class="section-container grid grid-cols-12
+              sm:gap-7 sm:grid-cols-12">
+
+    <div class="col-span-12 gap-y-7 flex flex-col
+                sm:col-span-12
+                md:col-span-10 md:col-start-2">
+
+      {# Table header #}
+      <div class="grid grid-cols-12 gap-y-6 sm:gap-7">
+        <div class="info text-hpm-red pl-2
+                    col-span-12 sm:col-span-6">
+          Position
+        </div>
+        <div class="info text-hpm-red hidden
+                    col-span-12 sm:col-span-3 sm:block">
+          Standort
+        </div>
+        <div class="info text-hpm-red hidden
+                    col-span-12 sm:col-span-3 sm:block sm:pr-2">
+          Erfahrung
+        </div>
+      </div>
+
+      {# Job listing rows #}
+      <div>
+        {{ drupal_view('job_listings', 'block_1') }}
+      </div>
+
+    </div>
   </div>
-</div>
+</section>

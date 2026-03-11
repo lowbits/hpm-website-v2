@@ -34,26 +34,6 @@ content:
       size: 60
       placeholder: ''
     third_party_settings: {  }
-  field_experience_level:
-    type: entity_reference_autocomplete
-    weight: 2
-    region: content
-    settings:
-      match_operator: CONTAINS
-      match_limit: 10
-      size: 60
-      placeholder: ''
-    third_party_settings: {  }
-  field_job_location:
-    type: entity_reference_autocomplete
-    weight: 3
-    region: content
-    settings:
-      match_operator: CONTAINS
-      match_limit: 10
-      size: 60
-      placeholder: ''
-    third_party_settings: {  }
   field_paragraphs:
     type: paragraphs
     weight: 4
@@ -71,14 +51,6 @@ content:
       features:
         collapse_edit_all: collapse_edit_all
         duplicate: duplicate
-    third_party_settings: {  }
-  field_starting_time:
-    type: string_textfield
-    weight: 5
-    region: content
-    settings:
-      size: 60
-      placeholder: ''
     third_party_settings: {  }
   langcode:
     type: language_select
@@ -125,5 +97,8 @@ content:
     third_party_settings: {  }
 hidden:
   body: true
+  field_experience_level: true
+  field_job_location: true
+  field_starting_time: true
   promote: true
   sticky: true
