@@ -1,0 +1,70 @@
+{#
+/**
+ * @file
+ * News listing item – full display with image, meta, headline, body.
+ * Used on the /neuigkeiten overview page.
+ */
+#}
+{% set date_raw = node.field_news_date.value %}
+{% set category = node.field_news_category.entity ? node.field_news_category.entity.label : '' %}
+{% set media = node.field_news_image.entity %}
+{% set external_link = node.field_external_link.0.url %}
+{% set external_link_title = node.field_external_link.0.title %}
+{% set anchor_id = 'news-' ~ node.id() %}
+
+<article{{ attributes.addClass('news-item') }}>
+  <div class="section-container relative">
+    <div class="absolute left-0 -top-[5.5rem] lg:-top-[7.125rem]" id="{{ anchor_id }}"></div>
+    <div class="grid grid-cols-12 gap-7 items-start">
+      {# Image Column #}
+      <div class="col-span-12
+                  sm:col-span-10 sm:col-start-3
+                  md:col-span-6 md:col-start-7 md:order-last">
+        {% if media and media.field_media_image.entity %}
+          <div class="image-container js-zoom-image" data-delay=".3">
+            {{ content.field_news_image }}
+          </div>
+          {% if media.field_credits.value %}
+            <div class="credits">
+              {{ media.field_credits.value starts with '©' ? media.field_credits.value : '© ' ~ media.field_credits.value }}
+            </div>
+          {% endif %}
+        {% endif %}
+      </div>
+
+      {# Content Column #}
+      <div class="col-span-12 js-element-group
+                  sm:col-span-8 sm:col-start-3
+                  md:col-span-5
+                  lg:col-span-5">
+        <div class="info mb-4 text-hpm-red
+                    lg:mb-6">
+          {% if date_raw %}{{ date_raw|date('d. F Y') }}{% endif %}{% if category %}{% if date_raw %} &bull; {% endif %}{{ category }}{% endif %}
+        </div>
+        <h2 class="h2 text-hpm-red">
+          {{ label }}
+        </h2>
+        {% if content.body|render|trim %}
+          <div class="formatted mt-4 lg:mt-6">
+            {{ content.body }}
+          </div>
+        {% endif %}
+
+        {% if external_link %}
+          <div class="button-container mt-4">
+            <a class="text-link text-hpm-darkred copy"
+               href="{{ external_link }}"
+               title="{{ external_link_title|default('Mehr erfahren') }}">
+              <span class="text-link__text copy">
+                {{ external_link_title|default('Mehr erfahren') }}
+              </span>
+              <span class="link-icon -mt-[1px]">
+                {% include '@hpm/images/vectors/button-arrow.svg.twig' %}
+              </span>
+            </a>
+          </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</article>

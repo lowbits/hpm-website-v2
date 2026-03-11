@@ -1,0 +1,12 @@
+{#
+/**
+ * @file
+ * News listing rows – alternates beige / default theme per item.
+ * Each row is wrapped in a themed section matching the template design.
+ */
+#}
+{% for row in rows %}
+  <div class="news-listing-item content-section" {% if loop.index is odd %}data-theme="beige"{% endif %}>
+    {{- row.content -}}
+  </div>
+{% endfor %}

@@ -1,0 +1,5 @@
+services:
+  hpm_tweaks.news_redirect_subscriber:
+    class: Drupal\hpm_tweaks\EventSubscriber\NewsRedirectSubscriber
+    tags:
+      - { name: event_subscriber }
