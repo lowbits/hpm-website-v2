@@ -14,7 +14,8 @@
   {% set media = p.field_image.entity %}
   {% set credits_value = media ? media.field_credits.value : null %}
 
-  <section class="content-section" {% if is_odd %}data-theme="beige"{% endif %}>
+  {% set anchor = p.field_anchor_id.value %}
+  <section class="content-section"{% if anchor %} id="{{ anchor }}"{% endif %} {% if is_odd %}data-theme="beige"{% endif %}>
     <div class="section-container">
 
       {# Section title #}
@@ -80,6 +81,12 @@
           {% if p.field_list.value %}
             {% set list_html = p.field_list.value|replace({'<ul>': '<ul class="list-none dash-list mt-4">'}) %}
             {{ list_html|raw }}
+          {% endif %}
+
+          {% if p.field_subheadline.value %}
+            <h3 class="info text-hpm-red mt-9 sm:mt-11 lg:mt-13">
+              {{ p.field_subheadline.value }}
+            </h3>
           {% endif %}
 
           {# Accordion #}

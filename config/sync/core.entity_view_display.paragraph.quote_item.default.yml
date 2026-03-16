@@ -4,7 +4,6 @@ status: true
 dependencies:
   config:
     - field.field.paragraph.quote_item.field_author
-    - field.field.paragraph.quote_item.field_credits
     - field.field.paragraph.quote_item.field_image
     - field.field.paragraph.quote_item.field_quote
     - paragraphs.paragraphs_type.quote_item
@@ -35,5 +34,4 @@ content:
     weight: 0
     region: content
 hidden:
-  field_credits: true
   field_quote: true

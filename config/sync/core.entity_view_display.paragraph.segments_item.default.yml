@@ -4,7 +4,6 @@ status: true
 dependencies:
   config:
     - field.field.paragraph.segments_item.field_anchor_id
-    - field.field.paragraph.segments_item.field_credits
     - field.field.paragraph.segments_item.field_headline
     - field.field.paragraph.segments_item.field_headline_secondary
     - field.field.paragraph.segments_item.field_image
@@ -30,14 +29,6 @@ content:
       link_to_entity: false
     third_party_settings: {  }
     weight: 0
-    region: content
-  field_credits:
-    type: string
-    label: above
-    settings:
-      link_to_entity: false
-    third_party_settings: {  }
-    weight: 3
     region: content
   field_headline:
     type: string

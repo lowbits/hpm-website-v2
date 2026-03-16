@@ -1,0 +1,19 @@
+uuid: 69faf026-7af0-44e0-8baf-a0e4fe20ceca
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_subheadline
+    - paragraphs.paragraphs_type.services_item
+id: paragraph.services_item.field_subheadline
+field_name: field_subheadline
+entity_type: paragraph
+bundle: services_item
+label: Unterüberschrift
+description: 'Überschrift über dem Accordion-Block (z.B. "Wir entwickeln Lösungen")'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

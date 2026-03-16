@@ -1,0 +1,12 @@
+uuid: 97d2474d-cd00-4a4e-abaf-3071c210fbc4
+langcode: de
+status: true
+dependencies:
+  config:
+    - node.type.location
+id: node__location
+label: 'Inhalt: Standort'
+tags:
+  title: '[node:field_city] | HÖCKER Project Managers'
+  description: '[node:summary]'
+  canonical_url: '[node:url]'

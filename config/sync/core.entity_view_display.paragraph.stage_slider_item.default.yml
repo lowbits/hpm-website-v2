@@ -4,7 +4,6 @@ status: true
 dependencies:
   config:
     - field.field.paragraph.stage_slider_item.field_caption
-    - field.field.paragraph.stage_slider_item.field_credits
     - field.field.paragraph.stage_slider_item.field_image
     - field.field.paragraph.stage_slider_item.field_image_portrait
     - paragraphs.paragraphs_type.stage_slider_item
@@ -22,14 +21,6 @@ content:
       link_to_entity: false
     third_party_settings: {  }
     weight: 0
-    region: content
-  field_credits:
-    type: string
-    label: hidden
-    settings:
-      link_to_entity: false
-    third_party_settings: {  }
-    weight: 1
     region: content
   field_image:
     type: media_thumbnail

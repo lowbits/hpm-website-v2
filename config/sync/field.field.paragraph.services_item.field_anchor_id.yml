@@ -1,16 +1,16 @@
-uuid: 72352a82-0b4c-4ec9-8a77-305946815ca1
+uuid: c9278514-9395-4dfd-af92-6f8e4ad6d895
 langcode: de
 status: true
 dependencies:
   config:
-    - field.storage.paragraph.field_credits
+    - field.storage.paragraph.field_anchor_id
     - paragraphs.paragraphs_type.services_item
-id: paragraph.services_item.field_credits
-field_name: field_credits
+id: paragraph.services_item.field_anchor_id
+field_name: field_anchor_id
 entity_type: paragraph
 bundle: services_item
-label: Credits
-description: ''
+label: 'Anchor ID'
+description: 'ID für Direktverlinkung (z.B. "wissen-innovation")'
 required: false
 translatable: true
 default_value: {  }
