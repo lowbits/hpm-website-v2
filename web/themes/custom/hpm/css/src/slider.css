@@ -2,6 +2,9 @@
 .carousel .flickity-viewport {
   overflow: visible;
 }
+.timeline-slider .flickity-viewport {
+  overflow: visible;
+}
 
 @layer components {
 
@@ -72,7 +75,7 @@
 
   /* Timeline Slider */
   .timeline-slider .slider-item {
-    @apply relative block;
+    @apply relative block mr-6;
     transition: opacity .5s ease;
   }
   .timeline-slider .slider-item .timeline-year {
