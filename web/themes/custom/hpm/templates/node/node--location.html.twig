@@ -88,6 +88,7 @@
             <address class="formatted not-italic">
               {%- if node.field_address.value %}{{ node.field_address.value|striptags('<br>')|raw }}{% endif -%}
               {%- if node.field_phone.value %}<br>{{ node.field_phone.value }}{% endif -%}
+              {%- if node.field_fax.value %}<br>Fax: {{ node.field_fax.value }}{% endif -%}
               {%- if node.field_email.value %}<br><a href="mailto:{{ node.field_email.value }}">{{ node.field_email.value }}</a>{% endif -%}
             </address>
             {% if node.field_maps_link.0.url %}
@@ -159,9 +160,9 @@
                         md:col-span-8
                         lg:col-span-6
                         xl:col-span-4">
-              <p class="font-erato text-[1rem]">
-                {{ node.field_gallery_text.value }}
-              </p>
+              <div class="font-erato text-[1rem] formatted">
+                {{ node.field_gallery_text.value|raw }}
+              </div>
             </div>
           {% endif %}
         </div>

@@ -8,6 +8,7 @@ dependencies:
     - field.field.node.location.field_city
     - field.field.node.location.field_credits
     - field.field.node.location.field_email
+    - field.field.node.location.field_fax
     - field.field.node.location.field_gallery
     - field.field.node.location.field_gallery_text
     - field.field.node.location.field_location_image
@@ -90,6 +91,7 @@ third_party_settings:
       children:
         - field_address
         - field_phone
+        - field_fax
         - field_email
         - field_maps_link
       label: Kontakt
@@ -180,6 +182,13 @@ content:
     region: content
     settings:
       size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_fax:
+    type: telephone_default
+    weight: 11
+    region: content
+    settings:
       placeholder: ''
     third_party_settings: {  }
   field_email:
