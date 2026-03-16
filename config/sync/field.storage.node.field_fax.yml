@@ -1,0 +1,19 @@
+uuid: f52bdf50-4c4d-4599-a2b8-a432dce1de9d
+langcode: de
+status: true
+dependencies:
+  module:
+    - node
+    - telephone
+id: node.field_fax
+field_name: field_fax
+entity_type: node
+type: telephone
+settings: {  }
+module: telephone
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

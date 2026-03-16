@@ -6,7 +6,6 @@ dependencies:
     - field.field.node.person.field_credits
     - field.field.node.person.field_description
     - field.field.node.person.field_email
-    - field.field.node.person.field_location
     - field.field.node.person.field_person_image
     - field.field.node.person.field_person_role
     - field.field.node.person.field_phone
@@ -50,16 +49,6 @@ content:
     settings:
       placeholder: ''
       size: 60
-    third_party_settings: {  }
-  field_location:
-    type: entity_reference_autocomplete
-    weight: 6
-    region: content
-    settings:
-      match_operator: CONTAINS
-      match_limit: 10
-      size: 60
-      placeholder: ''
     third_party_settings: {  }
   field_person_image:
     type: media_library_widget

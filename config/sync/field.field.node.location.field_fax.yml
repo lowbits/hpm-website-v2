@@ -1,0 +1,21 @@
+uuid: afcd1515-cbf3-4d08-862b-6d35005089f7
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_fax
+    - node.type.location
+  module:
+    - telephone
+id: node.location.field_fax
+field_name: field_fax
+entity_type: node
+bundle: location
+label: Fax
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: telephone

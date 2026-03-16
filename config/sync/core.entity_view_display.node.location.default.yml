@@ -8,6 +8,7 @@ dependencies:
     - field.field.node.location.field_city
     - field.field.node.location.field_credits
     - field.field.node.location.field_email
+    - field.field.node.location.field_fax
     - field.field.node.location.field_gallery
     - field.field.node.location.field_gallery_text
     - field.field.node.location.field_location_image
@@ -107,6 +108,7 @@ hidden:
   field_city: true
   field_credits: true
   field_email: true
+  field_fax: true
   field_location_tag: true
   field_maps_link: true
   field_meta_label: true

@@ -32,11 +32,10 @@ display:
       cache:
         type: tag
       sorts:
-        title:
-          id: title
-          table: node_field_data
-          field: title
-          entity_type: node
+        field_city_value:
+          id: field_city_value
+          table: node__field_city
+          field: field_city_value
           plugin_id: standard
           order: ASC
       filters:
