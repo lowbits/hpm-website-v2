@@ -2,6 +2,9 @@
 .carousel .flickity-viewport {
   overflow: visible;
 }
+.timeline-slider .flickity-viewport {
+  overflow: visible;
+}
 
 @layer components {
 
@@ -51,7 +54,7 @@
 
   /* Benefits Slider */
   .teaser-slider .benefits-item {
-    @apply relative block;
+    @apply relative block mr-6;
     @apply w-full sm:w-[18.5rem];
   }
   .teaser-slider .slider-item.is-passed,
@@ -72,7 +75,7 @@
 
   /* Timeline Slider */
   .timeline-slider .slider-item {
-    @apply relative block;
+    @apply relative block mr-6;
     transition: opacity .5s ease;
   }
   .timeline-slider .slider-item .timeline-year {

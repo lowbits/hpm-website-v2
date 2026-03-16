@@ -35,9 +35,10 @@
 
     {# Block items grid #}
     <div class="grid grid-cols-12">
-      <div class="col-span-12 grid grid-cols-1 gap-7 js-element-group
-                  sm:col-span-10 sm:col-start-2
-                  md:col-span-12 md:col-start-1 md:grid-cols-3">
+      <div class="col-span-12 grid grid-cols-1 gap-x-7 gap-y-12 js-element-group
+                  sm:col-span-10 sm:col-start-2 sm:gap-y-14
+                  md:col-span-12 md:col-start-1 md:grid-cols-3
+                  lg:gap-y-16">
         {% for item in paragraph.field_items %}
           {% set block_item = item.entity %}
           <div class="blocks-item flex flex-col items-start gap-2

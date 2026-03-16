@@ -51,7 +51,7 @@
       <div class="news-teaser__item-list col-span-11
                   sm:col-span-9
                   lg:col-span-8">
-        <div class="timeline-slider">
+        <div class="timeline-slider carousel">
               {% for item in paragraph.field_items %}
                 {% set timeline_item = item.entity %}
                 {% set bg_color = colors[loop.index0 % 4] %}
