@@ -1,48 +1,14 @@
 {#
 /**
  * @file
- * News listing page – wraps the view with stage title and intro.
+ * News listing – outputs rows and pager only.
+ * Stage title and intro are handled by the landing page paragraphs.
  */
 #}
-{{ attach_library('hpm/fade-ins') }}
-
-{# Stage Title #}
-<section class="stage-media stage-section">
-  <div class="section-container grid grid-cols-1 gap-x-7
-              sm:grid-cols-12">
-    <div class="flex flex-col items-start gap-3
-                sm:col-span-10 sm:col-start-2
-                lg:col-span-8 lg:col-start-3">
-      <h1 class="info text-hpm-red meta-line--red meta-line--medium">
-        {{ title }}
-      </h1>
-      <h2 class="h1">
-        Was uns bewegt – und was wir bewegen
-      </h2>
-    </div>
-  </div>
-</section>
-
-{# Intro #}
-<section class="content-section">
-  <div class="section-container grid grid-cols-1 gap-7
-              sm:grid-cols-12">
-    <div class="flex flex-col gap-2.5 js-element-group
-               sm:col-span-10 sm:col-start-2
-               lg:col-span-8 lg:col-start-3 lg:gap-4.5">
-      <blockquote class="quote-small">
-        Hier teilen wir Aktuelles aus dem Unternehmen, unserer Arbeit und unserem Engagement.
-      </blockquote>
-    </div>
-  </div>
-</section>
-
-{# News Items #}
 {% if rows %}
   {{ rows }}
 {% endif %}
 
-{# Pager #}
 {% if pager %}
   {{ pager }}
 {% endif %}
