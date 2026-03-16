@@ -51,7 +51,7 @@
 
   /* Benefits Slider */
   .teaser-slider .benefits-item {
-    @apply relative block;
+    @apply relative block mr-6;
     @apply w-full sm:w-[18.5rem];
   }
   .teaser-slider .slider-item.is-passed,
