@@ -1,0 +1,12 @@
+uuid: 086e0ab1-91b0-4e6c-9ef4-cfea0e751e02
+langcode: de
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.news_listing
+id: paragraph.news_listing.default
+targetEntityType: paragraph
+bundle: news_listing
+mode: default
+content: {  }
+hidden: {  }

@@ -35,6 +35,7 @@ settings:
       locations_overview: locations_overview
       map_teaser: map_teaser
       narrative: narrative
+      news_listing: news_listing
       news_teaser: news_teaser
       people: people
       poster: poster

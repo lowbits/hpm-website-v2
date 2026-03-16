@@ -1,0 +1,12 @@
+{#
+/**
+ * @file
+ * News listing – embeds the news_listing View (listing view mode).
+ */
+#}
+{{ attach_library('hpm/fade-ins') }}
+<section{{ attributes.addClass('content-section') }}>
+  <div class="section-container flex flex-col gap-16 lg:gap-24">
+    {{ drupal_view('news_listing', 'block_1') }}
+  </div>
+</section>
