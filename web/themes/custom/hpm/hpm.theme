@@ -5,7 +5,25 @@
  * Functions to support theming in the HPM theme.
  */
 
+use Drupal\Core\Url;
 use Drupal\node\NodeInterface;
+
+/**
+ * Implements hook_preprocess() for all templates.
+ *
+ * Provides internal_url() as a map of path aliases to language-aware URLs.
+ */
+function hpm_preprocess(&$variables) {
+  $paths = [
+    'standorte', 'projekte', 'neuigkeiten',
+    'kontakt', 'stellenangebote',
+  ];
+  $urls = [];
+  foreach ($paths as $path) {
+    $urls[$path] = Url::fromUserInput('/' . $path)->toString();
+  }
+  $variables['internal_urls'] = $urls;
+}
 
 /**
  * Implements hook_preprocess_HOOK() for html.html.twig.
