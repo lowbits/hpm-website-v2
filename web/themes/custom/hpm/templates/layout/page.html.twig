@@ -41,7 +41,7 @@
   </button>
 
   {# Contact Button #}
-  <a class="button button--small header__contact z-2" href="{{ url('internal:/kontakt') }}" title="{{ 'Kontakt aufnehmen'|t }}">
+  <a class="button button--small header__contact z-2" href="{{ drupal_url('internal:/kontakt') }}" title="{{ 'Kontakt aufnehmen'|t }}">
     <span class="button-text">{{ 'Kontakt'|t }}</span>
   </a>
 </header>
@@ -63,7 +63,7 @@
 
       <nav class="navigation-additional relative flex flex-col items-start gap-3" aria-label="{{ 'Weitere Links'|t }}">
         <a class="text-link font-case text-[0.9375rem] leading-[1.2]"
-           href="{{ url('internal:/projekte') }}"
+           href="{{ drupal_url('internal:/projekte') }}"
            title="{{ 'Projekte'|t }}">
           <span class="text-link__text copy">{{ 'Projekte'|t }}</span>
           <span class="link-icon -mt-[1px]">
@@ -71,7 +71,7 @@
           </span>
         </a>
         <a class="text-link font-case text-[0.9375rem] leading-[1.2]"
-           href="{{ url('internal:/neuigkeiten') }}"
+           href="{{ drupal_url('internal:/neuigkeiten') }}"
            title="{{ 'Neuigkeiten'|t }}">
           <span class="text-link__text copy">{{ 'Neuigkeiten'|t }}</span>
           <span class="link-icon -mt-[1px]">
