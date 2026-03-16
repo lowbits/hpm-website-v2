@@ -9,7 +9,7 @@
  */
 #}
 {% set size = content.field_display_size|render|striptags|trim|default('large') %}
-{% set box_position = content.field_box_position|render|striptags|trim|default('right') %}
+{% set box_position = content.field_media_position|render|striptags|trim|default('right') %}
 <section{{ attributes.addClass('box-teaser', 'content-section', 'overflow-hidden', 'max-sm:[&:last-child]:mb-0') }}>
   <div class="section-container grid grid-cols-12 gap-x-5
               max-sm:px-0
@@ -97,10 +97,21 @@
           </div>
         {% endif %}
 
+        {% if paragraph.field_white_spacer.value %}
+          <div class="layered__line"></div>
+        {% endif %}
+
         {% if content.field_headline|render|trim %}
           <h2 class="h3 text-white">
             {{ content.field_headline }}
           </h2>
+        {% endif %}
+
+        {% if paragraph.field_quote.value %}
+          <div class="w-[3.75rem] h-[0.0625rem] bg-white mb-4 lg:mb-6"></div>
+          <p class="quote-small">
+            {{ paragraph.field_quote.value }}
+          </p>
         {% endif %}
 
         {% if content.field_text|render|trim %}

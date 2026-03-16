@@ -4,9 +4,10 @@ status: true
 dependencies:
   config:
     - field.field.paragraph.services_item.field_accordion_items
-    - field.field.paragraph.services_item.field_credits
+    - field.field.paragraph.services_item.field_anchor_id
     - field.field.paragraph.services_item.field_headline
     - field.field.paragraph.services_item.field_image
+    - field.field.paragraph.services_item.field_subheadline
     - field.field.paragraph.services_item.field_list
     - field.field.paragraph.services_item.field_meta_label
     - field.field.paragraph.services_item.field_text
@@ -27,14 +28,6 @@ content:
       link: ''
     third_party_settings: {  }
     weight: 6
-    region: content
-  field_credits:
-    type: string
-    label: hidden
-    settings:
-      link_to_entity: false
-    third_party_settings: {  }
-    weight: 3
     region: content
   field_headline:
     type: string
@@ -75,4 +68,13 @@ content:
     third_party_settings: {  }
     weight: 4
     region: content
-hidden: {  }
+  field_subheadline:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 5
+    region: content
+hidden:
+  field_anchor_id: true

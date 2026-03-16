@@ -5,7 +5,6 @@ dependencies:
   config:
     - field.field.paragraph.locations_teaser_item.field_city
     - field.field.paragraph.locations_teaser_item.field_contact_data
-    - field.field.paragraph.locations_teaser_item.field_credits
     - field.field.paragraph.locations_teaser_item.field_email
     - field.field.paragraph.locations_teaser_item.field_image
     - field.field.paragraph.locations_teaser_item.field_link
@@ -32,14 +31,6 @@ content:
     settings: {  }
     third_party_settings: {  }
     weight: 3
-    region: content
-  field_credits:
-    type: string
-    label: above
-    settings:
-      link_to_entity: false
-    third_party_settings: {  }
-    weight: 1
     region: content
   field_email:
     type: basic_string

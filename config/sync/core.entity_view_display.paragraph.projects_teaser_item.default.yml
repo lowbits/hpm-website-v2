@@ -3,7 +3,6 @@ langcode: de
 status: true
 dependencies:
   config:
-    - field.field.paragraph.projects_teaser_item.field_credits
     - field.field.paragraph.projects_teaser_item.field_headline
     - field.field.paragraph.projects_teaser_item.field_image
     - field.field.paragraph.projects_teaser_item.field_link
@@ -15,7 +14,6 @@ bundle: projects_teaser_item
 mode: default
 content: {  }
 hidden:
-  field_credits: true
   field_headline: true
   field_image: true
   field_link: true
