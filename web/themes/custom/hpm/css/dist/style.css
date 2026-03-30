@@ -469,6 +469,9 @@
   .min-h-full {
     min-height: 100%;
   }
+  .min-h-screen {
+    min-height: 100vh;
+  }
   .\!w-auto {
     width: auto !important;
   }
@@ -3053,6 +3056,10 @@
     margin-top: calc(var(--spacing) * 6);
   }
 }
+.form label {
+  display: inline-block;
+  padding-inline: calc(var(--spacing) * 2.5);
+}
 .form input[type="text"], .form input[type="password"], .form input[type="email"], .form input[type="tel"], .form textarea {
   width: 100%;
   border-radius: calc(infinity * 1px);
@@ -3075,7 +3082,16 @@
     background-color: var(--color-white);
   }
 }
-.form [type="submit"] {
+.form .form-actions {
+  margin-top: calc(var(--spacing) * 6);
+  @media (width >= 45rem) {
+    margin-top: calc(var(--spacing) * 8);
+  }
+  @media (width >= 82rem) {
+    margin-top: calc(var(--spacing) * 10);
+  }
+}
+.form .form-actions .form-submit, .form [type="submit"] {
   position: relative;
   display: inline-block;
   height: auto;
@@ -3084,6 +3100,7 @@
   border-radius: calc(infinity * 1px);
   border-style: var(--tw-border-style);
   border-width: 1px;
+  border-color: var(--color-hpm-darkred);
   background-color: transparent;
   padding-inline: 1.75rem;
   padding-top: .875rem;

@@ -2,6 +2,9 @@
   @apply flex flex-col items-start gap-1 relative;
   @apply mt-4 sm:mt-5 lg:mt-6;
 }
+.form label {
+  @apply inline-block px-2.5;
+}
 .form input[type="text"],
 .form input[type="password"],
 .form input[type="email"],
@@ -11,8 +14,12 @@
   @apply transition-colors duration-300;
   @apply hover:bg-white focus:bg-white;
 }
+.form .form-actions {
+  @apply mt-6 sm:mt-8 lg:mt-10;
+}
+.form .form-actions .form-submit,
 .form [type="submit"] {
-  @apply relative overflow-hidden bg-transparent border-[1px] rounded-full inline-block cursor-pointer
+  @apply relative overflow-hidden bg-transparent border-[1px] border-hpm-darkred rounded-full inline-block cursor-pointer
   font-[.9375em] h-auto leading-[1.125rem] pt-[.875rem] pb-[1rem] px-[1.75rem]
   hover:bg-hpm-darkred hover:text-white
   focus:bg-hpm-darkred focus:text-white;
