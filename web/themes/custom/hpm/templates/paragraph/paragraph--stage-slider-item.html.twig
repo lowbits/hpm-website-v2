@@ -16,7 +16,7 @@
            loading="lazy">
     {% endif %}
     {% if content.field_image[0] %}
-      <img class="wide absolute inset-0 hidden h-full w-full object-cover md:block"
+      <img class="wide absolute inset-0 max-md:hidden h-full w-full object-cover"
            src="{{ file_url(paragraph.field_image.entity.field_media_image.entity.uri.value) }}"
            alt="{{ caption }}"
            loading="lazy">
