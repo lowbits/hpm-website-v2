@@ -28,7 +28,33 @@
   {% endfor %}
   {% set level = levels|join(', ') %}
   {% set starting_time = node.field_starting_time.value %}
-  {% set intro = node.field_intro_text.value|striptags|trim %}
+  {% set intro = node.field_intro_text.value ? node.field_intro_text.value|striptags|trim : '' %}
+
+  {# Fallback: read from job_intro paragraph if node fields are empty #}
+  {% if not location_label or not level or not starting_time %}
+    {% for item in node.field_paragraphs %}
+      {% if item.entity and item.entity.bundle() == 'job_intro' %}
+        {% if not location_label and item.entity.field_location.entity %}
+          {% set location_label = item.entity.field_location.entity.label %}
+        {% endif %}
+        {% if not starting_time and item.entity.field_starting_time.value %}
+          {% set starting_time = item.entity.field_starting_time.value %}
+        {% endif %}
+        {% if not level %}
+          {% set fallback_lvls = [] %}
+          {% for lvl_item in item.entity.field_experience_level %}
+            {% if lvl_item.entity %}
+              {% set fallback_lvls = fallback_lvls|merge([lvl_item.entity.label]) %}
+            {% endif %}
+          {% endfor %}
+          {% set level = fallback_lvls|join(', ') %}
+        {% endif %}
+        {% if not intro and item.entity.field_section_title.value %}
+          {% set intro = item.entity.field_section_title.value %}
+        {% endif %}
+      {% endif %}
+    {% endfor %}
+  {% endif %}
 
   <section class="content-section">
     <div class="section-container js-element-group
