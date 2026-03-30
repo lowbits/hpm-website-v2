@@ -1,0 +1,20 @@
+uuid: ec26f866-dd13-488e-a3ee-49c45bf9766b
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_intro_text
+    - node.type.job_listing
+id: node.job_listing.field_intro_text
+field_name: field_intro_text
+entity_type: node
+bundle: job_listing
+label: Einleitung
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats: {  }
+field_type: text_long

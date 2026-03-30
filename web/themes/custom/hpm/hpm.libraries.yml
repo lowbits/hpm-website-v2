@@ -77,3 +77,9 @@ accordion:
     js/dist/accordion.js: {}
   dependencies:
     - hpm/gsap
+
+application-form:
+  js:
+    js/dist/application-form.js: {}
+  dependencies:
+    - core/drupal

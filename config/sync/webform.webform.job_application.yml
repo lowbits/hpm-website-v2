@@ -1,0 +1,153 @@
+uuid: 5757e538-9a2d-483d-8750-f431275f0dd3
+langcode: de
+status: open
+dependencies: {  }
+weight: 0
+open: null
+close: null
+uid: 0
+template: false
+archive: false
+id: job_application
+title: Bewerbung
+description: null
+categories: {  }
+elements: |
+
+  job_title:
+    "#type": hidden
+    "#title": Stellentitel
+    "#default_value": "[current-page:title]"
+  firstname:
+    "#type": textfield
+    "#title": Vorname
+    "#required": true
+  lastname:
+    "#type": textfield
+    "#title": Nachname
+    "#required": true
+  email:
+    "#type": email
+    "#title": E-Mail
+    "#required": true
+  phone:
+    "#type": tel
+    "#title": Telefon
+  how_found_us:
+    "#type": textfield
+    "#title": "Wie haben Sie von uns erfahren?"
+  location:
+    "#type": select
+    "#title": "Gewünschter Standort"
+    "#options":
+      augsburg: Augsburg
+      berlin: Berlin
+      bochum: Bochum
+      darmstadt: Darmstadt
+      duisburg: Duisburg
+      hamburg: Hamburg
+      koeln: Köln
+      muenchen: München
+      nuernberg: Nürnberg
+  salary_expectation:
+    "#type": textfield
+    "#title": Gehaltsvorstellung
+  resume:
+    "#type": managed_file
+    "#title": "Lebenslauf (PDF)"
+    "#required": true
+    "#file_extensions": pdf
+    "#max_filesize": "10"
+    "#uri_scheme": private
+  cover_letter:
+    "#type": managed_file
+    "#title": "Anschreiben (PDF)"
+    "#file_extensions": pdf
+    "#max_filesize": "10"
+    "#uri_scheme": private
+  privacy_data:
+    "#type": checkbox
+    "#title": "Ich stimme der Verarbeitung meiner personenbezogenen Daten gemäß der Datenschutzerklärung zu."
+    "#required": true
+  privacy_storage:
+    "#type": checkbox
+    "#title": "Ich bin damit einverstanden, dass meine Bewerbungsunterlagen für 6 Monate gespeichert werden."
+    "#required": true
+  privacy_contact:
+    "#type": checkbox
+    "#title": "Ich bin damit einverstanden, dass mich HÖCKER Project Managers bezüglich meiner Bewerbung kontaktiert."
+    "#required": true
+css: ''
+javascript: ''
+settings:
+  confirmation_type: message
+  confirmation_message: 'Vielen Dank für Ihre Bewerbung. Wir werden Ihre Unterlagen sorgfältig prüfen und uns bei Ihnen melden.'
+  form_submit_label: 'Bewerbung absenden'
+access:
+  create:
+    roles:
+      - anonymous
+      - authenticated
+    users: {  }
+    permissions: {  }
+  view_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  update_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  delete_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  purge_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  view_own:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  update_own:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  delete_own:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  administer:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  test:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  configuration:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+handlers:
+  email_notification:
+    id: email
+    handler_id: email_notification
+    label: E-Mail-Benachrichtigung
+    notes: ''
+    status: true
+    conditions: {  }
+    weight: 0
+    settings:
+      states:
+        - completed
+      to_mail: karriere@hoecker-pm.com
+      from_mail: default
+      from_name: default
+      subject: 'Neue Bewerbung: [webform_submission:values:job_title]'
+      body: default
+      excluded_elements: {  }
+      html: true
+      attachments: true
+variants: {  }

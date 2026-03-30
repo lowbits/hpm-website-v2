@@ -1,0 +1,8 @@
+uuid: 5963f2d5-058e-4bc7-a92d-41826bf82da1
+langcode: de
+status: true
+dependencies: {  }
+id: contact_person
+label: Ansprechpartner
+revision: false
+description: 'Wiederverwendbarer Block für die Kontaktperson auf Stellenangeboten.'

@@ -1,0 +1,24 @@
+uuid: cc677ba9-65fa-42dc-803d-2b1b04e64458
+langcode: de
+status: true
+dependencies:
+  config:
+    - block_content.type.about_us
+    - field.storage.block_content.field_image
+    - media.type.image
+id: block_content.about_us.field_image
+field_name: field_image
+entity_type: block_content
+bundle: about_us
+label: Bild
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:media'
+  handler_settings:
+    target_bundles:
+      image: image
+field_type: entity_reference

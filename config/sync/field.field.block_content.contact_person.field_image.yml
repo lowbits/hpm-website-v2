@@ -1,0 +1,24 @@
+uuid: 03e1163b-b052-4693-a4e7-c63b616c36c6
+langcode: de
+status: true
+dependencies:
+  config:
+    - block_content.type.contact_person
+    - field.storage.block_content.field_image
+    - media.type.image
+id: block_content.contact_person.field_image
+field_name: field_image
+entity_type: block_content
+bundle: contact_person
+label: Bild
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:media'
+  handler_settings:
+    target_bundles:
+      image: image
+field_type: entity_reference

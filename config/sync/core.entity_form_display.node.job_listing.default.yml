@@ -4,15 +4,91 @@ status: true
 dependencies:
   config:
     - field.field.node.job_listing.body
+    - field.field.node.job_listing.field_benefits
+    - field.field.node.job_listing.field_challenges
     - field.field.node.job_listing.field_contact_person
     - field.field.node.job_listing.field_experience_level
+    - field.field.node.job_listing.field_intro_text
     - field.field.node.job_listing.field_job_location
+    - field.field.node.job_listing.field_offer
     - field.field.node.job_listing.field_paragraphs
+    - field.field.node.job_listing.field_profile
     - field.field.node.job_listing.field_starting_time
     - node.type.job_listing
   module:
+    - field_group
     - paragraphs
     - path
+    - text
+third_party_settings:
+  field_group:
+    group_tabs:
+      children:
+        - group_allgemein
+        - group_inhalt
+        - group_zusaetzlich
+      label: Tabs
+      region: content
+      parent_name: ''
+      weight: 0
+      format_type: tabs
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        direction: horizontal
+    group_allgemein:
+      children:
+        - title
+        - field_job_location
+        - field_starting_time
+        - field_experience_level
+        - field_intro_text
+      label: Allgemein
+      region: content
+      parent_name: group_tabs
+      weight: 0
+      format_type: tab
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        formatter: open
+        description: ''
+        required_fields: true
+    group_inhalt:
+      children:
+        - field_challenges
+        - field_profile
+        - field_offer
+        - field_benefits
+      label: Inhalt
+      region: content
+      parent_name: group_tabs
+      weight: 1
+      format_type: tab
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        formatter: closed
+        description: ''
+        required_fields: true
+    group_zusaetzlich:
+      children:
+        - field_paragraphs
+      label: 'Zusätzliche Inhalte'
+      region: content
+      parent_name: group_tabs
+      weight: 2
+      format_type: tab
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        formatter: closed
+        description: ''
+        required_fields: true
 id: node.job_listing.default
 targetEntityType: node
 bundle: job_listing
@@ -24,9 +100,25 @@ content:
     region: content
     settings: {  }
     third_party_settings: {  }
-  field_contact_person:
+  field_benefits:
+    type: text_textarea
+    weight: 13
+    region: content
+    settings:
+      rows: 9
+      placeholder: ''
+    third_party_settings: {  }
+  field_challenges:
+    type: text_textarea
+    weight: 10
+    region: content
+    settings:
+      rows: 9
+      placeholder: ''
+    third_party_settings: {  }
+  field_experience_level:
     type: entity_reference_autocomplete
-    weight: 1
+    weight: 4
     region: content
     settings:
       match_operator: CONTAINS
@@ -34,9 +126,35 @@ content:
       size: 60
       placeholder: ''
     third_party_settings: {  }
+  field_intro_text:
+    type: text_textarea
+    weight: 5
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_job_location:
+    type: entity_reference_autocomplete
+    weight: 2
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_offer:
+    type: text_textarea
+    weight: 12
+    region: content
+    settings:
+      rows: 9
+      placeholder: ''
+    third_party_settings: {  }
   field_paragraphs:
     type: paragraphs
-    weight: 4
+    weight: 20
     region: content
     settings:
       title: Paragraph
@@ -52,9 +170,25 @@ content:
         collapse_edit_all: collapse_edit_all
         duplicate: duplicate
     third_party_settings: {  }
+  field_profile:
+    type: text_textarea
+    weight: 11
+    region: content
+    settings:
+      rows: 9
+      placeholder: ''
+    third_party_settings: {  }
+  field_starting_time:
+    type: string_textfield
+    weight: 3
+    region: content
+    settings:
+      size: 60
+      placeholder: 'z.B. Ab sofort, Q3 2026'
+    third_party_settings: {  }
   langcode:
     type: language_select
-    weight: 2
+    weight: 90
     region: content
     settings:
       include_locked: true
@@ -97,8 +231,6 @@ content:
     third_party_settings: {  }
 hidden:
   body: true
-  field_experience_level: true
-  field_job_location: true
-  field_starting_time: true
+  field_contact_person: true
   promote: true
   sticky: true

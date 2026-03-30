@@ -1,0 +1,29 @@
+uuid: 844ce9a5-69c4-40c8-a053-5c37bb578723
+langcode: de
+status: true
+dependencies:
+  module:
+    - node
+id: node.job_listing.default.group_inhalt
+field_name: group_inhalt
+entity_type: node
+bundle: job_listing
+mode: default
+type: tab
+parent_name: group_tabs
+label: Inhalt
+description: ''
+weight: 1
+format_type: tab
+format_settings:
+  classes: ''
+  show_empty_fields: false
+  id: ''
+  formatter: closed
+  description: ''
+  required_fields: true
+children:
+  - field_challenges
+  - field_profile
+  - field_offer
+  - field_benefits

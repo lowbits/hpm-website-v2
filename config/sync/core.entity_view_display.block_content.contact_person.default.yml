@@ -1,0 +1,60 @@
+uuid: c5aab710-b8ec-4332-843b-3547bac9a615
+langcode: de
+status: true
+dependencies:
+  config:
+    - block_content.type.contact_person
+    - field.field.block_content.contact_person.field_headline
+    - field.field.block_content.contact_person.field_image
+    - field.field.block_content.contact_person.field_job_title
+    - field.field.block_content.contact_person.field_name
+    - field.field.block_content.contact_person.field_phone
+  module:
+    - telephone
+id: block_content.contact_person.default
+targetEntityType: block_content
+bundle: contact_person
+mode: default
+content:
+  field_headline:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_image:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: false
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_job_title:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 4
+    region: content
+  field_name:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  field_phone:
+    type: telephone_link
+    label: hidden
+    settings:
+      title: ''
+    third_party_settings: {  }
+    weight: 5
+    region: content
+hidden:
+  langcode: true

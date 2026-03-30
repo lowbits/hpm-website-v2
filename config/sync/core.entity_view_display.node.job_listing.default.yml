@@ -3,24 +3,69 @@ langcode: de
 status: true
 dependencies:
   config:
+    - field.field.node.job_listing.field_benefits
+    - field.field.node.job_listing.field_challenges
     - field.field.node.job_listing.field_contact_person
+    - field.field.node.job_listing.field_experience_level
+    - field.field.node.job_listing.field_intro_text
+    - field.field.node.job_listing.field_job_location
+    - field.field.node.job_listing.field_offer
     - field.field.node.job_listing.field_paragraphs
+    - field.field.node.job_listing.field_profile
+    - field.field.node.job_listing.field_starting_time
     - node.type.job_listing
   module:
     - entity_reference_revisions
+    - text
     - user
 id: node.job_listing.default
 targetEntityType: node
 bundle: job_listing
 mode: default
 content:
-  field_contact_person:
+  field_benefits:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 7
+    region: content
+  field_challenges:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 4
+    region: content
+  field_experience_level:
     type: entity_reference_label
     label: hidden
     settings:
-      link: true
+      link: false
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  field_intro_text:
+    type: text_default
+    label: hidden
+    settings: {  }
     third_party_settings: {  }
     weight: 1
+    region: content
+  field_job_location:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: false
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_offer:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 6
     region: content
   field_paragraphs:
     type: entity_reference_revisions_entity_view
@@ -28,12 +73,25 @@ content:
     settings:
       view_mode: default
     third_party_settings: {  }
-    weight: 0
+    weight: 10
+    region: content
+  field_profile:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 5
+    region: content
+  field_starting_time:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 2
     region: content
 hidden:
   body: true
-  field_experience_level: true
-  field_job_location: true
-  field_starting_time: true
+  field_contact_person: true
   langcode: true
   links: true

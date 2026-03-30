@@ -1,0 +1,20 @@
+uuid: 3c61a085-a6b4-45b8-83d4-40e113c6458e
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_profile
+    - node.type.job_listing
+id: node.job_listing.field_profile
+field_name: field_profile
+entity_type: node
+bundle: job_listing
+label: 'Ihr Profil'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats: {  }
+field_type: text_long

@@ -1,0 +1,8 @@
+uuid: 3111a9f0-2b48-4f8c-a3a5-764b90e90b01
+langcode: de
+status: true
+dependencies: {  }
+id: about_us
+label: 'Über Uns'
+revision: false
+description: 'Wiederverwendbarer Block mit Bild und Text für die "Über Uns"-Sektion auf Stellenangeboten.'

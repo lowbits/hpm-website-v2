@@ -48,6 +48,21 @@ function hpm_preprocess_page(&$variables) {
 function hpm_preprocess_node(&$variables) {
   $node = $variables['node'];
   $variables['node_type'] = $node->bundle();
+
+  // Load reusable block_content entities by info (admin title) for job listings.
+  if ($node->bundle() === 'job_listing') {
+    $block_map = [
+      'about_us_block' => 'about_us',
+      'contact_person_block' => 'contact_person',
+    ];
+    $storage = \Drupal::entityTypeManager()->getStorage('block_content');
+    foreach ($block_map as $var_name => $bundle) {
+      $blocks = $storage->loadByProperties(['type' => $bundle]);
+      if ($blocks) {
+        $variables[$var_name] = reset($blocks);
+      }
+    }
+  }
 }
 
 /**

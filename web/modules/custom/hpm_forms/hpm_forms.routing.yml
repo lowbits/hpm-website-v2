@@ -1,0 +1,7 @@
+hpm_forms.job_application_submit:
+  path: '/api/job-application'
+  defaults:
+    _controller: '\Drupal\hpm_forms\Controller\JobApplicationController::submit'
+  methods: [POST]
+  requirements:
+    _access: 'TRUE'

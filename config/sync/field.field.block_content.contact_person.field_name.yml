@@ -1,0 +1,19 @@
+uuid: 69b485f3-6ced-4209-a753-d9e518b22a89
+langcode: de
+status: true
+dependencies:
+  config:
+    - block_content.type.contact_person
+    - field.storage.block_content.field_name
+id: block_content.contact_person.field_name
+field_name: field_name
+entity_type: block_content
+bundle: contact_person
+label: Name
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

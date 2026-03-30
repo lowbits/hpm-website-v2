@@ -1,0 +1,19 @@
+uuid: 86c274af-8702-4ffc-b812-2d55fb3f1db5
+langcode: de
+status: true
+dependencies:
+  config:
+    - block_content.type.about_us
+    - field.storage.block_content.field_headline
+id: block_content.about_us.field_headline
+field_name: field_headline
+entity_type: block_content
+bundle: about_us
+label: Überschrift
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

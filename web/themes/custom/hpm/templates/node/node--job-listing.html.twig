@@ -3,7 +3,7 @@
   {{ title_prefix }}
   {{ title_suffix }}
 
-  {# Stage Title #}
+  {# 1. Stage Title #}
   <section class="stage-media stage-section">
     <div class="section-container grid grid-cols-1 gap-x-7
                 sm:grid-cols-12">
@@ -18,7 +18,457 @@
     </div>
   </section>
 
-  {# Paragraphs #}
+  {# 2. Stelleninformationen (back link + intro + location/time/level) #}
+  {% set location_label = node.field_job_location.entity ? node.field_job_location.entity.label : '' %}
+  {% set levels = [] %}
+  {% for item in node.field_experience_level %}
+    {% if item.entity %}
+      {% set levels = levels|merge([item.entity.label]) %}
+    {% endif %}
+  {% endfor %}
+  {% set level = levels|join(', ') %}
+  {% set starting_time = node.field_starting_time.value %}
+  {% set intro = node.field_intro_text.value|striptags|trim %}
+
+  <section class="content-section">
+    <div class="section-container js-element-group
+                grid grid-cols-12 gap-y-6 sm:gap-7
+                sm:grid-cols-12 sm:gap-y-8
+                lg:gap-y-12">
+
+      <div class="col-span-12
+                  sm:col-span-10 sm:col-start-2
+                  lg:col-span-2 lg:col-start-auto">
+        <a class="text-link font-case text-[0.9375rem] leading-[1.2] text-hpm-darkred text-link--back"
+           href="{{ internal_urls.stellenangebote }}"
+           title="Zu den Stellenangeboten">
+          <span class="text-link__text copy">Zur Übersicht</span>
+          <span class="link-icon link-icon--back -mt-[1px]">
+            {% include '@hpm/images/vectors/button-arrow.svg.twig' %}
+          </span>
+        </a>
+      </div>
+
+      {% if intro %}
+        <div class="col-span-12
+                    sm:col-span-10 sm:col-start-2
+                    lg:col-span-8 lg:col-start-auto">
+          <h3 class="quote-small">
+            {{ intro }}
+          </h3>
+        </div>
+      {% endif %}
+
+      {% if location_label %}
+        <div class="col-span-12 flex flex-col gap-1
+                    sm:col-span-3 sm:col-start-2
+                    lg:col-span-3 lg:col-start-3">
+          <h4 class="info text-hpm-red">Standort</h4>
+          <p>{{ location_label }}</p>
+        </div>
+      {% endif %}
+
+      {% if starting_time %}
+        <div class="col-span-12 flex flex-col gap-1
+                    sm:col-span-3
+                    lg:col-span-3">
+          <h4 class="info text-hpm-red">Zeitpunkt</h4>
+          <p>{{ starting_time }}</p>
+        </div>
+      {% endif %}
+
+      {% if level %}
+        <div class="col-span-12 flex flex-col gap-1
+                    sm:col-span-4
+                    lg:col-span-3">
+          <h4 class="info text-hpm-red">Level</h4>
+          <p>{{ level }}</p>
+        </div>
+      {% endif %}
+    </div>
+  </section>
+
+  {# 3. Über Uns – narrative layout with image + overlapping content box #}
+  {% if about_us_block %}
+    {% set au_media = about_us_block.field_image.entity %}
+    {% set au_image = au_media ? au_media.field_media_image.entity : null %}
+    <section class="narrative relative content-section overflow-hidden max-sm:mb-0">
+      <div class="section-container max-sm:px-0 grid grid-cols-12 gap-x-5 lg:gap-x-6">
+        <div class="relative col-span-12 grid grid-cols-12 gap-x-5 lg:gap-x-6">
+
+          {% if au_image %}
+            <div class="col-span-12
+                        sm:col-span-11 sm:col-start-2
+                        md:col-span-10 md:col-start-3
+                        lg:col-span-12 lg:col-start-auto">
+              <div class="relative">
+                <div class="image-container js-zoom-image" data-delay=".2">
+                  <img src="{{ file_url(au_image.uri.value) }}"
+                       alt="{{ au_media.field_media_image.alt }}"
+                       loading="lazy">
+                </div>
+                {% if au_media.field_credits.value %}
+                  <div class="credits absolute right-[-2px] bottom-0 rotate-90 origin-bottom-right sm:right-[-4px]">
+                    {{ au_media.field_credits.value starts with '©' ? au_media.field_credits.value : '© ' ~ au_media.field_credits.value }}
+                  </div>
+                {% endif %}
+              </div>
+            </div>
+          {% endif %}
+
+          <div class="relative z-[2] col-span-12
+                      sm:col-span-10 sm:-top-8
+                      lg:absolute lg:-left-8 lg:bottom-8 lg:top-auto lg:w-[41%]">
+            <div class="text-white bg-hpm-red js-element-group px-6 py-8 sm:px-8 sm:!py-8">
+              {% if about_us_block.field_headline.value %}
+                <h2 class="h3 text-white">{{ about_us_block.field_headline.value }}</h2>
+              {% endif %}
+              {% if about_us_block.field_text.value %}
+                <div class="formatted">
+                  {{ about_us_block.field_text.value|raw }}
+                </div>
+              {% endif %}
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  {% endif %}
+
+  {# 4. Ihre Herausforderung #}
+  {% if content.field_challenges|render|trim %}
+    <section class="content-section">
+      <div class="section-container grid grid-cols-1 gap-7
+                  sm:grid-cols-12">
+        <div class="js-element-group
+                    sm:col-span-10 sm:col-start-2
+                    md:col-span-8 md:col-start-3
+                    lg:col-span-7 lg:col-start-3
+                    xl:col-span-6 xl:col-start-3">
+          <h2 class="h2 text-hpm-red">{{ 'Ihre Herausforderung'|t }}</h2>
+          <div class="formatted">
+            {{ content.field_challenges }}
+          </div>
+        </div>
+      </div>
+    </section>
+  {% endif %}
+
+  {# 5. Ihr Profil #}
+  {% if content.field_profile|render|trim %}
+    <section class="content-section">
+      <div class="section-container grid grid-cols-1 gap-7
+                  sm:grid-cols-12">
+        <div class="js-element-group
+                    sm:col-span-10 sm:col-start-2
+                    md:col-span-8 md:col-start-3
+                    lg:col-span-7 lg:col-start-3
+                    xl:col-span-6 xl:col-start-3">
+          <h2 class="h2 text-hpm-red">{{ 'Ihr Profil'|t }}</h2>
+          <div class="formatted">
+            {{ content.field_profile }}
+          </div>
+        </div>
+      </div>
+    </section>
+  {% endif %}
+
+  {# 6. Unser Angebot #}
+  {% if content.field_offer|render|trim %}
+    <section class="content-section">
+      <div class="section-container grid grid-cols-1 gap-7
+                  sm:grid-cols-12">
+        <div class="js-element-group
+                    sm:col-span-10 sm:col-start-2
+                    md:col-span-8 md:col-start-3
+                    lg:col-span-7 lg:col-start-3
+                    xl:col-span-6 xl:col-start-3">
+          <h2 class="h2 text-hpm-red">{{ 'Unser Angebot'|t }}</h2>
+          <div class="formatted">
+            {{ content.field_offer }}
+          </div>
+        </div>
+      </div>
+    </section>
+  {% endif %}
+
+  {# 7. Unsere Benefits #}
+  {% if content.field_benefits|render|trim %}
+    <section class="content-section">
+      <div class="section-container grid grid-cols-1 gap-7
+                  sm:grid-cols-12">
+        <div class="js-element-group
+                    sm:col-span-10 sm:col-start-2
+                    md:col-span-8 md:col-start-3
+                    lg:col-span-7 lg:col-start-3
+                    xl:col-span-6 xl:col-start-3">
+          <h2 class="h2 text-hpm-red">{{ 'Unsere Benefits'|t }}</h2>
+          <div class="formatted">
+            {{ content.field_benefits }}
+          </div>
+        </div>
+      </div>
+    </section>
+  {% endif %}
+
+  {# 8. Bewerbungsformular #}
+  {{ attach_library('hpm/application-form') }}
+  <section class="content-section" data-theme="beige">
+    <div class="section-container grid grid-cols-12 gap-y-7 sm:gap-7">
+      <div class="col-span-12 sm:col-span-10 sm:col-start-2 md:col-span-8 md:col-start-3 lg:col-span-6 lg:col-start-4">
+
+        <h2 class="h2 text-hpm-red text-center mb-4 sm:mb-6 lg:mb-8">
+          {{ 'Bewerben Sie sich'|t }}
+        </h2>
+
+        <div id="form-host">
+          <form id="bewerbung" class="application" method="post" action="/api/job-application" enctype="multipart/form-data" novalidate>
+
+            <input type="text" name="website" id="website" autocomplete="off" class="hidden" tabindex="-1" aria-hidden="true" />
+
+            <p>{{ 'Interessiert? Dann freuen wir uns über Ihre aussagekräftige Bewerbung mit Anschreiben (wünschenswert), Lebenslauf, Zertifikaten/ Zeugnissen und Gehaltsvorstellung im PDF-Format (max. 10 MB je Datei) über das folgende Formular.'|t }}</p>
+
+            <input type="hidden" id="application_title" name="application_title" value="{{ label|render|striptags|trim }}">
+
+            <div class="form-item form-success-message" id="form-success" style="display:none;">
+              <h3 class="h3 text-center">
+                {{ 'Vielen Dank für die Übermittlung Ihrer Bewerbung.'|t }}<br>
+                {{ 'Wir melden uns schnellstmöglich bei Ihnen.'|t }}
+              </h3>
+            </div>
+
+            <div id="form-fields">
+
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-7">
+                <div class="form-item">
+                  <label for="vorname" class="label">{{ 'Vorname'|t }}<span class="req">*</span></label>
+                  <input id="vorname" name="vorname" type="text" required />
+                  <p class="error" id="err-vorname" role="alert" aria-live="polite"></p>
+                </div>
+                <div class="form-item">
+                  <label for="nachname" class="label">{{ 'Nachname'|t }}<span class="req">*</span></label>
+                  <input id="nachname" name="nachname" type="text" required />
+                  <p class="error" id="err-nachname" role="alert" aria-live="polite"></p>
+                </div>
+              </div>
+
+              <div class="form-item">
+                <label for="email" class="label">{{ 'E-Mail-Adresse'|t }}<span class="req">*</span></label>
+                <input id="email" name="email" type="email" inputmode="email" autocomplete="email" required />
+                <p class="error" id="err-email" role="alert" aria-live="polite"></p>
+              </div>
+
+              <div class="form-item">
+                <label for="telefon" class="label">{{ 'Telefonnummer'|t }}</label>
+                <input id="telefon" name="telefon" type="tel" inputmode="tel" autocomplete="tel" />
+                <p class="error" id="err-telefon" role="alert" aria-live="polite"></p>
+              </div>
+
+              <div class="form-item">
+                <label for="quelle" class="label">{{ 'Wie sind Sie auf uns aufmerksam geworden?'|t }}</label>
+                <input id="quelle" name="quelle" type="text" />
+                <p class="error" id="err-quelle" role="alert" aria-live="polite"></p>
+              </div>
+
+              <div class="form-item">
+                <label for="standort" class="label">{{ 'Standort auswählen'|t }}<span class="req">*</span></label>
+                <select id="standort" name="standort" class="select" required>
+                  <option value="">{{ 'Bitte auswählen'|t }}</option>
+                  <option value="Augsburg">Augsburg</option>
+                  <option value="Bochum">Bochum</option>
+                  <option value="Berlin">Berlin</option>
+                  <option value="Darmstadt">Darmstadt</option>
+                  <option value="Duisburg">Duisburg</option>
+                  <option value="Hamburg">Hamburg</option>
+                  <option value="Köln">Köln</option>
+                  <option value="München">München</option>
+                  <option value="Nürnberg">Nürnberg</option>
+                </select>
+                <p class="error" id="err-standort" role="alert" aria-live="polite"></p>
+              </div>
+
+              <div class="form-item">
+                <label for="gehalt" class="label">{{ 'Gehaltsvorstellung'|t }}</label>
+                <input id="gehalt" name="gehalt" type="text" />
+                <p class="error" id="err-gehalt" role="alert" aria-live="polite"></p>
+              </div>
+
+              {# File upload with drag-and-drop #}
+              <div class="form-item">
+                <span class="label">
+                  {{ 'Bewerbungsunterlagen (PDF, max. 10 MB gesamt)'|t }}<span class="req">*</span>
+                </span>
+                <div class="drop flex flex-col gap-2 items-center" id="drop">
+                  <p>{{ 'Anschreiben, Lebenslauf, Zeugnisse und Zertifikate'|t }}</p>
+                  <p>{{ 'Per Drag-and-Drop ablegen'|t }}</p>
+                  <p>{{ 'oder'|t }}</p>
+                  <input id="files" name="attachments[]" type="file" accept="application/pdf" class="hidden" multiple />
+                  <label class="btn" for="files">{{ 'Datei(en) auswählen'|t }}</label>
+                  <div id="file-meta" class="file-meta hint" aria-live="polite" style="margin-top:8px;"></div>
+                  <button type="button" id="files-reset" class="hint underline cursor-pointer" style="margin-top:6px; display:none;">
+                    {{ 'Auswahl zurücksetzen'|t }}
+                  </button>
+                </div>
+                <p class="error" id="err-files" role="alert" aria-live="polite"></p>
+              </div>
+
+              <p class="mt-4 sm:mt-5 lg:mt-6">
+                <span class="req">*</span> {{ 'Pflichtfeld'|t }}
+              </p>
+
+              <div class="form-item checkbox-line">
+                <input type="checkbox" id="ds1" name="datenschutz_1" class="appearance-none chk" required>
+                <div class="flex flex-col gap-1">
+                  <label for="ds1">
+                    {{ 'Ich bin damit einverstanden, dass das Unternehmen HÖCKER Project Managers GmbH meine Daten für eine Bewerbung elektronisch verarbeitet. Die Daten werden nicht an Dritte weitergegeben. Mir ist bekannt, dass ich meine Einwilligung jederzeit mit Wirkung für die Zukunft widerrufen kann. Dies kann ich sowohl elektronisch an'|t }}
+                    <a href="mailto:info@hoecker-pm.com" title="{{ 'E-Mail an HÖCKER Project Managers schreiben'|t }}">info@hoecker-pm.com</a>
+                    {{ 'als auch per Brief an HÖCKER Project Managers GmbH, Alte Wittener Straße 70, 44803 Bochum, veranlassen. Weitere Informationen und Widerrufshinweise finden Sie in der'|t }}
+                    <a href="/datenschutz" title="{{ 'Datenschutzerklärung'|t }}">{{ 'Datenschutzerklärung'|t }}</a>.<span class="req">*</span>
+                  </label>
+                  <p class="error" id="err-ds1" aria-live="polite"></p>
+                </div>
+              </div>
+
+              <div class="form-item checkbox-line">
+                <input type="checkbox" id="ds2" name="datenschutz_2" class="appearance-none chk">
+                <div class="flex flex-col gap-1">
+                  <label for="ds2">
+                    {{ 'Ich bin damit einverstanden, dass meine Daten über das aktuelle Bewerbungsverfahren hinaus durch die HÖCKER Project Managers GmbH gespeichert werden und ich auch nach Ende des aktuellen Bewerbungsverfahrens zu neuen Stellen durch die HÖCKER Project Managers GmbH kontaktiert werde.'|t }}
+                  </label>
+                  <p class="error" id="err-ds2" aria-live="polite"></p>
+                </div>
+              </div>
+
+              <div class="form-item checkbox-line">
+                <input type="checkbox" id="ds3" name="datenschutz_3" class="appearance-none chk">
+                <div class="flex flex-col gap-1">
+                  <label for="ds3">
+                    {{ 'Ich bin damit einverstanden, dass die HÖCKER Project Managers GmbH meine Daten auch an die mit ihr verbundenen Unternehmen zur möglichen Besetzung weiterer offener Stellen weitergibt und mich diese Unternehmen ebenfalls kontaktieren dürfen. Hierbei handelt es sich um folgendes Unternehmen: HÖCKER Döinghaus Consultants GmbH.'|t }}
+                  </label>
+                  <p class="error" id="err-ds3" aria-live="polite"></p>
+                </div>
+              </div>
+
+              <div class="actions form-item">
+                <button class="btn mx-auto mt-4 sm:mt-5 lg:mt-6" type="submit" id="submitBtn">
+                  <span class="button-text">{{ 'Abschicken'|t }}</span>
+                  <span class="button-icon" aria-hidden="true">
+                    {% include '@hpm/images/vectors/button-arrow.svg.twig' %}
+                  </span>
+                </button>
+              </div>
+
+            </div>
+
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  {# 9. Kontaktperson – alternate layout with image + contact info #}
+  {% if contact_person_block %}
+    {% set cp_media = contact_person_block.field_image.entity %}
+    {% set cp_image = cp_media ? cp_media.field_media_image.entity : null %}
+    <section class="alternate content-section">
+      <div class="section-container">
+        <div class="grid grid-cols-1 gap-7
+                    sm:grid-cols-12
+                    md:items-center">
+
+          {# Image #}
+          <div class="media--left col-span-12
+                      sm:col-span-10 sm:col-start-1
+                      md:col-span-6 md:col-start-1">
+            {% if cp_image %}
+              <div class="image-container js-zoom-image" data-delay=".3">
+                <img src="{{ file_url(cp_image.uri.value) }}"
+                     alt="{{ contact_person_block.field_name.value }}"
+                     loading="lazy">
+              </div>
+              {% if cp_media.field_credits.value %}
+                <div class="credits">
+                  <span>{{ cp_media.field_credits.value starts with '©' ? cp_media.field_credits.value : '© ' ~ cp_media.field_credits.value }}</span>
+                </div>
+              {% endif %}
+            {% endif %}
+          </div>
+
+          {# Text #}
+          <div class="col-span-12 js-element-group
+                      sm:col-span-8 sm:col-start-3
+                      md:col-span-5 lg:col-span-4
+                      md:col-start-8 lg:col-start-8">
+            {% if contact_person_block.field_headline.value %}
+              <h2 class="font-case text-hpm-darkred font-light text-hpm-red text-[2rem] mb-4">
+                {{ contact_person_block.field_headline.value }}
+              </h2>
+            {% endif %}
+            {% if contact_person_block.field_name.value %}
+              <h3 class="h4-serif text-hpm-darkred mb-2">
+                {{ contact_person_block.field_name.value }}
+              </h3>
+            {% endif %}
+            <div class="formatted">
+              {% if contact_person_block.field_job_title.value %}
+                <p>{{ contact_person_block.field_job_title.value }}</p>
+              {% endif %}
+              {% if contact_person_block.field_phone.value %}
+                <p>{{ contact_person_block.field_phone.value }}</p>
+              {% endif %}
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  {% endif %}
+
+  {# 10. Karte #}
+  <section class="map-teaser overflow-hidden js-map" data-theme="blue">
+    <div class="section-container grid grid-cols-12 gap-7
+                sm:items-center">
+
+      {# Map SVG #}
+      <div class="map-teaser__container relative
+                  col-span-10 col-start-2
+                  sm:col-span-6 sm:col-start-auto sm:order-2 sm:h-[42vw]
+                  md:px-10 md:py-0 md:h-[38vw]
+                  lg:px-[3rem] lg:h-[30vw]
+                  xl:h-156 xl:col-span-6 xl:col-start-6">
+        <div class="sm:relative sm:top-1/2 sm:translate-x-[2vw] sm:w-[50vw]
+                    md:-translate-y-1/2 md:w-[41vw]
+                    lg:w-[36vw]
+                    xl:w-full">
+          {% include '@hpm/images/vectors/map2.svg.twig' %}
+        </div>
+      </div>
+
+      {# Content #}
+      <div class="js-element-group col-span-12 mt-8
+                  sm:col-span-6 sm:mt-0
+                  md:col-span-5 md:col-start-2 md:order-1
+                  xl:col-span-4">
+        <h2 class="info mb-4 lg:mb-6">
+          {{ 'Unsere Standorte'|t }}
+        </h2>
+        <p class="quote-small">
+          {{ 'An 9 Standorten in Deutschland sind wir für Sie da.'|t }}
+        </p>
+        <div class="button-container">
+          {% include '@hpm/templates/components/button-link.html.twig' with {
+            url: internal_urls.standorte,
+            text: 'Alle Standorte'|t
+          } only %}
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  {# 11. Zusätzliche Inhalte (optional paragraphs) #}
   {% if content.field_paragraphs|render|trim %}
     {{ content.field_paragraphs }}
   {% endif %}

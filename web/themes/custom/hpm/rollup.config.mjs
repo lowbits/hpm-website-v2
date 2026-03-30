@@ -22,4 +22,14 @@ export default [
     },
     plugins: [terser()],
   },
+  {
+    input: 'js/src/application-form.js',
+    output: {
+      file: 'js/dist/application-form.js',
+      format: 'iife',
+      name: 'HPMApplicationForm',
+      sourcemap: false,
+    },
+    plugins: [terser()],
+  },
 ];

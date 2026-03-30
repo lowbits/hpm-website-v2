@@ -1,0 +1,30 @@
+uuid: 838a8e71-3e89-45b1-a3fe-f22ec6d3e304
+langcode: de
+status: true
+dependencies:
+  module:
+    - node
+id: node.job_listing.default.group_allgemein
+field_name: group_allgemein
+entity_type: node
+bundle: job_listing
+mode: default
+type: tab
+parent_name: group_tabs
+label: Allgemein
+description: ''
+weight: 0
+format_type: tab
+format_settings:
+  classes: ''
+  show_empty_fields: false
+  id: ''
+  formatter: open
+  description: ''
+  required_fields: true
+children:
+  - title
+  - field_job_location
+  - field_starting_time
+  - field_experience_level
+  - field_intro_text

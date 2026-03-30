@@ -1,0 +1,20 @@
+uuid: 10bd3e2e-021a-4bfe-b467-bc6dc36678f4
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_challenges
+    - node.type.job_listing
+id: node.job_listing.field_challenges
+field_name: field_challenges
+entity_type: node
+bundle: job_listing
+label: 'Ihre Herausforderung'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats: {  }
+field_type: text_long

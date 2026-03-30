@@ -1,0 +1,26 @@
+<?php
+
+/**
+ * @file
+ * HPM Forms module hooks.
+ */
+
+/**
+ * Implements hook_mail().
+ */
+function hpm_forms_mail($key, &$message, $params) {
+  if ($key === 'job_application') {
+    $message['subject'] = $params['subject'];
+    $message['body'][] = $params['body'];
+    if (!empty($params['attachments'])) {
+      $message['params']['attachments'] = [];
+      foreach ($params['attachments'] as $path) {
+        $message['params']['attachments'][] = [
+          'filepath' => $path,
+          'filename' => basename($path),
+          'filemime' => 'application/pdf',
+        ];
+      }
+    }
+  }
+}

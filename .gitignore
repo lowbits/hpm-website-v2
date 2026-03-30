@@ -9,6 +9,7 @@ node_modules/
 
 # Drupal files (user uploads, generated assets)
 /web/sites/default/files/
+/private/
 /web/sites/simpletest/
 
 # Drupal settings (contain credentials)

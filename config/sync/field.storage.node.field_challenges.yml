@@ -1,0 +1,19 @@
+uuid: 1fce5e58-8fc9-47f1-b3f4-c6714be9f006
+langcode: de
+status: true
+dependencies:
+  module:
+    - node
+    - text
+id: node.field_challenges
+field_name: field_challenges
+entity_type: node
+type: text_long
+settings: {  }
+module: text
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

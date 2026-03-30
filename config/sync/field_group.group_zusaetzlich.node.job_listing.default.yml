@@ -1,0 +1,26 @@
+uuid: fc0b9504-b8e6-4cb6-8f70-17289143105f
+langcode: de
+status: true
+dependencies:
+  module:
+    - node
+id: node.job_listing.default.group_zusaetzlich
+field_name: group_zusaetzlich
+entity_type: node
+bundle: job_listing
+mode: default
+type: tab
+parent_name: group_tabs
+label: 'Zusätzliche Inhalte'
+description: ''
+weight: 2
+format_type: tab
+format_settings:
+  classes: ''
+  show_empty_fields: false
+  id: ''
+  formatter: closed
+  description: ''
+  required_fields: true
+children:
+  - field_paragraphs
