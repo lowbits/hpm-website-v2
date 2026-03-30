@@ -73,8 +73,30 @@
 
       var init = function () { self.refresh(); };
 
-      if (document.readyState === 'complete') init();
-      else window.addEventListener('load', init);
+      // Wait for all images inside the carousel to load before refreshing.
+      // Lazy-loaded images may not be ready at window.load, causing Flickity
+      // to miscalculate dimensions and show only one slide.
+      var imgs = self.carouselEl.querySelectorAll('img');
+      if (imgs.length) {
+        var loaded = 0;
+        var total = imgs.length;
+        var onImgReady = function () {
+          loaded++;
+          if (loaded >= total) init();
+        };
+        imgs.forEach(function (img) {
+          if (img.complete) {
+            onImgReady();
+          } else {
+            img.addEventListener('load', onImgReady);
+            img.addEventListener('error', onImgReady);
+          }
+        });
+      } else if (document.readyState === 'complete') {
+        init();
+      } else {
+        window.addEventListener('load', init);
+      }
 
       window.addEventListener('resize', function () {
         self.updatePassedSlides();

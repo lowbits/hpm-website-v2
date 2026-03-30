@@ -7,7 +7,7 @@
 <div{{ attributes.addClass('accordion__box', 'js-accordion-item', 'relative', 'border-hpm-darkred', 'border-t-1') }}>
 
   {# accordion head #}
-  <div class="js-accordion-head flex items-center gap-10 justify-between py-4 px-3 cursor-pointer">
+  <div class="js-accordion-head flex gap-10 justify-between py-4 px-2 items-center cursor-pointer">
     {% if paragraph.field_headline.value %}
       <h4 class="h4-serif">
         {{ paragraph.field_headline.value }}
@@ -21,7 +21,7 @@
 
   {# accordion content #}
   {% if paragraph.field_text.value %}
-    <div class="js-accordion-content pb-5 hidden formatted pl-3 pr-10">
+    <div class="js-accordion-content pb-5 hidden formatted">
       {{ paragraph.field_text.value|raw }}
     </div>
   {% endif %}
