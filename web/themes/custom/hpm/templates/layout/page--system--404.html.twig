@@ -1,0 +1,203 @@
+{#
+/**
+ * @file
+ * 404 error page – stage-media layout with image + error message.
+ */
+#}
+{# Header #}
+<header class="header js-header fixed inset-x-0 top-0 z-30 transition-transform will-change-transform">
+  {# Logo #}
+  <div class="header__logo-box absolute h-10 w-48
+              left-5 top-6
+              sm:left-12
+              lg:left-20 lg:top-8
+              xl:left-[calc(50%-60rem+6rem)]">
+    <a class="logo-link block cursor-pointer transition-transform duration-300 [&_svg_path]:fill-hpm-red [&_svg_path]:transition-[fill] [&_svg_path]:duration-500 max-sm:[.nav-open_&_svg_path]:fill-white"
+       href="{{ path('<front>') }}"
+       title="{{ 'Zum Start'|t }}">
+      {% include '@hpm/images/vectors/hpm-brand.svg.twig' %}
+    </a>
+  </div>
+
+  {# Menu Button #}
+  <button class="header__menu-button nav-button js-nav-button fixed right-5 top-5 z-30 h-[3.125rem] w-[3.125rem]
+             rounded-full bg-hpm-red p-0 overflow-visible
+             hover:bg-hpm-darkred
+             [&.is-active]:bg-white hover:[&.is-active]:bg-hpm-red
+              sm:right-11
+              lg:right-19 lg:top-[1.875rem]"
+      aria-controls="offcanvas-nav"
+      aria-expanded="false"
+      aria-label="{{ 'Menü öffnen'|t }}">
+    <span class="line line-1 absolute left-1/2 top-1/2 z-[3] block h-0.5 w-[30px]" aria-hidden="true"></span>
+    <span class="line line-2 absolute left-1/2 top-1/2 z-[3] block h-0.5 w-[30px]" aria-hidden="true"></span>
+    <span class="line line-3 absolute left-1/2 top-1/2 z-[3] block h-0.5 w-[20px]" aria-hidden="true"></span>
+    <span class="label pointer-events-none absolute top-1/2 max-sm:hidden sm:flex h-[18px] w-[49px] -translate-y-1/2 flex-row items-center justify-start gap-0">
+      <span class="label-box pointer-events-none absolute right-0 top-0">
+        <span class="info label-menu block leading-[19px] transition-[color,opacity,transform] duration-400 ease-out">
+          {{ 'Menü'|t }}
+        </span>
+      </span>
+      <span class="label-box pointer-events-none absolute right-0 top-0">
+        <span class="info label-close block leading-[19px]">
+          {{ 'Schliessen'|t }}
+        </span>
+      </span>
+    </span>
+  </button>
+
+  {# Contact Button #}
+  <a class="button button--small header__contact z-2" href="{{ internal_urls.kontakt }}" title="{{ 'Kontakt aufnehmen'|t }}">
+    <span class="button-text">{{ 'Kontakt'|t }}</span>
+  </a>
+</header>
+
+{# Navigation Panel #}
+<div class="navigation-multilevel js-navigation
+            fixed inset-y-0 right-0 z-25
+            flex items-stretch
+            w-full bg-hpm-darkred text-white
+            sm:w-[24rem] lg:w-[32rem]"
+     data-theme="darkred">
+  <div class="section-container xl:px-20 flex items-stretch">
+    <div class="navigation-inner flex w-full flex-col justify-between py-[5.5rem]
+                lg:pt-[3rem] lg:pb-0">
+      <div class="navigation__spacer"></div>
+      {{ page.navigation }}
+      <nav class="navigation-additional relative flex flex-col items-start gap-3" aria-label="{{ 'Weitere Links'|t }}">
+        <a class="text-link font-case text-[0.9375rem] leading-[1.2]"
+           href="{{ internal_urls.projekte }}" title="{{ 'Projekte'|t }}">
+          <span class="text-link__text copy">{{ 'Projekte'|t }}</span>
+          <span class="link-icon -mt-[1px]">{% include '@hpm/images/vectors/button-arrow.svg.twig' %}</span>
+        </a>
+        <a class="text-link font-case text-[0.9375rem] leading-[1.2]"
+           href="{{ internal_urls.neuigkeiten }}" title="{{ 'Neuigkeiten'|t }}">
+          <span class="text-link__text copy">{{ 'Neuigkeiten'|t }}</span>
+          <span class="link-icon -mt-[1px]">{% include '@hpm/images/vectors/button-arrow.svg.twig' %}</span>
+        </a>
+      </nav>
+      <div class="navigation-social flex gap-5 pt-4 sm:pt-6 lg:pt-8">
+        <a href="https://www.xing.com/pages/hockerprojectmanagersgmbh" target="_blank" rel="noopener" title="Höcker Project Managers auf Xing"
+           class="social-link flex h-[42px] w-[42px] items-center justify-center rounded-full border border-white bg-transparent transition-colors duration-300 ease-in-out hover:bg-white focus:bg-white md:h-[48px] md:w-[48px] hover:[&_svg_path]:fill-hpm-darkred [&_svg_path]:transition-fill [&_svg_path]:duration-300">
+          <span class="w-6 block">{% include '@hpm/images/vectors/icon-xing.svg.twig' %}</span>
+        </a>
+        <a href="https://www.linkedin.com/company/hoecker-project-managers/" target="_blank" rel="noopener" title="Höcker Project Managers auf LinkedIn"
+           class="social-link flex h-[42px] w-[42px] items-center justify-center rounded-full border border-white bg-transparent transition-colors duration-300 ease-in-out hover:bg-white focus:bg-white md:h-[48px] md:w-[48px] hover:[&_svg_path]:fill-hpm-darkred [&_svg_path]:transition-fill [&_svg_path]:duration-300">
+          <span class="w-6 block">{% include '@hpm/images/vectors/icon-linkedin.svg.twig' %}</span>
+        </a>
+        <a href="https://www.kununu.com/de/hoecker-project-managers" target="_blank" rel="noopener" title="Höcker Project Managers auf kununu"
+           class="social-link flex h-[42px] w-[42px] items-center justify-center rounded-full border border-white bg-transparent transition-colors duration-300 ease-in-out hover:bg-white focus:bg-white md:h-[48px] md:w-[48px] hover:[&_svg_path]:fill-hpm-darkred [&_svg_path]:transition-fill [&_svg_path]:duration-300">
+          <span class="w-6 block">{% include '@hpm/images/vectors/icon-kununu.svg.twig' %}</span>
+        </a>
+      </div>
+      <div class="navigation__spacer max-sm:hidden lg:hidden"></div>
+    </div>
+  </div>
+</div>
+
+{# Main Content — 404 stage-media #}
+<div class="flex flex-col min-h-full">
+  <main id="main-content" class="display-block flex-1">
+    <section class="stage-media stage-section overflow-hidden">
+      <div class="section-container grid grid-cols-8 gap-y-10
+                  sm:grid-cols-12 sm:gap-12
+                  md:gap-7 md:items-center">
+
+        <div class="stage__title order-2 gap-3 flex flex-col items-start js-element-group
+                    col-span-8
+                    sm:col-span-10 sm:col-start-2
+                    md:col-span-5 md:order-1 md:col-start-0
+                    lg:pr-6">
+          <h1 class="info text-hpm-red meta-line--medium meta-line--red">
+            404
+          </h1>
+          <h2 class="h1">
+            {{ 'Seite nicht gefunden'|t }}
+          </h2>
+          <div class="formatted">
+            <p>{{ 'Die aufgerufene Seite existiert nicht. Bitte überprüfen Sie die eingegebene Adresse und versuchen Sie es erneut.'|t }}</p>
+          </div>
+          <div class="button-container mt-4">
+            <a class="button button--secondary"
+               href="{{ path('<front>') }}"
+               title="{{ 'Zur Startseite'|t }}">
+              <span>{{ 'Zur Startseite'|t }}</span>
+              <span class="button-icon w-[1.125rem]">
+                {% include '@hpm/images/vectors/button-arrow.svg.twig' %}
+              </span>
+            </a>
+          </div>
+        </div>
+
+        <div class="stage__media order-1
+                    col-span-8
+                    sm:col-span-10 sm:col-start-3
+                    md:order-2 md:col-span-7 md:col-start-auto
+                    xl:col-span-6 xl:col-start-7">
+          <div class="relative">
+            <div class="image-container js-zoom-image" data-delay=".4" data-duration="1.8">
+              <img class="w-full" src="/{{ directory }}/images/404.webp" alt="{{ 'Seite nicht gefunden'|t }}">
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+    <div id="content"> </div>
+  </main>
+
+  {# Footer #}
+  <footer class="footer bg-hpm-darkred text-white py-12 lg:pb-14 lg:pt-16" data-theme="darkred">
+    <div class="section-container grid grid-cols-12 gap-x-7 gap-y-11 js-footer-items lg:gap-y-11">
+      <div class="footer__brand js-footer-inner col-span-12 sm:col-span-12 lg:col-span-3">
+        <div class="footer__logo-container h-10 w-48 [&_svg_path]:fill-white">
+          {% include '@hpm/images/vectors/hpm-brand.svg.twig' %}
+        </div>
+      </div>
+      {% if page.footer_first %}
+        <div class="col-span-6 sm:col-span-3 lg:col-span-2">
+          <div class="js-footer-inner pt-4 relative">
+            <div class="bg-hpm-red w-[7.5rem] h-[0.0625rem] absolute top-0 left-0"></div>
+            {{ page.footer_first }}
+          </div>
+        </div>
+      {% endif %}
+      {% if page.footer_second %}
+        <div class="col-span-6 sm:col-span-3 lg:col-span-4">
+          {{ page.footer_second }}
+        </div>
+      {% endif %}
+      <div class="js-footer-inner col-span-12 pt-[1.125rem] relative sm:col-span-5 sm:col-start-8 lg:col-span-3 lg:col-start-auto">
+        <div class="bg-hpm-red w-[7.5rem] h-[0.0625rem] absolute top-0 left-0"></div>
+        <p class="copy">Auf dem Laufenden bleiben? Jetzt zum Newsletter anmelden.</p>
+        <div class="button-container mt-4">
+          <a class="button"
+             href="https://a730f20c.sibforms.com/serve/MUIFAO_wMjXsyTFmNhnLzpaX7O6kHWMNif5C2qYxF2heQKy_rQDrhNEx7-Q10Ql-tSHrueqDuWkC5-Q_lPjz3iOpq5LFirZt1gc4TjlCO3Bm90E78konZsYt951GpdjHf0DwR2HD0FBnJxaGWrco6roAYy86-e3d_jCZJwLxM9lUsyOgZWolkQbSGjUNhdNJq52hgK-NxfHmbW9dNw=="
+             title="{{ 'Newsletter abonnieren'|t }}" target="_blank" rel="noopener noreferrer">
+            <span>{{ 'Newsletter abonnieren'|t }}</span>
+            <span class="button-icon">{% include '@hpm/images/vectors/button-arrow.svg.twig' %}</span>
+          </a>
+        </div>
+      </div>
+      <div class="footer__footer js-footer-inner col-span-12 flex items-center justify-between sm:items-end">
+        <div class="social-links flex gap-5 p-0">
+          <a href="https://www.xing.com/pages/hockerprojectmanagersgmbh" target="_blank" rel="noopener" title="Höcker Project Managers auf Xing"
+             class="social-link flex h-[42px] w-[42px] items-center justify-center rounded-full border border-white bg-transparent transition-colors duration-300 ease-in-out hover:bg-white focus:bg-white md:h-[48px] md:w-[48px] hover:[&_svg_path]:fill-hpm-darkred [&_svg_path]:transition-fill [&_svg_path]:duration-300">
+            <span class="w-6 block">{% include '@hpm/images/vectors/icon-xing.svg.twig' %}</span>
+          </a>
+          <a href="https://www.linkedin.com/company/hoecker-project-managers/" target="_blank" rel="noopener" title="Höcker Project Managers auf LinkedIn"
+             class="social-link flex h-[42px] w-[42px] items-center justify-center rounded-full border border-white bg-transparent transition-colors duration-300 ease-in-out hover:bg-white focus:bg-white md:h-[48px] md:w-[48px] hover:[&_svg_path]:fill-hpm-darkred [&_svg_path]:transition-fill [&_svg_path]:duration-300">
+            <span class="w-6 block">{% include '@hpm/images/vectors/icon-linkedin.svg.twig' %}</span>
+          </a>
+          <a href="https://www.kununu.com/de/hoecker-project-managers" target="_blank" rel="noopener" title="Höcker Project Managers auf kununu"
+             class="social-link flex h-[42px] w-[42px] items-center justify-center rounded-full border border-white bg-transparent transition-colors duration-300 ease-in-out hover:bg-white focus:bg-white md:h-[48px] md:w-[48px] hover:[&_svg_path]:fill-hpm-darkred [&_svg_path]:transition-fill [&_svg_path]:duration-300">
+            <span class="w-6 block">{% include '@hpm/images/vectors/icon-kununu.svg.twig' %}</span>
+          </a>
+        </div>
+        <div class="w-[5.625rem] sm:w-[8rem] [&_svg_path]:fill-white">
+          {% include '@hpm/images/vectors/logo-dqs.svg.twig' %}
+        </div>
+      </div>
+    </div>
+  </footer>
+</div>

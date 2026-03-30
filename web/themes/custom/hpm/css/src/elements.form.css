@@ -1,0 +1,22 @@
+.form .form-item {
+  @apply flex flex-col items-start gap-1 relative;
+  @apply mt-4 sm:mt-5 lg:mt-6;
+}
+.form input[type="text"],
+.form input[type="password"],
+.form input[type="email"],
+.form input[type="tel"],
+.form textarea {
+  @apply border-1 border-hpm-darkred rounded-full py-2 px-4 w-full;
+  @apply transition-colors duration-300;
+  @apply hover:bg-white focus:bg-white;
+}
+.form [type="submit"] {
+  @apply relative overflow-hidden bg-transparent border-[1px] rounded-full inline-block cursor-pointer
+  font-[.9375em] h-auto leading-[1.125rem] pt-[.875rem] pb-[1rem] px-[1.75rem]
+  hover:bg-hpm-darkred hover:text-white
+  focus:bg-hpm-darkred focus:text-white;
+  transition: background-color .3s ease,
+  border-color .3s ease,
+  color .3s ease;
+}

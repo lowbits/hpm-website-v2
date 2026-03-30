@@ -493,6 +493,9 @@
   .w-48 {
     width: calc(var(--spacing) * 48);
   }
+  .w-\[1\.125rem\] {
+    width: 1.125rem;
+  }
   .w-\[3\.75rem\] {
     width: 3.75rem;
   }
@@ -3035,6 +3038,76 @@
       right: -4px;
     }
   }
+}
+.form .form-item {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: calc(var(--spacing) * 1);
+  margin-top: calc(var(--spacing) * 4);
+  @media (width >= 45rem) {
+    margin-top: calc(var(--spacing) * 5);
+  }
+  @media (width >= 82rem) {
+    margin-top: calc(var(--spacing) * 6);
+  }
+}
+.form input[type="text"], .form input[type="password"], .form input[type="email"], .form input[type="tel"], .form textarea {
+  width: 100%;
+  border-radius: calc(infinity * 1px);
+  border-style: var(--tw-border-style);
+  border-width: 1px;
+  border-color: var(--color-hpm-darkred);
+  padding-inline: calc(var(--spacing) * 4);
+  padding-block: calc(var(--spacing) * 2);
+  transition-property: color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to;
+  transition-timing-function: var(--tw-ease, var(--default-transition-timing-function));
+  transition-duration: var(--tw-duration, var(--default-transition-duration));
+  --tw-duration: 300ms;
+  transition-duration: 300ms;
+  &:hover {
+    @media (hover: hover) {
+      background-color: var(--color-white);
+    }
+  }
+  &:focus {
+    background-color: var(--color-white);
+  }
+}
+.form [type="submit"] {
+  position: relative;
+  display: inline-block;
+  height: auto;
+  cursor: pointer;
+  overflow: hidden;
+  border-radius: calc(infinity * 1px);
+  border-style: var(--tw-border-style);
+  border-width: 1px;
+  background-color: transparent;
+  padding-inline: 1.75rem;
+  padding-top: .875rem;
+  padding-bottom: 1rem;
+  font-family: .9375em;
+  --tw-leading: 1.125rem;
+  line-height: 1.125rem;
+  &:hover {
+    @media (hover: hover) {
+      background-color: var(--color-hpm-darkred);
+    }
+  }
+  &:hover {
+    @media (hover: hover) {
+      color: var(--color-white);
+    }
+  }
+  &:focus {
+    background-color: var(--color-hpm-darkred);
+  }
+  &:focus {
+    color: var(--color-white);
+  }
+  transition: background-color .3s ease, border-color .3s ease, color .3s ease;
 }
 .application .form-item {
   position: relative;

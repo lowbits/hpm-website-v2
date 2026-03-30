@@ -1,0 +1,55 @@
+{#
+/**
+ * @file
+ * Login page – styled user login form.
+ */
+#}
+{# Header #}
+<header class="header js-header fixed inset-x-0 top-0 z-30 transition-transform will-change-transform">
+  <div class="header__logo-box absolute h-10 w-48
+              left-5 top-6
+              sm:left-12
+              lg:left-20 lg:top-8
+              xl:left-[calc(50%-60rem+6rem)]">
+    <a class="logo-link block cursor-pointer transition-transform duration-300 [&_svg_path]:fill-hpm-red [&_svg_path]:transition-[fill] [&_svg_path]:duration-500"
+       href="{{ path('<front>') }}"
+       title="{{ 'Zum Start'|t }}">
+      {% include '@hpm/images/vectors/hpm-brand.svg.twig' %}
+    </a>
+  </div>
+</header>
+
+{# Main Content — Login form #}
+<div class="flex flex-col min-h-full">
+  <main id="main-content" class="display-block flex-1">
+    <section class="user-login stage-section">
+      <div class="section-container grid grid-cols-1 gap-x-7
+                  sm:grid-cols-12">
+        <div class="flex flex-col items-start gap-3
+                    sm:col-span-10 sm:col-start-2
+                    lg:col-span-8 lg:col-start-2">
+
+          <h2 class="h2 text-hpm-red text-center mb-4 sm:mb-6 lg:mb-8">
+            Login
+          </h2>
+
+          <div class="form w-full">
+            {{ page.content }}
+          </div>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  {# Minimal footer #}
+  <footer class="footer bg-hpm-darkred text-white py-12 lg:pb-14 lg:pt-16" data-theme="darkred">
+    <div class="section-container grid grid-cols-12 gap-x-7 gap-y-11 js-footer-items lg:gap-y-11">
+      <div class="footer__brand js-footer-inner col-span-12">
+        <div class="footer__logo-container h-10 w-48 [&_svg_path]:fill-white">
+          {% include '@hpm/images/vectors/hpm-brand.svg.twig' %}
+        </div>
+      </div>
+    </div>
+  </footer>
+</div>
