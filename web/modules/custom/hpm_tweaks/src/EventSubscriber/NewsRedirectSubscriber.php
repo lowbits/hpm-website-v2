@@ -41,7 +41,7 @@ class NewsRedirectSubscriber implements EventSubscriberInterface {
       return;
     }
 
-    $url = Url::fromRoute('view.news_listing.page_1', [], [
+    $url = Url::fromUserInput('/neuigkeiten', [
       'fragment' => 'news-' . $node->id(),
     ])->toString();
 

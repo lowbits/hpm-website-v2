@@ -113,7 +113,7 @@
 
   body {
     @apply font-case font-normal leading-normal text-[.9375rem] text-hpm-darkred;
-    @apply h-full relative;
+    @apply min-h-screen relative;
   }
 
   h1, h2, h3, h4 {
