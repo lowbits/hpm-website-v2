@@ -3,14 +3,15 @@
  * @file
  * People – section title + grid of reusable person nodes.
  *
- * Fields: field_section_title (string),
- *         field_people (entity_reference to person nodes),
- *         field_theme (weiss/beige).
+ * Fields: field_section_title, field_people, field_theme,
+ *         field_show_position, field_show_location.
  *
- * Person node fields: title (Name*), field_person_image (Bild*, 600x800 3:4),
- *                     field_credits, field_description (Beschreibung*), field_email.
+ * Person node fields: title, field_person_image, field_position,
+ *                     field_person_location, field_email.
  */
 #}
+{% set show_position = paragraph.field_show_position.value %}
+{% set show_location = paragraph.field_show_location.value %}
 <section{{ attributes.addClass('content-section') }}
   {% if theme_css %}data-theme="{{ theme_css }}"{% endif %}>
   <div class="section-container">
@@ -62,14 +63,17 @@
               </div>
             {% endif %}
 
-            {# Name / Description / Email #}
+            {# Name / Position / Location / Email #}
             <div class="flex flex-col gap-2">
               <h3 class="h4-serif">
                 {{ person.label }}
               </h3>
               <div>
-                {% if person.field_description.value %}
-                  <p>{{ person.field_description.value|raw }}</p>
+                {% if show_position and person.field_position.value %}
+                  <p>{{ person.field_position.value }}</p>
+                {% endif %}
+                {% if show_location and person.field_person_location.value %}
+                  <p>{{ person.field_person_location.value }}</p>
                 {% endif %}
                 {% if person.field_email.value %}
                   <p>

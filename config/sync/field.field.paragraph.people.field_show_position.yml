@@ -1,0 +1,23 @@
+uuid: 9d19ba35-34db-4437-a1db-f0a37e098ed2
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_show_position
+    - paragraphs.paragraphs_type.people
+id: paragraph.people.field_show_position
+field_name: field_show_position
+entity_type: paragraph
+bundle: people
+label: 'Position ausgeben'
+description: 'Wenn aktiviert, wird die Position unter dem Namen der Person angezeigt.'
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: Ja
+  off_label: Nein
+field_type: boolean

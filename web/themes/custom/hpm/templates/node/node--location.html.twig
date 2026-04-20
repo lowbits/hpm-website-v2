@@ -208,8 +208,8 @@
                 <div class="flex flex-col gap-2">
                   <h3 class="h4-serif">{{ person.label }}</h3>
                   <div>
-                    {% if person.field_description.value %}
-                      <p>{{ person.field_description.value|raw }}</p>
+                    {% if person.field_position.value %}
+                      <p>{{ person.field_position.value }}</p>
                     {% endif %}
                     {% if person.field_email.value %}
                       <p><a href="mailto:{{ person.field_email.value }}"

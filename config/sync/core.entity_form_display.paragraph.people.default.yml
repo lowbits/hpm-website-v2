@@ -5,6 +5,8 @@ dependencies:
   config:
     - field.field.paragraph.people.field_people
     - field.field.paragraph.people.field_section_title
+    - field.field.paragraph.people.field_show_location
+    - field.field.paragraph.people.field_show_position
     - field.field.paragraph.people.field_theme
     - paragraphs.paragraphs_type.people
 id: paragraph.people.default
@@ -14,7 +16,7 @@ mode: default
 content:
   field_people:
     type: entity_reference_autocomplete
-    weight: 2
+    weight: 4
     region: content
     settings:
       match_operator: CONTAINS
@@ -29,6 +31,20 @@ content:
     settings:
       size: 60
       placeholder: ''
+    third_party_settings: {  }
+  field_show_location:
+    type: boolean_checkbox
+    weight: 3
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  field_show_position:
+    type: boolean_checkbox
+    weight: 2
+    region: content
+    settings:
+      display_label: true
     third_party_settings: {  }
   field_theme:
     type: options_select
