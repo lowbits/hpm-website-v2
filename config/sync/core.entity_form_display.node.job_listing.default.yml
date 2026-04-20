@@ -28,7 +28,6 @@ third_party_settings:
       children:
         - group_allgemein
         - group_inhalt
-        - group_zusaetzlich
       label: Tabs
       region: content
       parent_name: ''
@@ -42,11 +41,11 @@ third_party_settings:
     group_allgemein:
       children:
         - title
+        - field_intro_text
         - field_job_image_variant
         - field_job_location
         - field_starting_time
         - field_experience_level
-        - field_intro_text
       label: Allgemein
       region: content
       parent_name: group_tabs
@@ -69,21 +68,6 @@ third_party_settings:
       region: content
       parent_name: group_tabs
       weight: 1
-      format_type: tab
-      format_settings:
-        classes: ''
-        show_empty_fields: false
-        id: ''
-        formatter: closed
-        description: ''
-        required_fields: true
-    group_zusaetzlich:
-      children:
-        - field_paragraphs
-      label: 'Zusätzliche Inhalte'
-      region: content
-      parent_name: group_tabs
-      weight: 2
       format_type: tab
       format_settings:
         classes: ''
@@ -119,12 +103,6 @@ content:
       rows: 9
       placeholder: ''
     third_party_settings: {  }
-  field_job_image_variant:
-    type: options_buttons
-    weight: 1
-    region: content
-    settings: {  }
-    third_party_settings: {  }
   field_experience_level:
     type: entity_reference_autocomplete
     weight: 4
@@ -137,11 +115,17 @@ content:
     third_party_settings: {  }
   field_intro_text:
     type: text_textarea
-    weight: 5
+    weight: 1
     region: content
     settings:
-      rows: 5
+      rows: 2
       placeholder: ''
+    third_party_settings: {  }
+  field_job_image_variant:
+    type: options_buttons
+    weight: 1
+    region: content
+    settings: {  }
     third_party_settings: {  }
   field_job_location:
     type: entity_reference_autocomplete
@@ -160,24 +144,6 @@ content:
     settings:
       rows: 9
       placeholder: ''
-    third_party_settings: {  }
-  field_paragraphs:
-    type: paragraphs
-    weight: 20
-    region: content
-    settings:
-      title: Paragraph
-      title_plural: Paragraphs
-      edit_mode: closed
-      closed_mode: summary
-      autocollapse: all
-      closed_mode_threshold: 0
-      add_mode: dropdown
-      form_display_mode: default
-      default_paragraph_type: _none
-      features:
-        collapse_edit_all: collapse_edit_all
-        duplicate: duplicate
     third_party_settings: {  }
   field_profile:
     type: text_textarea
@@ -241,5 +207,6 @@ content:
 hidden:
   body: true
   field_contact_person: true
+  field_paragraphs: true
   promote: true
   sticky: true
