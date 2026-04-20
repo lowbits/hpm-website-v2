@@ -1,0 +1,9 @@
+uuid: 214178a8-d0cd-46c2-9e91-c345bd8e316a
+langcode: de
+status: true
+dependencies: {  }
+name: 'Stellenangebote Bilder'
+vid: job_image_variant
+description: 'Vordefinierte Bildvarianten für Stellenangebote. Admin lädt hier die 4 Bildoptionen hoch.'
+weight: 0
+new_revision: false

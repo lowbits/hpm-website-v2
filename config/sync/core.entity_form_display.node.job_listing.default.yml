@@ -9,12 +9,14 @@ dependencies:
     - field.field.node.job_listing.field_contact_person
     - field.field.node.job_listing.field_experience_level
     - field.field.node.job_listing.field_intro_text
+    - field.field.node.job_listing.field_job_image_variant
     - field.field.node.job_listing.field_job_location
     - field.field.node.job_listing.field_offer
     - field.field.node.job_listing.field_paragraphs
     - field.field.node.job_listing.field_profile
     - field.field.node.job_listing.field_starting_time
     - node.type.job_listing
+    - taxonomy.vocabulary.job_image_variant
   module:
     - field_group
     - paragraphs
@@ -40,6 +42,7 @@ third_party_settings:
     group_allgemein:
       children:
         - title
+        - field_job_image_variant
         - field_job_location
         - field_starting_time
         - field_experience_level
@@ -115,6 +118,12 @@ content:
     settings:
       rows: 9
       placeholder: ''
+    third_party_settings: {  }
+  field_job_image_variant:
+    type: options_buttons
+    weight: 1
+    region: content
+    settings: {  }
     third_party_settings: {  }
   field_experience_level:
     type: entity_reference_autocomplete

@@ -1,0 +1,24 @@
+uuid: bfcbe375-d84a-4eee-bafe-a08f0b20e54b
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_image
+    - media.type.image
+    - taxonomy.vocabulary.job_image_variant
+id: taxonomy_term.job_image_variant.field_image
+field_name: field_image
+entity_type: taxonomy_term
+bundle: job_image_variant
+label: Bild
+description: 'Das Bild für diese Variante.'
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:media'
+  handler_settings:
+    target_bundles:
+      image: image
+field_type: entity_reference

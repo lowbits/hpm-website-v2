@@ -1,0 +1,40 @@
+uuid: c9806d03-7fd5-4d6f-a7dc-318791904949
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.field.taxonomy_term.job_image_variant.field_image
+    - taxonomy.vocabulary.job_image_variant
+  module:
+    - media_library
+id: taxonomy_term.job_image_variant.default
+targetEntityType: taxonomy_term
+bundle: job_image_variant
+mode: default
+content:
+  name:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_image:
+    type: media_library_widget
+    weight: 1
+    region: content
+    settings:
+      media_types:
+        - image
+    third_party_settings: {  }
+  status:
+    type: boolean_checkbox
+    weight: 10
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+hidden:
+  description: true
+  langcode: true

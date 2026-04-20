@@ -8,6 +8,7 @@ dependencies:
     - field.field.node.job_listing.field_contact_person
     - field.field.node.job_listing.field_experience_level
     - field.field.node.job_listing.field_intro_text
+    - field.field.node.job_listing.field_job_image_variant
     - field.field.node.job_listing.field_job_location
     - field.field.node.job_listing.field_offer
     - field.field.node.job_listing.field_paragraphs
@@ -93,5 +94,6 @@ content:
 hidden:
   body: true
   field_contact_person: true
+  field_job_image_variant: true
   langcode: true
   links: true

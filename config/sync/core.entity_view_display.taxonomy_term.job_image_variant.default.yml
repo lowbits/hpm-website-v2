@@ -1,0 +1,32 @@
+uuid: fc29d2da-5d67-466d-a254-62a14115e252
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.field.taxonomy_term.job_image_variant.field_image
+    - taxonomy.vocabulary.job_image_variant
+  module:
+    - media
+id: taxonomy_term.job_image_variant.default
+targetEntityType: taxonomy_term
+bundle: job_image_variant
+mode: default
+content:
+  field_image:
+    type: entity_reference_entity_view
+    weight: 0
+    region: content
+    label: hidden
+    settings:
+      view_mode: default
+    third_party_settings: {  }
+  name:
+    type: string
+    weight: -5
+    region: content
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+hidden:
+  description: true

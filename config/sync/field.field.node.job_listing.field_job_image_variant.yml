@@ -1,0 +1,24 @@
+uuid: 00d27573-79a3-4ea8-a035-209a703c76b8
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_job_image_variant
+    - node.type.job_listing
+    - taxonomy.vocabulary.job_image_variant
+id: node.job_listing.field_job_image_variant
+field_name: field_job_image_variant
+entity_type: node
+bundle: job_listing
+label: Bildvariante
+description: 'Wählen Sie eines der vordefinierten Bilder für diese Stellenausschreibung.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      job_image_variant: job_image_variant
+field_type: entity_reference

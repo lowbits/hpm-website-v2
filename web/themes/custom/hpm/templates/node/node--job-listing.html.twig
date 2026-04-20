@@ -116,7 +116,8 @@
 
   {# 3. Über Uns – narrative layout with image + overlapping content box #}
   {% if about_us_block %}
-    {% set au_media = about_us_block.field_image.entity %}
+    {% set variant_term = node.field_job_image_variant.entity %}
+    {% set au_media = variant_term ? variant_term.field_image.entity : about_us_block.field_image.entity %}
     {% set au_image = au_media ? au_media.field_media_image.entity : null %}
     <section class="narrative relative content-section overflow-hidden max-sm:mb-0">
       <div class="section-container max-sm:px-0 grid grid-cols-12 gap-x-5 lg:gap-x-6">
