@@ -133,5 +133,20 @@ function hpm_preprocess_paragraph(&$variables) {
         }
       }
     }
+
+    // Load projects assigned to this Geschäftsfeld via the view.
+    if ($paragraph->hasField('field_business_field') && !$paragraph->get('field_business_field')->isEmpty()) {
+      $tid = $paragraph->get('field_business_field')->target_id;
+      $view = \Drupal\views\Views::getView('projects_by_field');
+      if ($view) {
+        $view->setArguments([$tid]);
+        $view->setDisplay('block_1');
+        $view->preExecute();
+        $view->execute();
+        if (!empty($view->result)) {
+          $variables['projects_view'] = $view->buildRenderable('block_1', [$tid]);
+        }
+      }
+    }
   }
 }

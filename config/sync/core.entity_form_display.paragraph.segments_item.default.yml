@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - field.field.paragraph.segments_item.field_anchor_id
+    - field.field.paragraph.segments_item.field_business_field
     - field.field.paragraph.segments_item.field_headline
     - field.field.paragraph.segments_item.field_headline_secondary
     - field.field.paragraph.segments_item.field_image
@@ -14,6 +15,7 @@ dependencies:
     - field.field.paragraph.segments_item.field_text
     - field.field.paragraph.segments_item.field_text_secondary
     - paragraphs.paragraphs_type.segments_item
+    - taxonomy.vocabulary.business_field
   module:
     - media_library
     - paragraphs
@@ -30,6 +32,12 @@ content:
     settings:
       size: 60
       placeholder: ''
+    third_party_settings: {  }
+  field_business_field:
+    type: options_select
+    weight: 2
+    region: content
+    settings: {  }
     third_party_settings: {  }
   field_headline:
     type: string_textfield

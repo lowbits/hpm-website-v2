@@ -1,0 +1,24 @@
+uuid: 951f3ac3-5a0f-43a2-a201-82b9b70bf6d1
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_business_field
+    - paragraphs.paragraphs_type.segments_item
+    - taxonomy.vocabulary.business_field
+id: paragraph.segments_item.field_business_field
+field_name: field_business_field
+entity_type: paragraph
+bundle: segments_item
+label: Geschäftsfeld
+description: 'Verknüpftes Geschäftsfeld – zugeordnete Projekte werden automatisch angezeigt.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      business_field: business_field
+field_type: entity_reference
