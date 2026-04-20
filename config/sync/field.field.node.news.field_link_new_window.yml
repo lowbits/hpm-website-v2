@@ -1,0 +1,23 @@
+uuid: 323a07d8-6a84-4921-b9ad-5c2d17e3730e
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_link_new_window
+    - node.type.news
+id: node.news.field_link_new_window
+field_name: field_link_new_window
+entity_type: node
+bundle: news
+label: 'In neuem Fenster öffnen'
+description: 'Wenn aktiviert, wird der externe Link in einem neuen Tab/Fenster geöffnet.'
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: Ja
+  off_label: Nein
+field_type: boolean

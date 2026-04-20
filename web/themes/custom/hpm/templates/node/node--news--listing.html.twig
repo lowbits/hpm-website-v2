@@ -10,6 +10,7 @@
 {% set media = node.field_news_image.entity %}
 {% set external_link = node.field_external_link.0.url %}
 {% set external_link_title = node.field_external_link.0.title %}
+{% set link_new_window = node.field_link_new_window.value %}
 {% set anchor_id = 'news-' ~ node.id() %}
 
 <article{{ attributes.addClass('news-item') }}>
@@ -54,7 +55,8 @@
           <div class="button-container mt-4">
             <a class="text-link text-hpm-darkred copy"
                href="{{ external_link }}"
-               title="{{ external_link_title|default('Mehr erfahren') }}">
+               title="{{ external_link_title|default('Mehr erfahren') }}"
+               {{ link_new_window ? 'target="_blank" rel="noopener noreferrer"' }}>
               <span class="text-link__text copy">
                 {{ external_link_title|default('Mehr erfahren') }}
               </span>
