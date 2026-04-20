@@ -1,0 +1,23 @@
+uuid: a4cf41c5-bea5-49f8-ab06-3dc914098dc6
+langcode: de
+status: true
+dependencies:
+  config:
+    - block_content.type.karriere_standorte
+    - field.storage.block_content.field_paragraphs
+id: block_content.karriere_standorte.field_paragraphs
+field_name: field_paragraphs
+entity_type: block_content
+bundle: karriere_standorte
+label: Inhalte
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles: null
+    negate: 0
+field_type: entity_reference_revisions

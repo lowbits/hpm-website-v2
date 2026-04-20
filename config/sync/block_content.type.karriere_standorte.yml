@@ -1,0 +1,8 @@
+uuid: a83438d0-a5b1-484c-a622-efb8185a6156
+langcode: de
+status: true
+dependencies: {  }
+id: karriere_standorte
+label: 'Karriere (Standorte)'
+revision: false
+description: 'Zentral verwalteter Karriere-Block, der auf allen Standort-Detailseiten unten angezeigt wird.'

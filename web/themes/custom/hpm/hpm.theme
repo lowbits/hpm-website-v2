@@ -63,6 +63,18 @@ function hpm_preprocess_node(&$variables) {
       }
     }
   }
+
+  // Load centrally managed Karriere block for location pages.
+  if ($node->bundle() === 'location') {
+    $storage = \Drupal::entityTypeManager()->getStorage('block_content');
+    $blocks = $storage->loadByProperties(['type' => 'karriere_standorte']);
+    if ($blocks) {
+      $block = reset($blocks);
+      $variables['karriere_block'] = \Drupal::entityTypeManager()
+        ->getViewBuilder('block_content')
+        ->view($block);
+    }
+  }
 }
 
 /**

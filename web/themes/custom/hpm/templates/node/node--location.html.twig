@@ -229,4 +229,9 @@
   {% if content.field_paragraphs|render|trim %}
     {{ content.field_paragraphs }}
   {% endif %}
+
+  {# Karriere block (centrally managed, same on all location pages) #}
+  {% if karriere_block %}
+    {{ karriere_block }}
+  {% endif %}
 </article>
