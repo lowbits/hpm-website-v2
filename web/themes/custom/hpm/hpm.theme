@@ -86,6 +86,10 @@ function hpm_preprocess_page(&$variables) {
     }
   }
   $variables['additional_nav'] = $additional_nav;
+
+  // Attach cache tags so pages invalidate when these menus change.
+  $variables['#cache']['tags'][] = 'config:system.menu.social';
+  $variables['#cache']['tags'][] = 'config:system.menu.navigation-additional';
 }
 
 /**
