@@ -27,9 +27,9 @@ display:
       title: Projekte
       fields: {  }
       pager:
-        type: full
+        type: none
         options:
-          items_per_page: 12
+          offset: 0
       exposed_form:
         type: bef
         options:
@@ -154,9 +154,9 @@ display:
     position: 2
     display_options:
       pager:
-        type: full
+        type: none
         options:
-          items_per_page: 12
+          offset: 0
       display_extenders: {  }
     cache_metadata:
       max-age: -1
