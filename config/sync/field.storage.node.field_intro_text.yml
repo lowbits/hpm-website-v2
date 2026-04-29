@@ -8,10 +8,9 @@ dependencies:
 id: node.field_intro_text
 field_name: field_intro_text
 entity_type: node
-type: string_long
-settings:
-  case_sensitive: false
-module: core
+type: text_long
+settings: {  }
+module: text
 locked: false
 cardinality: 1
 translatable: true

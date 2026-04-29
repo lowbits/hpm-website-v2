@@ -114,7 +114,7 @@ content:
       placeholder: ''
     third_party_settings: {  }
   field_intro_text:
-    type: string_textarea
+    type: text_textarea
     weight: 1
     region: content
     settings:

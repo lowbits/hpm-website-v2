@@ -28,6 +28,7 @@ permissions:
   - 'access contextual links'
   - 'access files overview'
   - 'access toolbar'
+  - 'administer menu'
   - 'administer url aliases'
   - 'clone node entity'
   - 'create article content'

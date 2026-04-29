@@ -40,6 +40,33 @@ function hpm_preprocess_page(&$variables) {
   if ($node instanceof NodeInterface) {
     $variables['node_type'] = $node->bundle();
   }
+
+  // Load social media links from the 'social' menu.
+  $menu_tree = \Drupal::menuTree();
+  $parameters = $menu_tree->getCurrentRouteMenuTreeParameters('social');
+  $parameters->setMinDepth(1);
+  $parameters->setMaxDepth(1);
+  $tree = $menu_tree->load('social', $parameters);
+  $manipulators = [
+    ['callable' => 'menu.default_tree_manipulators:checkAccess'],
+    ['callable' => 'menu.default_tree_manipulators:generateIndexAndSort'],
+  ];
+  $tree = $menu_tree->transform($tree, $manipulators);
+
+  $social_links = [];
+  foreach ($tree as $element) {
+    if ($element->link->isEnabled()) {
+      $url = $element->link->getUrlObject()->toString();
+      $title = $element->link->getTitle();
+      $key = mb_strtolower($title);
+      $social_links[] = [
+        'key' => $key,
+        'url' => $url,
+        'title' => $title,
+      ];
+    }
+  }
+  $variables['social_links'] = $social_links;
 }
 
 /**

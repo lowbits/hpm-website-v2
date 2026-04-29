@@ -1,0 +1,18 @@
+{#
+/**
+ * @file
+ * Reusable social media links – rendered from the 'social' menu.
+ *
+ * Variables:
+ *   - social_links: Array of { key, url, title } from hpm_preprocess_page().
+ *   - classes: Optional extra CSS classes for the container.
+ */
+#}
+{% if social_links %}
+  {% for link in social_links %}
+    <a href="{{ link.url }}" target="_blank" rel="noopener" title="Höcker Project Managers auf {{ link.title }}"
+       class="social-link flex h-[42px] w-[42px] items-center justify-center rounded-full border border-white bg-transparent transition-colors duration-300 ease-in-out hover:bg-white focus:bg-white md:h-[48px] md:w-[48px] hover:[&_svg_path]:fill-hpm-darkred [&_svg_path]:transition-fill [&_svg_path]:duration-300">
+      <span class="w-6 block">{% include '@hpm/images/vectors/icon-' ~ link.key ~ '.svg.twig' ignore missing %}</span>
+    </a>
+  {% endfor %}
+{% endif %}
