@@ -287,11 +287,10 @@ function _hpm_media_srcset($entity, $field_name, $type) {
   ];
 
   $srcset_parts = [];
-  $url_generator = \Drupal::service('file_url_generator');
   foreach ($styles_map[$type] as $style_name) {
     $style = ImageStyle::load($style_name);
     if ($style) {
-      $style_url = $url_generator->generateString($style->buildUri($uri));
+      $style_url = $style->buildUrl($uri);
       $srcset_parts[] = $style_url . ' ' . $widths[$style_name] . 'w';
     }
   }
