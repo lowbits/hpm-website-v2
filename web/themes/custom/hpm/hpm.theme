@@ -67,6 +67,24 @@ function hpm_preprocess_page(&$variables) {
     }
   }
   $variables['social_links'] = $social_links;
+
+  // Load additional navigation links from the 'navigation-additional' menu.
+  $parameters = $menu_tree->getCurrentRouteMenuTreeParameters('navigation-additional');
+  $parameters->setMinDepth(1);
+  $parameters->setMaxDepth(1);
+  $tree = $menu_tree->load('navigation-additional', $parameters);
+  $tree = $menu_tree->transform($tree, $manipulators);
+
+  $additional_nav = [];
+  foreach ($tree as $element) {
+    if ($element->link->isEnabled()) {
+      $additional_nav[] = [
+        'url' => $element->link->getUrlObject()->toString(),
+        'title' => $element->link->getTitle(),
+      ];
+    }
+  }
+  $variables['additional_nav'] = $additional_nav;
 }
 
 /**

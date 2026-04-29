@@ -61,24 +61,22 @@
 
       {{ page.navigation }}
 
-      <nav class="navigation-additional relative flex flex-col items-start gap-3" aria-label="{{ 'Weitere Links'|t }}">
-        <a class="text-link font-case text-[0.9375rem] leading-[1.2]"
-           href="{{ internal_urls.projekte }}"
-           title="{{ 'Projekte'|t }}">
-          <span class="text-link__text copy">{{ 'Projekte'|t }}</span>
-          <span class="link-icon -mt-[1px]">
-            {% include '@hpm/images/vectors/button-arrow.svg.twig' %}
-          </span>
-        </a>
-        <a class="text-link font-case text-[0.9375rem] leading-[1.2]"
-           href="{{ internal_urls.neuigkeiten }}"
-           title="{{ 'Neuigkeiten'|t }}">
-          <span class="text-link__text copy">{{ 'Neuigkeiten'|t }}</span>
-          <span class="link-icon -mt-[1px]">
-            {% include '@hpm/images/vectors/button-arrow.svg.twig' %}
-          </span>
-        </a>
-      </nav>
+      {% if additional_nav %}
+        <nav class="navigation-additional relative flex flex-col items-start gap-3" aria-label="{{ 'Weitere Links'|t }}">
+          {% for link in additional_nav %}
+            <a class="text-link font-case text-[0.9375rem] leading-[1.2] text-white"
+               href="{{ link.url }}"
+               title="{{ link.title }}">
+              <span class="text-link__text copy">{{ link.title }}</span>
+              <span class="link-icon -mt-[1px]">
+                <svg class="h-auto w-full" width="18" height="13" viewBox="0 0 18 13" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M15.202 5.746l-4.58-4.69L11.652 0 18 6.5 11.653 13l-1.031-1.056 4.595-4.705H0V5.746h15.202z" fill="#E21320"/>
+                </svg>
+              </span>
+            </a>
+          {% endfor %}
+        </nav>
+      {% endif %}
 
       <div class="navigation-social flex gap-5 pt-4 sm:pt-6 lg:pt-8">
         {% include '@hpm/templates/components/social-links.html.twig' %}

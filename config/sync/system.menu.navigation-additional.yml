@@ -1,0 +1,8 @@
+uuid: 6c50c06d-fc10-4e2c-ace6-ddd520a2866a
+langcode: de
+status: true
+dependencies: {  }
+id: navigation-additional
+label: 'Navigation (Zusätzlich)'
+description: 'Zusätzliche Links unterhalb der Hauptnavigation (z.B. Projekte, Neuigkeiten).'
+locked: false
