@@ -872,6 +872,11 @@ if (getenv('DRUPAL_DB_HOST')) {
     explode(',', getenv('DRUPAL_TRUSTED_HOSTS') ?: ''),
   );
   $config['config_split.config_split.dev']['status'] = FALSE;
+
+  // Coolify runs behind a reverse proxy — detect HTTPS from forwarded proto.
+  if (!empty($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] === 'https') {
+    $_SERVER['HTTPS'] = 'on';
+  }
 }
 
 // Automatically generated include for settings managed by ddev.
