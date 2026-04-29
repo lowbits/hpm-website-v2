@@ -11,7 +11,7 @@ field_name: field_image_portrait
 entity_type: paragraph
 bundle: stage_slider_item
 label: 'Bild (Hochformat)'
-description: ''
+description: 'Empfohlene Bildgröße: 1110 × 1480 px (Hochformat)'
 required: false
 translatable: true
 default_value: {  }

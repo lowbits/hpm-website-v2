@@ -11,7 +11,7 @@ field_name: field_image
 entity_type: paragraph
 bundle: poster
 label: Bild
-description: ''
+description: 'Empfohlene Bildgröße: 2000 × 1000 px'
 required: false
 translatable: true
 default_value: {  }
