@@ -60,9 +60,9 @@
     .submenu-back:hover { opacity: 1; }
   }
 
-  /* Submenu icon */
+  /* Submenu icon — override hardcoded fill on SVG path */
   .submenu-icon svg path {
-    @apply fill-white;
+    fill: var(--color-white) !important;
   }
 
   /* Nav link hover underline */

@@ -22,21 +22,21 @@
 
 [data-theme="darkred"] .button-icon svg path,
 [data-theme="red"] .button-icon svg path {
-  @apply fill-hpm-darkred;
+  fill: var(--color-hpm-darkred) !important;
 }
 
 [data-theme="darkred"] { @apply bg-hpm-darkred text-hpm-beige; }
-[data-theme="darkred"] .button-icon svg path { @apply fill-hpm-red; }
+[data-theme="darkred"] .button-icon svg path { fill: var(--color-hpm-red) !important; }
 [data-theme="darkred"] .svg-map .country path { @apply fill-hpm-red; }
 [data-theme="darkred"] .svg-map .locations circle { @apply fill-white; }
 [data-theme="darkred"] .text-link { @apply !text-white; }
-[data-theme="darkred"] .text-link .link-icon svg path { @apply fill-white; }
-[data-theme="darkred"] .navigation-additional .text-link .link-icon svg path { fill: var(--color-hpm-red); }
+[data-theme="darkred"] .text-link .link-icon svg path { fill: var(--color-white) !important; }
+[data-theme="darkred"] .navigation-additional .text-link .link-icon svg path { fill: var(--color-hpm-red) !important; }
 [data-theme="darkred"] .text-link:before { @apply bg-white; }
 [data-theme="darkred"] .text-link:after { @apply bg-hpm-red; }
 
 [data-theme="red"] { @apply bg-hpm-red; }
-[data-theme="red"] .button-icon svg path { @apply fill-hpm-darkred; }
+[data-theme="red"] .button-icon svg path { fill: var(--color-hpm-darkred) !important; }
 
 [data-theme="darkred"] .accordion__box,
 [data-theme="red"] .accordion__box {

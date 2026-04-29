@@ -2359,14 +2359,14 @@
   }
 }
 [data-theme="darkred"] .button-icon svg path, [data-theme="red"] .button-icon svg path {
-  fill: var(--color-hpm-darkred);
+  fill: var(--color-hpm-darkred) !important;
 }
 [data-theme="darkred"] {
   background-color: var(--color-hpm-darkred);
   color: var(--color-hpm-beige);
 }
 [data-theme="darkred"] .button-icon svg path {
-  fill: var(--color-hpm-red);
+  fill: var(--color-hpm-red) !important;
 }
 [data-theme="darkred"] .svg-map .country path {
   fill: var(--color-hpm-red);
@@ -2378,10 +2378,10 @@
   color: var(--color-white) !important;
 }
 [data-theme="darkred"] .text-link .link-icon svg path {
-  fill: var(--color-white);
+  fill: var(--color-white) !important;
 }
 [data-theme="darkred"] .navigation-additional .text-link .link-icon svg path {
-  fill: var(--color-hpm-red);
+  fill: var(--color-hpm-red) !important;
 }
 [data-theme="darkred"] .text-link:before {
   background-color: var(--color-white);
@@ -2393,7 +2393,7 @@
   background-color: var(--color-hpm-red);
 }
 [data-theme="red"] .button-icon svg path {
-  fill: var(--color-hpm-darkred);
+  fill: var(--color-hpm-darkred) !important;
 }
 [data-theme="darkred"] .accordion__box, [data-theme="red"] .accordion__box {
   border-color: var(--color-white);
@@ -3539,7 +3539,7 @@
     }
   }
   .submenu-icon svg path {
-    fill: var(--color-white);
+    fill: var(--color-white) !important;
   }
   .navigation-multilevel .nav-link {
     transition: color .3s ease, opacity .3s ease, transform .3s ease;
