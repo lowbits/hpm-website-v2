@@ -18,6 +18,11 @@ default_value_callback: ''
 settings:
   handler: 'default:paragraph'
   handler_settings:
-    target_bundles: null
+    target_bundles:
+      alternate: alternate
     negate: 0
+    target_bundles_drag_drop:
+      alternate:
+        enabled: true
+        weight: 0
 field_type: entity_reference_revisions
