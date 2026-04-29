@@ -1,0 +1,11 @@
+uuid: ca14dd08-e938-4d78-b0b1-d2d539341c81
+langcode: de
+status: true
+dependencies:
+  module:
+    - media
+id: media.responsive_narrow
+label: 'Responsive (Schmal)'
+description: 'Schmale responsive Bildausgabe (Teaser, Karten)'
+targetEntityType: media
+cache: true

@@ -1,0 +1,35 @@
+uuid: c202a03f-9c62-4171-ab33-96b893034bc2
+langcode: de
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.media.responsive_portrait
+    - field.field.media.image.field_credits
+    - field.field.media.image.field_media_image
+    - media.type.image
+    - responsive_image.styles.portrait
+  module:
+    - responsive_image
+id: media.image.responsive_portrait
+targetEntityType: media
+bundle: image
+mode: responsive_portrait
+content:
+  field_media_image:
+    type: responsive_image
+    label: visually_hidden
+    settings:
+      responsive_image_style: portrait
+      image_link: ''
+      image_loading:
+        attribute: lazy
+    third_party_settings: {  }
+    weight: 1
+    region: content
+hidden:
+  created: true
+  field_credits: true
+  langcode: true
+  name: true
+  thumbnail: true
+  uid: true

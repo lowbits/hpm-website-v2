@@ -1,0 +1,35 @@
+uuid: d19ebbc6-3875-4747-ad9c-36cfefd34de8
+langcode: de
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.media.responsive_wide
+    - field.field.media.image.field_credits
+    - field.field.media.image.field_media_image
+    - media.type.image
+    - responsive_image.styles.wide
+  module:
+    - responsive_image
+id: media.image.responsive_wide
+targetEntityType: media
+bundle: image
+mode: responsive_wide
+content:
+  field_media_image:
+    type: responsive_image
+    label: visually_hidden
+    settings:
+      responsive_image_style: wide
+      image_link: ''
+      image_loading:
+        attribute: lazy
+    third_party_settings: {  }
+    weight: 1
+    region: content
+hidden:
+  created: true
+  field_credits: true
+  langcode: true
+  name: true
+  thumbnail: true
+  uid: true

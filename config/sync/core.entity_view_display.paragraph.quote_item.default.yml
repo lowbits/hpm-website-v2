@@ -23,13 +23,11 @@ content:
     weight: 2
     region: content
   field_image:
-    type: media_thumbnail
+    type: entity_reference_entity_view
     label: hidden
     settings:
-      image_link: ''
-      image_style: ''
-      image_loading:
-        attribute: lazy
+      view_mode: responsive_half
+      link: false
     third_party_settings: {  }
     weight: 0
     region: content

@@ -1,0 +1,11 @@
+uuid: 24add8ff-d882-414f-8347-d8ed24fdeef6
+langcode: de
+status: true
+dependencies:
+  module:
+    - media
+id: media.responsive_half
+label: 'Responsive (Halb)'
+description: 'Halbbreite responsive Bildausgabe'
+targetEntityType: media
+cache: true

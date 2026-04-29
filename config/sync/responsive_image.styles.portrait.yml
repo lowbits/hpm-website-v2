@@ -1,0 +1,23 @@
+uuid: 665d89d7-6bee-4ff4-8064-c410962283e4
+langcode: de
+status: true
+dependencies:
+  config:
+    - image.style.max_1300x1300
+    - image.style.max_325x325
+    - image.style.max_650x650
+id: portrait
+label: Hochformat
+image_style_mappings:
+  -
+    image_mapping_type: sizes
+    image_mapping:
+      sizes: '(min-width: 82rem) 30vw, (min-width: 60rem) 40vw, 50vw'
+      sizes_image_styles:
+        - max_1300x1300
+        - max_650x650
+        - max_325x325
+    breakpoint_id: responsive_image.viewport_sizing
+    multiplier: 1x
+breakpoint_group: responsive_image
+fallback_image_style: max_325x325

@@ -1,0 +1,11 @@
+uuid: 4796a660-b510-433d-92f1-233f6baef893
+langcode: de
+status: true
+dependencies:
+  module:
+    - media
+id: media.responsive_portrait
+label: 'Responsive (Hochformat)'
+description: 'Hochformat responsive Bildausgabe (Personen, Segmente)'
+targetEntityType: media
+cache: true

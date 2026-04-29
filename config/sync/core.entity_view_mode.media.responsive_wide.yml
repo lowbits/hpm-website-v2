@@ -1,0 +1,11 @@
+uuid: 7b3464b8-37be-4223-a265-914c5e9ecb09
+langcode: de
+status: true
+dependencies:
+  module:
+    - media
+id: media.responsive_wide
+label: 'Responsive (Breit)'
+description: 'Vollbreite responsive Bildausgabe'
+targetEntityType: media
+cache: true
