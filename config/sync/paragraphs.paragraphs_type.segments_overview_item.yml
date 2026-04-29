@@ -3,7 +3,7 @@ langcode: de
 status: true
 dependencies: {  }
 id: segments_overview_item
-label: 'Geschäftsfelder Übersicht Item'
+label: Item
 icon_uuid: null
 icon_default: null
 description: null

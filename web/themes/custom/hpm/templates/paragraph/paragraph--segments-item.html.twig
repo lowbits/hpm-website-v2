@@ -125,14 +125,48 @@
 
     {# Auto-generated projects from assigned Geschäftsfeld #}
     {% if projects_view %}
-      <div class="mt-9 sm:mt-11 lg:mt-15 xl:mt-18">
-        <h3 class="h3 text-hpm-red mb-8 sm:mb-10 lg:mb-12">
-          Unsere {{ title }}-Projekte
-        </h3>
-        <div class="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-3 sm:gap-7">
-          {{ projects_view }}
+      {{ attach_library('hpm/slider-teaser') }}
+      <section class="projects-teaser teaser-slider mt-9 sm:mt-11 lg:mt-15 xl:mt-18 js-teaser-slider">
+        <div class="section-title flex flex-col gap-5 mb-8 col-span-12
+                    sm:mb-12 sm:flex-row sm:items-center sm:justify-between sm:mb-10
+                    md:flex-row md:gap-12
+                    lg:mb-12
+                    xl:items-center">
+          <h2 class="h3 text-hpm-red">Unsere {{ title }}-Projekte</h2>
         </div>
-      </div>
+
+        <div class="grid grid-cols-12 gap-x-7 gap-y-10">
+          {# Slider controls #}
+          <div class="col-span-12 flex flex-col-reverse gap-6 relative z-2
+                      items-start
+                      sm:col-span-8 sm:items-start
+                      md:col-span-4 md:items-start md:gap-0 md:mt-0 md:flex-col
+                      lg:col-span-3">
+            <div class="slider-controls__buttons flex gap-2">
+              <button class="slider-button slider-button--previous js-slider-button-prev" type="button">
+                <div class="slider-button__icon">
+                  {% include '@hpm/images/vectors/button-arrow.svg.twig' %}
+                </div>
+              </button>
+              <button class="slider-button slider-button--next js-slider-button-next" type="button">
+                <div class="slider-button__icon">
+                  {% include '@hpm/images/vectors/button-arrow.svg.twig' %}
+                </div>
+              </button>
+            </div>
+          </div>
+
+          {# Slider items #}
+          <div class="col-span-11
+                      sm:col-span-11
+                      md:col-span-8
+                      lg:col-span-9">
+            <div class="teaser-slider carousel">
+              {{ projects_view }}
+            </div>
+          </div>
+        </div>
+      </section>
     {% endif %}
 
     {# Nested paragraphs (e.g. manual projects teaser) #}

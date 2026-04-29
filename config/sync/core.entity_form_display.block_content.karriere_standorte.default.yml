@@ -1,0 +1,42 @@
+uuid: 5bf6924a-e168-4c0f-96a1-f38225ea215a
+langcode: de
+status: true
+dependencies:
+  config:
+    - block_content.type.karriere_standorte
+    - field.field.block_content.karriere_standorte.field_paragraphs
+  module:
+    - paragraphs
+id: block_content.karriere_standorte.default
+targetEntityType: block_content
+bundle: karriere_standorte
+mode: default
+content:
+  field_paragraphs:
+    type: paragraphs
+    weight: 1
+    region: content
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: closed
+      closed_mode: summary
+      autocollapse: all
+      closed_mode_threshold: 0
+      add_mode: dropdown
+      form_display_mode: default
+      default_paragraph_type: _none
+      features:
+        collapse_edit_all: collapse_edit_all
+        duplicate: duplicate
+    third_party_settings: {  }
+  info:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  langcode: true

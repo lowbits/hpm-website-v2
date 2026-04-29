@@ -47,7 +47,7 @@ content:
     weight: 3
     region: content
   field_intro_text:
-    type: text_default
+    type: basic_string
     label: hidden
     settings: {  }
     third_party_settings: {  }
