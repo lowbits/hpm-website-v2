@@ -64,14 +64,12 @@
       {% if additional_nav %}
         <nav class="navigation-additional relative flex flex-col items-start gap-3" aria-label="{{ 'Weitere Links'|t }}">
           {% for link in additional_nav %}
-            <a class="text-link font-case text-[0.9375rem] leading-[1.2] text-white"
+            <a class="text-link font-case text-[0.9375rem] leading-[1.2]"
                href="{{ link.url }}"
                title="{{ link.title }}">
               <span class="text-link__text copy">{{ link.title }}</span>
               <span class="link-icon -mt-[1px]">
-                <svg class="h-auto w-full" width="18" height="13" viewBox="0 0 18 13" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M15.202 5.746l-4.58-4.69L11.652 0 18 6.5 11.653 13l-1.031-1.056 4.595-4.705H0V5.746h15.202z" fill="#E21320"/>
-                </svg>
+                {% include '@hpm/images/vectors/button-arrow.svg.twig' %}
               </span>
             </a>
           {% endfor %}
