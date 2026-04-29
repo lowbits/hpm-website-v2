@@ -43,6 +43,7 @@
           <div class="relative">
             <div class="image-container js-zoom-image">
               <img src="{{ file_url(media.field_media_image.entity.uri.value) }}"
+                   {% if hero_srcset %}srcset="{{ hero_srcset.srcset }}" sizes="{{ hero_srcset.sizes }}"{% endif %}
                    alt="{{ label }}"
                    loading="lazy">
             </div>

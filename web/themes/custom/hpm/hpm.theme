@@ -6,6 +6,7 @@
  */
 
 use Drupal\Core\Url;
+use Drupal\image\Entity\ImageStyle;
 use Drupal\node\NodeInterface;
 
 /**
@@ -109,6 +110,20 @@ function hpm_preprocess_node(&$variables) {
     }
   }
 
+  // Build responsive srcset for project and location images.
+  if (in_array($node->bundle(), ['project', 'location'])) {
+    $image_field = $node->bundle() === 'project' ? 'field_project_image' : 'field_location_image';
+    $variables['hero_srcset'] = _hpm_media_srcset($node, $image_field, 'half');
+    if ($node->hasField('field_teaser_image') && !$node->get('field_teaser_image')->isEmpty()) {
+      $variables['teaser_srcset'] = _hpm_media_srcset($node, 'field_teaser_image', 'narrow');
+    }
+  }
+
+  // Build srcset for person portrait images.
+  if ($node->bundle() === 'person' && $node->hasField('field_person_image')) {
+    $variables['hero_srcset'] = _hpm_media_srcset($node, 'field_person_image', 'portrait');
+  }
+
   // Load centrally managed Karriere block for location pages.
   if ($node->bundle() === 'location') {
     $storage = \Drupal::entityTypeManager()->getStorage('block_content');
@@ -177,6 +192,19 @@ function hpm_preprocess_paragraph(&$variables) {
     $variables['button_text'] = $link->title;
   }
 
+  // Build responsive srcsets for paragraph images rendered via file_url().
+  if ($paragraph->hasField('field_image') && !$paragraph->get('field_image')->isEmpty()) {
+    $bundle = $paragraph->bundle();
+    $type_map = [
+      'segments_overview_item' => 'portrait',
+      'services_item' => 'half',
+      'quote_item' => 'half',
+    ];
+    if (isset($type_map[$bundle])) {
+      $variables['image_srcset'] = _hpm_media_srcset($paragraph, 'field_image', $type_map[$bundle]);
+    }
+  }
+
   // Determine delta (position) for segments_item within its parent.
   if ($paragraph->bundle() === 'segments_item') {
     $parent = $paragraph->getParentEntity();
@@ -190,6 +218,9 @@ function hpm_preprocess_paragraph(&$variables) {
         }
       }
     }
+
+    // Build responsive srcset for the hero image.
+    $variables['image_srcset'] = _hpm_media_srcset($paragraph, 'field_image', 'wide');
 
     // Load projects assigned to this Geschäftsfeld via the view.
     if ($paragraph->hasField('field_business_field') && !$paragraph->get('field_business_field')->isEmpty()) {
@@ -206,4 +237,67 @@ function hpm_preprocess_paragraph(&$variables) {
       }
     }
   }
+}
+
+/**
+ * Build srcset and sizes attributes for a media image field.
+ *
+ * @param \Drupal\Core\Entity\ContentEntityInterface $entity
+ *   The entity containing the media reference field.
+ * @param string $field_name
+ *   The media reference field name.
+ * @param string $type
+ *   The responsive type: 'wide', 'half', 'narrow', or 'portrait'.
+ *
+ * @return array|null
+ *   Array with 'srcset' and 'sizes' keys, or NULL if no image.
+ */
+function _hpm_media_srcset($entity, $field_name, $type) {
+  if (!$entity->hasField($field_name) || $entity->get($field_name)->isEmpty()) {
+    return NULL;
+  }
+  $media = $entity->get($field_name)->entity;
+  if (!$media || !$media->hasField('field_media_image') || $media->get('field_media_image')->isEmpty()) {
+    return NULL;
+  }
+  $file = $media->get('field_media_image')->entity;
+  if (!$file) {
+    return NULL;
+  }
+  $uri = $file->getFileUri();
+
+  $styles_map = [
+    'wide' => ['max_2600x2600', 'max_1300x1300', 'max_650x650', 'max_325x325'],
+    'half' => ['max_2600x2600', 'max_1300x1300', 'max_650x650', 'max_325x325'],
+    'narrow' => ['max_1300x1300', 'max_650x650', 'max_325x325'],
+    'portrait' => ['max_1300x1300', 'max_650x650', 'max_325x325'],
+  ];
+  $sizes_map = [
+    'wide' => '(min-width: 1290px) 1290px, 100vw',
+    'half' => '(min-width: 82rem) 50vw, 100vw',
+    'narrow' => '(min-width: 1290px) 325px, (min-width: 851px) 25vw, (min-width: 560px) 50vw, 100vw',
+    'portrait' => '(min-width: 82rem) 30vw, (min-width: 60rem) 40vw, 50vw',
+  ];
+
+  $widths = [
+    'max_2600x2600' => 2600,
+    'max_1300x1300' => 1300,
+    'max_650x650' => 650,
+    'max_325x325' => 325,
+  ];
+
+  $srcset_parts = [];
+  $url_generator = \Drupal::service('file_url_generator');
+  foreach ($styles_map[$type] as $style_name) {
+    $style = ImageStyle::load($style_name);
+    if ($style) {
+      $style_url = $url_generator->generateString($style->buildUri($uri));
+      $srcset_parts[] = $style_url . ' ' . $widths[$style_name] . 'w';
+    }
+  }
+
+  return [
+    'srcset' => implode(', ', $srcset_parts),
+    'sizes' => $sizes_map[$type],
+  ];
 }

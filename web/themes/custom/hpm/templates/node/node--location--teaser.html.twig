@@ -16,6 +16,7 @@
     <div class="relative w-full">
       <div class="image-box pt-[66%]">
         <img src="{{ file_url(media.field_media_image.entity.uri.value) }}"
+             {% if teaser_srcset %}srcset="{{ teaser_srcset.srcset }}" sizes="{{ teaser_srcset.sizes }}"{% endif %}
              alt="{{ node.field_city.value }}"
              loading="lazy">
       </div>
