@@ -101,11 +101,15 @@ EOF
 )"
 ```
 
-### Step 8: Close Issue
+### Step 8: Assign for Review
+
+Do NOT close the issue. Assign it to the client/reviewer for testing:
 
 ```bash
-gh issue close <NUMBER> -c "Fixed in commit <HASH>"
+gh issue edit <NUMBER> --add-label "ready for review"
 ```
+
+The client reviews, tests using the checklist, and closes the issue themselves.
 
 ### Step 9: Report to User
 
