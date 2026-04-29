@@ -40,6 +40,9 @@ COPY --from=theme-build /theme/css/dist/ web/themes/custom/hpm/css/dist/
 COPY --from=theme-build /theme/js/dist/main.js web/themes/custom/hpm/js/dist/main.js
 COPY --from=theme-build /theme/js/dist/stage-slider.js web/themes/custom/hpm/js/dist/stage-slider.js
 
+# Copy nginx vhost config for Drupal image styles
+COPY docker/nginx-vhost.conf /opt/docker/etc/nginx/vhost.common.d/drupal.conf
+
 # Copy entrypoint script
 COPY docker/entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
