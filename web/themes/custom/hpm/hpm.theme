@@ -291,6 +291,8 @@ function _hpm_media_srcset($entity, $field_name, $type) {
     $style = ImageStyle::load($style_name);
     if ($style) {
       $style_url = $style->buildUrl($uri);
+      // Convert absolute URL to relative path to avoid http/https issues.
+      $style_url = parse_url($style_url, PHP_URL_PATH) . '?' . parse_url($style_url, PHP_URL_QUERY);
       $srcset_parts[] = $style_url . ' ' . $widths[$style_name] . 'w';
     }
   }
