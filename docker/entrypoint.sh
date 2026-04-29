@@ -3,6 +3,11 @@ set -e
 
 cd /app
 
+# Ensure files directories exist and are writable
+mkdir -p web/sites/default/files/styles
+mkdir -p web/sites/default/files/translations
+chown -R application:application web/sites/default/files
+
 if ./vendor/bin/drush sql:query "SELECT 1" 2>&1; then
   if ./vendor/bin/drush status --field=bootstrap 2>/dev/null | grep -q "Successful"; then
     echo "Running Drupal deploy tasks..."
