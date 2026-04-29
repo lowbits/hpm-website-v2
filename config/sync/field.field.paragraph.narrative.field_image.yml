@@ -11,7 +11,7 @@ field_name: field_image
 entity_type: paragraph
 bundle: narrative
 label: Bild
-description: 'Empfohlene Bildgröße: 2000 × 1000 px'
+description: ''
 required: false
 translatable: true
 default_value: {  }

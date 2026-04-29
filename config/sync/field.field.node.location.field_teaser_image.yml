@@ -11,7 +11,7 @@ field_name: field_teaser_image
 entity_type: node
 bundle: location
 label: Teaserbild
-description: 'Empfohlene Bildgröße: 1362 × 908 px'
+description: ''
 required: false
 translatable: true
 default_value: {  }

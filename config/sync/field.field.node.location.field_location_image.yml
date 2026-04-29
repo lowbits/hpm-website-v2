@@ -11,7 +11,7 @@ field_name: field_location_image
 entity_type: node
 bundle: location
 label: Standortbild
-description: 'Empfohlene Bildgröße: 2000 × 886 px'
+description: ''
 required: false
 translatable: true
 default_value: {  }

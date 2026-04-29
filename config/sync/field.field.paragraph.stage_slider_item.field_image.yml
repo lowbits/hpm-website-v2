@@ -11,7 +11,7 @@ field_name: field_image
 entity_type: paragraph
 bundle: stage_slider_item
 label: Bild
-description: 'Empfohlene Bildgröße: 2000 × 1000 px (Querformat)'
+description: ''
 required: false
 translatable: true
 default_value: {  }

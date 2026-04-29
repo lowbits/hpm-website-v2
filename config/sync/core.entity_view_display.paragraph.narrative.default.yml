@@ -46,6 +46,14 @@ content:
     third_party_settings: {  }
     weight: 5
     region: content
+  field_caption:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 7
+    region: content
   field_headline:
     type: string
     label: hidden
@@ -84,5 +92,4 @@ content:
     third_party_settings: {  }
     weight: 1
     region: content
-hidden:
-  field_caption: true
+hidden: {  }

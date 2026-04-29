@@ -9,6 +9,7 @@ dependencies:
   module:
     - comment
     - contextual
+    - entity_clone
     - file
     - node
     - path
@@ -28,6 +29,7 @@ permissions:
   - 'access files overview'
   - 'access toolbar'
   - 'administer url aliases'
+  - 'clone node entity'
   - 'create article content'
   - 'create page content'
   - 'create terms in tags'

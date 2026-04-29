@@ -11,7 +11,7 @@ field_name: field_image
 entity_type: paragraph
 bundle: segments_overview_item
 label: Image
-description: 'Empfohlene Bildgröße: 1110 × 1480 px (Hochformat)'
+description: ''
 required: false
 translatable: true
 default_value: {  }

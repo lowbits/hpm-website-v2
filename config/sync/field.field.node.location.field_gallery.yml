@@ -11,7 +11,7 @@ field_name: field_gallery
 entity_type: node
 bundle: location
 label: Galerie
-description: 'Mindesthöhe: 1024 px. Querformat (4:3): 1920 × 1080 px, Hochformat (2:3): 720 × 1080 px'
+description: ''
 required: false
 translatable: true
 default_value: {  }
