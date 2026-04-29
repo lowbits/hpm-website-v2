@@ -2380,6 +2380,9 @@
 [data-theme="darkred"] .text-link .link-icon svg path {
   fill: var(--color-white);
 }
+[data-theme="darkred"] .navigation-additional .text-link .link-icon svg path {
+  fill: var(--color-hpm-red);
+}
 [data-theme="darkred"] .text-link:before {
   background-color: var(--color-white);
 }
