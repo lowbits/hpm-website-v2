@@ -16,6 +16,9 @@ regions:
   footer_third: 'Footer Third'
   footer_bottom: 'Footer Bottom'
 
+favicon:
+  use_default: false
+
 libraries:
   - hpm/global
 
