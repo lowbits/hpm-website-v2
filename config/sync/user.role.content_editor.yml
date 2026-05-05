@@ -3,14 +3,21 @@ langcode: de
 status: true
 dependencies:
   config:
+    - media.type.image
     - node.type.article
+    - node.type.job_listing
+    - node.type.landing_page
+    - node.type.location
+    - node.type.news
     - node.type.page
+    - node.type.person
+    - node.type.project
     - taxonomy.vocabulary.tags
   module:
-    - comment
     - contextual
     - entity_clone
     - file
+    - media
     - node
     - path
     - system
@@ -24,6 +31,7 @@ weight: 2
 is_admin: false
 permissions:
   - 'access administration pages'
+  - 'access content'
   - 'access content overview'
   - 'access contextual links'
   - 'access files overview'
@@ -32,19 +40,58 @@ permissions:
   - 'administer url aliases'
   - 'clone node entity'
   - 'create article content'
+  - 'create image media'
+  - 'create job_listing content'
+  - 'create landing_page content'
+  - 'create location content'
+  - 'create news content'
   - 'create page content'
+  - 'create person content'
+  - 'create project content'
   - 'create terms in tags'
   - 'create url aliases'
-  - 'delete article revisions'
+  - 'delete any article content'
+  - 'delete any image media'
+  - 'delete any job_listing content'
+  - 'delete any landing_page content'
+  - 'delete any location content'
+  - 'delete any news content'
+  - 'delete any page content'
+  - 'delete any person content'
+  - 'delete any project content'
   - 'delete own article content'
   - 'delete own files'
+  - 'delete own image media'
+  - 'delete own job_listing content'
+  - 'delete own landing_page content'
+  - 'delete own location content'
+  - 'delete own news content'
   - 'delete own page content'
-  - 'delete page revisions'
+  - 'delete own person content'
+  - 'delete own project content'
+  - 'edit any article content'
+  - 'edit any image media'
+  - 'edit any job_listing content'
+  - 'edit any landing_page content'
+  - 'edit any location content'
+  - 'edit any news content'
+  - 'edit any page content'
+  - 'edit any person content'
+  - 'edit any project content'
   - 'edit own article content'
   - 'edit own comments'
+  - 'edit own image media'
+  - 'edit own job_listing content'
+  - 'edit own landing_page content'
+  - 'edit own location content'
+  - 'edit own news content'
   - 'edit own page content'
+  - 'edit own person content'
+  - 'edit own project content'
   - 'edit terms in tags'
   - 'revert all revisions'
+  - 'use media image bulk upload form'
   - 'view all revisions'
+  - 'view any image media revisions'
   - 'view own unpublished content'
   - 'view the administration theme'
