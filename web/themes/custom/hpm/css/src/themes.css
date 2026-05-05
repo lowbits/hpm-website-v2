@@ -8,6 +8,20 @@
   @apply my-0;
 }
 
+/* Collapse spacing between adjacent same-color sections.
+   Drupal wraps each paragraph in a <div>, so we match via :has() on the wrapper. */
+:has(> [data-theme="darkred"]) + :has(> [data-theme="darkred"]) [data-theme="darkred"],
+:has(> [data-theme="red"]) + :has(> [data-theme="red"]) [data-theme="red"],
+:has(> [data-theme="beige"]) + :has(> [data-theme="beige"]) [data-theme="beige"],
+[data-theme="darkred"] + [data-theme="darkred"],
+[data-theme="red"] + [data-theme="red"],
+[data-theme="beige"] + [data-theme="beige"] {
+  margin-top: calc(var(--spacing-spacing-xs) * -1);
+  @media (width >= 45rem) { margin-top: calc(var(--spacing-spacing-sm) * -1); }
+  @media (width >= 82rem) { margin-top: calc(var(--spacing-spacing-lg) * -1); }
+  @media (width >= 120rem) { margin-top: calc(var(--spacing-spacing-xl) * -1); }
+}
+
 [data-theme="darkred"] .button,
 [data-theme="red"] .button {
   @apply border-white text-white;

@@ -2329,6 +2329,18 @@
 .content-section[data-theme] {
   margin-block: calc(var(--spacing) * 0);
 }
+:has(> [data-theme="darkred"]) + :has(> [data-theme="darkred"]) [data-theme="darkred"], :has(> [data-theme="red"]) + :has(> [data-theme="red"]) [data-theme="red"], :has(> [data-theme="beige"]) + :has(> [data-theme="beige"]) [data-theme="beige"], [data-theme="darkred"] + [data-theme="darkred"], [data-theme="red"] + [data-theme="red"], [data-theme="beige"] + [data-theme="beige"] {
+  margin-top: calc(var(--spacing-spacing-xs) * -1);
+  @media (width >= 45rem) {
+    margin-top: calc(var(--spacing-spacing-sm) * -1);
+  }
+  @media (width >= 82rem) {
+    margin-top: calc(var(--spacing-spacing-lg) * -1);
+  }
+  @media (width >= 120rem) {
+    margin-top: calc(var(--spacing-spacing-xl) * -1);
+  }
+}
 [data-theme="darkred"] .button, [data-theme="red"] .button {
   border-color: var(--color-white);
   color: var(--color-white);
