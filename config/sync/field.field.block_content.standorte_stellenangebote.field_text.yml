@@ -1,0 +1,19 @@
+uuid: c1b1c799-d0d3-4ca9-a84d-fdc252fc1bd4
+langcode: de
+status: true
+dependencies:
+  config:
+    - block_content.type.standorte_stellenangebote
+    - field.storage.block_content.field_text
+id: block_content.standorte_stellenangebote.field_text
+field_name: field_text
+entity_type: block_content
+bundle: standorte_stellenangebote
+label: Text
+description: 'z.B. "An 9 Standorten in Deutschland sind wir für Sie da."'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

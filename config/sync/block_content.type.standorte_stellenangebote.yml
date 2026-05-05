@@ -1,0 +1,8 @@
+uuid: 3a72ab4a-e516-42d2-8f5c-e8b80fbf730e
+langcode: de
+status: true
+dependencies: {  }
+id: standorte_stellenangebote
+label: 'Standorte (Stellenangebote)'
+revision: false
+description: 'Wiederverwendbarer Block für die Standortkarte auf Stellenangeboten.'

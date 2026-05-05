@@ -453,47 +453,62 @@
     </section>
   {% endif %}
 
-  {# 10. Karte #}
-  <section class="map-teaser overflow-hidden js-map" data-theme="blue">
-    <div class="section-container grid grid-cols-12 gap-7
-                sm:items-center">
+  {# 10. Karte (editable block) #}
+  {% if standorte_block %}
+    {% set st_media = standorte_block.field_image.entity %}
+    {% set st_image = st_media ? st_media.field_media_image.entity : null %}
+    {% set st_link = standorte_block.field_link[0] %}
+    <section class="map-teaser overflow-hidden js-map" data-theme="blue">
+      <div class="section-container grid grid-cols-12 gap-7
+                  sm:items-center">
 
-      {# Map SVG #}
-      <div class="map-teaser__container relative
-                  col-span-10 col-start-2
-                  sm:col-span-6 sm:col-start-auto sm:order-2 sm:h-[42vw]
-                  md:px-10 md:py-0 md:h-[38vw]
-                  lg:px-[3rem] lg:h-[30vw]
-                  xl:h-156 xl:col-span-6 xl:col-start-6">
-        <div class="sm:relative sm:top-1/2 sm:translate-x-[2vw] sm:w-[50vw]
-                    md:-translate-y-1/2 md:w-[41vw]
-                    lg:w-[36vw]
-                    xl:w-full">
-          {% include '@hpm/images/vectors/map2.svg.twig' %}
+        {# Map image #}
+        {% if st_image %}
+          <div class="map-teaser__container relative
+                      col-span-10 col-start-2
+                      sm:col-span-6 sm:col-start-auto sm:order-2 sm:h-[42vw]
+                      md:px-10 md:py-0 md:h-[38vw]
+                      lg:px-[3rem] lg:h-[30vw]
+                      xl:h-156 xl:col-span-6 xl:col-start-6">
+            <div class="sm:relative sm:top-1/2 sm:translate-x-[2vw] sm:w-[50vw]
+                        md:-translate-y-1/2 md:w-[41vw]
+                        lg:w-[36vw]
+                        xl:w-full">
+              <img src="{{ file_url(st_image.uri.value) }}"
+                   alt="{{ standorte_block.field_headline.value ?: 'Standortkarte' }}"
+                   loading="lazy">
+            </div>
+          </div>
+        {% endif %}
+
+        {# Content #}
+        <div class="js-element-group col-span-12 mt-8
+                    sm:col-span-6 sm:mt-0
+                    md:col-span-5 md:col-start-2 md:order-1
+                    xl:col-span-4">
+          {% if standorte_block.field_headline.value %}
+            <h2 class="info mb-4 lg:mb-6">
+              {{ standorte_block.field_headline.value }}
+            </h2>
+          {% endif %}
+          {% if standorte_block.field_text.value %}
+            <p class="quote-small">
+              {{ standorte_block.field_text.value|striptags|trim }}
+            </p>
+          {% endif %}
+          {% if st_link and st_link.url %}
+            <div class="button-container">
+              {% include '@hpm/templates/components/button-link.html.twig' with {
+                url: st_link.url.toString(),
+                text: st_link.title ?: 'Alle Standorte'|t
+              } only %}
+            </div>
+          {% endif %}
         </div>
-      </div>
 
-      {# Content #}
-      <div class="js-element-group col-span-12 mt-8
-                  sm:col-span-6 sm:mt-0
-                  md:col-span-5 md:col-start-2 md:order-1
-                  xl:col-span-4">
-        <h2 class="info mb-4 lg:mb-6">
-          {{ 'Unsere Standorte'|t }}
-        </h2>
-        <p class="quote-small">
-          {{ 'An 9 Standorten in Deutschland sind wir für Sie da.'|t }}
-        </p>
-        <div class="button-container">
-          {% include '@hpm/templates/components/button-link.html.twig' with {
-            url: internal_urls.standorte,
-            text: 'Alle Standorte'|t
-          } only %}
-        </div>
       </div>
-
-    </div>
-  </section>
+    </section>
+  {% endif %}
 
   {# 11. Zusätzliche Inhalte (optional paragraphs) #}
   {% if content.field_paragraphs|render|trim %}

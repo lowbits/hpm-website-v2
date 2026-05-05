@@ -1,0 +1,19 @@
+uuid: 84700551-4f6d-4680-830f-68c9953360e0
+langcode: de
+status: true
+dependencies:
+  config:
+    - block_content.type.standorte_stellenangebote
+    - field.storage.block_content.field_headline
+id: block_content.standorte_stellenangebote.field_headline
+field_name: field_headline
+entity_type: block_content
+bundle: standorte_stellenangebote
+label: Überschrift
+description: 'z.B. "Unsere Standorte"'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

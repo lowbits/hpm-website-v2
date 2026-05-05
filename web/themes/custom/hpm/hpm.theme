@@ -104,6 +104,7 @@ function hpm_preprocess_node(&$variables) {
     $block_map = [
       'about_us_block' => 'about_us',
       'contact_person_block' => 'contact_person',
+      'standorte_block' => 'standorte_stellenangebote',
     ];
     $storage = \Drupal::entityTypeManager()->getStorage('block_content');
     foreach ($block_map as $var_name => $bundle) {

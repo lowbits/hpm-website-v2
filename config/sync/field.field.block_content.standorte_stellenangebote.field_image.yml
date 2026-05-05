@@ -1,0 +1,24 @@
+uuid: 9fcbc905-ed5b-4c42-a186-5a441cb7dfcb
+langcode: de
+status: true
+dependencies:
+  config:
+    - block_content.type.standorte_stellenangebote
+    - field.storage.block_content.field_image
+    - media.type.image
+id: block_content.standorte_stellenangebote.field_image
+field_name: field_image
+entity_type: block_content
+bundle: standorte_stellenangebote
+label: Kartenbild
+description: 'SVG oder Bild der Standortkarte.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:media'
+  handler_settings:
+    target_bundles:
+      image: image
+field_type: entity_reference
