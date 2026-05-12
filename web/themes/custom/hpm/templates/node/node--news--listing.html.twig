@@ -40,7 +40,7 @@
                   lg:col-span-5">
         <div class="info mb-4 text-hpm-red
                     lg:mb-6">
-          {% if date_raw %}{{ date_raw|date('d. F Y') }}{% endif %}{% if category %}{% if date_raw %} &bull; {% endif %}{{ category }}{% endif %}
+          {% if formatted_date %}{{ formatted_date }}{% endif %}{% if category %}{% if formatted_date %} &bull; {% endif %}{{ category }}{% endif %}
         </div>
         <h2 class="h2 text-hpm-red">
           {{ label }}

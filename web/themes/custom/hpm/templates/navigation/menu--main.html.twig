@@ -18,13 +18,15 @@
           {% if item.below %}
             {# Item with submenu — render as trigger #}
             <div class="nav-item has-submenu flex justify-between items-center gap-3">
-              <a class="nav-link nav-link--trigger text-white relative inline-block overflow-hidden pb-[2px] hover:after:translate-x-0"
-                 href="{{ item.url }}"
-                 data-open-panel="{{ item.title|clean_class }}"
-                 aria-haspopup="true"
-                 aria-controls="panel-{{ item.title|clean_class }}">
-                <span class="nav-link__text">{{ item.title }}</span>
-              </a>
+              <div class="nav-link-item flex justify-between items-center gap-3">
+                <a class="nav-link nav-link--trigger text-white relative inline-block overflow-hidden pb-[2px] hover:after:translate-x-0"
+                   href="{{ item.url }}"
+                   data-open-panel="{{ item.title|clean_class }}"
+                   aria-haspopup="true"
+                   aria-controls="panel-{{ item.title|clean_class }}">
+                  <span class="nav-link__text">{{ item.title }}</span>
+                </a>
+              </div>
               <span class="submenu-icon w-4">
                 {% include '@hpm/images/vectors/button-arrow.svg.twig' %}
               </span>

@@ -22,7 +22,7 @@
     </div>
   {% endif %}
   <div class="info mb-3 text-hpm-red">
-    {% if date_raw %}{{ date_raw|date('d. F Y') }}{% endif %}{% if category %}{% if date_raw %} &bull; {% endif %}{{ category }}{% endif %}
+    {% if formatted_date %}{{ formatted_date }}{% endif %}{% if category %}{% if formatted_date %} &bull; {% endif %}{{ category }}{% endif %}
   </div>
   <h3 class="h4">
     {{ label }}

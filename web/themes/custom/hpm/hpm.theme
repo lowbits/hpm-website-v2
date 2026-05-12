@@ -115,6 +115,16 @@ function hpm_preprocess_node(&$variables) {
     }
   }
 
+  // Format news date in German (e.g. "12. Mai 2026").
+  if ($node->bundle() === 'news' && $node->hasField('field_news_date') && !$node->get('field_news_date')->isEmpty()) {
+    $date_string = $node->get('field_news_date')->value;
+    $timestamp = strtotime($date_string);
+    if ($timestamp) {
+      $formatter = new \IntlDateFormatter('de_DE', \IntlDateFormatter::LONG, \IntlDateFormatter::NONE, NULL, NULL, 'd. MMMM yyyy');
+      $variables['formatted_date'] = $formatter->format($timestamp);
+    }
+  }
+
   // Build responsive srcset for project and location images.
   if (in_array($node->bundle(), ['project', 'location'])) {
     $image_field = $node->bundle() === 'project' ? 'field_project_image' : 'field_location_image';

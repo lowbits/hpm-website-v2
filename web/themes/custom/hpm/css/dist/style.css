@@ -3572,6 +3572,17 @@
       transform: translateX(0);
     }
   }
+  .nav-link-item {
+    display: flex;
+    height: calc(var(--spacing) * 6);
+    align-items: center;
+    @media (width >= 45rem) {
+      height: calc(var(--spacing) * 7);
+    }
+    @media (width >= 82rem) {
+      height: calc(var(--spacing) * 8);
+    }
+  }
   .navigation-additional .text-link {
     font-size: 20px;
     --tw-leading: 1.4;
