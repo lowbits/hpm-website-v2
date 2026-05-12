@@ -23,7 +23,7 @@
                   md:col-span-6 md:col-start-7 md:order-last">
         {% if media and media.field_media_image.entity %}
           <div class="image-container js-zoom-image" data-delay=".3">
-            {{ content.field_news_image }}
+            {{ responsive_picture(media.field_media_image.entity.uri.value, 'news_item', {alt: media.field_media_image.alt, loading: 'lazy'}) }}
           </div>
           {% if media.field_credits.value %}
             <div class="credits">

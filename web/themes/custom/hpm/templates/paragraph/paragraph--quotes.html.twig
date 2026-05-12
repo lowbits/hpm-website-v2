@@ -64,9 +64,7 @@
                           {% set quote_media = quote.field_image.entity %}
                           {% if quote_media %}
                             <div class="image-container js-zoom-image" data-delay=".3">
-                              <img src="{{ file_url(quote_media.field_media_image.entity.uri.value) }}"
-                                   alt="{{ quote.field_author.value }}"
-                                   loading="lazy">
+                              {{ responsive_picture(quote_media.field_media_image.entity.uri.value, 'alternate', {alt: quote.field_author.value, loading: 'lazy'}) }}
                             </div>
                           {% endif %}
                           {% set media_credits = quote_media.field_credits.value %}

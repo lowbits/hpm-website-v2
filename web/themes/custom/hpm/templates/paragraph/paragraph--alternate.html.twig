@@ -18,9 +18,10 @@
                   col-span-12
                   sm:col-span-10 {{ position == 'right' ? 'sm:col-start-3' : 'sm:col-start-1' }}
                   md:col-span-6 md:col-start-1 {{ position == 'right' ? 'md:order-last md:col-start-7' }}">
-        {% if content.field_image|render|trim %}
+        {% set media_entity = paragraph.field_image.entity %}
+        {% if media_entity and media_entity.field_media_image.entity %}
           <div class="image-container js-zoom-image" data-delay=".3">
-            {{ content.field_image }}
+            {{ responsive_picture(media_entity.field_media_image.entity.uri.value, 'alternate', {alt: media_entity.field_media_image.alt, loading: 'lazy'}) }}
           </div>
           {% set media_credits = paragraph.field_image.entity.field_credits.value %}
           {% if media_credits %}

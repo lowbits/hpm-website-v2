@@ -1,0 +1,22 @@
+uuid: 1de394a2-8933-4fce-b2aa-04bfa39dea6b
+langcode: de
+status: true
+dependencies: {  }
+name: rimg_1740w
+label: 'Responsive 1740w'
+effects:
+  3ce0a754-3ead-441b-af61-5e2a8e44e8cb:
+    uuid: 3ce0a754-3ead-441b-af61-5e2a8e44e8cb
+    id: image_scale
+    weight: 1
+    data:
+      width: 1740
+      height: null
+      upscale: false
+  09b6853a-489b-4e4f-a440-fc312a56f12c:
+    uuid: 09b6853a-489b-4e4f-a440-fc312a56f12c
+    id: image_convert_avif
+    weight: 2
+    data:
+      extension: webp
+      quality: 80

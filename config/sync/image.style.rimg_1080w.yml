@@ -1,0 +1,22 @@
+uuid: 3976f130-0824-4014-9ce9-54f27bb51d13
+langcode: de
+status: true
+dependencies: {  }
+name: rimg_1080w
+label: 'Responsive 1080w'
+effects:
+  42266821-3ed3-4f79-bc98-063971783836:
+    uuid: 42266821-3ed3-4f79-bc98-063971783836
+    id: image_scale
+    weight: 1
+    data:
+      width: 1080
+      height: null
+      upscale: false
+  c30ddd3e-021b-4616-ae2a-4d200fdae5c1:
+    uuid: c30ddd3e-021b-4616-ae2a-4d200fdae5c1
+    id: image_convert_avif
+    weight: 2
+    data:
+      extension: webp
+      quality: 80

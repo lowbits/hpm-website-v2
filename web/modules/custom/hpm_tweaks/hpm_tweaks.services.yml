@@ -3,3 +3,8 @@ services:
     class: Drupal\hpm_tweaks\EventSubscriber\NewsRedirectSubscriber
     tags:
       - { name: event_subscriber }
+  hpm_tweaks.twig.responsive_picture:
+    class: Drupal\hpm_tweaks\Twig\ResponsivePictureExtension
+    arguments: ['@entity_type.manager']
+    tags:
+      - { name: twig.extension }

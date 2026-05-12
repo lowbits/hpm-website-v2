@@ -1,0 +1,22 @@
+uuid: 1d454dd0-6e76-4ccf-aad4-a28a9bb444a6
+langcode: de
+status: true
+dependencies: {  }
+name: rimg_912w
+label: 'Responsive 912w'
+effects:
+  fad266f8-76e9-4397-962a-c617717011e7:
+    uuid: fad266f8-76e9-4397-962a-c617717011e7
+    id: image_scale
+    weight: 1
+    data:
+      width: 912
+      height: null
+      upscale: false
+  3284d4cf-ea59-49de-b2b1-28cdaf3e523a:
+    uuid: 3284d4cf-ea59-49de-b2b1-28cdaf3e523a
+    id: image_convert_avif
+    weight: 2
+    data:
+      extension: webp
+      quality: 80

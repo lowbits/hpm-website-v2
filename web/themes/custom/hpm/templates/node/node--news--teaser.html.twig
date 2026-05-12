@@ -12,7 +12,7 @@
   {% if media and media.field_media_image.entity %}
     <div class="relative mb-4">
       <div class="image-container js-zoom-image" data-delay=".3">
-        {{ drupal_image(media.field_media_image.entity.uri.value, 'wide', {alt: media.field_media_image.alt, loading: 'lazy'}) }}
+        {{ responsive_picture(media.field_media_image.entity.uri.value, 'teaser', {alt: media.field_media_image.alt, loading: 'lazy'}) }}
       </div>
       {% if media.field_credits.value %}
         <div class="credits absolute right-[-2px] bottom-0 rotate-90 origin-bottom-right sm:right-[-4px]">

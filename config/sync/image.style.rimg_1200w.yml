@@ -1,0 +1,22 @@
+uuid: a5d797d1-39b0-4e35-8dee-a19c6c299bf3
+langcode: de
+status: true
+dependencies: {  }
+name: rimg_1200w
+label: 'Responsive 1200w'
+effects:
+  f80e8ce9-8aec-4b6c-8531-808a03adf201:
+    uuid: f80e8ce9-8aec-4b6c-8531-808a03adf201
+    id: image_scale
+    weight: 1
+    data:
+      width: 1200
+      height: null
+      upscale: false
+  e734ae20-6d03-41d2-a05b-a2ae5975efce:
+    uuid: e734ae20-6d03-41d2-a05b-a2ae5975efce
+    id: image_convert_avif
+    weight: 2
+    data:
+      extension: webp
+      quality: 80

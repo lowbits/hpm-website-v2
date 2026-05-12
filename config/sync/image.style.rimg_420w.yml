@@ -1,0 +1,22 @@
+uuid: 89167efb-0482-4195-9c7a-f993727b5fa1
+langcode: de
+status: true
+dependencies: {  }
+name: rimg_420w
+label: 'Responsive 420w'
+effects:
+  670464ac-2479-4987-aa6a-663d547fe321:
+    uuid: 670464ac-2479-4987-aa6a-663d547fe321
+    id: image_scale
+    weight: 1
+    data:
+      width: 420
+      height: null
+      upscale: false
+  424a2cf9-f3f5-437a-90df-44b53b4aa2cc:
+    uuid: 424a2cf9-f3f5-437a-90df-44b53b4aa2cc
+    id: image_convert_avif
+    weight: 2
+    data:
+      extension: webp
+      quality: 80

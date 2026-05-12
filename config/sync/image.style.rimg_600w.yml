@@ -1,0 +1,22 @@
+uuid: c78b7069-cd05-4fd7-95a3-8ce706a35c2c
+langcode: de
+status: true
+dependencies: {  }
+name: rimg_600w
+label: 'Responsive 600w'
+effects:
+  d8e8e956-5733-43e0-9705-b5ebcb056f16:
+    uuid: d8e8e956-5733-43e0-9705-b5ebcb056f16
+    id: image_scale
+    weight: 1
+    data:
+      width: 600
+      height: null
+      upscale: false
+  a1b610d2-0a1b-4b64-860d-cdb4790fa3f5:
+    uuid: a1b610d2-0a1b-4b64-860d-cdb4790fa3f5
+    id: image_convert_avif
+    weight: 2
+    data:
+      extension: webp
+      quality: 80

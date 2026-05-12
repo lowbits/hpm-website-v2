@@ -1,0 +1,22 @@
+uuid: 9cbc1821-79d5-44cf-8baf-687850343496
+langcode: de
+status: true
+dependencies: {  }
+name: rimg_1920w
+label: 'Responsive 1920w'
+effects:
+  78ac1564-efe0-4a20-96ce-2e45664b429a:
+    uuid: 78ac1564-efe0-4a20-96ce-2e45664b429a
+    id: image_scale
+    weight: 1
+    data:
+      width: 1920
+      height: null
+      upscale: false
+  300c1fdf-6c87-4c12-88b3-222fc78279e6:
+    uuid: 300c1fdf-6c87-4c12-88b3-222fc78279e6
+    id: image_convert_avif
+    weight: 2
+    data:
+      extension: webp
+      quality: 80

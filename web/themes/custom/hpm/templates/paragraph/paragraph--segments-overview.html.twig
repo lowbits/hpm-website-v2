@@ -24,9 +24,7 @@
         {% if media and media.field_media_image.entity %}
           <div class="portrait relative w-full">
             <div class="image-box pt-[133.33%]">
-              <img src="{{ file_url(media.field_media_image.entity.uri.value) }}"
-                   alt="{{ headline }}"
-                   loading="lazy">
+              {{ responsive_picture(media.field_media_image.entity.uri.value, 'segments_overview', {alt: headline, loading: 'lazy'}) }}
             </div>
           </div>
         {% endif %}

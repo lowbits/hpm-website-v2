@@ -1,0 +1,22 @@
+uuid: 31d2c613-94d6-464b-90b0-b0ec9cac34e1
+langcode: de
+status: true
+dependencies: {  }
+name: rimg_550w
+label: 'Responsive 550w'
+effects:
+  41c1efbe-1862-49d3-97c8-8ba36e37f726:
+    uuid: 41c1efbe-1862-49d3-97c8-8ba36e37f726
+    id: image_scale
+    weight: 1
+    data:
+      width: 550
+      height: null
+      upscale: false
+  e5508c7b-dec6-4146-af60-dfa277794781:
+    uuid: e5508c7b-dec6-4146-af60-dfa277794781
+    id: image_convert_avif
+    weight: 2
+    data:
+      extension: webp
+      quality: 80

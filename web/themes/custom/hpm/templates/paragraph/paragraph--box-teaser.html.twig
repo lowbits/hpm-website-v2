@@ -39,9 +39,10 @@
                   {% endif %}
                 {% endif %}">
       <div class="relative">
-        {% if content.field_image|render|trim %}
+        {% set media_entity = paragraph.field_image.entity %}
+        {% if media_entity and media_entity.field_media_image.entity %}
           <div class="image-container js-zoom-image" data-delay=".4">
-            {{ content.field_image }}
+            {{ responsive_picture(media_entity.field_media_image.entity.uri.value, 'box_teaser', {alt: media_entity.field_media_image.alt, loading: 'lazy'}) }}
           </div>
         {% endif %}
         {% set media_credits = paragraph.field_image.entity.field_credits.value %}

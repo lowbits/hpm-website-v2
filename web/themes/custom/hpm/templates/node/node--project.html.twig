@@ -42,10 +42,7 @@
         <div class="col-span-12">
           <div class="relative">
             <div class="image-container js-zoom-image">
-              <img src="{{ file_url(media.field_media_image.entity.uri.value) }}"
-                   {% if hero_srcset %}srcset="{{ hero_srcset.srcset }}" sizes="{{ hero_srcset.sizes }}"{% endif %}
-                   alt="{{ label }}"
-                   loading="lazy">
+              {{ responsive_picture(media.field_media_image.entity.uri.value, 'poster', {alt: label, loading: 'lazy'}) }}
             </div>
             {% if media.field_credits.value %}
               <div class="credits absolute right-[-2px] bottom-0 rotate-90 origin-bottom-right sm:right-[-4px]">
@@ -178,9 +175,7 @@
                   <div class="gallery-item slider-item !w-auto inline-flex flex-col items-start gap-1">
                     <div class="relative shrink-0">
                       <div class="slider-image shrink-0 js-zoom-image overflow-hidden relative" data-delay=".3">
-                        <img src="{{ file_url(gallery_media.field_media_image.entity.uri.value) }}"
-                             alt="{{ gallery_media.field_media_image.alt }}"
-                             loading="lazy">
+                        {{ responsive_picture(gallery_media.field_media_image.entity.uri.value, 'gallery', {alt: gallery_media.field_media_image.alt, loading: 'lazy'}) }}
                       </div>
                       {% if gallery_media.field_credits.value is defined and gallery_media.field_credits.value %}
                         <div class="credits absolute right-[-2px] bottom-0 rotate-90 origin-bottom-right sm:right-[-4px]">

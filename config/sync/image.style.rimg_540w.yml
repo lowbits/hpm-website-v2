@@ -1,0 +1,22 @@
+uuid: 05f4d7bc-7f40-4066-9653-d85f87006242
+langcode: de
+status: true
+dependencies: {  }
+name: rimg_540w
+label: 'Responsive 540w'
+effects:
+  7142ee22-f98b-4dd6-9131-ecc9de2e6c85:
+    uuid: 7142ee22-f98b-4dd6-9131-ecc9de2e6c85
+    id: image_scale
+    weight: 1
+    data:
+      width: 540
+      height: null
+      upscale: false
+  900362ff-0626-48cd-998c-0e3b2810c8d2:
+    uuid: 900362ff-0626-48cd-998c-0e3b2810c8d2
+    id: image_convert_avif
+    weight: 2
+    data:
+      extension: webp
+      quality: 80

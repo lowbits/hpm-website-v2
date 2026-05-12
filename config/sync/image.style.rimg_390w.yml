@@ -1,0 +1,22 @@
+uuid: 9b7effcf-b863-4320-b82d-07f64b1f1ccc
+langcode: de
+status: true
+dependencies: {  }
+name: rimg_390w
+label: 'Responsive 390w'
+effects:
+  4beace05-0e6d-4c36-afba-254c0e8318b3:
+    uuid: 4beace05-0e6d-4c36-afba-254c0e8318b3
+    id: image_scale
+    weight: 1
+    data:
+      width: 390
+      height: null
+      upscale: false
+  d6e9d317-9b1d-4ef9-ace6-70045c055b8e:
+    uuid: d6e9d317-9b1d-4ef9-ace6-70045c055b8e
+    id: image_convert_avif
+    weight: 2
+    data:
+      extension: webp
+      quality: 80

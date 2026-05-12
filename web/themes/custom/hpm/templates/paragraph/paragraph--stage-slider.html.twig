@@ -22,18 +22,20 @@
               <div class="stage-slider__image-box carousel__image-box h-full top-0 left-0 overflow-hidden relative pt-[133.33%] sm:pt-[92%] md:pt-[40%]">
                 <picture class="absolute inset-0 block h-full w-full">
                   {% if wide_media %}
+                    {% set wide_uri = wide_media.field_media_image.entity.uri.value %}
+                    <source media="(min-width: 82rem)"
+                            srcset="{{ responsive_srcset(wide_uri, 'stage_landscape', 'lg') }}"
+                            type="image/webp">
                     <source media="(min-width: 60rem)"
-                            srcset="{{ file_url(wide_media.field_media_image.entity.uri.value) }}"
-                            width="{{ wide_media.field_media_image.width }}"
-                            height="{{ wide_media.field_media_image.height }}">
+                            srcset="{{ responsive_srcset(wide_uri, 'stage_landscape', 'md') }}"
+                            type="image/webp">
                   {% endif %}
                   {% if portrait_media %}
-                    <img class="h-full w-full object-cover"
-                         src="{{ file_url(portrait_media.field_media_image.entity.uri.value) }}"
-                         alt="{{ caption_text }}"
-                         width="{{ portrait_media.field_media_image.width }}"
-                         height="{{ portrait_media.field_media_image.height }}"
-                         {% if is_first %}fetchpriority="high"{% else %}loading="lazy"{% endif %}>
+                    {% set portrait_uri = portrait_media.field_media_image.entity.uri.value %}
+                    <source media="(min-width: 45rem)"
+                            srcset="{{ responsive_srcset(portrait_uri, 'stage_portrait', 'sm') }}"
+                            type="image/webp">
+                    {{ responsive_img(portrait_uri, 'stage_portrait', {alt: caption_text, loading: is_first ? 'eager' : 'lazy', fetchpriority: is_first ? 'high' : '', class: 'h-full w-full object-cover'}) }}
                   {% endif %}
                 </picture>
               </div>

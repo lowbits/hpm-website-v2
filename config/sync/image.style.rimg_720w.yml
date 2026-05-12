@@ -1,0 +1,22 @@
+uuid: 596da369-417d-4159-82e3-a11b79c3a23f
+langcode: de
+status: true
+dependencies: {  }
+name: rimg_720w
+label: 'Responsive 720w'
+effects:
+  7225f04f-b4d6-49dd-8a51-ecc72c05ea99:
+    uuid: 7225f04f-b4d6-49dd-8a51-ecc72c05ea99
+    id: image_scale
+    weight: 1
+    data:
+      width: 720
+      height: null
+      upscale: false
+  d0ca16c4-abd3-4c61-847c-b837f19401c0:
+    uuid: d0ca16c4-abd3-4c61-847c-b837f19401c0
+    id: image_convert_avif
+    weight: 2
+    data:
+      extension: webp
+      quality: 80

@@ -1,0 +1,22 @@
+uuid: 0c15adef-63a4-4423-a3e1-fea63609b228
+langcode: de
+status: true
+dependencies: {  }
+name: rimg_870w
+label: 'Responsive 870w'
+effects:
+  e84aa2f0-d33b-41ca-b3db-9e21c376fc94:
+    uuid: e84aa2f0-d33b-41ca-b3db-9e21c376fc94
+    id: image_scale
+    weight: 1
+    data:
+      width: 870
+      height: null
+      upscale: false
+  86f2fcb7-4780-49ef-95a7-9653bc1eb102:
+    uuid: 86f2fcb7-4780-49ef-95a7-9653bc1eb102
+    id: image_convert_avif
+    weight: 2
+    data:
+      extension: webp
+      quality: 80

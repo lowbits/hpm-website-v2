@@ -50,9 +50,7 @@
             {% if person_media %}
               <div class="portrait relative w-[80%] sm:w-full">
                 <div class="image-box pt-[133.33%]">
-                  <img src="{{ file_url(person_media.field_media_image.entity.uri.value) }}"
-                       alt="{{ person.label }}"
-                       loading="lazy">
+                  {{ responsive_picture(person_media.field_media_image.entity.uri.value, 'people', {alt: person.label, loading: 'lazy'}) }}
                 </div>
                 {% if person_media.field_credits.value %}
                   <div class="credits text-hpm-darkred-30 absolute origin-bottom-right

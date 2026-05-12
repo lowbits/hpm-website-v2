@@ -1,0 +1,22 @@
+uuid: a6c0b3d2-61e7-4ff6-81b6-d0fa0471c130
+langcode: de
+status: true
+dependencies: {  }
+name: rimg_960w
+label: 'Responsive 960w'
+effects:
+  2ad8bf62-121f-4ffc-9570-083da85b1b4f:
+    uuid: 2ad8bf62-121f-4ffc-9570-083da85b1b4f
+    id: image_scale
+    weight: 1
+    data:
+      width: 960
+      height: null
+      upscale: false
+  871115ac-3c2c-4cac-85b5-1beeb904d28a:
+    uuid: 871115ac-3c2c-4cac-85b5-1beeb904d28a
+    id: image_convert_avif
+    weight: 2
+    data:
+      extension: webp
+      quality: 80

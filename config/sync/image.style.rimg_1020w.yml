@@ -1,0 +1,22 @@
+uuid: ed163944-51f6-4901-ab94-b71cb481a4e1
+langcode: de
+status: true
+dependencies: {  }
+name: rimg_1020w
+label: 'Responsive 1020w'
+effects:
+  8fd2822a-f3b8-4aa4-9ec6-821dea711c5a:
+    uuid: 8fd2822a-f3b8-4aa4-9ec6-821dea711c5a
+    id: image_scale
+    weight: 1
+    data:
+      width: 1020
+      height: null
+      upscale: false
+  79486966-a46d-4a86-b9fd-d884a80ec02b:
+    uuid: 79486966-a46d-4a86-b9fd-d884a80ec02b
+    id: image_convert_avif
+    weight: 2
+    data:
+      extension: webp
+      quality: 80

@@ -51,7 +51,7 @@
                     ? '-mr-[1.5rem] sm:-mr-[3rem] lg:-mr-[5rem] 2xl:-mr-[2rem]'
                     : '-ml-[1.5rem] sm:-ml-[3rem] lg:-ml-[5rem] 2xl:-ml-[2rem]'
                   }}" data-delay=".3">
-                <img src="{{ file_url(media.field_media_image.entity.uri.value) }}" alt="{{ media.field_media_image.alt }}" loading="lazy">
+                {{ responsive_picture(media.field_media_image.entity.uri.value, 'alternate', {alt: media.field_media_image.alt, loading: 'lazy'}) }}
               </div>
               {% if credits_value %}
                 <div class="credits absolute

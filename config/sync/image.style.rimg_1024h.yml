@@ -1,0 +1,22 @@
+uuid: 76175192-f83f-4b62-b29e-b05514769f02
+langcode: de
+status: true
+dependencies: {  }
+name: rimg_1024h
+label: 'Responsive 1024h'
+effects:
+  353fb4d2-c23c-442c-905a-6623702a77f9:
+    uuid: 353fb4d2-c23c-442c-905a-6623702a77f9
+    id: image_scale
+    weight: 1
+    data:
+      width: null
+      height: 1024
+      upscale: false
+  ffcf3ca4-d20c-405f-b289-ae6c559a5fd0:
+    uuid: ffcf3ca4-d20c-405f-b289-ae6c559a5fd0
+    id: image_convert_avif
+    weight: 2
+    data:
+      extension: webp
+      quality: 80

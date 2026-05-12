@@ -1,0 +1,22 @@
+uuid: 960c8265-02b0-4ea8-8902-14da0035b1f4
+langcode: de
+status: true
+dependencies: {  }
+name: rimg_740w
+label: 'Responsive 740w'
+effects:
+  7bb77638-0f15-422b-8925-58f93ada883a:
+    uuid: 7bb77638-0f15-422b-8925-58f93ada883a
+    id: image_scale
+    weight: 1
+    data:
+      width: 740
+      height: null
+      upscale: false
+  7c856611-230d-4e6b-b808-f82f83fd1406:
+    uuid: 7c856611-230d-4e6b-b808-f82f83fd1406
+    id: image_convert_avif
+    weight: 2
+    data:
+      extension: webp
+      quality: 80

@@ -64,9 +64,7 @@
                   {% if media and media.field_media_image.entity %}
                     <div class="relative w-full">
                       <div class="image-box pt-[66%]">
-                        <img src="{{ file_url(media.field_media_image.entity.uri.value) }}"
-                             alt="{{ item_headline }}"
-                             loading="lazy">
+                        {{ responsive_picture(media.field_media_image.entity.uri.value, 'teaser', {alt: item_headline, loading: 'lazy'}) }}
                       </div>
                       {% if item_credits %}
                         <div class="credits text-hpm-darkred-30 absolute origin-bottom-right

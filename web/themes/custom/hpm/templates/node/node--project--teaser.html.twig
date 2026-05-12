@@ -10,10 +10,7 @@
   {% if media and media.field_media_image.entity %}
     <div class="relative w-full">
       <div class="image-box pt-[66%]">
-        <img src="{{ file_url(media.field_media_image.entity.uri.value) }}"
-             {% if hero_srcset %}srcset="{{ hero_srcset.srcset }}" sizes="{{ hero_srcset.sizes }}"{% endif %}
-             alt="{{ node.label }}"
-             loading="lazy">
+        {{ responsive_picture(media.field_media_image.entity.uri.value, 'teaser', {alt: node.label, loading: 'lazy'}) }}
       </div>
       {% if media.field_credits.value %}
         <div class="credits text-hpm-darkred-30 absolute origin-bottom-right
