@@ -4,10 +4,12 @@ status: true
 dependencies:
   config:
     - field.field.paragraph.segments_item.field_anchor_id
+    - field.field.paragraph.segments_item.field_business_field
     - field.field.paragraph.segments_item.field_headline
     - field.field.paragraph.segments_item.field_headline_secondary
     - field.field.paragraph.segments_item.field_image
     - field.field.paragraph.segments_item.field_items
+    - field.field.paragraph.segments_item.field_projects_headline
     - field.field.paragraph.segments_item.field_section_title
     - field.field.paragraph.segments_item.field_services_list
     - field.field.paragraph.segments_item.field_teaser_text
@@ -94,4 +96,6 @@ content:
     weight: 8
     region: content
 hidden:
+  field_business_field: true
+  field_projects_headline: true
   field_teaser_text: true

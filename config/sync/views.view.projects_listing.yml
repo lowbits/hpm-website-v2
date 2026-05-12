@@ -58,7 +58,7 @@ display:
                   is_secondary: false
                 sort_options: false
                 rewrite:
-                  filter_rewrite_values: "Any|Alle Projekte"
+                  filter_rewrite_values: '- Any -|Alle Projekte'
       access:
         type: none
       cache:

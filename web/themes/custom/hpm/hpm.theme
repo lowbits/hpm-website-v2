@@ -125,6 +125,19 @@ function hpm_preprocess_node(&$variables) {
     }
   }
 
+  // Build individually rendered related project teasers for slider.
+  if ($node->bundle() === 'project' && $node->hasField('field_related_projects') && !$node->get('field_related_projects')->isEmpty()) {
+    $view_builder = \Drupal::entityTypeManager()->getViewBuilder('node');
+    $related_teasers = [];
+    foreach ($node->get('field_related_projects') as $item) {
+      $related_node = $item->entity;
+      if ($related_node && $related_node->isPublished()) {
+        $related_teasers[] = $view_builder->view($related_node, 'teaser');
+      }
+    }
+    $variables['related_project_teasers'] = $related_teasers;
+  }
+
   // Build responsive srcset for project and location images.
   if (in_array($node->bundle(), ['project', 'location'])) {
     $image_field = $node->bundle() === 'project' ? 'field_project_image' : 'field_location_image';

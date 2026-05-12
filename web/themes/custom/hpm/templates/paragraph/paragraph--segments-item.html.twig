@@ -124,16 +124,25 @@
       </div>
     {% endif %}
 
-    {# Auto-generated projects from assigned Geschäftsfeld #}
-    {% if projects_view %}
-      {{ attach_library('hpm/slider-teaser') }}
-      <section class="projects-teaser teaser-slider mt-9 sm:mt-11 lg:mt-15 xl:mt-18 js-teaser-slider">
+    {# Nested paragraphs (e.g. manual projects teaser) #}
+    {% for key, item in content.field_items %}
+      {% if key matches '/^\\d+$/' %}
+        {{ item }}
+      {% endif %}
+    {% endfor %}
+  </div>
+
+  {# Auto-generated projects from assigned Geschäftsfeld #}
+  {% if projects_view %}
+    {{ attach_library('hpm/slider-teaser') }}
+    <section class="projects-teaser teaser-slider content-section js-teaser-slider">
+      <div class="section-container">
         <div class="section-title flex flex-col gap-5 mb-8 col-span-12
                     sm:mb-12 sm:flex-row sm:items-center sm:justify-between sm:mb-10
                     md:flex-row md:gap-12
                     lg:mb-12
                     xl:items-center">
-          <h2 class="h3 text-hpm-red">Unsere {{ title }}-Projekte</h2>
+          <h2 class="h3 text-hpm-red">{{ paragraph.field_projects_headline.value ?: 'Unsere ' ~ title ~ '-Projekte' }}</h2>
         </div>
 
         <div class="grid grid-cols-12 gap-x-7 gap-y-10">
@@ -167,14 +176,7 @@
             </div>
           </div>
         </div>
-      </section>
-    {% endif %}
-
-    {# Nested paragraphs (e.g. manual projects teaser) #}
-    {% for key, item in content.field_items %}
-      {% if key matches '/^\\d+$/' %}
-        {{ item }}
-      {% endif %}
-    {% endfor %}
-  </div>
+      </div>
+    </section>
+  {% endif %}
 </section>
