@@ -1,0 +1,25 @@
+{#
+/**
+ * @file
+ * Embedded application form paragraph.
+ *
+ * Renders the reusable application form component inside a beige content-section.
+ * The application_title is taken from the parent node's title.
+ */
+#}
+<section{{ attributes.addClass('content-section') }} data-theme="beige">
+  <div class="section-container grid grid-cols-12 gap-y-7 sm:gap-7">
+    <div class="col-span-12 sm:col-span-10 sm:col-start-2 md:col-span-8 md:col-start-3 lg:col-span-6 lg:col-start-4">
+
+      <h2 class="h2 text-hpm-red text-center mb-4 sm:mb-6 lg:mb-8">
+        {{ 'Bewerben Sie sich'|t }}
+      </h2>
+
+      {% set parent_node = paragraph.getParentEntity() %}
+      {% include '@hpm/templates/components/application-form.html.twig' with {
+        application_title: parent_node ? parent_node.label : 'Initiativbewerbung'
+      } only %}
+
+    </div>
+  </div>
+</section>

@@ -240,7 +240,6 @@
   {% endif %}
 
   {# 8. Bewerbungsformular #}
-  {{ attach_library('hpm/application-form') }}
   <section class="content-section" data-theme="beige">
     <div class="section-container grid grid-cols-12 gap-y-7 sm:gap-7">
       <div class="col-span-12 sm:col-span-10 sm:col-start-2 md:col-span-8 md:col-start-3 lg:col-span-6 lg:col-start-4">
@@ -249,147 +248,9 @@
           {{ 'Bewerben Sie sich'|t }}
         </h2>
 
-        <div id="form-host">
-          <form id="bewerbung" class="application" method="post" action="/api/job-application" enctype="multipart/form-data" novalidate>
-
-            <input type="text" name="website" id="website" autocomplete="off" class="hidden" tabindex="-1" aria-hidden="true" />
-
-            <p>{{ 'Interessiert? Dann freuen wir uns über Ihre aussagekräftige Bewerbung mit Anschreiben (wünschenswert), Lebenslauf, Zertifikaten/ Zeugnissen und Gehaltsvorstellung im PDF-Format (max. 10 MB je Datei) über das folgende Formular.'|t }}</p>
-
-            <input type="hidden" id="application_title" name="application_title" value="{{ label|render|striptags|trim }}">
-
-            <div class="form-item form-success-message" id="form-success" style="display:none;">
-              <h3 class="h3 text-center">
-                {{ 'Vielen Dank für die Übermittlung Ihrer Bewerbung.'|t }}<br>
-                {{ 'Wir melden uns schnellstmöglich bei Ihnen.'|t }}
-              </h3>
-            </div>
-
-            <div id="form-fields">
-
-              <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-7">
-                <div class="form-item">
-                  <label for="vorname" class="label">{{ 'Vorname'|t }}<span class="req">*</span></label>
-                  <input id="vorname" name="vorname" type="text" required />
-                  <p class="error" id="err-vorname" role="alert" aria-live="polite"></p>
-                </div>
-                <div class="form-item">
-                  <label for="nachname" class="label">{{ 'Nachname'|t }}<span class="req">*</span></label>
-                  <input id="nachname" name="nachname" type="text" required />
-                  <p class="error" id="err-nachname" role="alert" aria-live="polite"></p>
-                </div>
-              </div>
-
-              <div class="form-item">
-                <label for="email" class="label">{{ 'E-Mail-Adresse'|t }}<span class="req">*</span></label>
-                <input id="email" name="email" type="email" inputmode="email" autocomplete="email" required />
-                <p class="error" id="err-email" role="alert" aria-live="polite"></p>
-              </div>
-
-              <div class="form-item">
-                <label for="telefon" class="label">{{ 'Telefonnummer'|t }}</label>
-                <input id="telefon" name="telefon" type="tel" inputmode="tel" autocomplete="tel" />
-                <p class="error" id="err-telefon" role="alert" aria-live="polite"></p>
-              </div>
-
-              <div class="form-item">
-                <label for="quelle" class="label">{{ 'Wie sind Sie auf uns aufmerksam geworden?'|t }}</label>
-                <input id="quelle" name="quelle" type="text" />
-                <p class="error" id="err-quelle" role="alert" aria-live="polite"></p>
-              </div>
-
-              <div class="form-item">
-                <label for="standort" class="label">{{ 'Standort auswählen'|t }}<span class="req">*</span></label>
-                <select id="standort" name="standort" class="select" required>
-                  <option value="">{{ 'Bitte auswählen'|t }}</option>
-                  <option value="Augsburg">Augsburg</option>
-                  <option value="Bochum">Bochum</option>
-                  <option value="Berlin">Berlin</option>
-                  <option value="Darmstadt">Darmstadt</option>
-                  <option value="Duisburg">Duisburg</option>
-                  <option value="Hamburg">Hamburg</option>
-                  <option value="Köln">Köln</option>
-                  <option value="München">München</option>
-                  <option value="Nürnberg">Nürnberg</option>
-                </select>
-                <p class="error" id="err-standort" role="alert" aria-live="polite"></p>
-              </div>
-
-              <div class="form-item">
-                <label for="gehalt" class="label">{{ 'Gehaltsvorstellung'|t }}</label>
-                <input id="gehalt" name="gehalt" type="text" />
-                <p class="error" id="err-gehalt" role="alert" aria-live="polite"></p>
-              </div>
-
-              {# File upload with drag-and-drop #}
-              <div class="form-item">
-                <span class="label">
-                  {{ 'Bewerbungsunterlagen (PDF, max. 10 MB gesamt)'|t }}<span class="req">*</span>
-                </span>
-                <div class="drop flex flex-col gap-2 items-center" id="drop">
-                  <p>{{ 'Anschreiben, Lebenslauf, Zeugnisse und Zertifikate'|t }}</p>
-                  <p>{{ 'Per Drag-and-Drop ablegen'|t }}</p>
-                  <p>{{ 'oder'|t }}</p>
-                  <input id="files" name="attachments[]" type="file" accept="application/pdf" class="hidden" multiple />
-                  <label class="btn" for="files">{{ 'Datei(en) auswählen'|t }}</label>
-                  <div id="file-meta" class="file-meta hint" aria-live="polite" style="margin-top:8px;"></div>
-                  <button type="button" id="files-reset" class="hint underline cursor-pointer" style="margin-top:6px; display:none;">
-                    {{ 'Auswahl zurücksetzen'|t }}
-                  </button>
-                </div>
-                <p class="error" id="err-files" role="alert" aria-live="polite"></p>
-              </div>
-
-              <p class="mt-4 sm:mt-5 lg:mt-6">
-                <span class="req">*</span> {{ 'Pflichtfeld'|t }}
-              </p>
-
-              <div class="form-item checkbox-line">
-                <input type="checkbox" id="ds1" name="datenschutz_1" class="appearance-none chk" required>
-                <div class="flex flex-col gap-1">
-                  <label for="ds1">
-                    {{ 'Ich bin damit einverstanden, dass das Unternehmen HÖCKER Project Managers GmbH meine Daten für eine Bewerbung elektronisch verarbeitet. Die Daten werden nicht an Dritte weitergegeben. Mir ist bekannt, dass ich meine Einwilligung jederzeit mit Wirkung für die Zukunft widerrufen kann. Dies kann ich sowohl elektronisch an'|t }}
-                    <a href="mailto:info@hoecker-pm.com" title="{{ 'E-Mail an HÖCKER Project Managers schreiben'|t }}">info@hoecker-pm.com</a>
-                    {{ 'als auch per Brief an HÖCKER Project Managers GmbH, Alte Wittener Straße 70, 44803 Bochum, veranlassen. Weitere Informationen und Widerrufshinweise finden Sie in der'|t }}
-                    <a href="/datenschutz" title="{{ 'Datenschutzerklärung'|t }}">{{ 'Datenschutzerklärung'|t }}</a>.<span class="req">*</span>
-                  </label>
-                  <p class="error" id="err-ds1" aria-live="polite"></p>
-                </div>
-              </div>
-
-              <div class="form-item checkbox-line">
-                <input type="checkbox" id="ds2" name="datenschutz_2" class="appearance-none chk">
-                <div class="flex flex-col gap-1">
-                  <label for="ds2">
-                    {{ 'Ich bin damit einverstanden, dass meine Daten über das aktuelle Bewerbungsverfahren hinaus durch die HÖCKER Project Managers GmbH gespeichert werden und ich auch nach Ende des aktuellen Bewerbungsverfahrens zu neuen Stellen durch die HÖCKER Project Managers GmbH kontaktiert werde.'|t }}
-                  </label>
-                  <p class="error" id="err-ds2" aria-live="polite"></p>
-                </div>
-              </div>
-
-              <div class="form-item checkbox-line">
-                <input type="checkbox" id="ds3" name="datenschutz_3" class="appearance-none chk">
-                <div class="flex flex-col gap-1">
-                  <label for="ds3">
-                    {{ 'Ich bin damit einverstanden, dass die HÖCKER Project Managers GmbH meine Daten auch an die mit ihr verbundenen Unternehmen zur möglichen Besetzung weiterer offener Stellen weitergibt und mich diese Unternehmen ebenfalls kontaktieren dürfen. Hierbei handelt es sich um folgendes Unternehmen: HÖCKER Döinghaus Consultants GmbH.'|t }}
-                  </label>
-                  <p class="error" id="err-ds3" aria-live="polite"></p>
-                </div>
-              </div>
-
-              <div class="actions form-item">
-                <button class="btn mx-auto mt-4 sm:mt-5 lg:mt-6" type="submit" id="submitBtn">
-                  <span class="button-text">{{ 'Abschicken'|t }}</span>
-                  <span class="button-icon" aria-hidden="true">
-                    {% include '@hpm/images/vectors/button-arrow.svg.twig' %}
-                  </span>
-                </button>
-              </div>
-
-            </div>
-
-          </form>
-        </div>
+        {% include '@hpm/templates/components/application-form.html.twig' with {
+          application_title: label|render|striptags|trim
+        } only %}
 
       </div>
     </div>
