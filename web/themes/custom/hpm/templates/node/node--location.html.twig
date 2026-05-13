@@ -42,7 +42,7 @@
         <div class="col-span-12">
           <div class="relative">
             <div class="image-container js-zoom-image">
-              {{ responsive_picture(media.field_media_image.entity.uri.value, 'poster', {alt: label, loading: 'lazy'}) }}
+              {{ responsive_picture(media.field_media_image.entity.uri.value, 'poster', {alt: label|render|striptags|trim, loading: 'lazy'}) }}
             </div>
             {% if media.field_credits.value %}
               <div class="credits absolute right-[-2px] bottom-0 rotate-90 origin-bottom-right sm:right-[-4px]">
