@@ -155,7 +155,7 @@ class ResponsivePictureExtension extends AbstractExtension {
       return new Markup('', 'UTF-8');
     }
 
-    $alt = htmlspecialchars($options['alt'] ?? '', ENT_QUOTES, 'UTF-8');
+    $alt = htmlspecialchars($this->toPlainString($options['alt'] ?? ''), ENT_QUOTES, 'UTF-8');
     $loading = $options['loading'] ?? 'lazy';
     $class = $options['class'] ?? '';
     $fetchpriority = $options['fetchpriority'] ?? '';
@@ -243,7 +243,7 @@ class ResponsivePictureExtension extends AbstractExtension {
     if (!$uri) {
       return new Markup('', 'UTF-8');
     }
-    $alt = htmlspecialchars($options['alt'] ?? '', ENT_QUOTES, 'UTF-8');
+    $alt = htmlspecialchars($this->toPlainString($options['alt'] ?? ''), ENT_QUOTES, 'UTF-8');
     $loading = $options['loading'] ?? 'lazy';
     $class = $options['class'] ?? '';
     $fetchpriority = $options['fetchpriority'] ?? '';
@@ -266,6 +266,22 @@ class ResponsivePictureExtension extends AbstractExtension {
       $attrs .= ' fetchpriority="' . htmlspecialchars($fetchpriority, ENT_QUOTES, 'UTF-8') . '"';
     }
     return new Markup('<img ' . $attrs . '>', 'UTF-8');
+  }
+
+  /**
+   * Safely convert a value to a plain string for use in HTML attributes.
+   */
+  private function toPlainString(mixed $value): string {
+    if (is_string($value)) {
+      return $value;
+    }
+    if (is_object($value) && method_exists($value, '__toString')) {
+      return (string) $value;
+    }
+    if (is_array($value)) {
+      return '';
+    }
+    return (string) ($value ?? '');
   }
 
   /**
