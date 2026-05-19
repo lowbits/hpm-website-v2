@@ -4038,7 +4038,7 @@
     position: relative;
     overflow: hidden;
   }
-  .image-container img {
+  .image-container img, .image-container picture {
     display: block;
     width: 100%;
   }

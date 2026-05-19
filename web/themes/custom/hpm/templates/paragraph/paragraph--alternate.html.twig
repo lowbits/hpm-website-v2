@@ -50,6 +50,11 @@
             {{ paragraph.field_headline.value }}
           </h2>
         {% endif %}
+        {% if paragraph.field_subheadline.value %}
+          <h3 class="h4-serif text-hpm-darkred mb-2">
+            {{ paragraph.field_subheadline.value }}
+          </h3>
+        {% endif %}
         {% if paragraph.field_text.value %}
           <div class="formatted mt-4">
             {{ paragraph.field_text.value|raw }}

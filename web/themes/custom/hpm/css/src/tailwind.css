@@ -251,7 +251,8 @@
 @layer components {
 
   .image-container { @apply relative overflow-hidden; }
-  .image-container img { @apply block w-[100%]; }
+  .image-container img,
+  .image-container picture { @apply block w-[100%]; }
 
   .image-box { @apply relative w-full h-0 pt-[100%]; }
   .image-box img, .image-box picture { @apply absolute w-full h-full inset-0 object-cover; }

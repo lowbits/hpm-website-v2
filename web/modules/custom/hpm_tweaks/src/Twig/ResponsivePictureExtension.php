@@ -103,6 +103,26 @@ class ResponsivePictureExtension extends AbstractExtension {
   ];
 
   /**
+   * Intrinsic dimensions per component type for CLS prevention.
+   *
+   * These width/height values are added to the fallback <img> so the
+   * browser can reserve the correct aspect ratio before loading.
+   * Values from designer specs (g31-marc, 2026-05-17).
+   */
+  private const DIMENSIONS = [
+    'stage_portrait' => [1728, 2246],
+    'stage_landscape' => [1920, 960],
+    'alternate' => [1920, 1280],
+    'teaser' => [1920, 1280],
+    'box_teaser' => [1920, 1280],
+    'stage_media' => [2040, 1347],
+    'poster' => [2000, 1000],
+    'people' => [1110, 1480],
+    'segments_overview' => [1110, 1480],
+    'news_item' => [1740, 1160],
+  ];
+
+  /**
    * Height-based breakpoint map for gallery.
    *
    * Each entry: breakpoint => [1x_height, 2x_height].
@@ -160,6 +180,9 @@ class ResponsivePictureExtension extends AbstractExtension {
     $class = $options['class'] ?? '';
     $fetchpriority = $options['fetchpriority'] ?? '';
 
+    // Intrinsic dimensions for CLS prevention.
+    $dimensions = self::DIMENSIONS[$type] ?? NULL;
+
     if ($type === 'gallery') {
       return $this->buildGalleryPicture($uri, $alt, $loading, $class, $fetchpriority);
     }
@@ -193,7 +216,7 @@ class ResponsivePictureExtension extends AbstractExtension {
       $fallback_srcset = $fallback_src . ' 1x, ' . $this->styleUrl($uri, "rimg_{$w2x}w") . ' 2x';
     }
 
-    return $this->buildPictureTag($sources, $fallback_src, $fallback_srcset, $alt, $loading, $class, $fetchpriority);
+    return $this->buildPictureTag($sources, $fallback_src, $fallback_srcset, $alt, $loading, $class, $fetchpriority, $dimensions);
   }
 
   /**
@@ -258,7 +281,12 @@ class ResponsivePictureExtension extends AbstractExtension {
     $src = $this->styleUrl($uri, "rimg_{$w1x}w");
     $srcset = $src . ' 1x, ' . $this->styleUrl($uri, "rimg_{$w2x}w") . ' 2x';
 
-    $attrs = 'src="' . $src . '" srcset="' . $srcset . '" alt="' . $alt . '" loading="' . $loading . '"';
+    $dimensions = self::DIMENSIONS[$type] ?? NULL;
+    $attrs = 'src="' . $src . '" srcset="' . $srcset . '" alt="' . $alt . '"';
+    if ($dimensions) {
+      $attrs .= ' width="' . $dimensions[0] . '" height="' . $dimensions[1] . '"';
+    }
+    $attrs .= ' loading="' . $loading . '"';
     if ($class) {
       $attrs .= ' class="' . htmlspecialchars($class, ENT_QUOTES, 'UTF-8') . '"';
     }
@@ -310,7 +338,7 @@ class ResponsivePictureExtension extends AbstractExtension {
   /**
    * Assemble the final <picture> tag.
    */
-  private function buildPictureTag(array $sources, string $fallback_src, string $fallback_srcset, string $alt, string $loading, string $class, string $fetchpriority): Markup {
+  private function buildPictureTag(array $sources, string $fallback_src, string $fallback_srcset, string $alt, string $loading, string $class, string $fetchpriority, ?array $dimensions = NULL): Markup {
     $html = '<picture>' . "\n";
     foreach ($sources as $source) {
       $html .= '  ' . $source . "\n";
@@ -320,6 +348,9 @@ class ResponsivePictureExtension extends AbstractExtension {
       $img_attrs .= ' srcset="' . $fallback_srcset . '"';
     }
     $img_attrs .= ' alt="' . $alt . '"';
+    if ($dimensions) {
+      $img_attrs .= ' width="' . $dimensions[0] . '" height="' . $dimensions[1] . '"';
+    }
     $img_attrs .= ' loading="' . $loading . '"';
     if ($class) {
       $img_attrs .= ' class="' . htmlspecialchars($class, ENT_QUOTES, 'UTF-8') . '"';
