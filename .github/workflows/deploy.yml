@@ -40,6 +40,11 @@ jobs:
       - name: Install Composer dependencies
         run: composer install --no-dev --optimize-autoloader --no-interaction --no-progress
 
+      - name: Debug variables
+        run: |
+          echo "HOST=[$(echo '${{ vars.SSH_HOST }}' | cat -A)]"
+          echo "USER=[$(echo '${{ vars.SSH_USER }}' | cat -A)]"
+
       - name: Setup SSH key
         env:
           SSH_HOST: ${{ vars.SSH_HOST }}
