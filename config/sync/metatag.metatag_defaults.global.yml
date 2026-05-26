@@ -9,3 +9,7 @@ label: Global
 tags:
   canonical_url: '[current-page:url]'
   title: '[current-page:title] | HÖCKER Project Managers'
+  og_site_name: 'HÖCKER Project Managers'
+  og_type: website
+  og_title: '[current-page:title] | HÖCKER Project Managers'
+  og_url: '[current-page:url]'

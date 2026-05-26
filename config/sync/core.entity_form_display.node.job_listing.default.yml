@@ -16,10 +16,8 @@ dependencies:
     - field.field.node.job_listing.field_profile
     - field.field.node.job_listing.field_starting_time
     - node.type.job_listing
-    - taxonomy.vocabulary.job_image_variant
   module:
     - field_group
-    - paragraphs
     - path
     - text
 third_party_settings:
@@ -167,6 +165,13 @@ content:
     region: content
     settings:
       include_locked: true
+    third_party_settings: {  }
+  metatag:
+    type: metatag_firehose
+    weight: 99
+    region: content
+    settings:
+      sidebar: true
     third_party_settings: {  }
   path:
     type: path

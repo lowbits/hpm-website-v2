@@ -10,3 +10,7 @@ tags:
   title: '[node:field_city] | HÖCKER Project Managers'
   description: '[node:summary]'
   canonical_url: '[node:url]'
+  og_type: article
+  og_title: '[node:field_city] | HÖCKER Project Managers'
+  og_description: '[node:summary]'
+  og_url: '[node:url]'

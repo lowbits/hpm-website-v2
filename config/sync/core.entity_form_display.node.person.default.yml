@@ -15,7 +15,6 @@ dependencies:
   module:
     - media_library
     - path
-    - text
 id: node.person.default
 targetEntityType: node
 bundle: person
@@ -65,6 +64,13 @@ content:
     region: content
     settings:
       include_locked: true
+    third_party_settings: {  }
+  metatag:
+    type: metatag_firehose
+    weight: 99
+    region: content
+    settings:
+      sidebar: true
     third_party_settings: {  }
   path:
     type: path

@@ -11,8 +11,8 @@ dependencies:
     - node.type.article
   module:
     - comment
-    - image
     - path
+    - svg_image
     - text
 _core:
   default_config_hash: ewbd6G2uX456-bgwseM2Q-KQG3RkASoyHmTh-XR3oLU
@@ -67,6 +67,13 @@ content:
     region: content
     settings:
       include_locked: true
+    third_party_settings: {  }
+  metatag:
+    type: metatag_firehose
+    weight: 99
+    region: content
+    settings:
+      sidebar: true
     third_party_settings: {  }
   path:
     type: path

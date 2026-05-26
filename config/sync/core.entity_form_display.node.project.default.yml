@@ -11,12 +11,12 @@ dependencies:
     - field.field.node.project.field_external_link
     - field.field.node.project.field_gallery
     - field.field.node.project.field_meta_label
-    - field.field.node.project.field_short_title
     - field.field.node.project.field_project_image
     - field.field.node.project.field_project_status
     - field.field.node.project.field_related_projects
     - field.field.node.project.field_runtime
     - field.field.node.project.field_services
+    - field.field.node.project.field_short_title
     - field.field.node.project.field_teaser_text
     - node.type.project
   module:
@@ -247,6 +247,13 @@ content:
     region: content
     settings:
       include_locked: true
+    third_party_settings: {  }
+  metatag:
+    type: metatag_firehose
+    weight: 99
+    region: content
+    settings:
+      sidebar: true
     third_party_settings: {  }
   path:
     type: path

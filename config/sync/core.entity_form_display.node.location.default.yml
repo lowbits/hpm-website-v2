@@ -16,14 +16,13 @@ dependencies:
     - field.field.node.location.field_maps_link
     - field.field.node.location.field_meta_label
     - field.field.node.location.field_paragraphs
-    - field.field.node.location.field_teaser_caption
-    - field.field.node.location.field_teaser_image
     - field.field.node.location.field_phone
     - field.field.node.location.field_project
     - field.field.node.location.field_team_members
+    - field.field.node.location.field_teaser_caption
+    - field.field.node.location.field_teaser_image
     - node.type.location
   module:
-    - entity_reference_revisions
     - field_group
     - link
     - media_library
@@ -316,6 +315,13 @@ content:
     region: content
     settings:
       include_locked: true
+    third_party_settings: {  }
+  metatag:
+    type: metatag_firehose
+    weight: 99
+    region: content
+    settings:
+      sidebar: true
     third_party_settings: {  }
   path:
     type: path

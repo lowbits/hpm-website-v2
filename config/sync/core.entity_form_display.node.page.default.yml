@@ -6,6 +6,7 @@ dependencies:
     - field.field.node.page.field_paragraphs
     - node.type.page
   module:
+    - paragraphs
     - path
 _core:
   default_config_hash: MzSYzZbqqlwSM8mtLwEdCerBZRNGvHZntu5u_Gao8LY
@@ -44,6 +45,13 @@ content:
     region: content
     settings:
       include_locked: true
+    third_party_settings: {  }
+  metatag:
+    type: metatag_firehose
+    weight: 99
+    region: content
+    settings:
+      sidebar: true
     third_party_settings: {  }
   path:
     type: path
