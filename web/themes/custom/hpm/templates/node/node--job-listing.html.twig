@@ -249,7 +249,8 @@
         </h2>
 
         {% include '@hpm/templates/components/application-form.html.twig' with {
-          application_title: label|render|striptags|trim
+          application_title: label|render|striptags|trim,
+          job_locations: job_locations|default([])
         } only %}
 
       </div>

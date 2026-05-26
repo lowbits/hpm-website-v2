@@ -59,17 +59,16 @@
 
       <div class="form-item">
         <label for="standort" class="label">{{ 'Standort auswählen'|t }}<span class="req">*</span></label>
+        {% set locations = ['Augsburg', 'Berlin', 'Bochum', 'Darmstadt', 'Duisburg', 'Hamburg', 'Köln', 'München', 'Nürnberg'] %}
+        {% set is_bundesweit = 'bundesweit' in job_locations|default([]) %}
+        {% set has_job_locations = job_locations|default([])|length > 0 and not is_bundesweit %}
         <select id="standort" name="standort" class="select" required>
           <option value="">{{ 'Bitte auswählen'|t }}</option>
-          <option value="Augsburg">Augsburg</option>
-          <option value="Bochum">Bochum</option>
-          <option value="Berlin">Berlin</option>
-          <option value="Darmstadt">Darmstadt</option>
-          <option value="Duisburg">Duisburg</option>
-          <option value="Hamburg">Hamburg</option>
-          <option value="Köln">Köln</option>
-          <option value="München">München</option>
-          <option value="Nürnberg">Nürnberg</option>
+          {% for location in locations %}
+            {% if not has_job_locations or location in job_locations %}
+              <option value="{{ location }}"{% if has_job_locations and job_locations|length == 1 %} selected{% endif %}>{{ location }}</option>
+            {% endif %}
+          {% endfor %}
         </select>
         <p class="error" id="err-standort" role="alert" aria-live="polite"></p>
       </div>

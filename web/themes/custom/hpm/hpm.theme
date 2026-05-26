@@ -129,6 +129,17 @@ function hpm_preprocess_node(&$variables) {
         $variables[$var_name] = reset($blocks);
       }
     }
+
+    // Collect job location names for form pre-selection.
+    $job_locations = [];
+    if ($node->hasField('field_job_location') && !$node->get('field_job_location')->isEmpty()) {
+      foreach ($node->get('field_job_location') as $item) {
+        if ($item->entity) {
+          $job_locations[] = $item->entity->getName();
+        }
+      }
+    }
+    $variables['job_locations'] = $job_locations;
   }
 
   // Format news date in German (e.g. "12. Mai 2026").
