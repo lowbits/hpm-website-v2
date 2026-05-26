@@ -1,0 +1,94 @@
+name: Deploy to Host Europe
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+env:
+  DEPLOY_PATH: /home/d9wk9gxzatk4/public_html/www_hpm_drupal
+
+jobs:
+  deploy:
+    name: Build & Deploy
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+          cache-dependency-path: web/themes/custom/hpm/package-lock.json
+
+      - name: Build theme assets
+        working-directory: web/themes/custom/hpm
+        run: |
+          npm ci
+          npm run build
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: 8.3
+          tools: composer:v2
+
+      - name: Install Composer dependencies
+        run: composer install --no-dev --optimize-autoloader --no-interaction --no-progress
+
+      - name: Setup SSH key
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/deploy_key
+          chmod 600 ~/.ssh/deploy_key
+          ssh-keyscan -H ${{ vars.SSH_HOST }} >> ~/.ssh/known_hosts
+
+      - name: Deploy via rsync
+        run: |
+          rsync -azP --delete \
+            --exclude='.git/' \
+            --exclude='.ddev/' \
+            --exclude='.github/' \
+            --exclude='node_modules/' \
+            --exclude='web/sites/default/settings.local.php' \
+            --exclude='web/sites/default/files/' \
+            --exclude='docker/' \
+            --exclude='Dockerfile' \
+            --exclude='.mcp.json' \
+            --exclude='MIGRATION-PLAN.md' \
+            --exclude='*.numbers' \
+            -e "ssh -i ~/.ssh/deploy_key -o StrictHostKeyChecking=no" \
+            ./ ${{ vars.SSH_USER }}@${{ vars.SSH_HOST }}:${{ env.DEPLOY_PATH }}/
+
+      - name: Run Drupal deploy tasks
+        run: |
+          ssh -i ~/.ssh/deploy_key -o StrictHostKeyChecking=no \
+            ${{ vars.SSH_USER }}@${{ vars.SSH_HOST }} << 'DEPLOY'
+          cd /home/d9wk9gxzatk4/public_html/www_hpm_drupal
+
+          # Check if Drupal is bootstrapped
+          if ./vendor/bin/drush status --field=bootstrap 2>/dev/null | grep -q "Successful"; then
+            echo "==> Enabling maintenance mode..."
+            ./vendor/bin/drush state:set system.maintenance_mode 1 --input-format=integer
+
+            echo "==> Running database updates..."
+            ./vendor/bin/drush updatedb -y
+
+            echo "==> Importing config..."
+            ./vendor/bin/drush config:import -y
+
+            echo "==> Rebuilding cache..."
+            ./vendor/bin/drush cache:rebuild
+
+            echo "==> Disabling maintenance mode..."
+            ./vendor/bin/drush state:set system.maintenance_mode 0 --input-format=integer
+
+            echo "==> Deploy complete!"
+          else
+            echo "==> Drupal not yet installed — skipping deploy tasks."
+            echo "    Run initial setup manually."
+          fi
+          DEPLOY
