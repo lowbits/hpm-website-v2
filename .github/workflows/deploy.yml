@@ -63,6 +63,7 @@ jobs:
           cd ${BASE_PATH}/releases
           GIT_SSH_COMMAND="ssh -i ~/.ssh/id_github_deploy -o StrictHostKeyChecking=no" \
             git clone --depth 1 --branch main ${REPO_URL} ${RELEASE}
+          rm -rf ${RELEASE}/.git
           CLONE
 
           # Upload built theme assets
