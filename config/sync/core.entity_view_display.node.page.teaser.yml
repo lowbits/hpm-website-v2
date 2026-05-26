@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - core.entity_view_mode.node.teaser
+    - field.field.node.page.field_metatag
     - field.field.node.page.field_paragraphs
     - node.type.page
   module:
@@ -19,5 +20,6 @@ content:
     weight: 101
     region: content
 hidden:
+  field_metatag: true
   field_paragraphs: true
   langcode: true

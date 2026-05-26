@@ -3,6 +3,7 @@ langcode: de
 status: true
 dependencies:
   config:
+    - field.field.node.job_listing.body
     - field.field.node.job_listing.field_benefits
     - field.field.node.job_listing.field_challenges
     - field.field.node.job_listing.field_contact_person
@@ -10,6 +11,7 @@ dependencies:
     - field.field.node.job_listing.field_intro_text
     - field.field.node.job_listing.field_job_image_variant
     - field.field.node.job_listing.field_job_location
+    - field.field.node.job_listing.field_metatag
     - field.field.node.job_listing.field_offer
     - field.field.node.job_listing.field_paragraphs
     - field.field.node.job_listing.field_profile
@@ -95,5 +97,6 @@ hidden:
   body: true
   field_contact_person: true
   field_job_image_variant: true
+  field_metatag: true
   langcode: true
   links: true

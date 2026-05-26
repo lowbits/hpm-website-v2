@@ -7,11 +7,12 @@ dependencies:
     - field.field.node.article.body
     - field.field.node.article.comment
     - field.field.node.article.field_image
+    - field.field.node.article.field_metatag
     - field.field.node.article.field_tags
     - image.style.medium
     - node.type.article
   module:
-    - image
+    - svg_image
     - text
     - user
 _core:
@@ -53,4 +54,5 @@ content:
     region: content
 hidden:
   comment: true
+  field_metatag: true
   langcode: true

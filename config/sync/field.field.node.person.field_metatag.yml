@@ -1,0 +1,21 @@
+uuid: 8e73bf26-0db4-4921-b97e-8464d6fb203c
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_metatag
+    - node.type.person
+  module:
+    - metatag
+id: node.person.field_metatag
+field_name: field_metatag
+entity_type: node
+bundle: person
+label: 'Meta tags'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: metatag

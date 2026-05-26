@@ -6,6 +6,7 @@ dependencies:
     - field.field.node.person.field_credits
     - field.field.node.person.field_description
     - field.field.node.person.field_email
+    - field.field.node.person.field_metatag
     - field.field.node.person.field_person_image
     - field.field.node.person.field_person_location
     - field.field.node.person.field_person_role
@@ -14,6 +15,7 @@ dependencies:
     - node.type.person
   module:
     - media_library
+    - metatag
     - path
 id: node.person.default
 targetEntityType: node
@@ -33,6 +35,14 @@ content:
     settings:
       placeholder: ''
       size: 60
+    third_party_settings: {  }
+  field_metatag:
+    type: metatag_firehose
+    weight: 90
+    region: content
+    settings:
+      sidebar: true
+      use_details: true
     third_party_settings: {  }
   field_person_image:
     type: media_library_widget
@@ -67,10 +77,10 @@ content:
     third_party_settings: {  }
   metatag:
     type: metatag_firehose
-    weight: 99
+    weight: 90
     region: content
     settings:
-      sidebar: true
+      sidebar: false
     third_party_settings: {  }
   path:
     type: path

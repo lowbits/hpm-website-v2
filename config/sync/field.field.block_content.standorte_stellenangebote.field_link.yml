@@ -9,13 +9,13 @@ id: block_content.standorte_stellenangebote.field_link
 field_name: field_link
 entity_type: block_content
 bundle: standorte_stellenangebote
-label: 'Button-Link'
+label: Button-Link
 description: 'Link und Text für den Button, z.B. "Alle Standorte".'
 required: false
 translatable: true
 default_value: {  }
 default_value_callback: ''
 settings:
-  link_type: 1
   title: 1
+  link_type: 1
 field_type: link

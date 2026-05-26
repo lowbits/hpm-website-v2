@@ -5,11 +5,13 @@ dependencies:
   config:
     - field.field.node.landing_page.field_description
     - field.field.node.landing_page.field_meta_label
+    - field.field.node.landing_page.field_metatag
     - field.field.node.landing_page.field_og_image
     - field.field.node.landing_page.field_paragraphs
     - node.type.landing_page
   module:
     - media_library
+    - metatag
     - paragraphs
     - path
 id: node.landing_page.default
@@ -38,6 +40,14 @@ content:
     settings:
       size: 60
       placeholder: ''
+    third_party_settings: {  }
+  field_metatag:
+    type: metatag_firehose
+    weight: 90
+    region: content
+    settings:
+      sidebar: true
+      use_details: true
     third_party_settings: {  }
   field_og_image:
     type: media_library_widget
@@ -74,10 +84,10 @@ content:
     third_party_settings: {  }
   metatag:
     type: metatag_firehose
-    weight: 99
+    weight: 90
     region: content
     settings:
-      sidebar: true
+      sidebar: false
     third_party_settings: {  }
   path:
     type: path

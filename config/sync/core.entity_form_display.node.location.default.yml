@@ -15,6 +15,7 @@ dependencies:
     - field.field.node.location.field_location_tag
     - field.field.node.location.field_maps_link
     - field.field.node.location.field_meta_label
+    - field.field.node.location.field_metatag
     - field.field.node.location.field_paragraphs
     - field.field.node.location.field_phone
     - field.field.node.location.field_project
@@ -26,6 +27,7 @@ dependencies:
     - field_group
     - link
     - media_library
+    - metatag
     - paragraphs
     - path
     - telephone
@@ -248,6 +250,14 @@ content:
       size: 60
       placeholder: 'z.B. Standort, Hauptsitz, Niederlassung'
     third_party_settings: {  }
+  field_metatag:
+    type: metatag_firehose
+    weight: 90
+    region: content
+    settings:
+      sidebar: true
+      use_details: true
+    third_party_settings: {  }
   field_paragraphs:
     type: paragraphs
     weight: 25
@@ -318,10 +328,10 @@ content:
     third_party_settings: {  }
   metatag:
     type: metatag_firehose
-    weight: 99
+    weight: 90
     region: content
     settings:
-      sidebar: true
+      sidebar: false
     third_party_settings: {  }
   path:
     type: path

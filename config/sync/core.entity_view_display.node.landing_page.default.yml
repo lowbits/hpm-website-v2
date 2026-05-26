@@ -5,6 +5,7 @@ dependencies:
   config:
     - field.field.node.landing_page.field_description
     - field.field.node.landing_page.field_meta_label
+    - field.field.node.landing_page.field_metatag
     - field.field.node.landing_page.field_og_image
     - field.field.node.landing_page.field_paragraphs
     - node.type.landing_page
@@ -33,5 +34,6 @@ content:
 hidden:
   field_description: true
   field_meta_label: true
+  field_metatag: true
   field_og_image: true
   langcode: true

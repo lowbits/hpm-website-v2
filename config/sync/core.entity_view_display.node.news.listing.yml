@@ -5,6 +5,9 @@ dependencies:
   config:
     - core.entity_view_mode.node.listing
     - field.field.node.news.body
+    - field.field.node.news.field_external_link
+    - field.field.node.news.field_link_new_window
+    - field.field.node.news.field_metatag
     - field.field.node.news.field_news_category
     - field.field.node.news.field_news_date
     - field.field.node.news.field_news_image
@@ -12,6 +15,7 @@ dependencies:
   module:
     - datetime
     - text
+    - user
 id: node.news.listing
 targetEntityType: node
 bundle: news
@@ -51,6 +55,8 @@ content:
     region: content
 hidden:
   field_external_link: true
+  field_link_new_window: true
+  field_metatag: true
   langcode: true
   links: true
   search_api_excerpt: true

@@ -11,6 +11,7 @@ dependencies:
     - field.field.node.project.field_external_link
     - field.field.node.project.field_gallery
     - field.field.node.project.field_meta_label
+    - field.field.node.project.field_metatag
     - field.field.node.project.field_project_image
     - field.field.node.project.field_project_status
     - field.field.node.project.field_related_projects
@@ -23,6 +24,7 @@ dependencies:
     - field_group
     - link
     - media_library
+    - metatag
     - path
     - text
 third_party_settings:
@@ -179,6 +181,14 @@ content:
       size: 60
       placeholder: 'z.B. Projekt'
     third_party_settings: {  }
+  field_metatag:
+    type: metatag_firehose
+    weight: 90
+    region: content
+    settings:
+      sidebar: true
+      use_details: true
+    third_party_settings: {  }
   field_project_image:
     type: media_library_widget
     weight: 2
@@ -250,10 +260,10 @@ content:
     third_party_settings: {  }
   metatag:
     type: metatag_firehose
-    weight: 99
+    weight: 90
     region: content
     settings:
-      sidebar: true
+      sidebar: false
     third_party_settings: {  }
   path:
     type: path

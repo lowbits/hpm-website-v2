@@ -3,9 +3,11 @@ langcode: de
 status: true
 dependencies:
   config:
+    - field.field.node.page.field_metatag
     - field.field.node.page.field_paragraphs
     - node.type.page
   module:
+    - metatag
     - paragraphs
     - path
 _core:
@@ -20,6 +22,14 @@ content:
     weight: 10
     region: content
     settings: {  }
+    third_party_settings: {  }
+  field_metatag:
+    type: metatag_firehose
+    weight: 90
+    region: content
+    settings:
+      sidebar: true
+      use_details: true
     third_party_settings: {  }
   field_paragraphs:
     type: paragraphs
@@ -48,10 +58,10 @@ content:
     third_party_settings: {  }
   metatag:
     type: metatag_firehose
-    weight: 99
+    weight: 90
     region: content
     settings:
-      sidebar: true
+      sidebar: false
     third_party_settings: {  }
   path:
     type: path

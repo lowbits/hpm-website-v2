@@ -15,12 +15,13 @@ dependencies:
     - field.field.node.location.field_location_tag
     - field.field.node.location.field_maps_link
     - field.field.node.location.field_meta_label
+    - field.field.node.location.field_metatag
     - field.field.node.location.field_paragraphs
-    - field.field.node.location.field_teaser_caption
-    - field.field.node.location.field_teaser_image
     - field.field.node.location.field_phone
     - field.field.node.location.field_project
     - field.field.node.location.field_team_members
+    - field.field.node.location.field_teaser_caption
+    - field.field.node.location.field_teaser_image
     - node.type.location
   module:
     - entity_reference_revisions
@@ -112,6 +113,7 @@ hidden:
   field_location_tag: true
   field_maps_link: true
   field_meta_label: true
+  field_metatag: true
   field_phone: true
   field_project: true
   langcode: true

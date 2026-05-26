@@ -11,6 +11,7 @@ dependencies:
     - field.field.node.job_listing.field_intro_text
     - field.field.node.job_listing.field_job_image_variant
     - field.field.node.job_listing.field_job_location
+    - field.field.node.job_listing.field_metatag
     - field.field.node.job_listing.field_offer
     - field.field.node.job_listing.field_paragraphs
     - field.field.node.job_listing.field_profile
@@ -18,6 +19,7 @@ dependencies:
     - node.type.job_listing
   module:
     - field_group
+    - metatag
     - path
     - text
 third_party_settings:
@@ -135,6 +137,14 @@ content:
       size: 60
       placeholder: ''
     third_party_settings: {  }
+  field_metatag:
+    type: metatag_firehose
+    weight: 90
+    region: content
+    settings:
+      sidebar: true
+      use_details: true
+    third_party_settings: {  }
   field_offer:
     type: text_textarea
     weight: 12
@@ -168,10 +178,10 @@ content:
     third_party_settings: {  }
   metatag:
     type: metatag_firehose
-    weight: 99
+    weight: 90
     region: content
     settings:
-      sidebar: true
+      sidebar: false
     third_party_settings: {  }
   path:
     type: path
