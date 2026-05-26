@@ -41,13 +41,18 @@ jobs:
         run: composer install --no-dev --optimize-autoloader --no-interaction --no-progress
 
       - name: Setup SSH key
+        env:
+          SSH_HOST: ${{ vars.SSH_HOST }}
         run: |
           mkdir -p ~/.ssh
           echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/deploy_key
           chmod 600 ~/.ssh/deploy_key
-          ssh-keyscan -H ${{ vars.SSH_HOST }} >> ~/.ssh/known_hosts
+          ssh-keyscan -H "$SSH_HOST" >> ~/.ssh/known_hosts
 
       - name: Deploy via rsync
+        env:
+          SSH_HOST: ${{ vars.SSH_HOST }}
+          SSH_USER: ${{ vars.SSH_USER }}
         run: |
           rsync -azP --delete \
             --exclude='.git/' \
@@ -62,12 +67,15 @@ jobs:
             --exclude='MIGRATION-PLAN.md' \
             --exclude='*.numbers' \
             -e "ssh -i ~/.ssh/deploy_key -o StrictHostKeyChecking=no" \
-            ./ ${{ vars.SSH_USER }}@${{ vars.SSH_HOST }}:${{ env.DEPLOY_PATH }}/
+            ./ "${SSH_USER}@${SSH_HOST}:${{ env.DEPLOY_PATH }}/"
 
       - name: Run Drupal deploy tasks
+        env:
+          SSH_HOST: ${{ vars.SSH_HOST }}
+          SSH_USER: ${{ vars.SSH_USER }}
         run: |
           ssh -i ~/.ssh/deploy_key -o StrictHostKeyChecking=no \
-            ${{ vars.SSH_USER }}@${{ vars.SSH_HOST }} << 'DEPLOY'
+            "${SSH_USER}@${SSH_HOST}" << 'DEPLOY'
           cd /home/d9wk9gxzatk4/public_html/www_hpm_drupal
 
           # Check if Drupal is bootstrapped
