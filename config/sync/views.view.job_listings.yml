@@ -4,9 +4,11 @@ status: true
 dependencies:
   config:
     - core.entity_view_mode.node.teaser
+    - field.storage.node.field_experience_level
     - node.type.job_listing
   module:
     - node
+    - taxonomy
 id: job_listings
 label: Stellenangebote
 module: views
@@ -32,6 +34,19 @@ display:
       cache:
         type: tag
       sorts:
+        weight:
+          id: weight
+          table: taxonomy_term_field_data
+          field: weight
+          relationship: field_experience_level
+          group_type: group
+          admin_label: ''
+          plugin_id: standard
+          order: ASC
+          expose:
+            label: ''
+            field_identifier: ''
+          exposed: false
         created:
           id: created
           table: node_field_data
@@ -63,6 +78,16 @@ display:
           view_mode: teaser
       query:
         type: views_query
+      relationships:
+        field_experience_level:
+          id: field_experience_level
+          table: node__field_experience_level
+          field: field_experience_level
+          relationship: none
+          group_type: group
+          admin_label: Erfahrungslevel
+          plugin_id: standard
+          required: false
       display_extenders: {  }
     cache_metadata:
       max-age: -1
