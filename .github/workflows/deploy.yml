@@ -31,20 +31,6 @@ jobs:
           npm ci
           npm run build
 
-      - name: Setup PHP
-        uses: shivammathur/setup-php@v2
-        with:
-          php-version: 8.3
-          tools: composer:v2
-
-      - name: Install Composer dependencies
-        run: composer install --no-dev --optimize-autoloader --no-interaction --no-progress
-
-      - name: Debug variables
-        run: |
-          echo "HOST=[$(echo '${{ vars.SSH_HOST }}' | cat -A)]"
-          echo "USER=[$(echo '${{ vars.SSH_USER }}' | cat -A)]"
-
       - name: Setup SSH key
         env:
           SSH_HOST: ${{ vars.SSH_HOST }}
@@ -64,6 +50,7 @@ jobs:
             --exclude='.ddev/' \
             --exclude='.github/' \
             --exclude='node_modules/' \
+            --exclude='vendor/' \
             --exclude='web/sites/default/settings.local.php' \
             --exclude='web/sites/default/files/' \
             --exclude='docker/' \
@@ -74,7 +61,7 @@ jobs:
             -e "ssh -i ~/.ssh/deploy_key -o StrictHostKeyChecking=no" \
             ./ "${SSH_USER}@${SSH_HOST}:${{ env.DEPLOY_PATH }}/"
 
-      - name: Run Drupal deploy tasks
+      - name: Install dependencies & run deploy tasks
         env:
           SSH_HOST: ${{ vars.SSH_HOST }}
           SSH_USER: ${{ vars.SSH_USER }}
@@ -82,6 +69,9 @@ jobs:
           ssh -i ~/.ssh/deploy_key -o StrictHostKeyChecking=no \
             "${SSH_USER}@${SSH_HOST}" << 'DEPLOY'
           cd /home/d9wk9gxzatk4/public_html/www_hpm_drupal
+
+          echo "==> Installing Composer dependencies..."
+          composer install --no-dev --optimize-autoloader --no-interaction --no-progress
 
           # Check if Drupal is bootstrapped
           if ./vendor/bin/drush status --field=bootstrap 2>/dev/null | grep -q "Successful"; then
