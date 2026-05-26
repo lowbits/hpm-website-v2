@@ -51,6 +51,10 @@ jobs:
             --exclude='.github/' \
             --exclude='node_modules/' \
             --exclude='vendor/' \
+            --exclude='web/core/' \
+            --exclude='web/modules/contrib/' \
+            --exclude='web/themes/contrib/' \
+            --exclude='web/profiles/contrib/' \
             --exclude='web/sites/default/settings.local.php' \
             --exclude='web/sites/default/files/' \
             --exclude='docker/' \
