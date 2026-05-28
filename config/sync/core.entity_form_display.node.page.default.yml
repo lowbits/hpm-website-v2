@@ -3,7 +3,6 @@ langcode: de
 status: true
 dependencies:
   config:
-    - field.field.node.page.body
     - field.field.node.page.field_description
     - field.field.node.page.field_metatag
     - field.field.node.page.field_paragraphs
@@ -110,6 +109,5 @@ content:
     settings: {  }
     third_party_settings: {  }
 hidden:
-  body: true
   promote: true
   sticky: true
