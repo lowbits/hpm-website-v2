@@ -6,7 +6,6 @@ namespace Drupal\hpm_forms\Controller;
 
 use Drupal\Core\Controller\ControllerBase;
 use Drupal\Core\File\FileSystemInterface;
-use Drupal\Core\Mail\MailManagerInterface;
 use Drupal\file\Entity\File;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -17,9 +16,28 @@ use Symfony\Component\HttpFoundation\Request;
  */
 class JobApplicationController extends ControllerBase {
 
+  /**
+   * Mail recipient.
+   */
+  const MAIL_TO = 'karriere@hoecker-pm.net';
+
+  /**
+   * Envelope sender / From address.
+   */
+  const MAIL_FROM_ADDRESS = 'noreply@hoecker-pm.com';
+
+  /**
+   * From display name.
+   */
+  const MAIL_FROM_NAME = 'HOECKER Project Managers - Bewerbung';
+
+  /**
+   * Default subject line.
+   */
+  const MAIL_SUBJECT = 'Neue Bewerbung über das HPM Website-Formular';
+
   public function __construct(
     protected FileSystemInterface $fileSystem,
-    protected MailManagerInterface $mailManager,
   ) {}
 
   /**
@@ -28,7 +46,6 @@ class JobApplicationController extends ControllerBase {
   public static function create(ContainerInterface $container): static {
     return new static(
       $container->get('file_system'),
-      $container->get('plugin.manager.mail'),
     );
   }
 
@@ -43,14 +60,14 @@ class JobApplicationController extends ControllerBase {
 
     // Collect field values.
     $fields = [
-      'vorname' => $request->request->get('vorname', ''),
-      'nachname' => $request->request->get('nachname', ''),
-      'email' => $request->request->get('email', ''),
-      'telefon' => $request->request->get('telefon', ''),
-      'quelle' => $request->request->get('quelle', ''),
-      'standort' => $request->request->get('standort', ''),
-      'gehalt' => $request->request->get('gehalt', ''),
-      'application_title' => $request->request->get('application_title', ''),
+      'vorname' => $this->clean($request->request->get('vorname', '')),
+      'nachname' => $this->clean($request->request->get('nachname', '')),
+      'email' => $this->clean($request->request->get('email', '')),
+      'telefon' => $this->clean($request->request->get('telefon', '')),
+      'quelle' => $this->clean($request->request->get('quelle', '')),
+      'standort' => $this->clean($request->request->get('standort', '')),
+      'gehalt' => $this->clean($request->request->get('gehalt', '')),
+      'application_title' => $this->clean($request->request->get('application_title', '')),
     ];
 
     // Basic server-side validation.
@@ -76,7 +93,7 @@ class JobApplicationController extends ControllerBase {
     }
 
     // Handle file uploads.
-    $attachmentPaths = [];
+    $attachments = [];
     $attachmentFids = [];
     $uploadedFiles = $request->files->get('attachments', []);
     if (!is_array($uploadedFiles)) {
@@ -121,14 +138,26 @@ class JobApplicationController extends ControllerBase {
         ]);
         $file->save();
         $attachmentFids[] = $file->id();
-        $attachmentPaths[] = $this->fileSystem->realpath($uri);
+
+        $realpath = $this->fileSystem->realpath($uri);
+        $attachments[] = [
+          'path' => $realpath,
+          'orig' => $filename,
+          'clean' => $this->normalizeFilename($filename),
+          'size' => $uploadedFile->getSize(),
+        ];
       }
     }
 
+    // Consent values.
+    $ds1 = (bool) $request->request->get('datenschutz_1');
+    $ds2 = (bool) $request->request->get('datenschutz_2');
+    $ds3 = (bool) $request->request->get('datenschutz_3');
+
     // Store as webform submission.
-    $webformStorage = $this->entityTypeManager()->getStorage('webform_submission');
     $webform = $this->entityTypeManager()->getStorage('webform')->load('job_application');
     if ($webform) {
+      $webformStorage = $this->entityTypeManager()->getStorage('webform_submission');
       $values = [
         'webform_id' => 'job_application',
         'data' => [
@@ -142,54 +171,131 @@ class JobApplicationController extends ControllerBase {
           'salary_expectation' => $fields['gehalt'],
           'resume' => $attachmentFids[0] ?? NULL,
           'cover_letter' => $attachmentFids[1] ?? NULL,
-          'privacy_data' => (bool) $request->request->get('datenschutz_1'),
-          'privacy_storage' => (bool) $request->request->get('datenschutz_2'),
-          'privacy_contact' => (bool) $request->request->get('datenschutz_3'),
+          'privacy_data' => $ds1,
+          'privacy_storage' => $ds2,
+          'privacy_contact' => $ds3,
         ],
       ];
       $submission = $webformStorage->create($values);
       $submission->save();
     }
 
-    // Send email notification.
-    $jobTitle = $fields['application_title'] ?: 'Initiativbewerbung';
-    $name = trim($fields['vorname'] . ' ' . $fields['nachname']);
-
-    $body = [];
-    $body[] = "Neue Bewerbung: {$jobTitle}";
-    $body[] = '';
-    $body[] = "Name: {$name}";
-    $body[] = "E-Mail: {$fields['email']}";
-    if ($fields['telefon']) {
-      $body[] = "Telefon: {$fields['telefon']}";
-    }
-    if ($fields['standort']) {
-      $body[] = "Standort: {$fields['standort']}";
-    }
-    if ($fields['gehalt']) {
-      $body[] = "Gehaltsvorstellung: {$fields['gehalt']}";
-    }
-    if ($fields['quelle']) {
-      $body[] = "Aufmerksam geworden durch: {$fields['quelle']}";
-    }
-    $body[] = '';
-    $body[] = count($attachmentFids) . ' Datei(en) angehängt.';
-
-    $params = [
-      'subject' => "Neue Bewerbung: {$jobTitle}",
-      'body' => implode("\n", $body),
-      'attachments' => $attachmentPaths,
-    ];
-
-    $this->mailManager->mail(
-      'hpm_forms',
-      'job_application',
-      'karriere@hoecker-pm.com',
-      'de',
-      $params,
-    );
+    // Send email via raw mail() — matching the static page approach.
+    $this->sendMail($fields, $attachments, $totalSize, $ds1, $ds2, $ds3);
 
     return new JsonResponse(['ok' => TRUE]);
+  }
+
+  /**
+   * Send email using PHP mail() with multipart MIME and attachments.
+   */
+  protected function sendMail(array $fields, array $attachments, int $totalSize, bool $ds1, bool $ds2, bool $ds3): bool {
+    $boundary = '=_Form_' . bin2hex(random_bytes(16));
+    $name = trim($fields['vorname'] . ' ' . $fields['nachname']);
+    $jobTitle = $fields['application_title'] ?: 'Initiativbewerbung';
+
+    // Headers.
+    $headers = [];
+    $headers[] = sprintf('From: %s <%s>', $this->mimeHeader(self::MAIL_FROM_NAME), self::MAIL_FROM_ADDRESS);
+    $headers[] = sprintf('Reply-To: %s <%s>', $this->mimeHeader($name), $fields['email']);
+    $headers[] = 'Return-Path: <' . self::MAIL_FROM_ADDRESS . '>';
+    $headers[] = 'MIME-Version: 1.0';
+    $headers[] = 'Content-Type: multipart/mixed; boundary="' . $boundary . '"';
+
+    // Text part.
+    $text = "Neue Bewerbung:\r\n\r\n";
+    $text .= "Name: {$name}\r\n";
+    $text .= "E-Mail: {$fields['email']}\r\n";
+    $text .= "Telefon: {$fields['telefon']}\r\n";
+    $text .= "Standort: {$fields['standort']}\r\n";
+    if ($fields['gehalt'] !== '') {
+      $text .= "Gehaltsvorstellung: {$fields['gehalt']}\r\n";
+    }
+    if ($fields['application_title'] !== '') {
+      $text .= "Stelle / Bezug: {$fields['application_title']}\r\n";
+    }
+    $text .= "Quelle: {$fields['quelle']}\r\n";
+    $text .= "Datum: " . date('d.m.Y H:i') . "\r\n\r\n";
+
+    $text .= "Dateianhänge (Gesamt: " . number_format($totalSize / 1024 / 1024, 2, ',', '.') . " MB):\r\n";
+    foreach ($attachments as $a) {
+      $text .= "• Original: " . $a['orig'] . "\r\n";
+      $text .= "  Versandt: " . $a['clean'] . " (" . number_format($a['size'] / 1024 / 1024, 2, ',', '.') . " MB)\r\n";
+    }
+    $text .= "\r\n";
+
+    $text .= "Einwilligungen:\r\n";
+    $text .= "• Bewerbung: " . ($ds1 ? 'JA' : 'NEIN') . "\r\n";
+    $text .= "• Speicherung: " . ($ds2 ? 'JA' : 'NEIN') . "\r\n";
+    $text .= "• Weitergabe: " . ($ds3 ? 'JA' : 'NEIN') . "\r\n";
+
+    // Multipart body.
+    $body = "--{$boundary}\r\n";
+    $body .= "Content-Type: text/plain; charset=utf-8\r\n";
+    $body .= "Content-Transfer-Encoding: 8bit\r\n\r\n";
+    $body .= $text . "\r\n";
+
+    // Attachments.
+    foreach ($attachments as $a) {
+      $pdfData = file_get_contents($a['path']);
+      if ($pdfData === FALSE) {
+        continue;
+      }
+      $pdfB64 = chunk_split(base64_encode($pdfData));
+      $safeName = addslashes($a['clean']);
+
+      $body .= "--{$boundary}\r\n";
+      $body .= "Content-Type: application/pdf; name=\"{$safeName}\"\r\n";
+      $body .= "Content-Transfer-Encoding: base64\r\n";
+      $body .= "Content-Disposition: attachment; filename=\"{$safeName}\"\r\n\r\n";
+      $body .= $pdfB64 . "\r\n";
+    }
+    $body .= "--{$boundary}--";
+
+    // Subject.
+    $subject = self::MAIL_SUBJECT;
+    if ($fields['application_title'] !== '') {
+      $subject .= ' - ' . $fields['application_title'];
+    }
+    $subject = $this->mimeHeader($subject);
+
+    return mail(
+      self::MAIL_TO,
+      $subject,
+      $body,
+      implode("\r\n", $headers),
+      '-f ' . self::MAIL_FROM_ADDRESS
+    );
+  }
+
+  /**
+   * Strip header injection characters.
+   */
+  protected function clean(string $s): string {
+    return str_replace(["\r", "\n", "%0a", "%0d"], ' ', trim($s));
+  }
+
+  /**
+   * Encode a string for use in mail headers (RFC 2047).
+   */
+  protected function mimeHeader(string $str): string {
+    return '=?UTF-8?B?' . base64_encode($str) . '?=';
+  }
+
+  /**
+   * Normalize filename: replace umlauts, strip special chars.
+   */
+  protected function normalizeFilename(string $filename): string {
+    $filename = basename($filename);
+    $map = [
+      'ä' => 'ae', 'ö' => 'oe', 'ü' => 'ue',
+      'Ä' => 'Ae', 'Ö' => 'Oe', 'Ü' => 'Ue',
+      'ß' => 'ss',
+    ];
+    $filename = strtr($filename, $map);
+    $filename = preg_replace('/[^A-Za-z0-9._-]/', '_', $filename);
+    $filename = preg_replace('/_+/', '_', $filename);
+    return $filename;
   }
 
 }
