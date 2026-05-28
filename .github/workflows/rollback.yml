@@ -1,0 +1,82 @@
+name: Rollback to Previous Release
+
+on:
+  workflow_dispatch:
+
+env:
+  BASE_PATH: /home/d9wk9gxzatk4/public_html
+  SITE_NAME: www_hpm_drupal
+
+jobs:
+  rollback:
+    name: Rollback
+    runs-on: ubuntu-latest
+    environment: production
+
+    steps:
+      - name: Setup SSH key
+        env:
+          SSH_HOST: ${{ vars.SSH_HOST }}
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/deploy_key
+          chmod 600 ~/.ssh/deploy_key
+          ssh-keyscan -H "$SSH_HOST" >> ~/.ssh/known_hosts
+
+      - name: Rollback to previous release
+        env:
+          SSH_HOST: ${{ vars.SSH_HOST }}
+          SSH_USER: ${{ vars.SSH_USER }}
+        run: |
+          SSH_CMD="ssh -i ~/.ssh/deploy_key -o StrictHostKeyChecking=no ${SSH_USER}@${SSH_HOST}"
+
+          $SSH_CMD << 'ROLLBACK'
+          set -e
+          BASE_PATH=/home/d9wk9gxzatk4/public_html
+          SITE_NAME=www_hpm_drupal
+
+          CURRENT=$(readlink -f ${BASE_PATH}/${SITE_NAME})
+          echo "==> Current release: ${CURRENT}"
+
+          # Find the previous release (second newest)
+          PREVIOUS=$(ls -1dt ${BASE_PATH}/releases/*/ | sed -n '2p' | sed 's|/$||')
+
+          if [ -z "$PREVIOUS" ]; then
+            echo "ERROR: No previous release found to rollback to."
+            exit 1
+          fi
+
+          echo "==> Rolling back to: ${PREVIOUS}"
+
+          # Restore vendor if missing
+          if [ ! -d "${PREVIOUS}/vendor" ]; then
+            echo "==> Running composer install..."
+            cd "${PREVIOUS}"
+            composer install --no-dev --optimize-autoloader --no-interaction --no-progress
+          fi
+
+          # Switch symlink
+          ln -sfn "${PREVIOUS}" "${BASE_PATH}/${SITE_NAME}"
+          echo "==> Symlink switched to ${PREVIOUS}"
+
+          # Run Drupal tasks
+          cd "${PREVIOUS}"
+          if ./vendor/bin/drush status --field=bootstrap 2>/dev/null | grep -q "Successful"; then
+            echo "==> Enabling maintenance mode..."
+            ./vendor/bin/drush state:set system.maintenance_mode 1 --input-format=integer
+
+            echo "==> Running database updates..."
+            ./vendor/bin/drush updatedb -y
+
+            echo "==> Importing config..."
+            ./vendor/bin/drush config:import -y
+
+            echo "==> Rebuilding cache..."
+            ./vendor/bin/drush cache:rebuild
+
+            echo "==> Disabling maintenance mode..."
+            ./vendor/bin/drush state:set system.maintenance_mode 0 --input-format=integer
+          fi
+
+          echo "==> Rollback complete!"
+          ROLLBACK

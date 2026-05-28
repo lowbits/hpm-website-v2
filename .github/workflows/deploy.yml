@@ -126,13 +126,26 @@ jobs:
             echo "==> Disabling maintenance mode..."
             ./vendor/bin/drush state:set system.maintenance_mode 0 --input-format=integer
 
+            echo "==> Warming caches (entity + CDN)..."
+            ./vendor/bin/drush warmer:enqueue entity,cdn --run-queue -l https://www.hoecker-pm.com || true
+
             echo "==> Deploy complete!"
           else
             echo "==> Drupal not yet installed — skipping deploy tasks."
           fi
 
-          # Cleanup old releases (keep last ${KEEP_RELEASES})
+          # Remove vendor/ from old releases to save disk quota
+          CURRENT=\$(readlink -f ${BASE_PATH}/${SITE_NAME})
           cd ${BASE_PATH}/releases
+          for dir in */; do
+            FULL=\$(readlink -f "\$dir")
+            if [ "\$FULL" != "\$CURRENT" ] && [ -d "\$dir/vendor" ]; then
+              echo "==> Removing vendor/ from old release \$dir"
+              rm -rf "\$dir/vendor"
+            fi
+          done
+
+          # Cleanup old releases (keep last ${KEEP_RELEASES})
           ls -1dt */ | tail -n +$((${KEEP_RELEASES} + 1)) | xargs rm -rf || true
           echo "==> Cleanup done. Keeping last ${KEEP_RELEASES} releases."
           DEPLOY
