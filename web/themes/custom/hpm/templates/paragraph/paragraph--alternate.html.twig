@@ -4,7 +4,6 @@
  * Alternating content section – image + text side by side.
  */
 #}
-{{ attach_library('hpm/accordion') }}
 {% set position = paragraph.field_media_position.value|default('right') %}
 {% set has_accordion = content.field_accordion_items|render|trim %}
 <section{{ attributes.addClass('alternate', 'content-section') }}

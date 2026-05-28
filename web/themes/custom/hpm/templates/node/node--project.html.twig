@@ -1,5 +1,3 @@
-{{ attach_library('hpm/fade-ins') }}
-{{ attach_library('hpm/slider-gallery') }}
 <article{{ attributes.addClass('node', 'node--project') }}>
   {{ title_prefix }}
   {{ title_suffix }}
@@ -195,7 +193,6 @@
 
   {# Related Projects Slider #}
   {% if related_project_teasers is not empty %}
-    {{ attach_library('hpm/slider-teaser') }}
     <section class="projects-teaser teaser-slider content-section js-teaser-slider" data-theme="beige">
       <div class="section-container">
         <div class="section-title flex flex-col gap-5 mb-8 col-span-12

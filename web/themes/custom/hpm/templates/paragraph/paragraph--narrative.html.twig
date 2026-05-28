@@ -8,7 +8,6 @@
  *         field_link, field_anchor_id.
  */
 #}
-{{ attach_library('hpm/accordion') }}
 {% set box_position = paragraph.field_box_position.value|default('left') %}
 {% set box_theme = paragraph.field_box_theme.value|default('dark') %}
 <section{{ attributes.addClass('narrative', 'relative', 'content-section', 'overflow-hidden', 'max-sm:mb-0') }}>
