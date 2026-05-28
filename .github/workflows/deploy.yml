@@ -9,7 +9,7 @@ env:
   BASE_PATH: /home/d9wk9gxzatk4/public_html
   SITE_NAME: www_hpm_drupal
   REPO_URL: git@github.com:lowbits/hpm-website-v2.git
-  KEEP_RELEASES: 5
+  KEEP_RELEASES: 3
 
 jobs:
   deploy:
@@ -83,6 +83,19 @@ jobs:
           RELEASE_PATH=${BASE_PATH}/releases/${RELEASE}
           SHARED_PATH=${BASE_PATH}/shared
 
+          # Free disk space before installing dependencies
+          echo "==> Cleaning up old releases to free disk quota..."
+          cd ${BASE_PATH}/releases
+          CURRENT_RELEASE=\$(readlink -f ${BASE_PATH}/${SITE_NAME} 2>/dev/null || echo "")
+          for dir in */; do
+            FULL=\$(readlink -f "\$dir")
+            if [ "\$FULL" != "\$CURRENT_RELEASE" ] && [ "\$FULL" != "\${RELEASE_PATH}" ] && [ -d "\$dir/vendor" ]; then
+              echo "    Removing vendor/ from \$dir"
+              rm -rf "\$dir/vendor"
+            fi
+          done
+          ls -1dt */ | tail -n +$((${KEEP_RELEASES} + 1)) | xargs rm -rf || true
+
           cd \${RELEASE_PATH}
 
           # Symlink shared files
@@ -134,18 +147,5 @@ jobs:
             echo "==> Drupal not yet installed — skipping deploy tasks."
           fi
 
-          # Remove vendor/ from old releases to save disk quota
-          CURRENT=\$(readlink -f ${BASE_PATH}/${SITE_NAME})
-          cd ${BASE_PATH}/releases
-          for dir in */; do
-            FULL=\$(readlink -f "\$dir")
-            if [ "\$FULL" != "\$CURRENT" ] && [ -d "\$dir/vendor" ]; then
-              echo "==> Removing vendor/ from old release \$dir"
-              rm -rf "\$dir/vendor"
-            fi
-          done
-
-          # Cleanup old releases (keep last ${KEEP_RELEASES})
-          ls -1dt */ | tail -n +$((${KEEP_RELEASES} + 1)) | xargs rm -rf || true
-          echo "==> Cleanup done. Keeping last ${KEEP_RELEASES} releases."
+          echo "==> All done."
           DEPLOY
