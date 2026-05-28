@@ -52,10 +52,23 @@ jobs:
           SSH_CMD="ssh -i ~/.ssh/deploy_key -o StrictHostKeyChecking=no ${SSH_USER}@${SSH_HOST}"
 
           # Create directory structure (first deploy only)
+          # Create dirs + free disk space before cloning
           $SSH_CMD << INIT
           mkdir -p ${BASE_PATH}/releases
           mkdir -p ${BASE_PATH}/shared/files
           mkdir -p ${BASE_PATH}/shared/private
+
+          echo "==> Cleaning up old releases to free disk quota..."
+          CURRENT_RELEASE=\$(readlink -f ${BASE_PATH}/${SITE_NAME} 2>/dev/null || echo "")
+          cd ${BASE_PATH}/releases
+          for dir in */; do
+            FULL=\$(readlink -f "\$dir")
+            if [ "\$FULL" != "\$CURRENT_RELEASE" ] && [ -d "\$dir/vendor" ]; then
+              echo "    Removing vendor/ from \$dir"
+              rm -rf "\$dir/vendor"
+            fi
+          done
+          ls -1dt */ 2>/dev/null | tail -n +$((${KEEP_RELEASES})) | xargs rm -rf || true
           INIT
 
           # Clone repo into new release directory
@@ -82,19 +95,6 @@ jobs:
           set -e
           RELEASE_PATH=${BASE_PATH}/releases/${RELEASE}
           SHARED_PATH=${BASE_PATH}/shared
-
-          # Free disk space before installing dependencies
-          echo "==> Cleaning up old releases to free disk quota..."
-          cd ${BASE_PATH}/releases
-          CURRENT_RELEASE=\$(readlink -f ${BASE_PATH}/${SITE_NAME} 2>/dev/null || echo "")
-          for dir in */; do
-            FULL=\$(readlink -f "\$dir")
-            if [ "\$FULL" != "\$CURRENT_RELEASE" ] && [ "\$FULL" != "\${RELEASE_PATH}" ] && [ -d "\$dir/vendor" ]; then
-              echo "    Removing vendor/ from \$dir"
-              rm -rf "\$dir/vendor"
-            fi
-          done
-          ls -1dt */ | tail -n +$((${KEEP_RELEASES} + 1)) | xargs rm -rf || true
 
           cd \${RELEASE_PATH}
 
