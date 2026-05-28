@@ -92,21 +92,23 @@ class JobApplicationController extends ControllerBase {
       ], 422);
     }
 
-    // Handle file uploads.
+    // Handle file uploads via $_FILES (Symfony's UploadedFile fails on
+    // Host Europe's jailed /tmp — stat() is not permitted).
     $attachments = [];
     $attachmentFids = [];
-    $uploadedFiles = $request->files->get('attachments', []);
-    if (!is_array($uploadedFiles)) {
-      $uploadedFiles = [$uploadedFiles];
-    }
+    $files = $_FILES['attachments'] ?? [];
+    $names = (array) ($files['name'] ?? []);
+    $tmpNames = (array) ($files['tmp_name'] ?? []);
+    $errors = (array) ($files['error'] ?? []);
+    $sizes = (array) ($files['size'] ?? []);
 
     $totalSize = 0;
-    foreach ($uploadedFiles as $uploadedFile) {
-      if (!$uploadedFile || !$uploadedFile->isValid()) {
+    for ($i = 0; $i < count($names); $i++) {
+      if (empty($names[$i]) || ($errors[$i] ?? UPLOAD_ERR_NO_FILE) !== UPLOAD_ERR_OK) {
         continue;
       }
 
-      $totalSize += $uploadedFile->getSize();
+      $totalSize += (int) ($sizes[$i] ?? 0);
       if ($totalSize > 10 * 1024 * 1024) {
         return new JsonResponse([
           'ok' => FALSE,
@@ -114,7 +116,8 @@ class JobApplicationController extends ControllerBase {
         ], 422);
       }
 
-      $extension = strtolower($uploadedFile->getClientOriginalExtension());
+      $filename = basename($names[$i]);
+      $extension = strtolower(pathinfo($filename, PATHINFO_EXTENSION));
       if ($extension !== 'pdf') {
         return new JsonResponse([
           'ok' => FALSE,
@@ -122,12 +125,16 @@ class JobApplicationController extends ControllerBase {
         ], 422);
       }
 
+      $tmp = $tmpNames[$i];
+      if (!is_uploaded_file($tmp)) {
+        continue;
+      }
+
       $directory = 'private://webform/job_application';
       $this->fileSystem->prepareDirectory($directory, FileSystemInterface::CREATE_DIRECTORY);
 
-      $filename = $uploadedFile->getClientOriginalName();
       $destination = $directory . '/' . $filename;
-      $uri = $this->fileSystem->move($uploadedFile->getRealPath(), $destination);
+      $uri = $this->fileSystem->move($tmp, $destination);
 
       if ($uri) {
         $file = File::create([
@@ -144,7 +151,7 @@ class JobApplicationController extends ControllerBase {
           'path' => $realpath,
           'orig' => $filename,
           'clean' => $this->normalizeFilename($filename),
-          'size' => $uploadedFile->getSize(),
+          'size' => (int) ($sizes[$i] ?? 0),
         ];
       }
     }
