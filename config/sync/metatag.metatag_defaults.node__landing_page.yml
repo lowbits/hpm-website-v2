@@ -1,0 +1,12 @@
+langcode: de
+status: true
+id: node__landing_page
+label: 'Inhalt: Landingpage'
+tags:
+  title: '[node:title] | HÖCKER Project Managers'
+  description: '[node:field_description]'
+  canonical_url: '[node:url]'
+  og_type: article
+  og_title: '[node:title] | HÖCKER Project Managers'
+  og_description: '[node:field_description]'
+  og_url: '[node:url]'
