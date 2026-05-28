@@ -115,6 +115,9 @@ jobs:
           # Add PHP handler for LiteSpeed (.htaccess)
           sed -i '1i\\<FilesMatch "\\\\.(php4|php5|php3|php2|php|phtml)\$">\\nSetHandler application/x-httpd-alt-php83___lsphp\\n</FilesMatch>' web/.htaccess
 
+          # Add Basic Auth for integration subdomain only
+          sed -i '1i\\SetEnvIfNoCase Host ^integration\\.hoecker-pm\\.com$ REQUIRE_AUTH=1\\nAuthType Basic\\nAuthName "HPM Integration"\\nAuthUserFile /home/d9wk9gxzatk4/public_html/.htpasswd\\nRequire valid-user\\nOrder deny,allow\\nDeny from env=REQUIRE_AUTH\\nSatisfy any\\n' web/.htaccess
+
           # Switch symlink to new release
           ln -sfn \${RELEASE_PATH} ${BASE_PATH}/${SITE_NAME}
           echo "==> Symlink switched to ${RELEASE}"
