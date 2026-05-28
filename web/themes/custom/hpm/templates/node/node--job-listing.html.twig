@@ -19,7 +19,13 @@
   </section>
 
   {# 2. Stelleninformationen (back link + intro + location/time/level) #}
-  {% set location_label = node.field_job_location.entity ? node.field_job_location.entity.label : '' %}
+  {% set loc_labels = [] %}
+  {% for loc_item in node.field_job_location %}
+    {% if loc_item.entity %}
+      {% set loc_labels = loc_labels|merge([loc_item.entity.label]) %}
+    {% endif %}
+  {% endfor %}
+  {% set location_label = loc_labels|join(', ') %}
   {% set levels = [] %}
   {% for item in node.field_experience_level %}
     {% if item.entity %}

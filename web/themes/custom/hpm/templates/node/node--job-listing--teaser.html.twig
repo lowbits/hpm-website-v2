@@ -7,7 +7,13 @@
  * paragraph for backwards compatibility with existing content.
  */
 #}
-{% set location = node.field_job_location.entity ? node.field_job_location.entity.label : '' %}
+{% set locs = [] %}
+{% for loc_item in node.field_job_location %}
+  {% if loc_item.entity %}
+    {% set locs = locs|merge([loc_item.entity.label]) %}
+  {% endif %}
+{% endfor %}
+{% set location = locs|join(', ') %}
 {% set lvls = [] %}
 {% for lvl_item in node.field_experience_level %}
   {% if lvl_item.entity %}
