@@ -3,6 +3,7 @@ langcode: de
 status: true
 dependencies:
   config:
+    - field.field.node.landing_page.body
     - field.field.node.landing_page.field_description
     - field.field.node.landing_page.field_meta_label
     - field.field.node.landing_page.field_metatag
@@ -32,6 +33,7 @@ content:
     weight: 100
     region: content
 hidden:
+  body: true
   field_description: true
   field_meta_label: true
   field_metatag: true

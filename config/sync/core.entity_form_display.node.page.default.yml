@@ -3,6 +3,7 @@ langcode: de
 status: true
 dependencies:
   config:
+    - field.field.node.page.body
     - field.field.node.page.field_metatag
     - field.field.node.page.field_paragraphs
     - node.type.page
@@ -10,6 +11,7 @@ dependencies:
     - metatag
     - paragraphs
     - path
+    - text
 _core:
   default_config_hash: MzSYzZbqqlwSM8mtLwEdCerBZRNGvHZntu5u_Gao8LY
 id: node.page.default
@@ -17,6 +19,16 @@ targetEntityType: node
 bundle: page
 mode: default
 content:
+  body:
+    type: text_textarea_with_summary
+    weight: 1
+    region: content
+    settings:
+      rows: 3
+      summary_rows: 3
+      placeholder: ''
+      show_summary: true
+    third_party_settings: {  }
   created:
     type: datetime_timestamp
     weight: 10
