@@ -1,0 +1,22 @@
+_core:
+  default_config_hash: wLhhL58IKPWkAbhxcI6gpCna7d431Q7kM0y-Om92BUQ
+warmers:
+  cdn:
+    frequency: 0
+    batchSize: 50
+    urls:
+      - 'https://www.hoecker-pm.com/'
+      - 'https://www.hoecker-pm.com/unternehmen'
+      - 'https://www.hoecker-pm.com/karriere'
+      - 'https://www.hoecker-pm.com/kompetenzen'
+      - 'https://www.hoecker-pm.com/projekte'
+      - 'https://www.hoecker-pm.com/standorte'
+      - 'https://www.hoecker-pm.com/stellenangebote'
+      - 'https://www.hoecker-pm.com/geschaeftsfelder'
+    headers: {  }
+  entity:
+    frequency: 0
+    batchSize: 50
+    entity_types:
+      - node
+      - media

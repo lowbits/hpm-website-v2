@@ -39,6 +39,7 @@
         "drupal/token": "^1.17",
         "drupal/tool": "^1@alpha",
         "drupal/twig_tweak": "^3.4",
+        "drupal/warmer": "^2.0",
         "drupal/webform": "^6.3@beta",
         "drush/drush": "^13.7"
     },

@@ -68,6 +68,9 @@ module:
   twig_tweak: 0
   update: 0
   user: 0
+  warmer: 0
+  warmer_cdn: 0
+  warmer_entity: 0
   webform: 0
   pathauto: 1
   content_translation: 10
