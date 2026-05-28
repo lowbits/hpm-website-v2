@@ -59,8 +59,15 @@ jobs:
           mkdir -p ${BASE_PATH}/shared/private
 
           echo "==> Cleaning up old releases..."
+          CURRENT_RELEASE=\$(readlink -f ${BASE_PATH}/${SITE_NAME} 2>/dev/null || echo "")
           cd ${BASE_PATH}/releases
-          ls -1dt */ 2>/dev/null | tail -n +$((${KEEP_RELEASES} + 1)) | xargs rm -rf || true
+          for dir in */; do
+            FULL=\$(readlink -f "\$dir")
+            if [ "\$FULL" != "\$CURRENT_RELEASE" ]; then
+              echo "    Removing \$dir"
+              rm -rf "\$dir"
+            fi
+          done
           INIT
 
           # Clone repo into new release directory
