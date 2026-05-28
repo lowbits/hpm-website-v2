@@ -9,7 +9,7 @@ env:
   BASE_PATH: /home/d9wk9gxzatk4/public_html
   SITE_NAME: www_hpm_drupal
   REPO_URL: git@github.com:lowbits/hpm-website-v2.git
-  KEEP_RELEASES: 3
+  KEEP_RELEASES: 2
 
 jobs:
   deploy:
@@ -61,14 +61,15 @@ jobs:
           echo "==> Cleaning up old releases to free disk quota..."
           CURRENT_RELEASE=\$(readlink -f ${BASE_PATH}/${SITE_NAME} 2>/dev/null || echo "")
           cd ${BASE_PATH}/releases
+
+          # Delete all non-current releases entirely (not just vendor)
           for dir in */; do
             FULL=\$(readlink -f "\$dir")
-            if [ "\$FULL" != "\$CURRENT_RELEASE" ] && [ -d "\$dir/vendor" ]; then
-              echo "    Removing vendor/ from \$dir"
-              rm -rf "\$dir/vendor"
+            if [ "\$FULL" != "\$CURRENT_RELEASE" ]; then
+              echo "    Removing old release \$dir"
+              rm -rf "\$dir"
             fi
           done
-          ls -1dt */ 2>/dev/null | tail -n +$((${KEEP_RELEASES})) | xargs rm -rf || true
           INIT
 
           # Clone repo into new release directory
