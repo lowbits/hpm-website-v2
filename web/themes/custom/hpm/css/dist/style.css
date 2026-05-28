@@ -2834,6 +2834,9 @@
   .carousel, .quote-slider {
     outline: none;
   }
+  .stage-slider_slider:not(.flickity-enabled) > .carousel__item:not(:first-child) {
+    display: none;
+  }
   .carousel__item img {
     opacity: 0%;
     transition: opacity .5s cubic-bezier(0, 0, .18, 1.055), transform .5s cubic-bezier(0, 0, .18, 1.055);

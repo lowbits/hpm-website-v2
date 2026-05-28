@@ -13,6 +13,12 @@
   .quote-slider {
     outline: none;
   }
+
+  /* Prevent CLS: hide non-first slides before Flickity init */
+  .stage-slider_slider:not(.flickity-enabled) > .carousel__item:not(:first-child) {
+    @apply hidden;
+  }
+
   .carousel__item img {
     @apply opacity-0;
     transition: opacity .5s cubic-bezier(0, 0, .18, 1.055), transform .5s cubic-bezier(0, 0, .18, 1.055);
