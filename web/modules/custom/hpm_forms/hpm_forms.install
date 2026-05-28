@@ -1,0 +1,30 @@
+<?php
+
+/**
+ * @file
+ * Install and update hooks for HPM Forms.
+ */
+
+/**
+ * Migrate body summary to field_description for page nodes.
+ */
+function hpm_forms_update_10001() {
+  $nodes = \Drupal::entityTypeManager()
+    ->getStorage('node')
+    ->loadByProperties(['type' => 'page']);
+
+  $count = 0;
+  foreach ($nodes as $node) {
+    if ($node->hasField('body') && $node->hasField('field_description')) {
+      $summary = $node->body->summary;
+      $existing = $node->field_description->value;
+      if ($summary && !$existing) {
+        $node->set('field_description', $summary);
+        $node->save();
+        $count++;
+      }
+    }
+  }
+
+  return "Migrated $count page summaries to field_description.";
+}

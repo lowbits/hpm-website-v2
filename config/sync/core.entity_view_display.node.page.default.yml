@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - field.field.node.page.body
+    - field.field.node.page.field_description
     - field.field.node.page.field_metatag
     - field.field.node.page.field_paragraphs
     - node.type.page
@@ -31,5 +32,6 @@ content:
     region: content
 hidden:
   body: true
+  field_description: true
   field_metatag: true
   langcode: true
