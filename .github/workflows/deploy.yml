@@ -141,7 +141,7 @@ jobs:
             ./vendor/bin/drush cache:rebuild
 
             echo "==> Warming caches (entity + CDN)..."
-            ./vendor/bin/drush warmer:enqueue entity,cdn --run-queue -l https://www.hoecker-pm.com || true
+            ./vendor/bin/drush warmer:enqueue entity,cdn --run-queue -l https://hoecker-pm.com || true
 
             echo "==> Deploy complete!"
           else

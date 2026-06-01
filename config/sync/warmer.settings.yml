@@ -5,14 +5,14 @@ warmers:
     frequency: 0
     batchSize: 50
     urls:
-      - 'https://www.hoecker-pm.com/'
-      - 'https://www.hoecker-pm.com/unternehmen'
-      - 'https://www.hoecker-pm.com/karriere'
-      - 'https://www.hoecker-pm.com/kompetenzen'
-      - 'https://www.hoecker-pm.com/projekte'
-      - 'https://www.hoecker-pm.com/standorte'
-      - 'https://www.hoecker-pm.com/stellenangebote'
-      - 'https://www.hoecker-pm.com/geschaeftsfelder'
+      - 'https://hoecker-pm.com/'
+      - 'https://hoecker-pm.com/unternehmen'
+      - 'https://hoecker-pm.com/karriere'
+      - 'https://hoecker-pm.com/kompetenzen'
+      - 'https://hoecker-pm.com/projekte'
+      - 'https://hoecker-pm.com/standorte'
+      - 'https://hoecker-pm.com/stellenangebote'
+      - 'https://hoecker-pm.com/geschaeftsfelder'
     headers: {  }
   entity:
     frequency: 0
