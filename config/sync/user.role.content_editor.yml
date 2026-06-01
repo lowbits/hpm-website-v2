@@ -37,6 +37,7 @@ permissions:
   - 'access files overview'
   - 'access toolbar'
   - 'administer menu'
+  - 'administer node published status'
   - 'administer url aliases'
   - 'clone node entity'
   - 'create article content'
