@@ -14,7 +14,8 @@
   <div class="navigation-viewport">
     {# PANEL: MAIN (level 1) #}
     <div class="menu-panel is-active" data-panel="main" data-level="1">
-      <div class="menu-list flex flex-col items-start gap-2">
+      <div class="menu-list flex flex-col items-start gap-2
+                  lg:[@media(max-height:720px)]:gap-1">
         {% for item in items %}
           {% if item.below %}
             {# Item with submenu — render as trigger #}
