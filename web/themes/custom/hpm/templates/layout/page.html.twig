@@ -50,12 +50,13 @@
 <div class="navigation-multilevel js-navigation
             fixed inset-y-0 right-0 z-25
             flex items-stretch
-            w-full bg-hpm-darkred text-white
-            sm:w-[24rem] lg:w-[32rem]"
+            w-full bg-hpm-darkred
+            sm:w-[24rem] lg:w-[32rem]
+            pt-[7rem] pb-[5rem]"
      data-theme="darkred">
   <div class="section-container xl:px-20 flex items-stretch">
-    <div class="navigation-inner flex w-full flex-col justify-between py-[5.5rem]
-                lg:pt-[3rem] lg:pb-0">
+    <div class="navigation-inner flex w-full flex-col justify-between
+                {# pt-[5.5rem] pb-[4rem] lg:pt-[5.75rem] lg:pb-[5rem]#}">
 
       <div class="navigation__spacer"></div>
 
@@ -76,11 +77,11 @@
         </nav>
       {% endif %}
 
-      <div class="navigation-social flex gap-5 pt-4 sm:pt-6 lg:pt-8">
+      <div class="navigation-social flex gap-5 pt-5 sm:pt-6 lg:pt-8">
         {% include '@hpm/templates/components/social-links.html.twig' %}
       </div>
 
-      <div class="navigation__spacer max-sm:hidden lg:hidden"></div>
+      {#<div class="navigation__spacer max-sm:hidden lg:hidden"></div>#}
     </div>
   </div>
 </div>
