@@ -227,8 +227,8 @@
 
   .nav-link {
     @apply font-case font-light text-[1.25rem] leading-[1.5rem]
-    lg:[@media(min-height:700px)]:text-[1.5rem]
-    lg:[@media(min-height:700px)]:!leading-[1.625rem];
+    lg:[@media(min-height:720px)]:text-[1.5rem]
+    lg:[@media(min-height:720px)]:!leading-[1.625rem];
   }
 
   .nav-link.nav-link--small {
