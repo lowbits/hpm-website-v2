@@ -88,7 +88,7 @@
 
   /* Consistent height for all nav items (with and without submenu) */
   .nav-link-item {
-    @apply h-6 sm:h-7 lg:[@media(min-height:720px)]:h-8 flex items-center;
+    @apply h-6 sm:h-7 lg:[@media(min-height:721px)]:h-8 flex items-center;
   }
 
   /* Additional links */

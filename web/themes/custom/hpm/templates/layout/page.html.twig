@@ -64,7 +64,8 @@
       {{ page.navigation }}
 
       {% if additional_nav %}
-        <nav class="navigation-additional relative flex flex-col items-start gap-3" aria-label="{{ 'Weitere Links'|t }}">
+        <nav class="navigation-additional relative flex flex-col items-start gap-3
+                  [@media(max-height:620px)]:hidden" aria-label="{{ 'Weitere Links'|t }}">
           {% for link in additional_nav %}
             <a class="text-link font-case text-[0.9375rem] leading-[1.2]"
                href="{{ link.url }}"
@@ -79,7 +80,7 @@
       {% endif %}
 
       <div class="navigation-social flex gap-5 pt-5 sm:pt-6 lg:pt-8
-                  [@media(max-height:680px)]:hidden
+                  [@media(max-height:700px)]:hidden
                   lg:[@media(max-height:820px)]:hidden">
         {% include '@hpm/templates/components/social-links.html.twig' %}
       </div>
