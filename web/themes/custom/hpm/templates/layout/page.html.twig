@@ -52,7 +52,7 @@
             flex items-stretch
             w-full bg-hpm-darkred
             sm:w-[24rem] lg:w-[32rem]
-            !pt-[6rem] !pb-[2rem] lg:!pt-[7rem] lg:!pb-[5rem]"
+            !pt-[6rem] !pb-[2rem] sm:!pb-[3rem] lg:!pt-[7rem]"
      data-theme="darkred">
   <div class="section-container xl:px-20 flex items-stretch">
     <div class="navigation-inner flex w-full flex-col justify-between
@@ -78,7 +78,8 @@
       {% endif %}
 
       <div class="navigation-social flex gap-5 pt-5 sm:pt-6 lg:pt-8
-                  [@media(max-height:680px)]:hidden">
+                  [@media(max-height:680px)]:hidden
+                  lg:[@media(max-height:820px)]:hidden">
         {% include '@hpm/templates/components/social-links.html.twig' %}
       </div>
 
