@@ -55,7 +55,8 @@
           <button class="submenu-back text-white mb-4 opacity-85 hover:opacity-100" type="button" data-back-panel="main" aria-label="{{ 'Zurück'|t }}">
             &larr; {{ 'Zurück'|t }}
           </button>
-          <div class="menu-list flex flex-col items-start gap-2">
+          <div class="menu-list flex flex-col items-start gap-2
+                  lg:[@media(max-height:720px)]:gap-1">
             {# First: link to parent page itself as "Übersicht" #}
             <div class="nav-link-item flex justify-between items-center gap-3">
               <a class="nav-link nav-link--trigger large text-white relative inline-block overflow-hidden pb-[2px] hover:after:translate-x-0 hover:[&_.nav-link__icon_svg]:translate-x-0"
