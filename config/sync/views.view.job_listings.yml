@@ -78,6 +78,8 @@ display:
           view_mode: teaser
       query:
         type: views_query
+        options:
+          distinct: true
       relationships:
         field_experience_level:
           id: field_experience_level
