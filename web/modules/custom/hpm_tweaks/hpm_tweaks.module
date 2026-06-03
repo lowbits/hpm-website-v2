@@ -26,7 +26,7 @@ function hpm_tweaks_views_query_alter(ViewExecutable $view, Sql $query) {
   $sub = $db->select('node__field_experience_level', 'el');
   $sub->join('taxonomy_term_field_data', 'td', 'td.tid = el.field_experience_level_target_id');
   $sub->addField('el', 'entity_id');
-  $sub->addExpression('MIN(td.weight)', 'min_weight');
+  $sub->addExpression('AVG(td.weight)', 'avg_weight');
   $sub->groupBy('el.entity_id');
 
   // Join the subquery to the main query.
@@ -41,7 +41,7 @@ function hpm_tweaks_views_query_alter(ViewExecutable $view, Sql $query) {
   $alias = $query->addRelationship('exp_weight', $join, 'node_field_data');
 
   // Add the sort: lowest weight first, then by created DESC (already there).
-  $query->addOrderBy($alias, 'min_weight', 'ASC');
+  $query->addOrderBy($alias, 'avg_weight', 'DESC');
 
   // Move the experience-level sort before the existing created sort.
   $order =& $query->orderby;
