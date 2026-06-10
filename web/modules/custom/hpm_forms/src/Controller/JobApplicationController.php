@@ -146,9 +146,11 @@ class JobApplicationController extends ControllerBase {
         $file->save();
         $attachmentFids[] = $file->id();
 
-        $realpath = $this->fileSystem->realpath($uri);
+        // Read file content immediately via stream wrapper URI — realpath()
+        // can fail on Host Europe's jailed filesystem.
+        $pdfData = file_get_contents($uri);
         $attachments[] = [
-          'path' => $realpath,
+          'data' => $pdfData !== FALSE ? $pdfData : '',
           'orig' => $filename,
           'clean' => $this->normalizeFilename($filename),
           'size' => (int) ($sizes[$i] ?? 0),
@@ -244,11 +246,10 @@ class JobApplicationController extends ControllerBase {
 
     // Attachments.
     foreach ($attachments as $a) {
-      $pdfData = file_get_contents($a['path']);
-      if ($pdfData === FALSE) {
+      if (empty($a['data'])) {
         continue;
       }
-      $pdfB64 = chunk_split(base64_encode($pdfData));
+      $pdfB64 = chunk_split(base64_encode($a['data']));
       $safeName = addslashes($a['clean']);
 
       $body .= "--{$boundary}\r\n";
