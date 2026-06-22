@@ -1,0 +1,21 @@
+uuid: 813c1162-cd65-42fe-bba3-0338287a0f78
+langcode: de
+status: true
+dependencies: {  }
+name: rimg_1360w_jpg
+label: 'Responsive 1360w JPG'
+effects:
+  7cb4769e-d215-476b-9518-1ce7ec4cdc38:
+    uuid: 7cb4769e-d215-476b-9518-1ce7ec4cdc38
+    id: image_scale
+    weight: 1
+    data:
+      width: 1360
+      height: null
+      upscale: false
+  b00c600f-c50c-4611-bbeb-3bc83a660548:
+    uuid: b00c600f-c50c-4611-bbeb-3bc83a660548
+    id: image_convert
+    weight: 2
+    data:
+      extension: jpg

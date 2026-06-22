@@ -1,0 +1,21 @@
+uuid: b9bcaec3-1570-45e4-a489-506693874153
+langcode: de
+status: true
+dependencies: {  }
+name: rimg_1400w_jpg
+label: 'Responsive 1400w JPG'
+effects:
+  f5887256-d901-4e96-8546-b49f204b8d70:
+    uuid: f5887256-d901-4e96-8546-b49f204b8d70
+    id: image_scale
+    weight: 1
+    data:
+      width: 1400
+      height: null
+      upscale: false
+  88be688f-2a88-4865-8dec-ebf68a32e0e9:
+    uuid: 88be688f-2a88-4865-8dec-ebf68a32e0e9
+    id: image_convert
+    weight: 2
+    data:
+      extension: jpg

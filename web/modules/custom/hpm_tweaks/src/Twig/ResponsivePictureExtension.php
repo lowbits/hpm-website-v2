@@ -14,7 +14,7 @@ use Twig\TwigFunction;
  * Twig extension providing responsive_picture() for <picture> elements.
  *
  * Generates breakpoint-aware <picture> with 1x/2x density descriptors
- * and WebP image styles based on the designer's specifications.
+ * using AVIF sources and JPG fallback for older browsers.
  */
 class ResponsivePictureExtension extends AbstractExtension {
 
@@ -205,15 +205,16 @@ class ResponsivePictureExtension extends AbstractExtension {
       [$w1x, $w2x] = $map[$bp];
       $url1x = $this->styleUrl($uri, "rimg_{$w1x}w");
       $url2x = $this->styleUrl($uri, "rimg_{$w2x}w");
-      $sources[] = '<source media="' . $media . '" srcset="' . $url1x . ' 1x, ' . $url2x . ' 2x" type="image/webp">';
+      $sources[] = '<source media="' . $media . '" srcset="' . $url1x . ' 1x, ' . $url2x . ' 2x" type="image/avif">';
     }
 
     // xs fallback for <img>, or first available breakpoint if xs doesn't exist.
+    // Fallback uses JPG so browsers without AVIF support get a usable image.
     $fallback_sizes = $map['xs'] ?? reset($map);
     if ($fallback_sizes) {
       [$w1x, $w2x] = $fallback_sizes;
-      $fallback_src = $this->styleUrl($uri, "rimg_{$w1x}w");
-      $fallback_srcset = $fallback_src . ' 1x, ' . $this->styleUrl($uri, "rimg_{$w2x}w") . ' 2x';
+      $fallback_src = $this->styleUrl($uri, "rimg_{$w1x}w_jpg");
+      $fallback_srcset = $fallback_src . ' 1x, ' . $this->styleUrl($uri, "rimg_{$w2x}w_jpg") . ' 2x';
     }
 
     return $this->buildPictureTag($sources, $fallback_src, $fallback_srcset, $alt, $loading, $class, $fetchpriority, $dimensions);
@@ -325,12 +326,12 @@ class ResponsivePictureExtension extends AbstractExtension {
       [$h1x, $h2x] = self::GALLERY_MAP[$bp];
       $url1x = $this->styleUrl($uri, "rimg_{$h1x}h");
       $url2x = $this->styleUrl($uri, "rimg_{$h2x}h");
-      $sources[] = '<source media="' . $media . '" srcset="' . $url1x . ' 1x, ' . $url2x . ' 2x" type="image/webp">';
+      $sources[] = '<source media="' . $media . '" srcset="' . $url1x . ' 1x, ' . $url2x . ' 2x" type="image/avif">';
     }
 
     [$h1x, $h2x] = self::GALLERY_MAP['xs'];
-    $fallback_src = $this->styleUrl($uri, "rimg_{$h1x}h");
-    $fallback_srcset = $fallback_src . ' 1x, ' . $this->styleUrl($uri, "rimg_{$h2x}h") . ' 2x';
+    $fallback_src = $this->styleUrl($uri, "rimg_{$h1x}h_jpg");
+    $fallback_srcset = $fallback_src . ' 1x, ' . $this->styleUrl($uri, "rimg_{$h2x}h_jpg") . ' 2x';
 
     return $this->buildPictureTag($sources, $fallback_src, $fallback_srcset, $alt, $loading, $class, $fetchpriority);
   }

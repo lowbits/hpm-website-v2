@@ -1,0 +1,21 @@
+uuid: 62d1ddf8-8e4a-4886-8e51-3b58d4adda56
+langcode: de
+status: true
+dependencies: {  }
+name: rimg_700w_jpg
+label: 'Responsive 700w JPG'
+effects:
+  2465584a-5384-439e-9378-39cc54c80ba9:
+    uuid: 2465584a-5384-439e-9378-39cc54c80ba9
+    id: image_scale
+    weight: 1
+    data:
+      width: 700
+      height: null
+      upscale: false
+  f4eaecc1-2d69-4130-b72d-1492d4263af3:
+    uuid: f4eaecc1-2d69-4130-b72d-1492d4263af3
+    id: image_convert
+    weight: 2
+    data:
+      extension: jpg
