@@ -1,0 +1,25 @@
+uuid: d1280bac-24d5-4725-8fd8-b9e4c5bf8346
+langcode: de
+status: true
+dependencies:
+  config:
+    - block_content.type.karriere_standorte
+    - field.field.block_content.karriere_standorte.field_paragraphs
+  module:
+    - paragraphs
+id: block_content.karriere_standorte.default
+targetEntityType: block_content
+bundle: karriere_standorte
+mode: default
+content:
+  field_paragraphs:
+    type: entity_reference_revisions_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  langcode: true
