@@ -12,7 +12,7 @@ entity_type: node
 bundle: location
 label: Teaserbild
 description: 'Empfohlene Bildgröße: 1362 × 908 px'
-required: false
+required: true
 translatable: true
 default_value: {  }
 default_value_callback: ''
