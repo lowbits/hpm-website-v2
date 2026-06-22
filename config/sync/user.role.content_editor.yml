@@ -23,6 +23,7 @@ dependencies:
     - system
     - taxonomy
     - toolbar
+    - webform
 _core:
   default_config_hash: e_wG1u7SrGaJbY2-Szgbgl-c8T3kdirU3uTNq2c_QJQ
 id: content_editor
@@ -36,6 +37,7 @@ permissions:
   - 'access contextual links'
   - 'access files overview'
   - 'access toolbar'
+  - 'access webform overview'
   - 'administer menu'
   - 'administer node published status'
   - 'administer url aliases'
