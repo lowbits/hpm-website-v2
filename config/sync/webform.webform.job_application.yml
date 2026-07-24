@@ -138,8 +138,8 @@ handlers:
     id: email
     handler_id: email_notification
     label: E-Mail-Benachrichtigung
-    notes: ''
-    status: true
+    notes: 'Disabled: application notifications are sent by the hpm_forms JobApplicationController (hardcoded valid To/From). This built-in handler was redundant and failed on the invalid default From.'
+    status: false
     conditions: {  }
     weight: 0
     settings:
