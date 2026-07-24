@@ -9,11 +9,9 @@ dependencies:
     - field.field.paragraph.narrative.field_box_theme
     - field.field.paragraph.narrative.field_headline
     - field.field.paragraph.narrative.field_image
-    - field.field.paragraph.narrative.field_link
     - field.field.paragraph.narrative.field_text
     - paragraphs.paragraphs_type.narrative
   module:
-    - link
     - media_library
     - paragraphs
     - text
@@ -79,5 +77,4 @@ content:
 hidden:
   created: true
   field_caption: true
-  field_link: true
   status: true
