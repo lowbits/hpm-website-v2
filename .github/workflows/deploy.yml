@@ -139,7 +139,16 @@ jobs:
             ./vendor/bin/drush updatedb -y
 
             echo "==> Importing config..."
-            ./vendor/bin/drush config:import -y
+            # config:import can exit non-zero when the import installs a module:
+            # the mid-import container rebuild can throw a transient TypeError on
+            # terminate, aborting before all config entities are created and
+            # leaving a partial import. Rebuild the container and retry so the
+            # remaining config is applied and this step reflects the true state.
+            if ! ./vendor/bin/drush config:import -y; then
+              echo "==> First config:import pass failed; rebuilding container and retrying..."
+              ./vendor/bin/drush cache:rebuild || true
+              ./vendor/bin/drush config:import -y
+            fi
 
             echo "==> Rebuilding cache..."
             ./vendor/bin/drush cache:rebuild
