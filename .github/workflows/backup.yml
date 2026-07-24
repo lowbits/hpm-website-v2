@@ -1,0 +1,106 @@
+name: Off-site DB Backup
+
+# Daily database backup for production.
+#
+# Flow: trigger Backup & Migrate on prod (writes a fresh gzipped dump to the
+# persistent shared/private/backup_migrate dir) -> prune local dumps older than
+# LOCAL_RETENTION_DAYS -> download the newest dump -> upload it to Hetzner
+# Object Storage (S3-compatible) -> prune S3 objects older than S3_RETENTION_DAYS.
+#
+# Credentials: SSH auth reuses the deploy key (secrets.SSH_PRIVATE_KEY +
+# vars.SSH_HOST / SSH_USER). Hetzner S3 creds are repo secrets/vars
+# (S3_BACKUP_*). No cloud keys ever live on the production server.
+
+on:
+  schedule:
+    - cron: '30 2 * * *'   # daily at 02:30 UTC
+  workflow_dispatch:        # allow manual runs
+
+concurrency:
+  group: db-backup
+  cancel-in-progress: false
+
+env:
+  SITE_NAME: www_hpm_drupal
+  PRIVATE_BACKUP_DIR: /home/d9wk9gxzatk4/public_html/shared/private/backup_migrate
+  DRUPAL_DIR: /home/d9wk9gxzatk4/public_html/www_hpm_drupal
+  LOCAL_RETENTION_DAYS: 3     # short window for fast B&M one-click restore
+  S3_RETENTION_DAYS: 30       # Hetzner holds the durable, long-term history
+
+jobs:
+  backup:
+    name: Backup database and ship off-site
+    runs-on: ubuntu-latest
+    environment: production
+    steps:
+      - name: Setup SSH
+        env:
+          SSH_HOST: ${{ vars.SSH_HOST }}
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/deploy_key
+          chmod 600 ~/.ssh/deploy_key
+          for i in 1 2 3; do
+            ssh-keyscan -T 30 -H "$SSH_HOST" >> ~/.ssh/known_hosts 2>/dev/null && break
+            echo "ssh-keyscan attempt $i failed, retrying..."
+            sleep 5
+          done
+
+      - name: Create fresh backup on prod and prune local dumps
+        env:
+          SSH_HOST: ${{ vars.SSH_HOST }}
+          SSH_USER: ${{ vars.SSH_USER }}
+        run: |
+          SSH_CMD="ssh -i ~/.ssh/deploy_key -o StrictHostKeyChecking=no ${SSH_USER}@${SSH_HOST}"
+          $SSH_CMD "DRUPAL_DIR='${DRUPAL_DIR}' PRIVATE_BACKUP_DIR='${PRIVATE_BACKUP_DIR}' LOCAL_RETENTION_DAYS='${LOCAL_RETENTION_DAYS}' bash -s" <<'REMOTE'
+          set -euo pipefail
+          cd "$DRUPAL_DIR"
+          ./vendor/bin/drush backup_migrate:quick_backup --source_id=default_db --destination_id=private_files -y
+          # prune dumps (and their .info sidecars) older than the retention window
+          find "$PRIVATE_BACKUP_DIR" -name 'backup-*.mysql.gz*' -mtime +"$LOCAL_RETENTION_DAYS" -delete
+          echo "Local dumps retained:"
+          ls -t "$PRIVATE_BACKUP_DIR"/backup-*.mysql.gz | head -5
+          REMOTE
+
+      - name: Download newest dump from prod
+        id: fetch
+        env:
+          SSH_HOST: ${{ vars.SSH_HOST }}
+          SSH_USER: ${{ vars.SSH_USER }}
+        run: |
+          SSH_CMD="ssh -i ~/.ssh/deploy_key -o StrictHostKeyChecking=no ${SSH_USER}@${SSH_HOST}"
+          NEWEST=$($SSH_CMD "ls -t ${PRIVATE_BACKUP_DIR}/backup-*.mysql.gz | head -1")
+          if [ -z "$NEWEST" ]; then echo "No backup file found on prod" >&2; exit 1; fi
+          FNAME=$(basename "$NEWEST")
+          echo "Newest dump: $FNAME"
+          scp -i ~/.ssh/deploy_key -o StrictHostKeyChecking=no "${SSH_USER}@${SSH_HOST}:${NEWEST}" "./${FNAME}"
+          ls -lh "./${FNAME}"
+          echo "fname=${FNAME}" >> "$GITHUB_OUTPUT"
+
+      - name: Upload to Hetzner Object Storage and prune old objects
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.S3_BACKUP_ACCESS_KEY }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.S3_BACKUP_SECRET_KEY }}
+          AWS_DEFAULT_REGION: ${{ vars.S3_BACKUP_REGION }}
+          ENDPOINT: ${{ vars.S3_BACKUP_ENDPOINT }}
+          BUCKET: ${{ vars.S3_BACKUP_BUCKET }}
+          FNAME: ${{ steps.fetch.outputs.fname }}
+        run: |
+          DAY=$(date -u +%Y/%m/%d)
+          aws --endpoint-url "$ENDPOINT" s3 cp "./${FNAME}" "s3://${BUCKET}/db/${DAY}/${FNAME}"
+          echo "Uploaded to s3://${BUCKET}/db/${DAY}/${FNAME}"
+
+          # Prune S3 objects older than the retention window (defensive; ISO dates sort lexically)
+          CUTOFF=$(date -u -d "-${S3_RETENTION_DAYS} days" +%Y-%m-%dT%H:%M:%S)
+          aws --endpoint-url "$ENDPOINT" s3api list-objects-v2 \
+            --bucket "$BUCKET" --prefix "db/" \
+            --query "Contents[?LastModified<='${CUTOFF}'].Key" --output text \
+            | tr '\t' '\n' | while read -r key; do
+                [ -n "$key" ] || continue
+                echo "Pruning old object: $key"
+                aws --endpoint-url "$ENDPOINT" s3 rm "s3://${BUCKET}/${key}"
+              done
+
+      - name: Cleanup runner artifact
+        if: always()
+        run: rm -f ./backup-*.mysql.gz
