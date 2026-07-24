@@ -136,7 +136,14 @@ jobs:
             ./vendor/bin/drush state:set system.maintenance_mode 1 --input-format=integer
 
             echo "==> Running database updates..."
-            ./vendor/bin/drush updatedb -y
+            # After a core/module code swap, the first updatedb can fail on a
+            # stale container (e.g. a batch callback "not found") until the
+            # container is rebuilt. Rebuild and retry once if it fails.
+            if ! ./vendor/bin/drush updatedb -y; then
+              echo "==> updatedb failed (possibly stale container after code swap); rebuilding and retrying..."
+              ./vendor/bin/drush cache:rebuild || true
+              ./vendor/bin/drush updatedb -y
+            fi
 
             echo "==> Importing config..."
             # config:import can exit non-zero when the import installs a module:
