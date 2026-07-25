@@ -170,3 +170,30 @@ jobs:
 
           echo "==> All done."
           DEPLOY
+
+      - name: Post-deploy health check
+        run: |
+          # Smoke-test the live site over real HTTP (through index.php / php-fpm).
+          # drush bootstraps directly and bypasses index.php, so it can report
+          # healthy while the actual site 500s — this check exercises the real
+          # request path and fails the deploy loudly if the site is not serving.
+          echo "==> Smoke-testing the live site..."
+          FAIL=0
+          for URL in "https://hoecker-pm.com/" "https://hoecker-pm.com/unternehmen"; do
+            OK=0
+            for i in 1 2 3 4 5; do
+              CODE=$(curl -sL -o /dev/null -w "%{http_code}" --max-time 30 "$URL" || echo "000")
+              echo "  $URL attempt $i: HTTP $CODE"
+              if [ "$CODE" = "200" ]; then OK=1; break; fi
+              sleep 6
+            done
+            if [ "$OK" != "1" ]; then
+              echo "::error::Post-deploy health check FAILED for $URL (never returned 200)"
+              FAIL=1
+            fi
+          done
+          if [ "$FAIL" != "0" ]; then
+            echo "::error::Site is unhealthy after deploy — investigate immediately."
+            exit 1
+          fi
+          echo "==> Health check passed: site is serving 200."
