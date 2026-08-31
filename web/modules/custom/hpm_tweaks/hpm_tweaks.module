@@ -50,6 +50,31 @@ function hpm_tweaks_views_query_alter(ViewExecutable $view, Sql $query) {
 }
 
 /**
+ * Implements hook_mail_alter().
+ *
+ * Sends system/admin mail (update-status notifications, password resets, cron
+ * errors, etc.) from a dedicated no-reply address on the Resend-verified domain
+ * (nhl.lowbits.de). Website form mail (Webform) is intentionally left untouched:
+ * it keeps the site email as its From and its own delivery transport.
+ *
+ * This only sets the From/sender. The transport split lives in config: prod's
+ * settings.local.php routes non-webform mail through Resend SMTP, while Webform
+ * stays pinned to webform_php_mail (system.mail:interface.webform).
+ */
+function hpm_tweaks_mail_alter(&$message) {
+  // Website form submissions must keep their existing sender and transport.
+  if (($message['module'] ?? '') === 'webform') {
+    return;
+  }
+
+  $address = 'no-reply@nhl.lowbits.de';
+  $message['from'] = $address;
+  $message['headers']['From'] = 'HPM Website <' . $address . '>';
+  $message['headers']['Sender'] = $address;
+  $message['headers']['Return-Path'] = $address;
+}
+
+/**
  * Implements hook_field_widget_single_element_form_alter().
  *
  * Restricts field_theme options per paragraph type.
